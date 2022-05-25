@@ -22,7 +22,6 @@ type
     BtSubMenu1: TJvSpeedButton;
     PnlSubmenu2: TJvPanel;
     BtSubMenu2: TJvSpeedButton;
-    ToggleSwitch1: TToggleSwitch;
     PnlCampo1: TJvPanel;
     LbCampo1: TLabel;
     LineCampo1: TJvGradient;
@@ -63,7 +62,16 @@ type
     LineCampo8: TJvGradient;
     LineCampo8_1: TJvGradient;
     MmCampo8: TMemo;
-    JvSpeedButton1: TJvSpeedButton;
+    PnlCbbTalhao: TJvPanel;
+    LbCbbTalhao: TLabel;
+    LineCbbTalhao: TJvGradient;
+    LineCbbTalhao_1: TJvGradient;
+    CbbTalhao: TJvComboBox;
+    PnlBtsAddTalhao: TJvPanel;
+    BtRemoveTalhao: TJvSpeedButton;
+    BtAddTalhao: TJvSpeedButton;
+    PnlDbGridAddTalhao: TJvPanel;
+    DbGridTalhao: TJvDBUltimGrid;
     procedure BtSalvarClick(Sender: TObject);
     procedure BtCancelarClick(Sender: TObject);
     procedure BtExcluirClick(Sender: TObject);
@@ -77,6 +85,8 @@ type
     procedure CalCampo3Exit(Sender: TObject);
     procedure CalCampo4Exit(Sender: TObject);
     procedure DtCampo2Change(Sender: TObject);
+    procedure BtAddTalhaoClick(Sender: TObject);
+    procedure BtRemoveTalhaoClick(Sender: TObject);
 
 
 
@@ -104,6 +114,12 @@ begin
         PropriedadeRural := TPropriedadeRural.CreateObjTPropriedadeRural;
 end;
 
+procedure TFrmCadastroPropriedadeRural.BtAddTalhaoClick(Sender: TObject);
+begin
+  inherited;
+        PropriedadeRural.setMontaGridMasterDetalhe;
+end;
+
 procedure TFrmCadastroPropriedadeRural.BtAdicionarClick(Sender: TObject);
 begin
   inherited;
@@ -127,6 +143,12 @@ begin
 
 end;
 
+procedure TFrmCadastroPropriedadeRural.BtRemoveTalhaoClick(Sender: TObject);
+begin
+  inherited;
+        PropriedadeRural.getAcaoAdicionarEditarTalhao;
+end;
+
 procedure TFrmCadastroPropriedadeRural.BtSalvarClick(Sender: TObject);
 begin
        if PropriedadeRural.getSavar then
@@ -136,6 +158,8 @@ begin
          DsktpAlertSistema.MessageText := PropriedadeRural.getAlert;
          DsktpAlertSistema.Execute;
          PropriedadeRural.setFrmOnShow;
+       end else begin
+            Exit;
        end;
 end;
 
@@ -149,6 +173,7 @@ procedure TFrmCadastroPropriedadeRural.BtSubMenu2Click(Sender: TObject);
 begin
   inherited;
         PropriedadeRural.setBtSubMenu1(CrdAddTalhao);
+        PropriedadeRural.getcomboTalhao;
 end;
 
 procedure TFrmCadastroPropriedadeRural.CalCampo3Exit(Sender: TObject);
@@ -161,7 +186,7 @@ procedure TFrmCadastroPropriedadeRural.CalCampo4Exit(Sender: TObject);
 begin
   inherited;
         PropriedadeRural.setAreaAgricola(CalCampo4.Value);
-        //PropriedadeRural.getValidaAreaTotal;
+        PropriedadeRural.getValidaAreaTotal;
 end;
 
 procedure TFrmCadastroPropriedadeRural.DbGridDblClick(Sender: TObject);

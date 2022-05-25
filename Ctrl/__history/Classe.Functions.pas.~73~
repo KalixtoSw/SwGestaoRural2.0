@@ -38,7 +38,8 @@ uses
   function fLendoString(const subtext : string; Text: string) : Integer;{8}
   function fCriptografiaKey( Senha, key : string ) : string;{9}
   function fGetRandomPassword(Size: Integer; Tipo : Integer = 1): String;{10}
-  function  fMaiorValor(VlrA : Double; VlrB : Double) : Integer;{11}
+  function fMaiorValor(VlrA : Double; VlrB : Double) : Integer;{11}
+  function fAjustaDataNull(VrDt    :   TDate)  :   String;{12}
 
 var
       BtnNew,BtnOld : Integer;
@@ -213,7 +214,9 @@ var
         Qry : TFDQuery;
 begin
        try
+             Combo.Items.Clear;
              try
+
                   Qry := TFDQuery.Create(nil);
                   Qry.Connection := DMPrincipal.FDConnection;
                   Qry.Close;
@@ -239,6 +242,7 @@ begin
                           end else begin
 
                           end;
+                          Combo.ItemIndex := 0;
                           Combo.Refresh;
 
              except on E: Exception do
@@ -491,6 +495,17 @@ begin
                 Result    := IfThen(VlrA > VlrB, 1,0);
                 respaux   := IfThen(Result = 1,VlrA,VlrB);
         end;
+end;
+
+function fAjustaDataNull(VrDt    :   TDate)  :   String;
+begin
+     if FormatDateTime('yyyy/mm/dd',VrDt) = '1899/12/30' then
+            begin
+                Result    :=  'NULL';
+            end else
+                begin
+                    Result    :=  (FormatDateTime('dd/mm/yyyy',VrDt));
+                end;
 end;
 
 end.

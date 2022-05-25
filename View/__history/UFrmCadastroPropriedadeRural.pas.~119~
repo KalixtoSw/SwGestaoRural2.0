@@ -22,7 +22,6 @@ type
     BtSubMenu1: TJvSpeedButton;
     PnlSubmenu2: TJvPanel;
     BtSubMenu2: TJvSpeedButton;
-    ToggleSwitch1: TToggleSwitch;
     PnlCampo1: TJvPanel;
     LbCampo1: TLabel;
     LineCampo1: TJvGradient;
@@ -63,7 +62,16 @@ type
     LineCampo8: TJvGradient;
     LineCampo8_1: TJvGradient;
     MmCampo8: TMemo;
-    JvSpeedButton1: TJvSpeedButton;
+    PnlCbbTalhao: TJvPanel;
+    LbCbbTalhao: TLabel;
+    LineCbbTalhao: TJvGradient;
+    LineCbbTalhao_1: TJvGradient;
+    CbbTalhao: TJvComboBox;
+    PnlBtsAddTalhao: TJvPanel;
+    BtRemoveTalhao: TJvSpeedButton;
+    BtAddTalhao: TJvSpeedButton;
+    PnlDbGridAddTalhao: TJvPanel;
+    DbGridTalhao: TJvDBUltimGrid;
     procedure BtSalvarClick(Sender: TObject);
     procedure BtCancelarClick(Sender: TObject);
     procedure BtExcluirClick(Sender: TObject);
@@ -77,6 +85,7 @@ type
     procedure CalCampo3Exit(Sender: TObject);
     procedure CalCampo4Exit(Sender: TObject);
     procedure DtCampo2Change(Sender: TObject);
+    procedure BtAddTalhaoClick(Sender: TObject);
 
 
 
@@ -102,6 +111,12 @@ procedure TFrmCadastroPropriedadeRural.FormCreate(Sender: TObject);
 begin
   inherited;
         PropriedadeRural := TPropriedadeRural.CreateObjTPropriedadeRural;
+end;
+
+procedure TFrmCadastroPropriedadeRural.BtAddTalhaoClick(Sender: TObject);
+begin
+  inherited;
+        PropriedadeRural.setMontaGridMasterDetalhe;
 end;
 
 procedure TFrmCadastroPropriedadeRural.BtAdicionarClick(Sender: TObject);
@@ -151,6 +166,7 @@ procedure TFrmCadastroPropriedadeRural.BtSubMenu2Click(Sender: TObject);
 begin
   inherited;
         PropriedadeRural.setBtSubMenu1(CrdAddTalhao);
+        PropriedadeRural.getcomboTalhao;
 end;
 
 procedure TFrmCadastroPropriedadeRural.CalCampo3Exit(Sender: TObject);

@@ -10,6 +10,7 @@ object DMPrincipal: TDMPrincipal
     Top = 10
   end
   object QrUsuario: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'USE gr_desenv;'
@@ -214,5 +215,174 @@ object DMPrincipal: TDMPrincipal
     LoginPrompt = False
     Left = 50
     Top = 60
+  end
+  object FDQuery1: TFDQuery
+    Active = True
+    ConstraintsEnabled = True
+    Connection = FDConnection
+    SQL.Strings = (
+      'USE gr_desenv;'
+      ''
+      'select * from PropriedadeRural')
+    Left = 150
+    Top = 325
+    object FDQuery1pr_idPropriedadeRural: TFDAutoIncField
+      FieldName = 'pr_idPropriedadeRural'
+      Origin = 'pr_idPropriedadeRural'
+      ReadOnly = True
+    end
+    object FDQuery1pr_idPessoa: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_idPessoa'
+      Origin = 'pr_idPessoa'
+    end
+    object FDQuery1pr_idProprietario: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_idProprietario'
+      Origin = 'pr_idProprietario'
+    end
+    object FDQuery1pr_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_dtcriacao'
+      Origin = 'pr_dtcriacao'
+    end
+    object FDQuery1pr_nomeResumido: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_nomeResumido'
+      Origin = 'pr_nomeResumido'
+      Size = 255
+    end
+    object FDQuery1pr_areaTotal: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_areaTotal'
+      Origin = 'pr_areaTotal'
+      Precision = 10
+      Size = 3
+    end
+    object FDQuery1pr_areaAgricultavel: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_areaAgricultavel'
+      Origin = 'pr_areaAgricultavel'
+      Precision = 10
+      Size = 3
+    end
+    object FDQuery1pr_numReceitaFederal: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_numReceitaFederal'
+      Origin = 'pr_numReceitaFederal'
+    end
+    object FDQuery1pr_codigoIncra: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_codigoIncra'
+      Origin = 'pr_codigoIncra'
+    end
+    object FDQuery1pr_numMatricula: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_numMatricula'
+      Origin = 'pr_numMatricula'
+    end
+    object FDQuery1pr_observacao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_observacao'
+      Origin = 'pr_observacao'
+      Size = 255
+    end
+    object FDQuery1pr_foto: TBlobField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_foto'
+      Origin = 'pr_foto'
+    end
+    object FDQuery1pr_logotipo: TBlobField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_logotipo'
+      Origin = 'pr_logotipo'
+    end
+    object FDQuery1pr_dtcompra: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_dtcompra'
+      Origin = 'pr_dtcompra'
+    end
+  end
+  object FDQuery2: TFDQuery
+    Active = True
+    AggregatesActive = True
+    ConstraintsEnabled = True
+    Connection = FDConnection
+    SQL.Strings = (
+      'USE gr_desenv;'
+      ''
+      'select * from Talhao')
+    Left = 150
+    Top = 395
+    object FDQuery2tbl_idTalhao: TFDAutoIncField
+      FieldName = 'tbl_idTalhao'
+      Origin = 'tbl_idTalhao'
+      ReadOnly = True
+    end
+    object FDQuery2tbl_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_dtcriacao'
+      Origin = 'tbl_dtcriacao'
+    end
+    object FDQuery2tbl_AreaTalhao: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_AreaTalhao'
+      Origin = 'tbl_AreaTalhao'
+      Precision = 10
+      Size = 6
+    end
+    object FDQuery2tbl_TipoTalhao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_TipoTalhao'
+      Origin = 'tbl_TipoTalhao'
+      Size = 255
+    end
+    object FDQuery2tbl_descricao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_descricao'
+      Origin = 'tbl_descricao'
+      Size = 50
+    end
+    object FDQuery2tbl_latitude: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_latitude'
+      Origin = 'tbl_latitude'
+      Precision = 10
+      Size = 6
+    end
+    object FDQuery2tbl_longitude: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_longitude'
+      Origin = 'tbl_longitude'
+      Precision = 10
+      Size = 6
+    end
+    object FDQuery2tbl_linkMapa: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_linkMapa'
+      Origin = 'tbl_linkMapa'
+      Size = 255
+    end
+    object FDQuery2pr_idPropriedadeRural: TLongWordField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_idPropriedadeRural'
+      Origin = 'pr_idPropriedadeRural'
+    end
+    object FDQuery2tbl_status: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_status'
+      Origin = 'tbl_status'
+      Size = 25
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 265
+    Top = 325
+  end
+  object DataSource2: TDataSource
+    DataSet = FDQuery2
+    Left = 265
+    Top = 395
   end
 end

@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
-  FireDAC.Comp.DataSet;
+  FireDAC.Comp.DataSet, Classe.conexaoEfetiva;
 
 type
   TDMPrincipal = class(TDataModule)
@@ -26,7 +26,15 @@ type
     QrUsuariouser_tipopessoa: TStringField;
     DsQrUsuario: TDataSource;
     TbUsuario: TFDTable;
-    fldTbUsuariouser_idUsuario: TFDAutoIncField;
+    DsTbUsuario: TDataSource;
+    DsCmdSql_1: TDataSource;
+    CmdSql_1: TFDQuery;
+    CmdSqlCombox1: TFDQuery;
+    DSCmdSqlCombox1: TDataSource;
+    DSCmdSqlBuscaAux: TDataSource;
+    CmdSqlBuscaAux: TFDQuery;
+    FDConnection: TFDConnection;
+    TbUsuariouser_idUsuario: TFDAutoIncField;
     TbUsuariouser_idPessoa: TIntegerField;
     TbUsuariouser_dtcriacao: TSQLTimeStampField;
     TbUsuariouser_usuario: TStringField;
@@ -36,14 +44,6 @@ type
     TbUsuariouser_email: TStringField;
     TbUsuariouser_nomepessoa: TStringField;
     TbUsuariouser_tipopessoa: TStringField;
-    DsTbUsuario: TDataSource;
-    DsCmdSql_1: TDataSource;
-    CmdSql_1: TFDQuery;
-    CmdSqlCombox1: TFDQuery;
-    DSCmdSqlCombox1: TDataSource;
-    DSCmdSqlBuscaAux: TDataSource;
-    CmdSqlBuscaAux: TFDQuery;
-    FDConnection: TFDConnection;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -52,7 +52,6 @@ type
     { Public declarations }
 
     conexao    : TConexao;
-
 
   end;
 
@@ -67,12 +66,12 @@ implementation
 
 procedure TDMPrincipal.DataModuleCreate(Sender: TObject);
 begin
-      conexao    := TConexao.Create( FDConnection );
+     conexao    := TConexao.Create( FDConnection );
 end;
 
 procedure TDMPrincipal.DataModuleDestroy(Sender: TObject);
 begin
-       conexao.Destroy;
+    conexao.Destroy;
 end;
 
 end.

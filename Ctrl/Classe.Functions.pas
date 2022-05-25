@@ -6,7 +6,7 @@ uses
   JvPanel, Vcl.Forms, Vcl.WinXPanels,JvDBUltimGrid, System.MaskUtils,Classe.FunctionsSQL,
   Vcl.StdCtrls, JvCombobox, System.SysUtils, FireDAC.Comp.Client,IdHashMessageDigest,
   Winapi.Windows, Vcl.Controls, Winapi.Messages, Vcl.Mask, Vcl.Dialogs,Math,
-  Generics.Collections, Classe.Sistema.Mensagens;
+  Generics.Collections, Classe.Sistema.Mensagens, Data.DB;
 
   Type
         TBGridPadrao = class(TJvDBUltimGrid);
@@ -40,6 +40,7 @@ uses
   function fGetRandomPassword(Size: Integer; Tipo : Integer = 1): String;{10}
   function fMaiorValor(VlrA : Double; VlrB : Double) : Integer;{11}
   function fAjustaDataNull(VrDt    :   TDate)  :   String;{12}
+  function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;{13}
 
 var
       BtnNew,BtnOld : Integer;
@@ -214,7 +215,9 @@ var
         Qry : TFDQuery;
 begin
        try
+             Combo.Items.Clear;
              try
+
                   Qry := TFDQuery.Create(nil);
                   Qry.Connection := DMPrincipal.FDConnection;
                   Qry.Close;
@@ -240,6 +243,7 @@ begin
                           end else begin
 
                           end;
+                          Combo.ItemIndex := 0;
                           Combo.Refresh;
 
              except on E: Exception do
@@ -503,6 +507,56 @@ begin
                 begin
                     Result    :=  (FormatDateTime('dd/mm/yyyy',VrDt));
                 end;
+end;
+
+
+function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;
+var
+        Qry1,Qry2       : TFDQuery;
+        DsQry1,DsQry2   : TDataSource;
+begin
+
+        try
+             Qry1 := TFDQuery.Create(nil);
+             Qry1.Connection := DMPrincipal.FDConnection;
+             Qry1.Close;
+             Qry1.SQL.Clear;
+             Qry1.SQL.Add(SelectTbDetalhe+IntToStr(IdPropR));
+             Qry1.Open;
+             Qry1.Active := True;
+             Qry1.Refresh;
+
+             DsQry1 := TDataSource.Create(nil);
+             DsQry1.DataSet := Qry1;
+
+        except on E: Exception do
+        end;
+
+         try
+             Qry2 := TFDQuery.Create(nil);
+             Qry2.Connection := DMPrincipal.FDConnection;
+             Qry2.Close;
+             Qry2.SQL.Clear;
+             Qry2.SQL.Add(SelectTbMaster+IntToStr(IdPropR));
+             Qry2.Open;
+             Qry2.Active := True;
+             Qry2.Refresh;
+
+             DsQry2 := TDataSource.Create(nil);
+             DsQry2.DataSet := Qry2;
+
+        except on E: Exception do
+        end;
+
+        try
+                Result := DsQry1;
+
+        finally
+                
+        end;
+
+
+
 end;
 
 end.

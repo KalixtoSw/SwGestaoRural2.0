@@ -6,7 +6,7 @@ uses
   System.SysUtils, Classe.Functions, Classe.FunctionsCrud,Classe.FunctionsSQL,
   Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
   Graphics, Vcl.WinXPanels, System.Math, JvDesktopAlert, Classe.Sistema.Mensagens,
-  Vcl.Dialogs;
+  Vcl.Dialogs, JvCombobox, FireDAC.Comp.Client, Data.DB;
 
 type
         TPropriedadeRural = class
@@ -22,15 +22,21 @@ type
         Ffoto           : TPicture;
         FDataAquisicao  : TDate;
         FAlert          : string;
+        FCbbTalhao      : TJvComboBox;
 
-        Frm: TForm;
-        Dbgrd: TJvDBUltimGrid;
-        Table: string;
-        IDKey: string;
-        IDKeyVaue: string;
-        NCampos: Integer;
-        InsUpd: string;
-        IDKeyFilter: string;
+        Frm             : TForm;
+        Dbgrd           : TJvDBUltimGrid;
+        DbgridTalhao    : TJvDBUltimGrid;
+        Table           : string;
+        TableTalhao     : string;
+        IDKey           : string;
+        IDKeyTalhao     : string;
+        IDKeyVaue       : string;
+        NCampos         : Integer;
+        InsUpd          : string;
+        IDKeyFilter     : string;
+        SelectTbDetalhe : string;
+        SelectTbMaster  : string;
 
         public
 
@@ -59,14 +65,17 @@ type
         function getAlert         : string;
         function getDataAquisicao : TDate;
 
-        function  getSavar: Boolean;
-        function  getCancelar: Boolean;
+        procedure setMontaGridMasterDetalhe;
         procedure setPesquisaCampo(Campo: string; Key: string);
         procedure setAcaoAdicionarEditar(ActInsUpd: string);
         procedure setFrmOnShow;
         procedure setDelete;
         procedure setBtSubMenu1 (Crd : TCard);
         function  getValidaAreaTotal : boolean;
+        function  getcomboTalhao : Integer;
+        function  getAcaoAdicionarEditarTalhao : Integer;
+        function  getSavar: Boolean;
+        function  getCancelar: Boolean;
 
         end;
 
@@ -93,15 +102,26 @@ begin
 
         Frm         := FrmCadastroPropriedadeRural;
         Dbgrd       := FrmCadastroPropriedadeRural.DbGrid;
+        DbgridTalhao:= FrmCadastroPropriedadeRural.DbGridTalhao;
+        FCbbTalhao  := FrmCadastroPropriedadeRural.CbbTalhao;
         Table       := 'PropriedadeRural';
+        TableTalhao := 'Talhao';
         IDKey       := ' pr_idPropriedadeRural = ';
+        IDKeyTalhao := ' tbl_idTalhao = ';
         IDKeyVaue   := 'pr_idPropriedadeRural';
         IDKeyFilter := 'pr_nomeResumido LIKE ';
         NCampos     := 8;
         InsUpd      := EmptyStr;
+        SelectTbMaster  := 'SELECT * FROM '+Table+' WHERE '+IDKey;
+        SelectTbDetalhe := 'SELECT * FROM '+TableTalhao+' WHERE '+IDKey;
 end;
 
 destructor TPropriedadeRural.DestryObtTPropriedadeRural;
+begin
+
+end;
+
+function TPropriedadeRural.getAcaoAdicionarEditarTalhao: Integer;
 begin
 
 end;
@@ -131,6 +151,14 @@ end;
 function TPropriedadeRural.getCodigoIncra: Integer;
 begin
 
+end;
+
+function TPropriedadeRural.getcomboTalhao: Integer;
+var
+        select : string;
+begin
+        select := 'SELECT tbl_idTalhao,tbl_descricao FROM Talhao WHERE tbl_status = ''DISPONIVEL''';
+        pMontaComboBoxTempExec(FCbbTalhao,select,'tbl_idTalhao','tbl_descricao');
 end;
 
 function TPropriedadeRural.getDataAquisicao: TDate;
@@ -163,14 +191,13 @@ begin
 
 end;
 
+
+
 function TPropriedadeRural.getSavar: Boolean;
 var
       VlrKeyUpd : Integer;
 begin
       VlrKeyUpd := 0;
-
-      setAreaTotal(FrmCadastroPropriedadeRural.CalCampo3.Value);
-      setAreaAgricola(FrmCadastroPropriedadeRural.CalCampo4.Value);
 
       if (FrmCadastroPropriedadeRural.CalCampo3.Value > 0) and (FrmCadastroPropriedadeRural.CalCampo4.Value > 0) then
       begin
@@ -188,7 +215,9 @@ begin
 
               end;
                 plimpaDadosInterface(Frm, 1);
+                Result := True;
              end else begin
+                Result := False;
                   Exit;
              end;
       end;
@@ -200,12 +229,17 @@ procedure TPropriedadeRural.setAcaoAdicionarEditar(ActInsUpd: string);
 begin
     if ActInsUpd = 'INSERT' then
       begin
+            FrmCadastroPropriedadeRural.BtSubMenu1.Visible := True;
+            FrmCadastroPropriedadeRural.BtSubMenu2.Visible := False;
             FrmCadastroPropriedadeRural.DtCampo2.Date := Strtodate(FormatDateTime('dd/mm/yyyy',Now())) ;
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKey, IDKeyVaue, NCampos);
 
       end
   else if ActInsUpd = 'UPDATE' then
       begin
+            FrmCadastroPropriedadeRural.BtSubMenu1.Visible := False;
+            FrmCadastroPropriedadeRural.BtSubMenu2.Visible := True;
+
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKeyVaue,IDKey, NCampos);
             pCarregaDadosInterface(Frm);
       end;
@@ -238,13 +272,10 @@ end;
 
 procedure TPropriedadeRural.setBtSubMenu1(Crd : TCard);
 begin
-        if Crd.Showing then
+        if not(Crd.Showing = True) then
         begin
-             Crd.Hide;
-        end else begin
-             Crd.Show;
+            Crd.show;
         end;
-
 end;
 
 procedure TPropriedadeRural.setCodigoIncra(pCodigoIncra: Integer);
@@ -278,6 +309,13 @@ begin
       Dbgrd.DataSource := DMPrincipal.DsCmdSql_1;
       pAtivarDBGrid(Dbgrd);
       setDataAquisicao(Now);
+end;
+
+procedure TPropriedadeRural.setMontaGridMasterDetalhe;
+begin
+
+        DbgridTalhao.DataSource := fMasterDetalhe(Dbgrd.DataSource.DataSet.FieldByName(IDKeyVaue).AsInteger,
+        SelectTbDetalhe,SelectTbMaster);
 end;
 
 procedure TPropriedadeRural.setNomeResumido(pNomeResumido: string);
@@ -331,8 +369,8 @@ begin
         if fMaiorValor(getAreaTotal,getAreaAgricola) = 0 then
         begin
                 fMsgPadrao(1,1,14,2,FloatToStr(getAreaTotal));
-                //setAreaAgricola(0);
-                //FrmCadastroPropriedadeRural.CalCampo4.Value := getAreaTotal;
+                setAreaAgricola(0);
+                FrmCadastroPropriedadeRural.CalCampo4.Value := getAreaTotal;
                 Result := False;
                 Exit;
         end else Begin
