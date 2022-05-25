@@ -40,8 +40,8 @@ uses
            function  geDtInicioSafra   : TDate;
            function  geDtTerminoSafra  : TDate;
 
-           function getSavarSafra: Boolean;
-           function getCancelarSafra: Boolean;
+           function  getSavarSafra: Boolean;
+           function  getCancelarSafra: Boolean;
            procedure setPesquisaCampo(Campo: string; Key: string);
            procedure setAcaoAdicionarEditar(ActInsUpd: string);
            procedure setFrmOnShow;

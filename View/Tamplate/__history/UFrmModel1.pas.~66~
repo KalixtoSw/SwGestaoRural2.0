@@ -36,6 +36,8 @@ type
     JvDesktopAlertStack1: TJvDesktopAlertStack;
     PnlFundoCampos: TJvPanel;
     PnlFundoCamposInterno: TJvPanel;
+    RbConsBasica: TRadioButton;
+    RbConsFull: TRadioButton;
     procedure BtCloseClick(Sender: TObject);
     procedure LbPesquisaClick(Sender: TObject);
     procedure EdtPesquisaKeyDown(Sender: TObject; var Key: Word;
@@ -47,6 +49,7 @@ type
     procedure DbGridDblClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure BtSalvarClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -118,7 +121,7 @@ end;
 procedure TFrmModel1.DbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-      DbGrid.Canvas.TextRect(Rect,Rect.Left + 8,Rect.Top + 8,Column.Field.DisplayText);
+     // DbGrid.Canvas.TextRect(Rect,Rect.Left + 8,Rect.Top + 8,Column.Field.DisplayText);
 end;
 
 procedure TFrmModel1.EdtPesquisaKeyDown(Sender: TObject; var Key: Word;
@@ -128,6 +131,19 @@ begin
       begin
            EdtPesquisa.Clear;
       end;
+end;
+
+procedure TFrmModel1.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+      if (Key = VK_F12) and (CrdCampos.Showing = true) then
+        begin
+              BtSalvar.Click;
+        end;
+        if (Key = VK_ESCAPE) and (CrdCampos.Showing = true) then
+        begin
+            BtCancelar.Click;
+        end;
 end;
 
 procedure TFrmModel1.FormResize(Sender: TObject);

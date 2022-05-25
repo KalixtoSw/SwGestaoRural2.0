@@ -1,0 +1,41 @@
+inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
+  Caption = 'CADASTRO DE PROPRIEDADE RURAL'
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 15
+  inherited PnlFundo: TJvPanel
+    inherited PnlTituloJanela: TJvPanel
+      inherited LbTituloJanela: TLabel
+        Height = 32
+      end
+    end
+    inherited CrdPnlPrincipal: TCardPanel
+      inherited CrdConsulta: TCard
+        inherited PnlPesquisa: TJvPanel
+          inherited LbPesquisa: TLabel
+            Width = 1024
+          end
+        end
+        inherited PnlBtsInsertDelete: TJvPanel
+          object Combo: TJvDBLookupCombo
+            Left = 140
+            Top = 15
+            Width = 276
+            Height = 22
+            DataField = 'user_idPessoa'
+            DataSource = DMPrincipal.DsQrUsuario
+            TabOrder = 0
+          end
+          object JvXPButton1: TJvXPButton
+            Left = 460
+            Top = 15
+            Width = 96
+            Caption = 'JvXPButton1'
+            TabOrder = 1
+            OnClick = JvXPButton1Click
+          end
+        end
+      end
+    end
+  end
+end

@@ -22,7 +22,10 @@ uses
   Classe.EnvioEmail in '..\Ctrl\Classe.EnvioEmail.pas',
   Classe.StatusUsuario in '..\Ctrl\Classe.StatusUsuario.pas',
   UFrmConfigServidor in '..\View\UFrmConfigServidor.pas' {FrmConfigServidor},
-  UFrmLogin in '..\View\UFrmLogin.pas', Vcl.Dialogs {FrmLogin};
+  UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin},
+  Vcl.Dialogs,
+  System.SysUtils {FrmLogin},
+  UFrmCadastroPropriedadeRural in '..\View\UFrmCadastroPropriedadeRural.pas' {FrmCadastroPropriedadeRural};
 
 {$R *.res}
 
@@ -47,8 +50,10 @@ begin
 
   End else
   Begin
-      //fMsgPadrao(4,9,12,2,'');
-      Showmessage('NÃO FOI POSSÍVEL CONECTAR AO BANCO DE DADOS! ENTRE EM CONTATO COM O ADMINISTRADOR');
+      fCriarMensagem('CONEXÃO AO BANCO DE DADOS','ERRO AO CONECTAR AO BANCO DE DADOS',
+        'Não foi possível conectar ao Banco de Dados! entre em contato com o Administrador, Erro: '
+        + DMPrincipal.conexao.MsgErro,ExtractFilePath(Application.ExeName ) + 'Icons\Mensagem\Erro.png',
+        'OK');
       Application.CreateForm(TFrmConfigServidor, FrmConfigServidor);
   End;
 

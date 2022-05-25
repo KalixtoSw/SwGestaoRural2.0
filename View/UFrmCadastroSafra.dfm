@@ -1,8 +1,7 @@
 inherited FrmCadastroSafra: TFrmCadastroSafra
-  Caption = 'FrmCadastroSafra'
+  Caption = 'CADASTRO DO PLANO DE SAFRA'
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   inherited PnlFundo: TJvPanel
@@ -67,7 +66,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
               object LbCampo1: TLabel
                 Left = 0
                 Top = 0
-                Width = 44
+                Width = 300
                 Height = 17
                 Align = alTop
                 Caption = 'SAFRA:'
@@ -81,6 +80,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 ParentFont = False
                 Transparent = False
                 Layout = tlCenter
+                ExplicitWidth = 44
               end
               object LineCampo1: TJvGradient
                 Left = 0
@@ -205,7 +205,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
               object LbCampo3: TLabel
                 Left = 0
                 Top = 0
-                Width = 99
+                Width = 300
                 Height = 17
                 Align = alTop
                 Caption = 'DATA DE IN'#205'CIO'
@@ -219,6 +219,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 ParentFont = False
                 Transparent = False
                 Layout = tlCenter
+                ExplicitWidth = 99
               end
               object LineCampo3: TJvGradient
                 Left = 0
@@ -279,7 +280,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
               object LbCampo4: TLabel
                 Left = 0
                 Top = 0
-                Width = 118
+                Width = 300
                 Height = 17
                 Align = alTop
                 Caption = 'DATA DE T'#201'RMINO'
@@ -293,6 +294,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 ParentFont = False
                 Transparent = False
                 Layout = tlCenter
+                ExplicitWidth = 118
               end
               object LineCampo4: TJvGradient
                 Left = 0

@@ -16,6 +16,7 @@ object FrmModel1: TFrmModel1
   Position = poMainFormCenter
   OnKeyDown = FormKeyDown
   OnResize = FormResize
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   object PnlFundo: TJvPanel
@@ -125,6 +126,21 @@ object FrmModel1: TFrmModel1
         Transparent = True
         OnClick = BtCloseClick
         ExplicitLeft = 980
+      end
+      object LbTituloJanela: TLabel
+        Left = 0
+        Top = 0
+        Width = 4
+        Height = 32
+        Align = alLeft
+        Font.Charset = ANSI_CHARSET
+        Font.Color = 14934499
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Layout = tlCenter
+        ExplicitHeight = 20
       end
     end
     object CrdPnlPrincipal: TCardPanel

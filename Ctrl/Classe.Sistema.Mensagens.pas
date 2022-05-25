@@ -61,6 +61,7 @@ begin
       10 : Result.MsgText:= 'FAVOR INFORMAR UM E-MAIL VÁLIDO '+VMsgExterna;
       11 : Result.MsgText:= 'SUCESSO, CONECTADO AO BANCO DE DADOS DO SISTEMA '+VMsgExterna;
       12 : Result.MsgText:= 'NÃO FOI POSSÍVEL CONECTAR AO BANCO DE DADOS! ENTRE EM CONTATO COM O ADMINISTRADOR, ERRO: '+VMsgExterna;
+      13 : Result.MsgText:= 'FALHA AO MONTA COMBOBOX, ERRO: '+VMsgExterna;
       end;
 
       case VTipo of

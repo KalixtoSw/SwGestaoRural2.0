@@ -1001,7 +1001,6 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
               end
               item
                 Caption = 'SERVIDOR'
-                OnClick = BarParametros1Items1Click
               end
               item
                 Caption = 'E-MAIL'
@@ -1048,6 +1047,7 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
               end
               item
                 Caption = 'PROPRIEDADE'
+                OnClick = BarParametros2Items1Click
               end
               item
                 Caption = 'TALH'#195'O'

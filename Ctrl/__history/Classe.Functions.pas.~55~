@@ -6,7 +6,7 @@ uses
   JvPanel, Vcl.Forms, Vcl.WinXPanels,JvDBUltimGrid, System.MaskUtils,Classe.FunctionsSQL,
   Vcl.StdCtrls, JvCombobox, System.SysUtils, FireDAC.Comp.Client,IdHashMessageDigest,
   Winapi.Windows, Vcl.Controls, Winapi.Messages, Vcl.Mask, Vcl.Dialogs,Math,
-  Generics.Collections;
+  Generics.Collections, Classe.Sistema.Mensagens;
 
   Type
         TBGridPadrao = class(TJvDBUltimGrid);
@@ -25,6 +25,7 @@ uses
   procedure pdelay(MSec: cardinal);{6}
   Procedure pMakeRounded(Control: TWinControl);{7}
   procedure pEditSetFocus(Form : TForm ; FTag : Integer);{8}
+  procedure pMontaComboBoxTempExec(Combo : TJvComboBox; Select : string; Key : string; TextCombo : string);{9}
 
   function fCheckEmptyText(const EditMask: TEditMask ;const Text:String):Boolean;{1}
   function fTrocaVirgPPto(Valor: string): String;{2}
@@ -42,6 +43,9 @@ var
       BtnNew,BtnOld : Integer;
 
 implementation
+
+uses
+     Classe.Conexao;
 
 procedure pEditSetFocus(Form : TForm ; FTag : Integer);
 Var
@@ -203,6 +207,45 @@ begin
             end;
 end;
 
+procedure pMontaComboBoxTempExec(Combo : TJvComboBox; Select : string; Key : string; TextCombo : string);
+var
+        Qry : TFDQuery;
+        IdKey2 : string;
+        IdKey1 : string;
+begin
+        try
+             Qry := TFDQuery.Create(nil);
+             Qry.Connection := DMPrincipal.FDConnection;
+             Qry.Close;
+             Qry.SQL.Clear;
+             Qry.SQL.Add(Select);
+             Qry.Open;
+             Qry.Active := True;
+             Qry.Refresh;
+
+             if (Qry.FieldByName(''+IdKey2+'').AsInteger > 0) and (Combo.Text = EmptyStr) then
+                     begin
+                          while not Qry.Eof do
+                          begin
+                          With Combo do
+                          begin
+                                Items.AddObject( Trim(Qry.FieldByName(''+IdKey1+'').asString),
+                                tObject(Qry.FieldByName(''+IdKey2+'').asInteger) );
+                          end;
+                          Qry.Next;
+                          end;
+                          Combo.Refresh;
+                     end else begin
+
+                     end;
+                     Combo.Refresh;
+
+        except on E: Exception do
+                fMsgPadrao(2,2,13,2,E.Message);
+        end;
+
+end;
+
 procedure pMontaComboBox(Cmb : TJvComboBox;Tp : Integer; SQLresult : String; Tabela : TFDQuery; IdKey1 : String; IdKey2 : string);
 begin
       try
@@ -327,7 +370,6 @@ begin
             Invalidate;
       end;
 end;
-
 
 function fValidaEMail(aStr: string): Boolean;
 begin

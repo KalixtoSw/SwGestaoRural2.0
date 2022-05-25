@@ -36,6 +36,9 @@ type
     JvDesktopAlertStack1: TJvDesktopAlertStack;
     PnlFundoCampos: TJvPanel;
     PnlFundoCamposInterno: TJvPanel;
+    RbConsBasica: TRadioButton;
+    RbConsFull: TRadioButton;
+    Label1: TLabel;
     procedure BtCloseClick(Sender: TObject);
     procedure LbPesquisaClick(Sender: TObject);
     procedure EdtPesquisaKeyDown(Sender: TObject; var Key: Word;
@@ -119,7 +122,7 @@ end;
 procedure TFrmModel1.DbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-      DbGrid.Canvas.TextRect(Rect,Rect.Left + 8,Rect.Top + 8,Column.Field.DisplayText);
+     // DbGrid.Canvas.TextRect(Rect,Rect.Left + 8,Rect.Top + 8,Column.Field.DisplayText);
 end;
 
 procedure TFrmModel1.EdtPesquisaKeyDown(Sender: TObject; var Key: Word;
