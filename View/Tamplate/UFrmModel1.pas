@@ -38,6 +38,7 @@ type
     PnlFundoCamposInterno: TJvPanel;
     RbConsBasica: TRadioButton;
     RbConsFull: TRadioButton;
+    LbTituloJanela: TLabel;
     procedure BtCloseClick(Sender: TObject);
     procedure LbPesquisaClick(Sender: TObject);
     procedure EdtPesquisaKeyDown(Sender: TObject; var Key: Word;
@@ -50,6 +51,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure BtSalvarClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -152,6 +154,11 @@ begin
       PnlPesquisa.Height := 50;
       pAtivarDBGrid(DbGrid);
       pCentralizaPanel(PnlFundo,self);
+end;
+
+procedure TFrmModel1.FormShow(Sender: TObject);
+begin
+        LbTituloJanela.Caption := Self.Caption;
 end;
 
 procedure TFrmModel1.LbPesquisaClick(Sender: TObject);

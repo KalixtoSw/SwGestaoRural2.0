@@ -133,7 +133,7 @@ object FrmModel1: TFrmModel1
       Width = 1024
       Height = 736
       Align = alClient
-      ActiveCard = CrdCampos
+      ActiveCard = CrdConsulta
       BevelOuter = bvNone
       Caption = 'CrdPnlPrincipal'
       TabOrder = 1
@@ -158,7 +158,7 @@ object FrmModel1: TFrmModel1
           object LbPesquisa: TLabel
             Left = 0
             Top = 0
-            Width = 87
+            Width = 1024
             Height = 21
             Cursor = crHandPoint
             Align = alTop
@@ -170,6 +170,7 @@ object FrmModel1: TFrmModel1
             Font.Style = [fsBold]
             ParentFont = False
             OnClick = LbPesquisaClick
+            ExplicitWidth = 87
           end
           object EdtPesquisa: TMaskEdit
             Left = 0
@@ -182,6 +183,34 @@ object FrmModel1: TFrmModel1
             TabOrder = 0
             Text = 'Informe o texto para pesquisa'
             OnKeyDown = EdtPesquisaKeyDown
+          end
+          object RbConsBasica: TRadioButton
+            Left = 5
+            Top = 60
+            Width = 113
+            Height = 17
+            Caption = 'Busca B'#225'sica'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 1
+          end
+          object RbConsFull: TRadioButton
+            Left = 110
+            Top = 60
+            Width = 113
+            Height = 17
+            Caption = 'Busca Completa'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 2
           end
         end
         object PnlBtsInsertDelete: TJvPanel
@@ -846,20 +875,36 @@ object FrmModel1: TFrmModel1
             Top = 0
             Width = 1024
             Height = 588
+            Cursor = crHandPoint
             Align = alClient
             BorderStyle = bsNone
-            GradientEndColor = 8279822
+            Color = clWhite
+            DrawingStyle = gdsGradient
+            GradientEndColor = 9323579
+            GradientStartColor = 9323579
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            Options = [dgTitles, dgColumnResize, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            ParentFont = False
             TabOrder = 0
             TitleFont.Charset = ANSI_CHARSET
-            TitleFont.Color = clWindowText
+            TitleFont.Color = clWhite
             TitleFont.Height = -12
             TitleFont.Name = 'Segoe UI'
-            TitleFont.Style = []
+            TitleFont.Style = [fsBold]
             OnDrawColumnCell = DbGridDrawColumnCell
             OnDblClick = DbGridDblClick
+            AutoAppend = False
+            ClearSelection = False
+            AlternateRowColor = 8279822
+            AlternateRowFontColor = clWhite
             SelectColumnsDialogStrings.Caption = 'Select columns'
             SelectColumnsDialogStrings.OK = '&OK'
             SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
+            CellHintPosition = gchpMouse
             EditControls = <>
             RowsHeight = 19
             TitleRowHeight = 19

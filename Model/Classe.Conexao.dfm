@@ -2,7 +2,7 @@ object DMPrincipal: TDMPrincipal
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Height = 624
+  Height = 645
   Width = 1250
   object MySQLDriver: TFDPhysMySQLDriverLink
     VendorLib = 'H:\Desenvolvimento SW\GestaoRural\Model\libmysql.dll'
@@ -10,6 +10,7 @@ object DMPrincipal: TDMPrincipal
     Top = 10
   end
   object QrUsuario: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'USE gr_desenv;'
@@ -100,6 +101,7 @@ object DMPrincipal: TDMPrincipal
     object TbUsuariouser_idUsuario: TFDAutoIncField
       FieldName = 'user_idUsuario'
       Origin = 'user_idUsuario'
+      ReadOnly = True
     end
     object TbUsuariouser_idPessoa: TIntegerField
       AutoGenerateValue = arDefault

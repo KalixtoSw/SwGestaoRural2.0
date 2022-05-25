@@ -1001,6 +1001,7 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
               end
               item
                 Caption = 'SERVIDOR'
+                OnClick = BarParametros1Items1Click
               end
               item
                 Caption = 'E-MAIL'
@@ -1054,6 +1055,7 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
               end
               item
                 Caption = 'SAFRA'
+                OnClick = BarParametros2Items3Click
               end>
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 15000804

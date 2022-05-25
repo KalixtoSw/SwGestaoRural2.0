@@ -50,6 +50,7 @@ type
     procedure BarParametros2Items2Click(Sender: TObject);
     procedure JvSpeedButton3Click(Sender: TObject);
     procedure BarParametros2Items3Click(Sender: TObject);
+    procedure BarParametros2Items1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,7 +63,8 @@ var
 implementation
 
 uses
-     UFrmModel1, UFrmMensagemSistema, UFrmCadastroUsuario, UFrmPesquisaAuxiliar, UFrmCadastroTalhao;
+     UFrmModel1, UFrmMensagemSistema, UFrmCadastroUsuario, UFrmPesquisaAuxiliar, UFrmCadastroTalhao,
+  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural;
 
 {$R *.dfm}
 
@@ -94,7 +96,7 @@ end;
 procedure TFrmMenuPrincipal.JvSpeedButton1Click(Sender: TObject);
 begin
        try
-            if fMsgPadrao(7,3,9,1).RespBt then
+            if fMsgPadrao(7,3,9,1,EmptyStr).RespBt then
             begin
                   Application.CreateForm(TFrmCadastroUsuario,FrmCadastroUsuario);
                   FrmCadastroUsuario.ShowModal;
@@ -128,6 +130,16 @@ begin
            FrmCadastroUsuario.ShowModal;
       finally
             FreeAndNil(FrmCadastroUsuario);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.BarParametros2Items1Click(Sender: TObject);
+begin
+     try
+           Application.CreateForm(TFrmCadastroTalhao,FrmCadastroTalhao);
+           FrmCadastroTalhao.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroTalhao);
       end;
 end;
 

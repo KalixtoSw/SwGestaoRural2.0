@@ -10,7 +10,6 @@ object DMPrincipal: TDMPrincipal
     Top = 10
   end
   object QrUsuario: TFDQuery
-    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'USE gr_desenv;'
@@ -91,16 +90,16 @@ object DMPrincipal: TDMPrincipal
     Top = 5
   end
   object TbUsuario: TFDTable
+    Active = True
     IndexFieldNames = 'user_idUsuario'
     Connection = FDConnection
-    UpdateOptions.UpdateTableName = 'gr_desenv.Usuario'
-    TableName = 'gr_desenv.Usuario'
+    UpdateOptions.UpdateTableName = 'Usuario'
+    TableName = 'Usuario'
     Left = 230
     Top = 55
-    object fldTbUsuariouser_idUsuario: TFDAutoIncField
+    object TbUsuariouser_idUsuario: TFDAutoIncField
       FieldName = 'user_idUsuario'
       Origin = 'user_idUsuario'
-      ReadOnly = True
     end
     object TbUsuariouser_idPessoa: TIntegerField
       AutoGenerateValue = arDefault

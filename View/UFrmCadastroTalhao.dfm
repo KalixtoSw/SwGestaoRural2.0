@@ -1,8 +1,7 @@
 inherited FrmCadastroTalhao: TFrmCadastroTalhao
-  Caption = 'FrmCadastroTalhao'
+  Caption = 'CADASTRO DE TALH'#195'O DE '#193'REAS'
   OnClose = FormClose
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   inherited PnlFundo: TJvPanel
@@ -94,7 +93,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
               object LbCampo1: TLabel
                 Left = 0
                 Top = 0
-                Width = 157
+                Width = 300
                 Height = 17
                 Align = alTop
                 Caption = 'DESCRI'#199#195'O DO TALH'#195'O*'
@@ -108,6 +107,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
                 ParentFont = False
                 Transparent = False
                 Layout = tlCenter
+                ExplicitWidth = 157
               end
               object LineCampo1: TJvGradient
                 Left = 0
@@ -230,7 +230,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
               object LbCampo3: TLabel
                 Left = 0
                 Top = 0
-                Width = 157
+                Width = 300
                 Height = 17
                 Align = alTop
                 Caption = #193'REA TOTAL DO TALH'#195'O'
@@ -244,6 +244,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
                 ParentFont = False
                 Transparent = False
                 Layout = tlCenter
+                ExplicitWidth = 157
               end
               object LineCampo3: TJvGradient
                 Left = 0
@@ -290,7 +291,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
               object LbCampo4: TLabel
                 Left = 0
                 Top = 0
-                Width = 61
+                Width = 300
                 Height = 17
                 Align = alTop
                 Caption = 'LATITUDE'
@@ -304,6 +305,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
                 ParentFont = False
                 Transparent = False
                 Layout = tlCenter
+                ExplicitWidth = 61
               end
               object LineCampo4: TJvGradient
                 Left = 0
@@ -350,7 +352,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
               object LbCampo5: TLabel
                 Left = 0
                 Top = 0
-                Width = 74
+                Width = 300
                 Height = 17
                 Align = alTop
                 Caption = 'LONGITUDE'
@@ -364,6 +366,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
                 ParentFont = False
                 Transparent = False
                 Layout = tlCenter
+                ExplicitWidth = 74
               end
               object LineCampo5: TJvGradient
                 Left = 0
@@ -410,7 +413,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
               object LbCampo6: TLabel
                 Left = 0
                 Top = 0
-                Width = 149
+                Width = 300
                 Height = 17
                 Align = alTop
                 Caption = 'LINK DO GOOGLE MAPS'
@@ -424,6 +427,7 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
                 ParentFont = False
                 Transparent = False
                 Layout = tlCenter
+                ExplicitWidth = 149
               end
               object LineCampo6: TJvGradient
                 Left = 0

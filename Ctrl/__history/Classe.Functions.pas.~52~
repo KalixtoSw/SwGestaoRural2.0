@@ -24,7 +24,7 @@ uses
   procedure pMontaComboBox(Cmb : TComboBox;Tp : Integer; SQLresult : String; Tabela : TFDQuery; IdKey1 : String; IdKey2 : string);overload;{5}
   procedure pdelay(MSec: cardinal);{6}
   Procedure pMakeRounded(Control: TWinControl);{7}
-  procedure pEditSetFocus(Form : TForm ; FTag : Integer);
+  procedure pEditSetFocus(Form : TForm ; FTag : Integer);{8}
 
   function fCheckEmptyText(const EditMask: TEditMask ;const Text:String):Boolean;{1}
   function fTrocaVirgPPto(Valor: string): String;{2}
@@ -33,10 +33,10 @@ uses
   function fCriptoMD5(const texto: string): string;{4}
   function fCripto(wStri: String): String;{5}
   function fValidaEMail(aStr: string): Boolean;{6}
-  function fCountPos(const subtext: string; Text: string): Integer;
-  function fLendoString(const subtext : string; Text: string) : Integer;
-  function fCriptografiaKey( Senha, key : string ) : string;
-  function fGetRandomPassword(Size: Integer; Tipo : Integer = 1): String;
+  function fCountPos(const subtext: string; Text: string): Integer;{7}
+  function fLendoString(const subtext : string; Text: string) : Integer;{8}
+  function fCriptografiaKey( Senha, key : string ) : string;{9}
+  function fGetRandomPassword(Size: Integer; Tipo : Integer = 1): String;{10}
 
 var
       BtnNew,BtnOld : Integer;
@@ -181,6 +181,8 @@ begin
                  Result.IdResp := (Integer(Cmb.items.objects[Cmb.ItemIndex]));
                  Result.DescCombo := (string(Cmb.Text));
            end;
+           ShowMessage(IntToStr(Result.IdResp));
+           ShowMessage(Result.DescCombo);
       end else
             begin
                  Result.IdResp := (Integer(Cmb.items.objects[IndexRet]));
@@ -327,7 +329,6 @@ begin
             Invalidate;
       end;
 end;
-
 
 function fValidaEMail(aStr: string): Boolean;
 begin
