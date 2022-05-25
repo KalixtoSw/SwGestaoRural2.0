@@ -53,11 +53,11 @@
     <Transaction>2022/05/24 18:23:39.000.055,=H:\Desenvolvimento SW\GestaoRural\Ctrl\Classe.EnvioEmail.pas</Transaction>
     <Transaction>2022/05/24 18:47:03.000.984,=H:\Desenvolvimento SW\GestaoRural\View\UFrmConfigServidor.pas</Transaction>
     <Transaction>2022/05/24 18:47:24.000.980,=H:\Desenvolvimento SW\GestaoRural\View\UFrmLogin.pas</Transaction>
-    <Transaction>2022/05/24 23:35:55.000.970,=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit2.pas</Transaction>
-    <Transaction>2022/05/24 23:38:54.000.530,H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.dfm=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit2.dfm</Transaction>
-    <Transaction>2022/05/24 23:38:54.000.530,H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit2.pas</Transaction>
-    <Transaction>2022/05/24 23:54:50.000.435,=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit1.pas</Transaction>
-    <Transaction>2022/05/24 23:54:58.000.901,=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit1.pas</Transaction>
-    <Transaction>2022/05/24 23:55:14.000.532,H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit1.pas</Transaction>
+    <Transaction>2022/05/24 23:35:55.970,=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit2.pas</Transaction>
+    <Transaction>2022/05/24 23:38:54.530,H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.dfm=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit2.dfm</Transaction>
+    <Transaction>2022/05/24 23:38:54.530,H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit2.pas</Transaction>
+    <Transaction>2022/05/24 23:54:50.435,=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit1.pas</Transaction>
+    <Transaction>2022/05/24 23:54:58.901,=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit1.pas</Transaction>
+    <Transaction>2022/05/24 23:55:14.532,H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

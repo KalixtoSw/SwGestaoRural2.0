@@ -278,7 +278,7 @@ begin
         FrmCadastroPropriedadeRural.CrdCadastroBase.Show;
 end;
 
-procedure TPropriedadeRural.setBtSubMenu2;
+procedure TPropriedadeRural.setBtSubMenu2(Crd : TCard);
 begin
         FrmCadastroPropriedadeRural.CrdAddTalhao.Show;
 end;

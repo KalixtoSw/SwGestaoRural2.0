@@ -1,0 +1,388 @@
+object DMPrincipal: TDMPrincipal
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Height = 645
+  Width = 1250
+  object MySQLDriver: TFDPhysMySQLDriverLink
+    VendorLib = 'H:\Desenvolvimento SW\GestaoRural\Model\libmysql.dll'
+    Left = 50
+    Top = 10
+  end
+  object QrUsuario: TFDQuery
+    Active = True
+    Connection = FDConnection
+    SQL.Strings = (
+      'USE gr_desenv;'
+      ''
+      'SELECT'
+      '  user_idUsuario,'
+      '  user_idPessoa,'
+      '  user_dtcriacao,'
+      '  user_usuario,'
+      '  user_senha,'
+      '  user_dataUltAcesso,'
+      '  user_celular,'
+      '  user_email,'
+      '  user_nomepessoa,'
+      '  user_tipopessoa'
+      'FROM Usuario;')
+    Left = 230
+    Top = 5
+    object fldFDQuery1user_idUsuario: TFDAutoIncField
+      FieldName = 'user_idUsuario'
+      Origin = 'user_idUsuario'
+      ReadOnly = True
+    end
+    object QrUsuariouser_idPessoa: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_idPessoa'
+      Origin = 'user_idPessoa'
+    end
+    object QrUsuariouser_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_dtcriacao'
+      Origin = 'user_dtcriacao'
+    end
+    object QrUsuariouser_usuario: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_usuario'
+      Origin = 'user_usuario'
+      Size = 25
+    end
+    object QrUsuariouser_senha: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_senha'
+      Origin = 'user_senha'
+      Size = 100
+    end
+    object QrUsuariouser_dataUltAcesso: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_dataUltAcesso'
+      Origin = 'user_dataUltAcesso'
+    end
+    object QrUsuariouser_celular: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_celular'
+      Origin = 'user_celular'
+    end
+    object QrUsuariouser_email: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_email'
+      Origin = 'user_email'
+      Size = 100
+    end
+    object QrUsuariouser_nomepessoa: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_nomepessoa'
+      Origin = 'user_nomepessoa'
+      Size = 255
+    end
+    object QrUsuariouser_tipopessoa: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_tipopessoa'
+      Origin = 'user_tipopessoa'
+      Size = 2
+    end
+  end
+  object DsQrUsuario: TDataSource
+    DataSet = QrUsuario
+    Left = 275
+    Top = 5
+  end
+  object TbUsuario: TFDTable
+    Active = True
+    IndexFieldNames = 'user_idUsuario'
+    Connection = FDConnection
+    UpdateOptions.UpdateTableName = 'Usuario'
+    TableName = 'Usuario'
+    Left = 230
+    Top = 55
+    object TbUsuariouser_idUsuario: TFDAutoIncField
+      FieldName = 'user_idUsuario'
+      Origin = 'user_idUsuario'
+      ReadOnly = True
+    end
+    object TbUsuariouser_idPessoa: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_idPessoa'
+      Origin = 'user_idPessoa'
+    end
+    object TbUsuariouser_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_dtcriacao'
+      Origin = 'user_dtcriacao'
+    end
+    object TbUsuariouser_usuario: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_usuario'
+      Origin = 'user_usuario'
+      Size = 25
+    end
+    object TbUsuariouser_senha: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_senha'
+      Origin = 'user_senha'
+      Size = 100
+    end
+    object TbUsuariouser_dataUltAcesso: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_dataUltAcesso'
+      Origin = 'user_dataUltAcesso'
+    end
+    object TbUsuariouser_celular: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_celular'
+      Origin = 'user_celular'
+    end
+    object TbUsuariouser_email: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_email'
+      Origin = 'user_email'
+      Size = 100
+    end
+    object TbUsuariouser_nomepessoa: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_nomepessoa'
+      Origin = 'user_nomepessoa'
+      Size = 255
+    end
+    object TbUsuariouser_tipopessoa: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'user_tipopessoa'
+      Origin = 'user_tipopessoa'
+      Size = 2
+    end
+  end
+  object DsTbUsuario: TDataSource
+    DataSet = TbUsuario
+    Left = 275
+    Top = 55
+  end
+  object DsCmdSql_1: TDataSource
+    DataSet = CmdSql_1
+    Left = 530
+    Top = 110
+  end
+  object CmdSql_1: TFDQuery
+    ActiveStoredUsage = []
+    AutoCalcFields = False
+    ObjectView = False
+    IndexesActive = False
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateMode]
+    Left = 530
+    Top = 60
+  end
+  object CmdSqlCombox1: TFDQuery
+    ActiveStoredUsage = []
+    AutoCalcFields = False
+    ObjectView = False
+    IndexesActive = False
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateMode]
+    Left = 625
+    Top = 60
+  end
+  object DSCmdSqlCombox1: TDataSource
+    DataSet = CmdSqlCombox1
+    Left = 625
+    Top = 110
+  end
+  object DSCmdSqlBuscaAux: TDataSource
+    DataSet = CmdSqlBuscaAux
+    Left = 705
+    Top = 110
+  end
+  object CmdSqlBuscaAux: TFDQuery
+    ActiveStoredUsage = []
+    AutoCalcFields = False
+    ObjectView = False
+    IndexesActive = False
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateMode]
+    Left = 705
+    Top = 60
+  end
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'Database=gr_desenv'
+      'User_Name=sw_gr2022'
+      'Password=Sw@2871.desenv'
+      'Server=gr-desenv.mysql.uhserver.com'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 50
+    Top = 60
+  end
+  object FDQuery1: TFDQuery
+    Active = True
+    IndexesActive = False
+    ConstraintsEnabled = True
+    Connection = FDConnection
+    SQL.Strings = (
+      'USE gr_desenv;'
+      ''
+      'select * from PropriedadeRural')
+    Left = 150
+    Top = 325
+    object FDQuery1pr_idPropriedadeRural: TFDAutoIncField
+      FieldName = 'pr_idPropriedadeRural'
+      Origin = 'pr_idPropriedadeRural'
+      ReadOnly = True
+    end
+    object FDQuery1pr_idPessoa: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_idPessoa'
+      Origin = 'pr_idPessoa'
+    end
+    object FDQuery1pr_idProprietario: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_idProprietario'
+      Origin = 'pr_idProprietario'
+    end
+    object FDQuery1pr_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_dtcriacao'
+      Origin = 'pr_dtcriacao'
+    end
+    object FDQuery1pr_nomeResumido: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_nomeResumido'
+      Origin = 'pr_nomeResumido'
+      Size = 255
+    end
+    object FDQuery1pr_areaTotal: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_areaTotal'
+      Origin = 'pr_areaTotal'
+      Precision = 10
+      Size = 3
+    end
+    object FDQuery1pr_areaAgricultavel: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_areaAgricultavel'
+      Origin = 'pr_areaAgricultavel'
+      Precision = 10
+      Size = 3
+    end
+    object FDQuery1pr_numReceitaFederal: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_numReceitaFederal'
+      Origin = 'pr_numReceitaFederal'
+    end
+    object FDQuery1pr_codigoIncra: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_codigoIncra'
+      Origin = 'pr_codigoIncra'
+    end
+    object FDQuery1pr_numMatricula: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_numMatricula'
+      Origin = 'pr_numMatricula'
+    end
+    object FDQuery1pr_observacao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_observacao'
+      Origin = 'pr_observacao'
+      Size = 255
+    end
+    object FDQuery1pr_foto: TBlobField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_foto'
+      Origin = 'pr_foto'
+    end
+    object FDQuery1pr_logotipo: TBlobField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_logotipo'
+      Origin = 'pr_logotipo'
+    end
+    object FDQuery1pr_dtcompra: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_dtcompra'
+      Origin = 'pr_dtcompra'
+    end
+  end
+  object FDQuery2: TFDQuery
+    Active = True
+    IndexesActive = False
+    Connection = FDConnection
+    SQL.Strings = (
+      'USE gr_desenv;'
+      ''
+      'select * from Talhao')
+    Left = 150
+    Top = 395
+    object FDQuery2tbl_idTalhao: TFDAutoIncField
+      FieldName = 'tbl_idTalhao'
+      Origin = 'tbl_idTalhao'
+      ReadOnly = True
+    end
+    object FDQuery2tbl_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_dtcriacao'
+      Origin = 'tbl_dtcriacao'
+    end
+    object FDQuery2tbl_AreaTalhao: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_AreaTalhao'
+      Origin = 'tbl_AreaTalhao'
+      Precision = 10
+      Size = 6
+    end
+    object FDQuery2tbl_TipoTalhao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_TipoTalhao'
+      Origin = 'tbl_TipoTalhao'
+      Size = 255
+    end
+    object FDQuery2tbl_descricao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_descricao'
+      Origin = 'tbl_descricao'
+      Size = 50
+    end
+    object FDQuery2tbl_latitude: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_latitude'
+      Origin = 'tbl_latitude'
+      Precision = 10
+      Size = 6
+    end
+    object FDQuery2tbl_longitude: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_longitude'
+      Origin = 'tbl_longitude'
+      Precision = 10
+      Size = 6
+    end
+    object FDQuery2tbl_linkMapa: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_linkMapa'
+      Origin = 'tbl_linkMapa'
+      Size = 255
+    end
+    object FDQuery2pr_idPropriedadeRural: TLongWordField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_idPropriedadeRural'
+      Origin = 'pr_idPropriedadeRural'
+    end
+    object FDQuery2tbl_status: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_status'
+      Origin = 'tbl_status'
+      Size = 25
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 265
+    Top = 325
+  end
+  object DataSource2: TDataSource
+    DataSet = FDQuery2
+    Left = 265
+    Top = 395
+  end
+end

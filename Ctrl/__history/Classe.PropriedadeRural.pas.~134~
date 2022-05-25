@@ -65,20 +65,17 @@ type
         function getAlert         : string;
         function getDataAquisicao : TDate;
 
-
         procedure setMontaGridMasterDetalhe;
         procedure setPesquisaCampo(Campo: string; Key: string);
         procedure setAcaoAdicionarEditar(ActInsUpd: string);
         procedure setFrmOnShow;
         procedure setDelete;
-        procedure setBtSubMenu1;
-        procedure setBtSubMenu2;
+        procedure setBtSubMenu1 (Crd : TCard);
         function  getValidaAreaTotal : boolean;
         function  getcomboTalhao : Integer;
         function  getAcaoAdicionarEditarTalhao : Integer;
         function  getSavar: Boolean;
         function  getCancelar: Boolean;
-
 
         end;
 
@@ -126,7 +123,7 @@ end;
 
 function TPropriedadeRural.getAcaoAdicionarEditarTalhao: Integer;
 begin
-
+        DbgridTalhao.DataSource := nil;
 end;
 
 function TPropriedadeRural.getAlert: string;
@@ -273,14 +270,12 @@ begin
         end;
 end;
 
-procedure TPropriedadeRural.setBtSubMenu1;
+procedure TPropriedadeRural.setBtSubMenu1(Crd : TCard);
 begin
-        FrmCadastroPropriedadeRural.CrdCadastroBase.Show;
-end;
-
-procedure TPropriedadeRural.setBtSubMenu2;
-begin
-        FrmCadastroPropriedadeRural.CrdAddTalhao.Show;
+        if not(Crd.Showing = True) then
+        begin
+            Crd.show;
+        end;
 end;
 
 procedure TPropriedadeRural.setCodigoIncra(pCodigoIncra: Integer);

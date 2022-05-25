@@ -1206,6 +1206,7 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                     ParentFont = False
                     Spacing = 20
                     Transparent = True
+                    OnClick = BtRemoveTalhaoClick
                     ExplicitLeft = 0
                   end
                   object BtAddTalhao: TJvSpeedButton

@@ -159,13 +159,13 @@ end;
 procedure TFrmCadastroPropriedadeRural.BtSubMenu1Click(Sender: TObject);
 begin
   inherited;
-       PropriedadeRural.setBtSubMenu1;
+       PropriedadeRural.setBtSubMenu1(CrdCadastroBase);
 end;
 
 procedure TFrmCadastroPropriedadeRural.BtSubMenu2Click(Sender: TObject);
 begin
   inherited;
-        PropriedadeRural.setBtSubMenu2;
+        PropriedadeRural.setBtSubMenu1(CrdAddTalhao);
         PropriedadeRural.getcomboTalhao;
 end;
 

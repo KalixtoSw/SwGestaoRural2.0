@@ -552,7 +552,8 @@ begin
                 Result := DsQry1;
 
         finally
-                
+                //FreeAndNil(Qry1);
+                //FreeAndNil(Qry2);
         end;
 
 

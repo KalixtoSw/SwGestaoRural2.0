@@ -21,7 +21,7 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   object PnlFundoMenuPrincipal: TJvPanel
-    Left = 37
+    Left = 33
     Top = 8
     Width = 1200
     Height = 768
@@ -35,6 +35,13 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    object JvSpeedButton2: TJvSpeedButton
+      Left = 1045
+      Top = 109
+      Width = 146
+      Height = 25
+      Caption = 'TESTE BUSCA AUX'
+    end
     object PnlTituloJanela: TJvPanel
       Left = 0
       Top = 0

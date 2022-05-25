@@ -40,7 +40,7 @@ uses
   function fGetRandomPassword(Size: Integer; Tipo : Integer = 1): String;{10}
   function fMaiorValor(VlrA : Double; VlrB : Double) : Integer;{11}
   function fAjustaDataNull(VrDt    :   TDate)  :   String;{12}
-  function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;{13}
+  function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string; IdKey : Integer): TDataSource;{13}
 
 var
       BtnNew,BtnOld : Integer;
@@ -510,7 +510,7 @@ begin
 end;
 
 
-function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;
+function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string; IdKey : Integer): TDataSource;
 var
         Qry1,Qry2       : TFDQuery;
         DsQry1,DsQry2   : TDataSource;
@@ -552,7 +552,8 @@ begin
                 Result := DsQry1;
 
         finally
-                
+                FreeAndNil(Qry1);
+                FreeAndNil(Qry2);
         end;
 
 

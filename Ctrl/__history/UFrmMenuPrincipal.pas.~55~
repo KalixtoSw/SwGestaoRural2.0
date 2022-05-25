@@ -33,6 +33,7 @@ type
     ImgBtParametros: TImage;
     BarParametros1: TJvXPBar;
     BarParametros2: TJvXPBar;
+    JvSpeedButton2: TJvSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);

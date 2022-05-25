@@ -421,7 +421,7 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
               Width = 1012
               Height = 651
               Align = alClient
-              ActiveCard = CrdAddTalhao
+              ActiveCard = CrdCadastroBase
               Caption = 'CrdPnlSubMenu'
               TabOrder = 0
               object CrdCadastroBase: TCard
