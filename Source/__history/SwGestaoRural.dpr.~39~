@@ -1,0 +1,59 @@
+program SwGestaoRural;
+
+uses
+  Vcl.Forms,
+  UFrmMenuPrincipal in '..\Ctrl\UFrmMenuPrincipal.pas' {FrmMenuPrincipal},
+  Classe.Functions in '..\Ctrl\Classe.Functions.pas',
+  UFrmModel1 in '..\View\Tamplate\UFrmModel1.pas' {FrmModel1},
+  Classe.FunctionsSQL in '..\Ctrl\Classe.FunctionsSQL.pas',
+  Classe.FunctionsCrud in '..\Ctrl\Classe.FunctionsCrud.pas',
+  Classe.Conexao in '..\Model\Classe.Conexao.pas' {DMPrincipal: TDataModule},
+  Classe.Sistema.Mensagens in '..\Ctrl\Classe.Sistema.Mensagens.pas',
+  UFrmMensagemSistema in '..\View\UFrmMensagemSistema.pas' {FrmMensagemSistema},
+  UFrmCadastroUsuario in '..\View\UFrmCadastroUsuario.pas' {FrmCadastroUsuario},
+  UFrmPesquisaAuxiliar in '..\View\Tamplate\UFrmPesquisaAuxiliar.pas' {FrmPesquisaAuxiliar},
+  Classe.Usuario in '..\Ctrl\Classe.Usuario.pas',
+  UFrmCadastroTalhao in '..\View\UFrmCadastroTalhao.pas' {FrmCadastroTalhao},
+  Classe.Talhao in '..\Ctrl\Classe.Talhao.pas',
+  UFrmCadastroSafra in '..\View\UFrmCadastroSafra.pas' {FrmCadastroSafra},
+  Classe.Safra in '..\Ctrl\Classe.Safra.pas',
+  Classe.conexaoEfetiva in '..\Ctrl\Classe.conexaoEfetiva.pas',
+  Classe.Email in '..\Ctrl\Classe.Email.pas',
+  Classe.EnvioEmail in '..\Ctrl\Classe.EnvioEmail.pas',
+  Classe.StatusUsuario in '..\Ctrl\Classe.StatusUsuario.pas',
+  UFrmConfigServidor in '..\View\UFrmConfigServidor.pas' {FrmConfigServidor},
+  UFrmLogin in '..\View\UFrmLogin.pas', Vcl.Dialogs {FrmLogin};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+
+  Application.Title := 'Gestão Rural 1.0';
+  Application.CreateForm(TDMPrincipal, DMPrincipal);
+  if (DmPrincipal.conexao.fConectarBancoDados = True) then
+  Begin
+
+      FrmLogin := TFrmLogin.Create(nil);
+      FrmLogin.ShowModal;
+
+
+      Application.CreateForm(TFrmMenuPrincipal, FrmMenuPrincipal);
+
+
+      FrmLogin.Hide;
+      FrmLogin.Free;
+
+  End else
+  Begin
+      //fMsgPadrao(4,9,12,2,'');
+      Showmessage('NÃO FOI POSSÍVEL CONECTAR AO BANCO DE DADOS! ENTRE EM CONTATO COM O ADMINISTRADOR');
+      Application.CreateForm(TFrmConfigServidor, FrmConfigServidor);
+  End;
+
+
+   Application.CreateForm(TFrmMensagemSistema, FrmMensagemSistema);
+
+  Application.Run;
+end.

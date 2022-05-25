@@ -1,0 +1,148 @@
+unit UFrmMenuPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, JvExExtCtrls,
+  JvExtComponent, JvPanel, Classe.Functions, JvExControls, JvSpeedButton,
+  JvGradientHeaderPanel, Vcl.WinXPanels, JvXPCore, JvXPBar, Classe.Sistema.Mensagens,
+  Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit;
+
+type
+  TFrmMenuPrincipal = class(TForm)
+    PnlFundoMenuPrincipal: TJvPanel;
+    PnlTituloJanela: TJvPanel;
+    PnlBtClose: TJvPanel;
+    BtClose: TJvSpeedButton;
+    PnlStatusSistema: TJvPanel;
+    PnlMenuLateral1: TJvPanel;
+    BtFerramentas: TJvSpeedButton;
+    BtManejoAgricola: TJvSpeedButton;
+    BtParametros: TJvSpeedButton;
+    PnlMenuLateral2: TJvPanel;
+    HdrBtParametros: TJvGradientHeaderPanel;
+    CrdPnlMenuLateral2: TCardPanel;
+    CrdBtParametros: TCard;
+    CrdBtManejoAgricola: TCard;
+    CrdBtFerramentas: TCard;
+    HdrBtManejoAgricola: TJvGradientHeaderPanel;
+    HdrBtFerramentas: TJvGradientHeaderPanel;
+    ImgBtFerramentas: TImage;
+    ImgBtManejoAgricola: TImage;
+    ImgBtParametros: TImage;
+    BarParametros1: TJvXPBar;
+    BarParametros2: TJvXPBar;
+    JvSpeedButton1: TJvSpeedButton;
+    JvSpeedButton2: TJvSpeedButton;
+    Edt1: TJvMaskEdit;
+    Edt2: TJvMaskEdit;
+    JvSpeedButton3: TJvSpeedButton;
+    procedure FormResize(Sender: TObject);
+    procedure BtCloseClick(Sender: TObject);
+    procedure BtParametrosClick(Sender: TObject);
+    procedure BtManejoAgricolaClick(Sender: TObject);
+    procedure BtFerramentasClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure BarParametros1Items0Click(Sender: TObject);
+    procedure JvSpeedButton1Click(Sender: TObject);
+    procedure JvSpeedButton2Click(Sender: TObject);
+    procedure BarParametros2Items2Click(Sender: TObject);
+    procedure JvSpeedButton3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmMenuPrincipal: TFrmMenuPrincipal;
+
+implementation
+
+uses
+     UFrmModel1, UFrmMensagemSistema, UFrmCadastroUsuario, UFrmPesquisaAuxiliar, UFrmCadastroTalhao;
+
+{$R *.dfm}
+
+procedure TFrmMenuPrincipal.BtFerramentasClick(Sender: TObject);
+begin
+      pMenuRetratil(CrdBtFerramentas,PnlMenuLateral2,BtFerramentas.Tag);
+end;
+
+procedure TFrmMenuPrincipal.BtManejoAgricolaClick(Sender: TObject);
+begin
+      pMenuRetratil(CrdBtManejoAgricola,PnlMenuLateral2,BtManejoAgricola.Tag);
+end;
+
+procedure TFrmMenuPrincipal.BtParametrosClick(Sender: TObject);
+begin
+      pMenuRetratil(CrdBtParametros,PnlMenuLateral2,BtParametros.Tag);
+end;
+
+procedure TFrmMenuPrincipal.FormResize(Sender: TObject);
+begin
+      pCentralizaPanel(PnlFundoMenuPrincipal,FrmMenuPrincipal);
+end;
+
+procedure TFrmMenuPrincipal.FormShow(Sender: TObject);
+begin
+      PnlMenuLateral2.Width := 0;
+end;
+
+procedure TFrmMenuPrincipal.JvSpeedButton1Click(Sender: TObject);
+begin
+       try
+            if fMsgPadrao(7,3,9,1).RespBt then
+            begin
+                  Application.CreateForm(TFrmCadastroUsuario,FrmCadastroUsuario);
+                  FrmCadastroUsuario.ShowModal;
+            end;
+
+      finally
+
+           // FreeAndNil(FrmCadastroUsuario);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.JvSpeedButton2Click(Sender: TObject);
+begin
+     try
+           Application.CreateForm(TFrmPesquisaAuxiliar,FrmPesquisaAuxiliar);
+           FrmPesquisaAuxiliar.ShowModal;
+      finally
+            FreeAndNil(FrmPesquisaAuxiliar);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.JvSpeedButton3Click(Sender: TObject);
+begin
+      fLendoString(edt1.Text,edt1.Text);
+end;
+
+procedure TFrmMenuPrincipal.BarParametros1Items0Click(Sender: TObject);
+begin
+      try
+           Application.CreateForm(TFrmCadastroUsuario,FrmCadastroUsuario);
+           FrmCadastroUsuario.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroUsuario);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.BarParametros2Items2Click(Sender: TObject);
+begin
+     try
+           Application.CreateForm(TFrmCadastroTalhao,FrmCadastroTalhao);
+           FrmCadastroTalhao.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroTalhao);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.BtCloseClick(Sender: TObject);
+begin
+      Application.Terminate;
+end;
+
+end.
