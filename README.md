@@ -1,2 +1,2 @@
-# SwGestaoRural
- Sistema ERP parta gestão de propriedades Rurais em Desktop
+# SwGestaoRural2.0
+ERP Gerenciamento de atividades referentes a agricultura Brasileira
