@@ -38,6 +38,7 @@ uses
   function fLendoString(const subtext : string; Text: string) : Integer;{8}
   function fCriptografiaKey( Senha, key : string ) : string;{9}
   function fGetRandomPassword(Size: Integer; Tipo : Integer = 1): String;{10}
+  function  fMaiorValor(VlrA : Double; VlrB : Double) : Integer;{11}
 
 var
       BtnNew,BtnOld : Integer;
@@ -211,37 +212,42 @@ procedure pMontaComboBoxTempExec(Combo : TJvComboBox; Select : string; Key : str
 var
         Qry : TFDQuery;
 begin
-        try
-             Qry := TFDQuery.Create(nil);
-             Qry.Connection := DMPrincipal.FDConnection;
-             Qry.Close;
-             Qry.SQL.Clear;
-             Qry.SQL.Add(Select);
-             Qry.Open;
-             Qry.Active := True;
-             Qry.Refresh;
+       try
+             try
+                  Qry := TFDQuery.Create(nil);
+                  Qry.Connection := DMPrincipal.FDConnection;
+                  Qry.Close;
+                  Qry.SQL.Clear;
+                  Qry.SQL.Add(Select);
+                  Qry.Open;
+                  Qry.Active := True;
+                  Qry.Refresh;
 
 
-             if (Qry.FieldByName(''+Key+'').AsInteger > 0) and (Combo.Text = EmptyStr) then
-                     begin
-                          while not Qry.Eof do
+                  if (Qry.FieldByName(''+Key+'').AsInteger > 0) and (Combo.Text = EmptyStr) then
                           begin
-                          With Combo do
-                          begin
-                                Items.AddObject( Trim(Qry.FieldByName(''+TextCombo+'').asString),
-                                tObject(Qry.FieldByName(''+Key+'').asInteger) );
-                          end;
-                          Qry.Next;
+                               while not Qry.Eof do
+                               begin
+                               With Combo do
+                               begin
+                                     Items.AddObject( Trim(Qry.FieldByName(''+TextCombo+'').asString),
+                                     tObject(Qry.FieldByName(''+Key+'').asInteger) );
+                               end;
+                               Qry.Next;
+                               end;
+                               Combo.Refresh;
+                          end else begin
+
                           end;
                           Combo.Refresh;
-                     end else begin
 
-                     end;
-                     Combo.Refresh;
+             except on E: Exception do
+                     fMsgPadrao(2,2,13,2,E.Message);
+             end;
+       finally
+            FreeAndNil(Qry);
+       end;
 
-        except on E: Exception do
-                fMsgPadrao(2,2,13,2,E.Message);
-        end;
 
 end;
 
@@ -472,6 +478,20 @@ begin
 
   Result := Chave;
 
+end;
+
+function  fMaiorValor(VlrA : Double; VlrB : Double) : Integer;
+var
+        respaux : Double;
+begin
+        if VlrA = VlrB then            Begin
+                ShowMessage('Valores são iguais');
+                Result := 0;
+        End else begin
+                Result    := IfThen(VlrA > VlrB, 1,0);
+                respaux   := IfThen(Result = 1,VlrA,VlrB);
+                ShowMessage('Maior Valor é: '+FloatToStr(respaux));
+        end;
 end;
 
 end.

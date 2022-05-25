@@ -33,11 +33,6 @@ type
     ImgBtParametros: TImage;
     BarParametros1: TJvXPBar;
     BarParametros2: TJvXPBar;
-    JvSpeedButton1: TJvSpeedButton;
-    JvSpeedButton2: TJvSpeedButton;
-    Edt1: TJvMaskEdit;
-    Edt2: TJvMaskEdit;
-    JvSpeedButton3: TJvSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -45,10 +40,7 @@ type
     procedure BtFerramentasClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BarParametros1Items0Click(Sender: TObject);
-    procedure JvSpeedButton1Click(Sender: TObject);
-    procedure JvSpeedButton2Click(Sender: TObject);
     procedure BarParametros2Items2Click(Sender: TObject);
-    procedure JvSpeedButton3Click(Sender: TObject);
     procedure BarParametros2Items3Click(Sender: TObject);
     procedure BarParametros2Items1Click(Sender: TObject);
   private
@@ -91,36 +83,6 @@ end;
 procedure TFrmMenuPrincipal.FormShow(Sender: TObject);
 begin
       PnlMenuLateral2.Width := 0;
-end;
-
-procedure TFrmMenuPrincipal.JvSpeedButton1Click(Sender: TObject);
-begin
-       try
-            if fMsgPadrao(7,3,9,1,EmptyStr).RespBt then
-            begin
-                  Application.CreateForm(TFrmCadastroUsuario,FrmCadastroUsuario);
-                  FrmCadastroUsuario.ShowModal;
-            end;
-
-      finally
-
-           // FreeAndNil(FrmCadastroUsuario);
-      end;
-end;
-
-procedure TFrmMenuPrincipal.JvSpeedButton2Click(Sender: TObject);
-begin
-     try
-           Application.CreateForm(TFrmPesquisaAuxiliar,FrmPesquisaAuxiliar);
-           FrmPesquisaAuxiliar.ShowModal;
-      finally
-            FreeAndNil(FrmPesquisaAuxiliar);
-      end;
-end;
-
-procedure TFrmMenuPrincipal.JvSpeedButton3Click(Sender: TObject);
-begin
-      fLendoString(edt1.Text,edt1.Text);
 end;
 
 procedure TFrmMenuPrincipal.BarParametros1Items0Click(Sender: TObject);

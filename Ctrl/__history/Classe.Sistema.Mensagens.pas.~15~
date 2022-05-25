@@ -13,12 +13,13 @@ Type TpMsgResult  =     Record
           RespBt      :     Boolean;
       End;
 
-      function fMsgPadrao (VJanela, VTMsg, VMsg, VTipo : Integer) : TpMsgResult;
+      function fMsgPadrao (VJanela, VTMsg, VMsg, VTipo : Integer; VMsgExterna : String) : TpMsgResult;
       function fMontaMensagem( TJanela, TMsg, Msg, Icone, Tipo : String ): Boolean;
+      function fCriarMensagem( TJanela, TMsg, Msg, Icone, Tipo : String ): Boolean;
 
 implementation
 
-function fMsgPadrao (VJanela, VTMsg, VMsg, VTipo : Integer) : TpMsgResult;
+function fMsgPadrao (VJanela, VTMsg, VMsg, VTipo : Integer; VMsgExterna : String) : TpMsgResult;
 begin
 
       case VJanela of
@@ -30,6 +31,7 @@ begin
       6: Result.MsgJanela := 'ENCERRANDO O SISTEMA';
       7: Result.MsgJanela := 'EXCLUSÃO DE REGISTRO';
       8: Result.MsgJanela := 'CAMPOS OBRIGATÓRIOS';
+      9: Result.MsgJanela := 'ERRO NA CONEXÃO COM O BANCO DE DADOS';
       end;
 
       case VTMsg of
@@ -47,15 +49,19 @@ begin
       end;
 
       case VMsg of
-      1 : Result.MsgText := 'REGISTRO SALVO COM SUCESSO ';
-      2 : Result.MsgText := 'FALHA AO TENTAR SALVAR REGISTRO ';
-      3 : Result.MsgText := 'DESEJA FECHAR O SISTEMA? ';
-      4 : Result.MsgText := 'DESEJA CANCELAR? OS DADOS SERÃO PERDIDOS! ';
-      5 : Result.MsgText := 'FALHA AO TENTAR INSERIR UM NOVO REGISTRO! '#13'SE O ERRO PERSISTIR ENTRE EM CONTATO COM O ADMINISTRADOR ';
-      6 : Result.MsgText := 'CAMPOS OBRIGATÓRIOS NÃO PREENCHIDOS! ';
-      7 : Result.MsgText := 'NÃO FOI POSSIVEL LOGAR NO SISTEMA!';
-      8 : Result.MsgText := 'FALHA NA OPERAÇÃO DE BANCO DE DADOS! ENTRE EM CONTATO COM ADMINISTRADOR EM CASO DE PERSISTÊNCIA DO PROBLEMA!';
-      9 : Result.MsgText := 'DESEJA EXCLUIR O REGISTRO SELECIONADO?';
+      1 : Result.MsgText := 'REGISTRO SALVO COM SUCESSO '+VMsgExterna;
+      2 : Result.MsgText := 'FALHA AO TENTAR SALVAR REGISTRO '+VMsgExterna;
+      3 : Result.MsgText := 'DESEJA FECHAR O SISTEMA? '+VMsgExterna;
+      4 : Result.MsgText := 'DESEJA CANCELAR? OS DADOS SERÃO PERDIDOS! '+VMsgExterna;
+      5 : Result.MsgText := 'FALHA AO TENTAR INSERIR UM NOVO REGISTRO! '#13'SE O ERRO PERSISTIR ENTRE EM CONTATO COM O ADMINISTRADOR '+VMsgExterna;
+      6 : Result.MsgText := 'CAMPOS OBRIGATÓRIOS NÃO PREENCHIDOS! '+VMsgExterna;
+      7 : Result.MsgText := 'NÃO FOI POSSIVEL LOGAR NO SISTEMA! '+VMsgExterna;
+      8 : Result.MsgText := 'FALHA NA OPERAÇÃO DE BANCO DE DADOS! ENTRE EM CONTATO COM ADMINISTRADOR EM CASO DE PERSISTÊNCIA DO PROBLEMA! '+VMsgExterna;
+      9 : Result.MsgText := 'DESEJA EXCLUIR O REGISTRO SELECIONADO? '+VMsgExterna;
+      10 : Result.MsgText:= 'FAVOR INFORMAR UM E-MAIL VÁLIDO '+VMsgExterna;
+      11 : Result.MsgText:= 'SUCESSO, CONECTADO AO BANCO DE DADOS DO SISTEMA '+VMsgExterna;
+      12 : Result.MsgText:= 'NÃO FOI POSSÍVEL CONECTAR AO BANCO DE DADOS! ENTRE EM CONTATO COM O ADMINISTRADOR, ERRO: '+VMsgExterna;
+      13 : Result.MsgText:= 'FALHA AO MONTA COMBOBOX, ERRO: '+VMsgExterna;
       end;
 
       case VTipo of
@@ -68,6 +74,22 @@ begin
 end;
 
 function fMontaMensagem( TJanela, TMsg, Msg, Icone, Tipo : String ): Boolean;
+begin
+
+        FrmMensagemSistema := TFrmMensagemSistema.Create( nil );
+
+        FrmMensagemSistema.sTituloJanela      := TJanela;
+        FrmMensagemSistema.sTituloMensagem    := TMsg;
+        FrmMensagemSistema.sMsg               := Msg;
+        FrmMensagemSistema.SCaminhoIcone      := Icone;
+        FrmMensagemSistema.sTipo              := Tipo;
+
+        FrmMensagemSistema.ShowModal;
+        Result := FrmMensagemSistema.bRespostaMsg;
+
+end;
+
+function fCriarMensagem( TJanela, TMsg, Msg, Icone, Tipo : String ): Boolean;
 begin
 
         FrmMensagemSistema := TFrmMensagemSistema.Create( nil );

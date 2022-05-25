@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, Classe.Functions, Classe.FunctionsCrud,Classe.FunctionsSQL,
   Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
-  Graphics;
+  Graphics, Vcl.WinXPanels, System.Math, JvDesktopAlert, Classe.Sistema.Mensagens,
+  Vcl.Dialogs;
 
 type
         TPropriedadeRural = class
@@ -19,6 +20,8 @@ type
         FNumMatricula   : Integer;
         FObservacao     : string;
         Ffoto           : TPicture;
+        FDataAquisicao  : TDate;
+        FAlert          : string;
 
         Frm: TForm;
         Dbgrd: TJvDBUltimGrid;
@@ -42,6 +45,8 @@ type
         procedure setNumMatricula ( pNumMatricula  : Integer);
         procedure setObservacao   ( pObservacao    : string);
         procedure setfoto         ( pfoto          : TPicture);
+        procedure setAlert        ( pAlert         : string);
+        procedure setDataAquisicao( pDataAquisicao : TDate);
 
         function getNomeResumido  : string;
         function getAreaTotal     : Double;
@@ -51,6 +56,8 @@ type
         function getNumMatricula  : Integer;
         function getObservacao    : string;
         function getfoto          : TPicture;
+        function getAlert         : string;
+        function getDataAquisicao : TDate;
 
         function  getSavar: Boolean;
         function  getCancelar: Boolean;
@@ -58,13 +65,17 @@ type
         procedure setAcaoAdicionarEditar(ActInsUpd: string);
         procedure setFrmOnShow;
         procedure setDelete;
+        procedure setBtSubMenu1 (Crd : TCard);
+        function  getValidaAreaTotal : boolean;
 
         end;
 
 
 implementation
+
 uses
         UFrmCadastroPropriedadeRural;
+
 
 { TPropriedadeRural }
 
@@ -78,6 +89,7 @@ begin
         FNumMatricula   := 0;
         FObservacao     := EmptyStr;
         Ffoto           := nil;
+        FDataAquisicao  := 0;
 
         Frm         := FrmCadastroPropriedadeRural;
         Dbgrd       := FrmCadastroPropriedadeRural.DbGrid;
@@ -94,14 +106,19 @@ begin
 
 end;
 
+function TPropriedadeRural.getAlert: string;
+begin
+        Result := FAlert;
+end;
+
 function TPropriedadeRural.getAreaAgricola: Double;
 begin
-
+        Result := FAreaAgricola;
 end;
 
 function TPropriedadeRural.getAreaTotal: Double;
 begin
-
+        Result := FAreaTotal;
 end;
 
 function TPropriedadeRural.getCancelar: Boolean;
@@ -114,6 +131,11 @@ end;
 function TPropriedadeRural.getCodigoIncra: Integer;
 begin
 
+end;
+
+function TPropriedadeRural.getDataAquisicao: TDate;
+begin
+        Result := FDataAquisicao;
 end;
 
 function TPropriedadeRural.getfoto: TPicture;
@@ -146,21 +168,41 @@ var
       VlrKeyUpd : Integer;
 begin
       VlrKeyUpd := 0;
-      if (InsUpd = 'INSERT') then
-      begin
-            Result := fEventoSalvar(InsUpd, Frm, Dbgrd, Table, IDKey, IDKeyVaue, NCampos);
 
-      end else if (InsUpd = 'UPDATE') then begin
-            VlrKeyUpd := Dbgrd.DataSource.DataSet.FieldByName(IDKeyVaue).AsInteger;
-            Result := fEventoSalvar(InsUpd, Frm, Dbgrd, Table, IDKey, IntToStr(VlrKeyUpd), NCampos);
+      setAreaTotal(FrmCadastroPropriedadeRural.CalCampo3.Value);
+      setAreaAgricola(FrmCadastroPropriedadeRural.CalCampo4.Value);
+
+      if (FrmCadastroPropriedadeRural.CalCampo3.Value > 0) and (FrmCadastroPropriedadeRural.CalCampo4.Value > 0) then
+      begin
+             if (getValidaAreaTotal = True) then
+             begin
+              if (InsUpd = 'INSERT') then
+               begin
+                setAlert('Registro inserido com sucesso! ');
+                Result := fEventoSalvar(InsUpd, Frm, Dbgrd, Table, IDKey, IDKeyVaue, NCampos);
+
+               end else if (InsUpd = 'UPDATE') then begin
+                setAlert('Registro alterado com sucesso! ');
+                VlrKeyUpd := Dbgrd.DataSource.DataSet.FieldByName(IDKeyVaue).AsInteger;
+                Result := fEventoSalvar(InsUpd, Frm, Dbgrd, Table, IDKey, IntToStr(VlrKeyUpd), NCampos);
+
+              end;
+                plimpaDadosInterface(Frm, 1);
+                Result := True;
+             end else begin
+                Result := False;
+                  Exit;
+             end;
       end;
-      plimpaDadosInterface(Frm, 1);
+
+
 end;
 
 procedure TPropriedadeRural.setAcaoAdicionarEditar(ActInsUpd: string);
 begin
     if ActInsUpd = 'INSERT' then
       begin
+            FrmCadastroPropriedadeRural.DtCampo2.Date := Strtodate(FormatDateTime('dd/mm/yyyy',Now())) ;
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKey, IDKeyVaue, NCampos);
 
       end
@@ -171,19 +213,50 @@ begin
       end;
 end;
 
+procedure TPropriedadeRural.setAlert(pAlert: string);
+begin
+        FAlert := pAlert;
+end;
+
 procedure TPropriedadeRural.setAreaAgricola(pAreaAgricola: Double);
 begin
-
+        if pAreaAgricola > 0 then
+        begin
+                FAreaAgricola := pAreaAgricola;
+        end else begin
+             FAreaAgricola := FrmCadastroPropriedadeRural.CalCampo4.Value;
+        end;
 end;
 
 procedure TPropriedadeRural.setAreaTotal(pAreaTotal: Double);
 begin
+        if pAreaTotal > 0 then
+        begin
+                FAreaTotal := pAreaTotal;
+        end else begin
+             FAreaTotal := FrmCadastroPropriedadeRural.CalCampo3.Value;
+        end;
+end;
+
+procedure TPropriedadeRural.setBtSubMenu1(Crd : TCard);
+begin
+        if Crd.Showing then
+        begin
+             Crd.Hide;
+        end else begin
+             Crd.Show;
+        end;
 
 end;
 
 procedure TPropriedadeRural.setCodigoIncra(pCodigoIncra: Integer);
 begin
 
+end;
+
+procedure TPropriedadeRural.setDataAquisicao(pDataAquisicao: TDate);
+begin
+        FDataAquisicao := pDataAquisicao;
 end;
 
 procedure TPropriedadeRural.setDelete;
@@ -193,6 +266,7 @@ begin
       VlrKeyDel := Dbgrd.DataSource.DataSet.FieldByName(IDKeyVaue).AsInteger;
       fEventoInsUpdDel('DELETE',Frm,Dbgrd,Table,IDKeyVaue,IDKey,(VlrKeyDel));
       pAtivarDBGrid(Dbgrd);
+      setAlert('Registro excluído com sucesso! ');
 end;
 
 procedure TPropriedadeRural.setfoto(pfoto: TPicture);
@@ -205,6 +279,7 @@ begin
       pCarregarBancoDado(0, Table, IDKey, NCampos);
       Dbgrd.DataSource := DMPrincipal.DsCmdSql_1;
       pAtivarDBGrid(Dbgrd);
+      setDataAquisicao(Now);
 end;
 
 procedure TPropriedadeRural.setNomeResumido(pNomeResumido: string);
@@ -250,6 +325,21 @@ begin
     fEventoConsultaQuery(VlrBusca, Table, IDKeyFilter, IDKeyVaue, NCampos);
     pAtivarDBGrid(Dbgrd);
 
+end;
+end;
+
+function TPropriedadeRural.getValidaAreaTotal : boolean;
+begin
+        if fMaiorValor(getAreaTotal,getAreaAgricola) = 0 then
+        begin
+                fMsgPadrao(1,1,14,2,FloatToStr(getAreaTotal));
+                //setAreaAgricola(0);
+                //FrmCadastroPropriedadeRural.CalCampo4.Value := getAreaTotal;
+                Result := False;
+                Exit;
+        end else Begin
+             Result := True;
+        End;
 end;
 
 end.

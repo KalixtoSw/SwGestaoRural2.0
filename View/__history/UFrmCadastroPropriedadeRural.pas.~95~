@@ -136,8 +136,6 @@ begin
          DsktpAlertSistema.MessageText := PropriedadeRural.getAlert;
          DsktpAlertSistema.Execute;
          PropriedadeRural.setFrmOnShow;
-       end else begin
-            Exit;
        end;
 end;
 
@@ -163,7 +161,7 @@ procedure TFrmCadastroPropriedadeRural.CalCampo4Exit(Sender: TObject);
 begin
   inherited;
         PropriedadeRural.setAreaAgricola(CalCampo4.Value);
-        PropriedadeRural.getValidaAreaTotal;
+        //PropriedadeRural.getValidaAreaTotal;
 end;
 
 procedure TFrmCadastroPropriedadeRural.DbGridDblClick(Sender: TObject);

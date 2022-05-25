@@ -6,7 +6,7 @@ uses
      Classe.FunctionsSQL, Classe.Functions, System.SysUtils, Vcl.Forms,
   Vcl.Mask, Vcl.WinXCalendars, JvBaseEdits, Vcl.StdCtrls, Vcl.Graphics,
   System.Variants,JvCombobox, JvDBUltimGrid, Vcl.WinXPanels, JvPanel,
-  Vcl.Dialogs;
+  Vcl.Dialogs, JvEdit;
 {-------------BLOCO DE FUNÇÕES-------------------------------------------------}
      function fEventoCancelar(FrmPadrao : TForm;Dbgrd : TJvDBUltimGrid; Tb : String; iDkey : String; Ncampos : Integer): Boolean;{1}
      function fEventoSalvar(TpActSql : string;FrmPadrao : Tform;Dbgrd : TJvDBUltimGrid; Tb : String;IdPan : string; IdKey : String; NCampos : Integer): Boolean;{2}
@@ -49,7 +49,7 @@ begin
 
       if (NOT(fCamposObrigatorios(FrmPadrao))) then
       begin
-              fMsgPadrao(8,1,6,2);
+              fMsgPadrao(8,1,6,2,EmptyStr);
       end
       else
        Begin
@@ -80,15 +80,12 @@ begin
 end;
 
 function fEventoInsUpdDel(UD : String;FrmPadrao : Tform; Dbgrd : TJvDBUltimGrid; Tb : String; iD : String;iDkey : String; NCampos : Integer): String;{Eventos Bases de Edição ou Exclusão (fn_ActUpdateDelete)}
-var
-      key : integer;
 begin
         Result := UD;
 
         if UD = 'UPDATE' then
         begin
-                Key := Dbgrd.DataSource.DataSet.FieldByName(iD).AsInteger;
-                pCarregarBancoDado(Key,Tb,iDkey,NCampos);
+                pCarregarBancoDado(Dbgrd.DataSource.DataSet.FieldByName(iD).AsInteger,Tb,iDkey,NCampos);
 
         End else if UD = 'DELETE' then begin
 
@@ -177,6 +174,17 @@ Begin
                             if (form.Components[I] as TComboBox).text = EmptyStr then
                             begin
                                 (form.Components[I] as TComboBox).Color := clRed;
+                                 Result := False;
+                            end;
+                        End;
+                end;
+                if form.Components[I] is TJvEdit then
+                begin
+                        if (Copy((form.Components[I] as TJvEdit).Name,1,3) = 'Obr' ) then
+                        Begin
+                            if (form.Components[I] as TJvEdit).text = EmptyStr then
+                            begin
+                                (form.Components[I] as TJvEdit).Color := clRed;
                                  Result := False;
                             end;
                         End;
@@ -303,7 +311,7 @@ Begin
                 if form.Components[I] is TCalendarPicker then
                 begin
                         case TpClear of
-                            1: (form.Components[I] as TCalendarPicker).Date    :=  null;
+                            1: (form.Components[I] as TCalendarPicker).Date    :=  0;
                             2: (form.Components[I] as TCalendarPicker).color   :=  clWhite;
                         end;
                 end;

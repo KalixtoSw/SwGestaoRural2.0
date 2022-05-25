@@ -199,16 +199,12 @@ procedure TPropriedadeRural.setAcaoAdicionarEditar(ActInsUpd: string);
 begin
     if ActInsUpd = 'INSERT' then
       begin
-            FrmCadastroPropriedadeRural.BtSubMenu1.Visible := True;
-            FrmCadastroPropriedadeRural.BtSubMenu2.Visible := False;
             FrmCadastroPropriedadeRural.DtCampo2.Date := Strtodate(FormatDateTime('dd/mm/yyyy',Now())) ;
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKey, IDKeyVaue, NCampos);
 
       end
   else if ActInsUpd = 'UPDATE' then
       begin
-            FrmCadastroPropriedadeRural.BtSubMenu1.Visible := False;
-            FrmCadastroPropriedadeRural.BtSubMenu2.Visible := True;
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKeyVaue,IDKey, NCampos);
             pCarregaDadosInterface(Frm);
       end;

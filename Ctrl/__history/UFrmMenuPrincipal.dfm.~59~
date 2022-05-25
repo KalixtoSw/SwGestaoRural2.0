@@ -41,7 +41,6 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
       Width = 146
       Height = 25
       Caption = 'TESTE MENSAGEM'
-      OnClick = JvSpeedButton1Click
     end
     object JvSpeedButton2: TJvSpeedButton
       Left = 1045
@@ -50,13 +49,6 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
       Height = 25
       Caption = 'TESTE BUSCA AUX'
       OnClick = JvSpeedButton2Click
-    end
-    object JvSpeedButton3: TJvSpeedButton
-      Left = 655
-      Top = 267
-      Width = 51
-      Height = 36
-      OnClick = JvSpeedButton3Click
     end
     object PnlTituloJanela: TJvPanel
       Left = 0
@@ -1047,6 +1039,7 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
               end
               item
                 Caption = 'PROPRIEDADE'
+                OnClick = BarParametros2Items1Click
               end
               item
                 Caption = 'TALH'#195'O'
@@ -1581,24 +1574,6 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
           end
         end
       end
-    end
-    object Edt1: TJvMaskEdit
-      Left = 500
-      Top = 240
-      Width = 121
-      Height = 23
-      MaxLength = 8
-      TabOrder = 4
-      Text = ''
-    end
-    object Edt2: TJvMaskEdit
-      Left = 500
-      Top = 280
-      Width = 121
-      Height = 23
-      MaxLength = 8
-      TabOrder = 5
-      Text = ''
     end
   end
 end

@@ -62,6 +62,7 @@ begin
       11 : Result.MsgText:= 'SUCESSO, CONECTADO AO BANCO DE DADOS DO SISTEMA '+VMsgExterna;
       12 : Result.MsgText:= 'NÃO FOI POSSÍVEL CONECTAR AO BANCO DE DADOS! ENTRE EM CONTATO COM O ADMINISTRADOR, ERRO: '+VMsgExterna;
       13 : Result.MsgText:= 'FALHA AO MONTA COMBOBOX, ERRO: '+VMsgExterna;
+      14 : Result.MsgText:= 'O VALOR NÃO PODE SER SUPERIOR A: '+VMsgExterna;
       end;
 
       case VTipo of

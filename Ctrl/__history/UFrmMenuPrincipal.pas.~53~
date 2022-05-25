@@ -35,9 +35,6 @@ type
     BarParametros2: TJvXPBar;
     JvSpeedButton1: TJvSpeedButton;
     JvSpeedButton2: TJvSpeedButton;
-    Edt1: TJvMaskEdit;
-    Edt2: TJvMaskEdit;
-    JvSpeedButton3: TJvSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -48,7 +45,6 @@ type
     procedure JvSpeedButton1Click(Sender: TObject);
     procedure JvSpeedButton2Click(Sender: TObject);
     procedure BarParametros2Items2Click(Sender: TObject);
-    procedure JvSpeedButton3Click(Sender: TObject);
     procedure BarParametros2Items3Click(Sender: TObject);
     procedure BarParametros2Items1Click(Sender: TObject);
   private
@@ -118,11 +114,6 @@ begin
       end;
 end;
 
-procedure TFrmMenuPrincipal.JvSpeedButton3Click(Sender: TObject);
-begin
-      fLendoString(edt1.Text,edt1.Text);
-end;
-
 procedure TFrmMenuPrincipal.BarParametros1Items0Click(Sender: TObject);
 begin
       try
@@ -136,10 +127,10 @@ end;
 procedure TFrmMenuPrincipal.BarParametros2Items1Click(Sender: TObject);
 begin
      try
-           Application.CreateForm(TFrmCadastroTalhao,FrmCadastroTalhao);
-           FrmCadastroTalhao.ShowModal;
+           Application.CreateForm(TFrmCadastroPropriedadeRural,FrmCadastroPropriedadeRural);
+           FrmCadastroPropriedadeRural.ShowModal;
       finally
-            FreeAndNil(FrmCadastroTalhao);
+            FreeAndNil(FrmCadastroPropriedadeRural);
       end;
 end;
 

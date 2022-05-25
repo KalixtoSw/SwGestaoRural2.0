@@ -136,8 +136,6 @@ begin
          DsktpAlertSistema.MessageText := PropriedadeRural.getAlert;
          DsktpAlertSistema.Execute;
          PropriedadeRural.setFrmOnShow;
-       end else begin
-            Exit;
        end;
 end;
 

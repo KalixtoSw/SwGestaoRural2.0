@@ -5,8 +5,19 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
   PixelsPerInch = 96
   TextHeight = 15
   inherited PnlFundo: TJvPanel
+    inherited PnlTituloJanela: TJvPanel
+      inherited LbTituloJanela: TLabel
+        Height = 32
+      end
+    end
     inherited CrdPnlPrincipal: TCardPanel
+      ActiveCard = CrdCampos
       inherited CrdConsulta: TCard
+        inherited PnlPesquisa: TJvPanel
+          inherited LbPesquisa: TLabel
+            Width = 1024
+          end
+        end
         inherited PnlBtsInsertDelete: TJvPanel
           inherited BtExcluir: TJvSpeedButton
             OnClick = BtExcluirClick
@@ -245,7 +256,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 Left = 0
                 Top = 22
                 Width = 300
-                Height = 32
+                Height = 23
                 Hint = 'sf_dtInicio'
                 Align = alTop
                 CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
@@ -266,7 +277,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
-                TextHint = 'select a date'
+                TextHint = 'Seleciona a Data'
               end
             end
             object PnlCampo4: TJvPanel
@@ -320,7 +331,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 Left = 0
                 Top = 22
                 Width = 300
-                Height = 32
+                Height = 23
                 Hint = 'sf_dttermino'
                 Align = alTop
                 CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
@@ -341,7 +352,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
-                TextHint = 'select a date'
+                TextHint = 'Seleciona a Data'
               end
             end
           end

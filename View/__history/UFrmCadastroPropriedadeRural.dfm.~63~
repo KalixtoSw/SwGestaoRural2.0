@@ -437,6 +437,7 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                   Top = 65
                   Width = 111
                   Height = 72
+                  OnClick = JvSpeedButton1Click
                 end
                 object PnlCampo1: TJvPanel
                   Left = 20

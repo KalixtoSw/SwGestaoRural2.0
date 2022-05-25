@@ -16,9 +16,9 @@ File_13=TSourceModule,'H:\Desenvolvimento SW\GestaoRural\View\UFrmCadastroTalhao
 
 [Modules]
 Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas
-Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas
-Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSafra.pas
-Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
+Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
+Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas
+Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSafra.pas
 Module4=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Sistema.Mensagens.pas
 Module5=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas
 Module6=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas
@@ -29,13 +29,13 @@ EditWindowCount=1
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas]
 ModuleType=TSourceModule
 
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas]
+ModuleType=TSourceModule
+
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSafra.pas]
-ModuleType=TSourceModule
-
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Sistema.Mensagens.pas]
@@ -82,10 +82,10 @@ LeftPanelClients=PropertyInspector
 LeftPanelData=00000800010000000000FC20000000000000005F0C0000000000000100000000FC2000001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=1672
 RightPanelClients=DockSite3,DockSite4,DockSite2
-RightPanelData=000008000101000000008E120000000000000188060000000000000100000000FF0A000009000000446F636B53697465330100000000FE15000009000000446F636B53697465340100000000FC20000009000000446F636B5369746532FFFFFFFF
-BottomPanelSize=0
+RightPanelData=00000800010100000000E40E0000000000000188060000000000000100000000FF0A000009000000446F636B53697465330100000000FE15000009000000446F636B536974653401000000007A1A000009000000446F636B5369746532FFFFFFFF
+BottomPanelSize=1593
 BottomPanelClients=DockSite1,MessageView
-BottomPanelData=0000080001020200000009000000446F636B53697465310F0000004D65737361676556696577466F726DDE440000000000000239060000000000000100000000DE4400000F0000004D65737361676556696577466F726DFFFFFFFF
+BottomPanelData=0000080001020100000009000000446F636B5369746531DE440000000000000239060000000000000100000000DE4400000F0000004D65737361676556696577466F726DFFFFFFFF
 BottomMiddlePanelSize=0
 BottomMiddlePanelClients=DockSite0,GraphDrawingModel
 BottomMiddelPanelData=0000080001020200000009000000446F636B536974653010000000477261706844726177696E67566965779F1D00000000000002F206000000000000FFFFFFFF
@@ -104,20 +104,20 @@ EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipa
 [View1]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas
-CursorX=35
+CursorX=5
 CursorY=58
-TopLine=41
+TopLine=58
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas
+EditViewName=Borland.FormDesignerView
 
 [View2]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
-CursorX=29
-CursorY=246
-TopLine=216
+CursorX=68
+CursorY=245
+TopLine=210
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -258,11 +258,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=2423
+Height=692
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2423
+ClientHeight=692
 TBDockHeight=5904
 LRDockWidth=2349
 Dockable=1
@@ -271,7 +271,7 @@ StayOnTop=0
 [MessageView]
 PercentageSizes=1
 Create=1
-Visible=0
+Visible=1
 Docked=1
 State=0
 Left=0
@@ -353,16 +353,21 @@ State=0
 Left=0
 Top=24
 Width=1479
-Height=8538
+Height=6808
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1479
-ClientHeight=8538
+ClientHeight=6808
 TBDockHeight=8269
 LRDockWidth=1479
 Dockable=1
 StayOnTop=0
 SplitPos=112
+
+[PropInspDesignerSelection]
+ArrangeBy=Name
+SelectedItem=Width,
+ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -429,12 +434,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=1042
-Height=3808
+Width=1672
+Height=2885
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1042
-ClientHeight=3808
+ClientWidth=1672
+ClientHeight=2885
 TBDockHeight=5962
 LRDockWidth=2510
 Dockable=1
@@ -634,12 +639,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=635
-Height=3808
+Width=1672
+Height=1962
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=635
-ClientHeight=3808
+ClientWidth=1672
+ClientHeight=1962
 TBDockHeight=4894
 LRDockWidth=7151
 Dockable=1
@@ -738,12 +743,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=839
-Height=3808
+Width=1672
+Height=2423
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=839
-ClientHeight=3808
+ClientWidth=1672
+ClientHeight=2423
 TBDockHeight=4894
 LRDockWidth=5307
 Dockable=1
@@ -830,12 +835,12 @@ State=0
 Left=0
 Top=632
 Width=1672
-Height=2692
+Height=962
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2692
-TBDockHeight=4077
+ClientHeight=962
+TBDockHeight=9010
 LRDockWidth=1672
 Dockable=1
 StayOnTop=0
@@ -859,7 +864,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
 ClientHeight=2615
-TBDockHeight=8538
+TBDockHeight=9010
 LRDockWidth=1672
 Dockable=1
 StayOnTop=0
@@ -883,7 +888,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
 ClientHeight=2615
-TBDockHeight=4077
+TBDockHeight=894
 LRDockWidth=1672
 Dockable=1
 StayOnTop=0

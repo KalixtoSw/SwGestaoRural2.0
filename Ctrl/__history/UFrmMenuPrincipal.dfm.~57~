@@ -56,7 +56,6 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
       Top = 267
       Width = 51
       Height = 36
-      OnClick = JvSpeedButton3Click
     end
     object PnlTituloJanela: TJvPanel
       Left = 0

@@ -38,6 +38,8 @@ uses
   function fLendoString(const subtext : string; Text: string) : Integer;{8}
   function fCriptografiaKey( Senha, key : string ) : string;{9}
   function fGetRandomPassword(Size: Integer; Tipo : Integer = 1): String;{10}
+  function fMaiorValor(VlrA : Double; VlrB : Double) : Integer;{11}
+  function fAjustaDataNull(VrDt    :   TDate)  :   String;{12}
 
 var
       BtnNew,BtnOld : Integer;
@@ -477,6 +479,30 @@ begin
 
   Result := Chave;
 
+end;
+
+function  fMaiorValor(VlrA : Double; VlrB : Double) : Integer;
+var
+        respaux : Double;
+begin
+        if VlrA = VlrB then
+        Begin
+                Result := 2;
+        End else begin
+                Result    := IfThen(VlrA > VlrB, 1,0);
+                respaux   := IfThen(Result = 1,VlrA,VlrB);
+        end;
+end;
+
+function fAjustaDataNull(VrDt    :   TDate)  :   String;
+begin
+     if FormatDateTime('yyyy/mm/dd',VrDt) = '1899/12/30' then
+            begin
+                Result    :=  'NULL';
+            end else
+                begin
+                    Result    :=  (FormatDateTime('dd/mm/yyyy',VrDt));
+                end;
 end;
 
 end.

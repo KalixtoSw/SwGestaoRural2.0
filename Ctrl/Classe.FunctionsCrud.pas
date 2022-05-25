@@ -145,6 +145,21 @@ Begin
                             end;
                         End;
                 end;
+
+                if form.Components[I] is TMemo then
+                begin
+                        if (Copy((form.Components[I] as TMemo).Name,1,3) = 'Obr' ) then
+                        Begin
+                            if ((form.Components[I] as TMemo).Lines.Text = EmptyStr) then
+                            begin
+
+                                (form.Components[I] as TMemo).Color := clRed;
+                                 Result := False;
+
+                            end;
+                        End;
+                end;
+
                 if form.Components[I] is TCalendarPicker then
                 begin
                         if (Copy((form.Components[I] as TCalendarPicker).Name,1,3) = 'Obr' ) then
@@ -216,6 +231,22 @@ Begin
                           FieldsDB[(form.Components[I] as TMaskEdit).Tag]      := (form.Components[I] as TMaskEdit).Hint;
                     end;
                 end;
+
+                if form.Components[I] is TMemo then
+                begin
+                    if ((form.Components[I] as TMemo).HelpKeyword = EmptyStr) then
+                    begin
+
+                        FieldsValues[(form.Components[I] as TMemo).Tag]  := QuotedStr((form.Components[I] as TMemo).Lines.Text);
+                        FieldsDB[(form.Components[I] as TMemo).Tag]      := (form.Components[I] as TMemo).Hint;
+
+                    end else begin
+
+                          FieldsValues[(form.Components[I] as TMemo).Tag]  := QuotedStr((form.Components[I] as TMemo).HelpKeyword);
+                          FieldsDB[(form.Components[I] as TMemo).Tag]      := (form.Components[I] as TMemo).Hint;
+                    end;
+                end;
+
                 if form.Components[I] is TCalendarPicker then
                 begin
                     if ((form.Components[I] as TCalendarPicker).HelpKeyword = EmptyStr) then
@@ -271,6 +302,12 @@ Begin
                 begin
                       (form.Components[I] as TMaskEdit).Text :=  DMPrincipal.DsCmdSql_1.DataSet.FieldByName(((form.Components[I] as TMaskEdit).Hint)).AsString;
                 end;
+
+                if (form.Components[I] is TMemo)  then
+                begin
+                      (form.Components[I] as TMemo).Lines.Text :=  DMPrincipal.DsCmdSql_1.DataSet.FieldByName(((form.Components[I] as TMemo).Hint)).AsString;
+                end;
+
                 if (form.Components[I] is TCalendarPicker) then
                 begin
                      (form.Components[I] as TCalendarPicker).Date := StrToDate((FormatDateTime('dd/mm/yyyy',DMPrincipal.DsCmdSql_1.DataSet.FieldByName(((form.Components[I] as TCalendarPicker).Hint)).AsDateTime)));
@@ -305,6 +342,14 @@ Begin
                         case TpClear of
                             1: (form.Components[I] as TMaskEdit).Text    :=  EmptyStr;
                             2: (form.Components[I] as TMaskEdit).color   :=  clWhite;
+                        end;
+                end;
+
+                if form.Components[I] is TMemo then
+                begin
+                        case TpClear of
+                            1: (form.Components[I] as TMemo).Lines.Text    :=  EmptyStr;
+                            2: (form.Components[I] as TMemo).color   :=  clWhite;
                         end;
                 end;
 

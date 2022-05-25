@@ -51,13 +51,6 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
       Caption = 'TESTE BUSCA AUX'
       OnClick = JvSpeedButton2Click
     end
-    object JvSpeedButton3: TJvSpeedButton
-      Left = 655
-      Top = 267
-      Width = 51
-      Height = 36
-      OnClick = JvSpeedButton3Click
-    end
     object PnlTituloJanela: TJvPanel
       Left = 0
       Top = 0
@@ -1001,7 +994,6 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
               end
               item
                 Caption = 'SERVIDOR'
-                OnClick = BarParametros1Items1Click
               end
               item
                 Caption = 'E-MAIL'
@@ -1583,24 +1575,6 @@ object FrmMenuPrincipal: TFrmMenuPrincipal
           end
         end
       end
-    end
-    object Edt1: TJvMaskEdit
-      Left = 500
-      Top = 240
-      Width = 121
-      Height = 23
-      MaxLength = 8
-      TabOrder = 4
-      Text = ''
-    end
-    object Edt2: TJvMaskEdit
-      Left = 500
-      Top = 280
-      Width = 121
-      Height = 23
-      MaxLength = 8
-      TabOrder = 5
-      Text = ''
     end
   end
 end
