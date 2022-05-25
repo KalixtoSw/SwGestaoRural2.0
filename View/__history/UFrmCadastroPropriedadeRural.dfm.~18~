@@ -4,18 +4,8 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
   PixelsPerInch = 96
   TextHeight = 15
   inherited PnlFundo: TJvPanel
-    inherited PnlTituloJanela: TJvPanel
-      inherited LbTituloJanela: TLabel
-        Height = 32
-      end
-    end
     inherited CrdPnlPrincipal: TCardPanel
       inherited CrdConsulta: TCard
-        inherited PnlPesquisa: TJvPanel
-          inherited LbPesquisa: TLabel
-            Width = 1024
-          end
-        end
         inherited PnlBtsInsertDelete: TJvPanel
           object JvXPButton1: TJvXPButton
             Left = 450
@@ -31,7 +21,8 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
             Width = 251
             Height = 23
             TabOrder = 1
-            Text = 'Combo'
+            Text = ''
+            OnExit = ComboExit
           end
         end
       end

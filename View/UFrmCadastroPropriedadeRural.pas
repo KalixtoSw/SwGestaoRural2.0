@@ -10,19 +10,27 @@ uses
   JvSpeedButton, Vcl.ExtCtrls, JvExExtCtrls, JvExtComponent, JvPanel,
   Classe.PropriedadeRural, JvDBLookup, JvXPCore, JvXPButtons,
   FireDAC.Comp.DataSet,FireDAC.Comp.Client, Classe.Functions, JvExStdCtrls,
-  JvCombobox;
+  JvCombobox, Classe.Sistema.Mensagens;
 
 type
   TFrmCadastroPropriedadeRural = class(TFrmModel1)
-    JvXPButton1: TJvXPButton;
     Combo: TJvComboBox;
-    procedure FormCreate(Sender: TObject);
-    procedure JvXPButton1Click(Sender: TObject);
+
     procedure ComboExit(Sender: TObject);
+    procedure BtSalvarClick(Sender: TObject);
+    procedure BtCancelarClick(Sender: TObject);
+    procedure BtExcluirClick(Sender: TObject);
+    procedure BtAdicionarClick(Sender: TObject);
+    procedure DbGridDblClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+
+
+
   private
     { Private declarations }
-    PRural : TPropriedadeRural;
+    PropriedadeRural : TPropriedadeRural;
   public
     { Public declarations }
   end;
@@ -47,65 +55,62 @@ end;
 procedure TFrmCadastroPropriedadeRural.FormCreate(Sender: TObject);
 begin
   inherited;
-        PRural := TPropriedadeRural.CreateObjTPropriedadeRural;
+        PropriedadeRural := TPropriedadeRural.CreateObjTPropriedadeRural;
+end;
+
+procedure TFrmCadastroPropriedadeRural.BtAdicionarClick(Sender: TObject);
+begin
+  inherited;
+      PropriedadeRural.setAcaoAdicionarEditar('INSERT');
+end;
+
+procedure TFrmCadastroPropriedadeRural.BtCancelarClick(Sender: TObject);
+begin
+  inherited;
+      PropriedadeRural.getCancelar;
+end;
+
+procedure TFrmCadastroPropriedadeRural.BtExcluirClick(Sender: TObject);
+begin
+      if fMsgPadrao(7,3,9,1,EmptyStr).RespBt then
+        begin
+              PropriedadeRural.setDelete;
+        end;
+  inherited;
+
+end;
+
+procedure TFrmCadastroPropriedadeRural.BtSalvarClick(Sender: TObject);
+begin
+       if PropriedadeRural.getSavar then
+       begin
+         fMsgPadrao(3, 3, 1, 2,EmptyStr);
+         inherited;
+         PropriedadeRural.setFrmOnShow;
+       end;
+end;
+
+procedure TFrmCadastroPropriedadeRural.DbGridDblClick(Sender: TObject);
+begin
+  inherited;
+      PropriedadeRural.setAcaoAdicionarEditar('UPDATE');
+end;
+
+procedure TFrmCadastroPropriedadeRural.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+      if Key = #13 then
+      begin
+            PropriedadeRural.setPesquisaCampo(EdtPesquisa.Text,'13');
+      end;
+  inherited;
+
 end;
 
 procedure TFrmCadastroPropriedadeRural.FormShow(Sender: TObject);
 begin
   inherited;
-        pMontaComboBoxTempExec(Combo,'SELECT smt_Id, smt_dtcriacao, smt_descricao FROM semente',
-                                'smt_Id','smt_descricao');
+      PropriedadeRural.setFrmOnShow;
 end;
 
-procedure TFrmCadastroPropriedadeRural.JvXPButton1Click(Sender: TObject);
-var
-        Qry : TFDQuery;
-        DsQry : TDataSource;
-        IdKey2 : string;
-        IdKey1 : string;
-begin
-  inherited;
-        try
-             Qry := TFDQuery.Create(nil);
-             DsQry := TDataSource.Create(nil);
-
-             DsQry.DataSet := Qry;
-
-             Qry.Connection := DMPrincipal.FDConnection;
-
-
-                     Qry.Close;
-                     Qry.SQL.Clear;
-                     Qry.SQL.Add('SELECT smt_Id, smt_dtcriacao, smt_descricao FROM semente');
-                     Qry.Open;
-                     Qry.Active := True;
-                     Qry.Refresh;
-                     IdKey2 := 'smt_Id';
-                     IdKey1 := 'smt_descricao';
-
-                     if (Qry.FieldByName(''+IdKey2+'').AsInteger > 0) and (Combo.Text = EmptyStr) then
-                     begin
-                          while not Qry.Eof do
-                          begin
-                          With Combo do
-                          begin
-                                Items.AddObject( Trim(Qry.FieldByName(''+IdKey1+'').asString),
-                                tObject(Qry.FieldByName(''+IdKey2+'').asInteger) );
-                          end;
-                          Qry.Next;
-                          end;
-                          Combo.Refresh;
-                     end else begin
-
-                     end;
-                     Combo.Refresh;
-
-        finally
-                FreeAndNil(Qry);
-
-        end;
-
-
-end;
 
 end.

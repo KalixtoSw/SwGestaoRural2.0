@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, Classe.Functions, Classe.FunctionsCrud,Classe.FunctionsSQL,
   Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
-  Graphics;
+  Graphics, UFrmCadastroPropriedadeRural;
 
 type
         TPropriedadeRural = class
@@ -19,6 +19,15 @@ type
         FNumMatricula   : Integer;
         FObservacao     : string;
         Ffoto           : TPicture;
+
+        Frm: TForm;
+        Dbgrd: TJvDBUltimGrid;
+        Table: string;
+        IDKey: string;
+        IDKeyVaue: string;
+        NCampos: Integer;
+        InsUpd: string;
+        IDKeyFilter: string;
 
         public
 
@@ -43,6 +52,13 @@ type
         function getObservacao    : string;
         function getfoto          : TPicture;
 
+        function  getSavar: Boolean;
+        function  getCancelar: Boolean;
+        procedure setPesquisaCampo(Campo: string; Key: string);
+        procedure setAcaoAdicionarEditar(ActInsUpd: string);
+        procedure setFrmOnShow;
+        procedure setDelete;
+
         end;
 
 
@@ -52,7 +68,23 @@ implementation
 
 constructor TPropriedadeRural.CreateObjTPropriedadeRural;
 begin
+        FNomeResumido   := EmptyStr;
+        FAreaTotal      := 0;
+        FAreaAgricola   := 0;
+        FnumReceita     := 0;
+        FCodigoIncra    := 0;
+        FNumMatricula   := 0;
+        FObservacao     := EmptyStr;
+        Ffoto           := nil;
 
+        Frm         := FrmCadastroPropriedadeRural;
+        Dbgrd       := FrmCadastroPropriedadeRural.DbGrid;
+        Table       := 'PropriedadeRural';
+        IDKey       := ' pr_idPropriedadeRural = ';
+        IDKeyVaue   := 'pr_idPropriedadeRural';
+        IDKeyFilter := 'pr_nomeResumido LIKE ';
+        NCampos     := 8;
+        InsUpd      := EmptyStr;
 end;
 
 destructor TPropriedadeRural.DestryObtTPropriedadeRural;
@@ -68,6 +100,13 @@ end;
 function TPropriedadeRural.getAreaTotal: Double;
 begin
 
+end;
+
+function TPropriedadeRural.getCancelar: Boolean;
+begin
+        Result := fEventoCancelar(Frm, Dbgrd, Table, IDKeyVaue, NCampos);
+        plimpaDadosInterface(Frm, 1);
+        setFrmOnShow;
 end;
 
 function TPropriedadeRural.getCodigoIncra: Integer;
@@ -100,6 +139,16 @@ begin
 
 end;
 
+function TPropriedadeRural.getSavar: Boolean;
+begin
+
+end;
+
+procedure TPropriedadeRural.setAcaoAdicionarEditar(ActInsUpd: string);
+begin
+
+end;
+
 procedure TPropriedadeRural.setAreaAgricola(pAreaAgricola: Double);
 begin
 
@@ -115,7 +164,17 @@ begin
 
 end;
 
+procedure TPropriedadeRural.setDelete;
+begin
+
+end;
+
 procedure TPropriedadeRural.setfoto(pfoto: TPicture);
+begin
+
+end;
+
+procedure TPropriedadeRural.setFrmOnShow;
 begin
 
 end;
@@ -136,6 +195,11 @@ begin
 end;
 
 procedure TPropriedadeRural.setObservacao(pObservacao: string);
+begin
+
+end;
+
+procedure TPropriedadeRural.setPesquisaCampo(Campo, Key: string);
 begin
 
 end;

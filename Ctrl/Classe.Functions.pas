@@ -211,37 +211,42 @@ procedure pMontaComboBoxTempExec(Combo : TJvComboBox; Select : string; Key : str
 var
         Qry : TFDQuery;
 begin
-        try
-             Qry := TFDQuery.Create(nil);
-             Qry.Connection := DMPrincipal.FDConnection;
-             Qry.Close;
-             Qry.SQL.Clear;
-             Qry.SQL.Add(Select);
-             Qry.Open;
-             Qry.Active := True;
-             Qry.Refresh;
+       try
+             try
+                  Qry := TFDQuery.Create(nil);
+                  Qry.Connection := DMPrincipal.FDConnection;
+                  Qry.Close;
+                  Qry.SQL.Clear;
+                  Qry.SQL.Add(Select);
+                  Qry.Open;
+                  Qry.Active := True;
+                  Qry.Refresh;
 
 
-             if (Qry.FieldByName(''+Key+'').AsInteger > 0) and (Combo.Text = EmptyStr) then
-                     begin
-                          while not Qry.Eof do
+                  if (Qry.FieldByName(''+Key+'').AsInteger > 0) and (Combo.Text = EmptyStr) then
                           begin
-                          With Combo do
-                          begin
-                                Items.AddObject( Trim(Qry.FieldByName(''+TextCombo+'').asString),
-                                tObject(Qry.FieldByName(''+Key+'').asInteger) );
-                          end;
-                          Qry.Next;
+                               while not Qry.Eof do
+                               begin
+                               With Combo do
+                               begin
+                                     Items.AddObject( Trim(Qry.FieldByName(''+TextCombo+'').asString),
+                                     tObject(Qry.FieldByName(''+Key+'').asInteger) );
+                               end;
+                               Qry.Next;
+                               end;
+                               Combo.Refresh;
+                          end else begin
+
                           end;
                           Combo.Refresh;
-                     end else begin
 
-                     end;
-                     Combo.Refresh;
+             except on E: Exception do
+                     fMsgPadrao(2,2,13,2,E.Message);
+             end;
+       finally
+            FreeAndNil(Qry);
+       end;
 
-        except on E: Exception do
-                fMsgPadrao(2,2,13,2,E.Message);
-        end;
 
 end;
 

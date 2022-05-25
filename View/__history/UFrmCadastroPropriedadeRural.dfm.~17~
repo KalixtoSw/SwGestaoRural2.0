@@ -32,6 +32,7 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
             Height = 23
             TabOrder = 1
             Text = ''
+            OnExit = ComboExit
           end
         end
       end

@@ -63,10 +63,8 @@ type
 
 
 implementation
-
 uses
         UFrmCadastroPropriedadeRural;
-
 
 { TPropriedadeRural }
 
@@ -252,7 +250,6 @@ begin
     fEventoConsultaQuery(VlrBusca, Table, IDKeyFilter, IDKeyVaue, NCampos);
     pAtivarDBGrid(Dbgrd);
 
-end;
 end;
 
 end.

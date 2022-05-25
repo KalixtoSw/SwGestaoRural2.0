@@ -18,6 +18,8 @@ type
     Combo: TJvComboBox;
     procedure FormCreate(Sender: TObject);
     procedure JvXPButton1Click(Sender: TObject);
+    procedure ComboExit(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     PRural : TPropriedadeRural;
@@ -36,18 +38,26 @@ uses
 
 {$R *.dfm}
 
+procedure TFrmCadastroPropriedadeRural.ComboExit(Sender: TObject);
+begin
+  inherited;
+        fRetVlrCombox(Combo,0);
+end;
+
 procedure TFrmCadastroPropriedadeRural.FormCreate(Sender: TObject);
 begin
   inherited;
         PRural := TPropriedadeRural.CreateObjTPropriedadeRural;
 end;
 
+procedure TFrmCadastroPropriedadeRural.FormShow(Sender: TObject);
+begin
+  inherited;
+        pMontaComboBoxTempExec(Combo,'SELECT smt_Id, smt_dtcriacao, smt_descricao FROM semente',
+                                'smt_Id','smt_descricao');
+end;
+
 procedure TFrmCadastroPropriedadeRural.JvXPButton1Click(Sender: TObject);
-var
-        Qry : TFDQuery;
-        DsQry : TDataSource;
-        IdKey2 : string;
-        IdKey1 : string;
 begin
   inherited;
         try
@@ -83,9 +93,10 @@ begin
                      end else begin
 
                      end;
+                     Combo.Refresh;
 
         finally
-                FreeAndNil(Qry);
+
 
         end;
 
