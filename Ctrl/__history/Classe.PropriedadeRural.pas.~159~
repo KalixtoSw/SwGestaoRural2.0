@@ -69,6 +69,7 @@ type
         procedure setDbGridTalhaoDrawColumnCell(const Rect: TRect;
         DataCol: Integer; Column: TColumn; State: TGridDrawState);
 
+        procedure setAdicionaTalhao(IdKeyProp : Integer; IdKeyTalhao : Integer);
         procedure setRemoverTalhao;
         procedure setDbGridTalhaoCellClick;
         procedure setMontaGridMasterDetalhe;
@@ -251,6 +252,32 @@ begin
       end;
 end;
 
+procedure TPropriedadeRural.setAdicionaTalhao(IdKeyProp : Integer; IdKeyTalhao : Integer);
+var
+        Qry1       : TFDQuery;
+        Sql        : string;
+begin
+        ShowMessage('IdKeyProp: ' + IntToStr(IdKeyProp) + 'IdKeyTalhao: ' + IntToStr(IdKeyTalhao));
+
+        try
+             Qry1 := TFDQuery.Create(nil);
+             Qry1.Connection := DMPrincipal.FDConnection;
+             Qry1.Close;
+             Sql := 'UPDATE Talhao set pr_idPropriedadeRural = '+IntToStr(IdKeyProp)+', tbl_status = ''REMANEJADA'','+
+             ' tbl_checkbox = 0 WHERE tbl_idTalhao = '+IntToStr(IdKeyTalhao)+'';
+             ShowMessage(Sql);
+             Qry1.SQL.Clear;
+             Qry1.SQL.Add(Sql);
+             Qry1.ExecSQL;
+             //Qry1.Active := True;
+             Qry1.Refresh;
+        except on E: Exception do
+        end;
+
+        getcomboTalhao;
+
+end;
+
 procedure TPropriedadeRural.setAlert(pAlert: string);
 begin
         FAlert := pAlert;
@@ -404,16 +431,34 @@ end;
 
 procedure TPropriedadeRural.setRemoverTalhao;
 begin
-        DbgridTalhao.DataSource.DataSet.Refresh;
-        DbgridTalhao.DataSource.DataSet.First;
-
-        if not (DbgridTalhao.DataSource.DataSet.Eof - 1) then
+        if fMsgPadrao(7,3,15,1,EmptyStr).RespBt then
         begin
-                //if DbgridTalhao.DataSource.DataSet.FieldByName('tbl_checkbox').AsInteger > 0 then
-                //begin
-                    ShowMessage(DbgridTalhao.DataSource.DataSet.FieldByName('tbl_descricao').AsString);
-                //end;
-               DbgridTalhao.DataSource.DataSet.Next;
+        with DbgridTalhao.DataSource.DataSet do
+        begin
+             DisableControls;
+             First; // Se tiver certeza que está no primeiro registro, não precisa
+             While not Eof do
+                begin
+                if FieldByName('tbl_checkbox').AsInteger = 1 then
+                  begin
+                     try
+                          Edit;
+                          FieldByName('tbl_checkbox').AsInteger := 0;
+                          FieldByName('pr_idPropriedadeRural').AsInteger := 0;
+                          FieldByName('tbl_status').AsString := 'DISPONIVEL';
+                          Post;
+                     except
+
+                     end;
+                  end;
+                Next;
+                end;
+             EnableControls;
+             Refresh;
+        end;
+        getcomboTalhao;
+        setMontaGridMasterDetalhe;
+        pAtivarDBGrid(DbGridTalhao);
         end;
 end;
 

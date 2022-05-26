@@ -86,9 +86,10 @@ type
     procedure CalCampo4Exit(Sender: TObject);
     procedure DtCampo2Change(Sender: TObject);
     procedure DbGridTalhaoDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DbGridTalhaoCellClick(Column: TColumn);
     procedure BtRemoveTalhaoClick(Sender: TObject);
+    procedure BtAddTalhaoClick(Sender: TObject);
 
 
 
@@ -114,6 +115,12 @@ procedure TFrmCadastroPropriedadeRural.FormCreate(Sender: TObject);
 begin
   inherited;
         PropriedadeRural := TPropriedadeRural.CreateObjTPropriedadeRural;
+end;
+
+procedure TFrmCadastroPropriedadeRural.BtAddTalhaoClick(Sender: TObject);
+begin
+  inherited;
+        PropriedadeRural.setAdicionaTalhao(DbGrid.DataSource.DataSet.FieldByName('pr_idPropriedadeRural').AsInteger,fRetVlrCombox(CbbTalhao,0).IdResp);
 end;
 
 procedure TFrmCadastroPropriedadeRural.BtAdicionarClick(Sender: TObject);

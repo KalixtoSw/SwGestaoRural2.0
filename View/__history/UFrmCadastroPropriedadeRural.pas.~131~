@@ -88,6 +88,7 @@ type
     procedure DbGridTalhaoDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DbGridTalhaoCellClick(Column: TColumn);
+    procedure BtRemoveTalhaoClick(Sender: TObject);
 
 
 
@@ -136,6 +137,12 @@ begin
         end;
   inherited;
 
+end;
+
+procedure TFrmCadastroPropriedadeRural.BtRemoveTalhaoClick(Sender: TObject);
+begin
+  inherited;
+        PropriedadeRural.setRemoverTalhao;
 end;
 
 procedure TFrmCadastroPropriedadeRural.BtSalvarClick(Sender: TObject);
@@ -198,7 +205,6 @@ procedure TFrmCadastroPropriedadeRural.DbGridTalhaoDrawColumnCell(
 begin
   inherited;
          PropriedadeRural.setDbGridTalhaoDrawColumnCell(Rect,DataCol,Column,State);
-
 end;
 
 procedure TFrmCadastroPropriedadeRural.DtCampo2Change(Sender: TObject);
