@@ -76,23 +76,23 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 [View0]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas
-CursorX=39
-CursorY=168
-TopLine=159
+CursorX=52
+CursorY=174
+TopLine=168
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas
+EditViewName=Borland.FormDesignerView
 
 [View1]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas
-CursorX=42
-CursorY=281
-TopLine=262
+CursorX=34
+CursorY=432
+TopLine=405
 LeftCol=1
 Elisions=
-Bookmarks={1,197,1}
+Bookmarks={1,200,1}
 EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas
 
 [View2]
@@ -284,12 +284,12 @@ State=0
 Left=0
 Top=0
 Width=1375
-Height=4933
+Height=4942
 MaxLeft=-5
 MaxTop=-10
 ClientWidth=1292
-ClientHeight=4558
-TBDockHeight=4933
+ClientHeight=4567
+TBDockHeight=4942
 LRDockWidth=1375
 Dockable=1
 StayOnTop=0
@@ -313,6 +313,11 @@ LRDockWidth=1479
 Dockable=1
 StayOnTop=0
 SplitPos=112
+
+[PropInspDesignerSelection]
+ArrangeBy=Name
+SelectedItem=Options.dgEditing,Action
+ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0,DataSource=0,Title=1,Title.Font=0,Options=1
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -585,11 +590,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=894
+Height=1962
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=894
+ClientHeight=1962
 TBDockHeight=4894
 LRDockWidth=7151
 Dockable=1
@@ -689,11 +694,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=894
+Height=2423
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=894
+ClientHeight=2423
 TBDockHeight=4894
 LRDockWidth=5307
 Dockable=1

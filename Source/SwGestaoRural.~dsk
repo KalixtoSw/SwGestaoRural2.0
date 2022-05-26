@@ -284,12 +284,12 @@ State=0
 Left=0
 Top=0
 Width=1375
-Height=4942
+Height=4933
 MaxLeft=-5
 MaxTop=-10
 ClientWidth=1292
-ClientHeight=4567
-TBDockHeight=4942
+ClientHeight=4558
+TBDockHeight=4933
 LRDockWidth=1375
 Dockable=1
 StayOnTop=0
@@ -313,11 +313,6 @@ LRDockWidth=1479
 Dockable=1
 StayOnTop=0
 SplitPos=112
-
-[PropInspDesignerSelection]
-ArrangeBy=Name
-SelectedItem=AboutJVCL,OnClick
-ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -590,11 +585,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=692
+Height=894
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=692
+ClientHeight=894
 TBDockHeight=4894
 LRDockWidth=7151
 Dockable=1
@@ -694,11 +689,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=692
+Height=894
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=692
+ClientHeight=894
 TBDockHeight=4894
 LRDockWidth=5307
 Dockable=1

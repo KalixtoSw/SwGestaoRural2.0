@@ -6,7 +6,8 @@ uses
   System.SysUtils, Classe.Functions, Classe.FunctionsCrud,Classe.FunctionsSQL,
   Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
   Graphics, Vcl.WinXPanels, System.Math, JvDesktopAlert, Classe.Sistema.Mensagens,
-  Vcl.Dialogs, JvCombobox, FireDAC.Comp.Client, Data.DB;
+  Vcl.Dialogs, JvCombobox, FireDAC.Comp.Client, Data.DB, System.UITypes,
+  Vcl.StdCtrls, Winapi.Windows, Vcl.DBGrids, Vcl.Grids;
 
 type
         TPropriedadeRural = class
@@ -65,26 +66,31 @@ type
         function getAlert         : string;
         function getDataAquisicao : TDate;
 
+        procedure setDbGridTalhaoDrawColumnCell(const Rect: TRect;
+        DataCol: Integer; Column: TColumn; State: TGridDrawState);
+
+        procedure setRemoverTalhao;
+        procedure setDbGridTalhaoCellClick;
         procedure setMontaGridMasterDetalhe;
         procedure setPesquisaCampo(Campo: string; Key: string);
         procedure setAcaoAdicionarEditar(ActInsUpd: string);
         procedure setFrmOnShow;
         procedure setDelete;
-        procedure setBtSubMenu1 (Crd : TCard);
+        procedure setBtSubMenu1;
+        procedure setBtSubMenu2;
         function  getValidaAreaTotal : boolean;
-        function  getcomboTalhao : Integer;
+        function  getComboTalhao : Integer;
         function  getAcaoAdicionarEditarTalhao : Integer;
         function  getSavar: Boolean;
         function  getCancelar: Boolean;
+
 
         end;
 
 
 implementation
-
 uses
         UFrmCadastroPropriedadeRural;
-
 
 { TPropriedadeRural }
 
@@ -123,7 +129,7 @@ end;
 
 function TPropriedadeRural.getAcaoAdicionarEditarTalhao: Integer;
 begin
-        DbgridTalhao.DataSource := nil;
+
 end;
 
 function TPropriedadeRural.getAlert: string;
@@ -143,6 +149,8 @@ end;
 
 function TPropriedadeRural.getCancelar: Boolean;
 begin
+        FrmCadastroPropriedadeRural.BtSubMenu1.Visible := True;
+        FrmCadastroPropriedadeRural.BtSubMenu2.Visible := True;
         Result := fEventoCancelar(Frm, Dbgrd, Table, IDKeyVaue, NCampos);
         plimpaDadosInterface(Frm, 1);
         setFrmOnShow;
@@ -227,6 +235,7 @@ end;
 
 procedure TPropriedadeRural.setAcaoAdicionarEditar(ActInsUpd: string);
 begin
+        FrmCadastroPropriedadeRural.CrdCadastroBase.Show;
     if ActInsUpd = 'INSERT' then
       begin
             FrmCadastroPropriedadeRural.BtSubMenu1.Visible := True;
@@ -237,9 +246,6 @@ begin
       end
   else if ActInsUpd = 'UPDATE' then
       begin
-            FrmCadastroPropriedadeRural.BtSubMenu1.Visible := False;
-            FrmCadastroPropriedadeRural.BtSubMenu2.Visible := True;
-
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKeyVaue,IDKey, NCampos);
             pCarregaDadosInterface(Frm);
       end;
@@ -270,12 +276,14 @@ begin
         end;
 end;
 
-procedure TPropriedadeRural.setBtSubMenu1(Crd : TCard);
+procedure TPropriedadeRural.setBtSubMenu1;
 begin
-        if not(Crd.Showing = True) then
-        begin
-            Crd.show;
-        end;
+        FrmCadastroPropriedadeRural.CrdCadastroBase.Show;
+end;
+
+procedure TPropriedadeRural.setBtSubMenu2;
+begin
+        FrmCadastroPropriedadeRural.CrdAddTalhao.Show;
 end;
 
 procedure TPropriedadeRural.setCodigoIncra(pCodigoIncra: Integer);
@@ -286,6 +294,36 @@ end;
 procedure TPropriedadeRural.setDataAquisicao(pDataAquisicao: TDate);
 begin
         FDataAquisicao := pDataAquisicao;
+end;
+
+procedure TPropriedadeRural.setDbGridTalhaoCellClick;
+begin
+        if not Assigned(DbGridTalhao.DataSource.DataSet.FindField('tbl_checkbox')) then
+         Frm.ModalResult := mrOk
+       else begin
+         DbGridTalhao.DataSource.DataSet.Edit;
+         DbGridTalhao.DataSource.DataSet.FieldByName('tbl_checkbox').AsInteger := IfThen(DbGridTalhao.DataSource.DataSet.FieldByName('tbl_checkbox').asinteger = 1, 0, 1);
+         DbGridTalhao.DataSource.DataSet.Post;
+       end;
+end;
+
+procedure TPropriedadeRural.setDbGridTalhaoDrawColumnCell(const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  lR: TRect;
+  lCheck: integer;
+begin
+   if Assigned(DbGridTalhao.DataSource.DataSet.FindField('tbl_checkbox')) and (Column.Index = 0) then begin
+    if (DbGridTalhao.DataSource.DataSet.FieldByName('tbl_checkbox').Value = 1) then
+      lCheck := DFCS_BUTTONCHECK or DFCS_CHECKED
+    else
+      lCheck := DFCS_BUTTONCHECK;
+    DbGridTalhao.Canvas.FillRect(Rect);
+    lR := Rect;
+    InflateRect(lR, -2, -2);
+    DrawFrameControl(DbGridTalhao.Canvas.Handle, lR, DFC_BUTTON, lCheck);
+  end else
+    DbGridTalhao.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 procedure TPropriedadeRural.setDelete;
@@ -364,6 +402,24 @@ begin
 end;
 end;
 
+procedure TPropriedadeRural.setRemoverTalhao;
+begin
+        with DbgridTalhao.DataSource.DataSet do
+        begin
+        DisableControls;
+        First; // Se tiver certeza que está no primeiro registro, não precisa
+        While not Eof do
+           begin
+           if FieldByName('tbl_checkbox').AsInteger = 1 then
+             begin
+                     ShowMessage(DbgridTalhao.DataSource.DataSet.FieldByName('tbl_descricao').AsString);
+             end;
+           Next;
+           end;
+        EnableControls;
+   end;
+end;
+
 function TPropriedadeRural.getValidaAreaTotal : boolean;
 begin
         if fMaiorValor(getAreaTotal,getAreaAgricola) = 0 then
@@ -377,5 +433,7 @@ begin
              Result := True;
         End;
 end;
+
+
 
 end.

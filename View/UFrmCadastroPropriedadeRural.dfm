@@ -1206,6 +1206,7 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                     ParentFont = False
                     Spacing = 20
                     Transparent = True
+                    OnClick = BtRemoveTalhaoClick
                     ExplicitLeft = 0
                   end
                   object BtAddTalhao: TJvSpeedButton
@@ -1364,7 +1365,6 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                     ParentFont = False
                     Spacing = 20
                     Transparent = True
-                    OnClick = BtAddTalhaoClick
                     ExplicitLeft = 5
                   end
                 end
@@ -1382,12 +1382,19 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                     Width = 1008
                     Height = 398
                     Align = alClient
+                    BorderStyle = bsNone
+                    DrawingStyle = gdsGradient
+                    GradientEndColor = 14067595
+                    GradientStartColor = 4671041
+                    Options = [dgTitles, dgColumnResize, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
                     TabOrder = 0
                     TitleFont.Charset = ANSI_CHARSET
                     TitleFont.Color = clWindowText
                     TitleFont.Height = -12
                     TitleFont.Name = 'Segoe UI'
                     TitleFont.Style = []
+                    OnCellClick = DbGridTalhaoCellClick
+                    OnDrawColumnCell = DbGridTalhaoDrawColumnCell
                     AlternateRowColor = clHighlight
                     AlternateRowFontColor = clHighlightText
                     SelectColumnsDialogStrings.Caption = 'Select columns'
@@ -1396,6 +1403,55 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                     EditControls = <>
                     RowsHeight = 19
                     TitleRowHeight = 19
+                    Columns = <
+                      item
+                        Expanded = False
+                        FieldName = 'tbl_checkbox'
+                        Title.Alignment = taCenter
+                        Title.Caption = '[X]'
+                        Width = 25
+                        Visible = True
+                      end
+                      item
+                        Alignment = taCenter
+                        Expanded = False
+                        FieldName = 'tbl_idTalhao'
+                        Title.Alignment = taCenter
+                        Title.Caption = 'C'#211'DIGO'
+                        Title.Font.Charset = ANSI_CHARSET
+                        Title.Font.Color = clWhite
+                        Title.Font.Height = -12
+                        Title.Font.Name = 'Segoe UI'
+                        Title.Font.Style = [fsBold]
+                        Visible = True
+                      end
+                      item
+                        Expanded = False
+                        FieldName = 'tbl_descricao'
+                        Title.Alignment = taCenter
+                        Title.Caption = 'TALH'#195'O'
+                        Title.Font.Charset = ANSI_CHARSET
+                        Title.Font.Color = clWhite
+                        Title.Font.Height = -12
+                        Title.Font.Name = 'Segoe UI'
+                        Title.Font.Style = [fsBold]
+                        Width = 250
+                        Visible = True
+                      end
+                      item
+                        Alignment = taCenter
+                        Expanded = False
+                        FieldName = 'tbl_status'
+                        Title.Alignment = taCenter
+                        Title.Caption = 'STATUS'
+                        Title.Font.Charset = ANSI_CHARSET
+                        Title.Font.Color = clWhite
+                        Title.Font.Height = -12
+                        Title.Font.Name = 'Segoe UI'
+                        Title.Font.Style = [fsBold]
+                        Width = 150
+                        Visible = True
+                      end>
                   end
                 end
               end

@@ -11,7 +11,7 @@ uses
   Classe.PropriedadeRural, JvDBLookup, JvXPCore, JvXPButtons,
   FireDAC.Comp.DataSet,FireDAC.Comp.Client, Classe.Functions, JvExStdCtrls,
   JvCombobox, Classe.Sistema.Mensagens, Vcl.WinXCtrls, JvGradient,
-  Vcl.WinXCalendars, JvExMask, JvToolEdit, JvBaseEdits;
+  Vcl.WinXCalendars, JvExMask, JvToolEdit, JvBaseEdits, System.Math;
 
 type
   TFrmCadastroPropriedadeRural = class(TFrmModel1)
@@ -85,8 +85,9 @@ type
     procedure CalCampo3Exit(Sender: TObject);
     procedure CalCampo4Exit(Sender: TObject);
     procedure DtCampo2Change(Sender: TObject);
-    procedure BtAddTalhaoClick(Sender: TObject);
-    procedure BtRemoveTalhaoClick(Sender: TObject);
+    procedure DbGridTalhaoDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DbGridTalhaoCellClick(Column: TColumn);
 
 
 
@@ -114,12 +115,6 @@ begin
         PropriedadeRural := TPropriedadeRural.CreateObjTPropriedadeRural;
 end;
 
-procedure TFrmCadastroPropriedadeRural.BtAddTalhaoClick(Sender: TObject);
-begin
-  inherited;
-        PropriedadeRural.setMontaGridMasterDetalhe;
-end;
-
 procedure TFrmCadastroPropriedadeRural.BtAdicionarClick(Sender: TObject);
 begin
   inherited;
@@ -143,12 +138,6 @@ begin
 
 end;
 
-procedure TFrmCadastroPropriedadeRural.BtRemoveTalhaoClick(Sender: TObject);
-begin
-  inherited;
-        PropriedadeRural.getAcaoAdicionarEditarTalhao;
-end;
-
 procedure TFrmCadastroPropriedadeRural.BtSalvarClick(Sender: TObject);
 begin
        if PropriedadeRural.getSavar then
@@ -166,14 +155,16 @@ end;
 procedure TFrmCadastroPropriedadeRural.BtSubMenu1Click(Sender: TObject);
 begin
   inherited;
-       PropriedadeRural.setBtSubMenu1(CrdCadastroBase);
+       PropriedadeRural.setBtSubMenu1;
 end;
 
 procedure TFrmCadastroPropriedadeRural.BtSubMenu2Click(Sender: TObject);
 begin
   inherited;
-        PropriedadeRural.setBtSubMenu1(CrdAddTalhao);
+        PropriedadeRural.setBtSubMenu2;
         PropriedadeRural.getcomboTalhao;
+        PropriedadeRural.setMontaGridMasterDetalhe;
+        pAtivarDBGrid(DbGridTalhao);
 end;
 
 procedure TFrmCadastroPropriedadeRural.CalCampo3Exit(Sender: TObject);
@@ -193,6 +184,34 @@ procedure TFrmCadastroPropriedadeRural.DbGridDblClick(Sender: TObject);
 begin
   inherited;
       PropriedadeRural.setAcaoAdicionarEditar('UPDATE');
+end;
+
+procedure TFrmCadastroPropriedadeRural.DbGridTalhaoCellClick(Column: TColumn);
+begin
+  inherited;
+        PropriedadeRural.setDbGridTalhaoCellClick;
+end;
+
+procedure TFrmCadastroPropriedadeRural.DbGridTalhaoDrawColumnCell(
+  Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+var
+  lR: TRect;
+  lCheck: integer;
+begin
+  inherited;
+  if Assigned(DbGridTalhao.DataSource.DataSet.FindField('tbl_checkbox')) and (Column.Index = 0) then begin
+    if (DbGridTalhao.DataSource.DataSet.FieldByName('tbl_checkbox').Value = 1) then
+      lCheck := DFCS_BUTTONCHECK or DFCS_CHECKED
+    else
+      lCheck := DFCS_BUTTONCHECK;
+    DbGridTalhao.Canvas.FillRect(Rect);
+    lR := Rect;
+    InflateRect(lR, -2, -2);
+    DrawFrameControl(DbGridTalhao.Canvas.Handle, lR, DFC_BUTTON, lCheck);
+  end else
+    DbGridTalhao.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
 end;
 
 procedure TFrmCadastroPropriedadeRural.DtCampo2Change(Sender: TObject);
