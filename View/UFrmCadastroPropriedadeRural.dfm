@@ -17,6 +17,11 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
             Width = 1024
           end
         end
+        inherited PnlBtsInsertDelete: TJvPanel
+          inherited BtExcluir: TJvSpeedButton
+            OnClick = BtExcluirClick
+          end
+        end
         inherited PnlDbGrid: TJvPanel
           inherited DbGrid: TJvDBUltimGrid
             Columns = <
@@ -1365,6 +1370,7 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                     ParentFont = False
                     Spacing = 20
                     Transparent = True
+                    OnClick = BtAddTalhaoClick
                     ExplicitLeft = 5
                   end
                 end

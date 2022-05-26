@@ -63,6 +63,7 @@ begin
       12 : Result.MsgText:= 'NÃO FOI POSSÍVEL CONECTAR AO BANCO DE DADOS! ENTRE EM CONTATO COM O ADMINISTRADOR, ERRO: '+VMsgExterna;
       13 : Result.MsgText:= 'FALHA AO MONTA COMBOBOX, ERRO: '+VMsgExterna;
       14 : Result.MsgText:= 'O VALOR NÃO PODE SER SUPERIOR A: '+VMsgExterna;
+      15 : Result.MsgText:= 'DESEJA REMOVER OS TALHÕES? '+VMsgExterna;
       end;
 
       case VTipo of

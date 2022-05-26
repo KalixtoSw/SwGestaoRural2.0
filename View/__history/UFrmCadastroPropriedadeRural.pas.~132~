@@ -86,8 +86,10 @@ type
     procedure CalCampo4Exit(Sender: TObject);
     procedure DtCampo2Change(Sender: TObject);
     procedure DbGridTalhaoDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DbGridTalhaoCellClick(Column: TColumn);
+    procedure BtRemoveTalhaoClick(Sender: TObject);
+    procedure BtAddTalhaoClick(Sender: TObject);
 
 
 
@@ -115,6 +117,16 @@ begin
         PropriedadeRural := TPropriedadeRural.CreateObjTPropriedadeRural;
 end;
 
+procedure TFrmCadastroPropriedadeRural.BtAddTalhaoClick(Sender: TObject);
+var
+        IdPropRural, IdTalhao : Integer;
+begin
+  inherited;
+        IdTalhao        := fRetVlrCombox(CbbTalhao,0);
+        IdPropRural     := DbGrid.DataSource.DataSet.FieldByName('pr_idPropriedadeRural').AsInteger;
+        PropriedadeRural.setAdicionaTalhao(IdPropRural,IdTalhao);
+end;
+
 procedure TFrmCadastroPropriedadeRural.BtAdicionarClick(Sender: TObject);
 begin
   inherited;
@@ -136,6 +148,12 @@ begin
         end;
   inherited;
 
+end;
+
+procedure TFrmCadastroPropriedadeRural.BtRemoveTalhaoClick(Sender: TObject);
+begin
+  inherited;
+        PropriedadeRural.setRemoverTalhao;
 end;
 
 procedure TFrmCadastroPropriedadeRural.BtSalvarClick(Sender: TObject);
@@ -195,23 +213,9 @@ end;
 procedure TFrmCadastroPropriedadeRural.DbGridTalhaoDrawColumnCell(
   Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn;
   State: TGridDrawState);
-var
-  lR: TRect;
-  lCheck: integer;
 begin
   inherited;
-  if Assigned(DbGridTalhao.DataSource.DataSet.FindField('tbl_checkbox')) and (Column.Index = 0) then begin
-    if (DbGridTalhao.DataSource.DataSet.FieldByName('tbl_checkbox').Value = 1) then
-      lCheck := DFCS_BUTTONCHECK or DFCS_CHECKED
-    else
-      lCheck := DFCS_BUTTONCHECK;
-    DbGridTalhao.Canvas.FillRect(Rect);
-    lR := Rect;
-    InflateRect(lR, -2, -2);
-    DrawFrameControl(DbGridTalhao.Canvas.Handle, lR, DFC_BUTTON, lCheck);
-  end else
-    DbGridTalhao.DefaultDrawColumnCell(Rect, DataCol, Column, State);
-
+         PropriedadeRural.setDbGridTalhaoDrawColumnCell(Rect,DataCol,Column,State);
 end;
 
 procedure TFrmCadastroPropriedadeRural.DtCampo2Change(Sender: TObject);

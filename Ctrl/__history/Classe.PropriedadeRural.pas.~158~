@@ -413,11 +413,11 @@ begin
            if FieldByName('tbl_checkbox').AsInteger = 1 then
              begin
                 try
-                     DbGridTalhao.DataSource.DataSet.Edit;
-                     DbGridTalhao.DataSource.DataSet.FieldByName('tbl_checkbox').AsInteger := IfThen(DbGridTalhao.DataSource.DataSet.FieldByName('tbl_checkbox').asinteger = 1, 0, 1);
-                     DbGridTalhao.DataSource.DataSet.FieldByName('pr_idPropriedadeRural').AsInteger := 0;
-                     DbGridTalhao.DataSource.DataSet.FieldByName('tbl_status').AsString := 'DISPONIVEL';
-                     DbGridTalhao.DataSource.DataSet.Post;
+                     Edit;
+                     FieldByName('tbl_checkbox').AsInteger := 0;
+                     FieldByName('pr_idPropriedadeRural').AsInteger := 0;
+                     FieldByName('tbl_status').AsString := 'DISPONIVEL';
+                     Post;
                 except
 
                 end;
@@ -425,7 +425,11 @@ begin
            Next;
            end;
         EnableControls;
+        Refresh;
    end;
+        getcomboTalhao;
+        setMontaGridMasterDetalhe;
+        pAtivarDBGrid(DbGridTalhao);
 end;
 
 function TPropriedadeRural.getValidaAreaTotal : boolean;

@@ -4,9 +4,24 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
   PixelsPerInch = 96
   TextHeight = 15
   inherited PnlFundo: TJvPanel
+    inherited PnlTituloJanela: TJvPanel
+      inherited LbTituloJanela: TLabel
+        Height = 32
+      end
+    end
     inherited CrdPnlPrincipal: TCardPanel
       ActiveCard = CrdCampos
       inherited CrdConsulta: TCard
+        inherited PnlPesquisa: TJvPanel
+          inherited LbPesquisa: TLabel
+            Width = 1024
+          end
+        end
+        inherited PnlBtsInsertDelete: TJvPanel
+          inherited BtExcluir: TJvSpeedButton
+            OnClick = BtExcluirClick
+          end
+        end
         inherited PnlDbGrid: TJvPanel
           inherited DbGrid: TJvDBUltimGrid
             Columns = <
@@ -1196,6 +1211,7 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                     ParentFont = False
                     Spacing = 20
                     Transparent = True
+                    OnClick = BtRemoveTalhaoClick
                     ExplicitLeft = 0
                   end
                   object BtAddTalhao: TJvSpeedButton
@@ -1354,6 +1370,7 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                     ParentFont = False
                     Spacing = 20
                     Transparent = True
+                    OnClick = BtAddTalhaoClick
                     ExplicitLeft = 5
                   end
                 end
@@ -1382,8 +1399,8 @@ inherited FrmCadastroPropriedadeRural: TFrmCadastroPropriedadeRural
                     TitleFont.Height = -12
                     TitleFont.Name = 'Segoe UI'
                     TitleFont.Style = []
+                    OnCellClick = DbGridTalhaoCellClick
                     OnDrawColumnCell = DbGridTalhaoDrawColumnCell
-                    OnDblClick = DbGridTalhaoDblClick
                     AlternateRowColor = clHighlight
                     AlternateRowFontColor = clHighlightText
                     SelectColumnsDialogStrings.Caption = 'Select columns'
