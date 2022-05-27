@@ -21,7 +21,6 @@ type
     LbCampo2: TLabel;
     LineCampo2: TJvGradient;
     LineCampo2_1: TJvGradient;
-    CbbCampo2: TJvComboBox;
     PnlCampo3: TJvPanel;
     LbCampo3: TLabel;
     LineCampo3: TJvGradient;
@@ -42,12 +41,11 @@ type
     LineCampo6: TJvGradient;
     LineCampo6_1: TJvGradient;
     EdtCampo6: TMaskEdit;
+    CbbCampo2: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure EdtPesquisaKeyPress(Sender: TObject; var Key: Char);
-    procedure DbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DbGridDblClick(Sender: TObject);
     procedure BtExcluirClick(Sender: TObject);
     procedure BtAdicionarClick(Sender: TObject);
@@ -86,7 +84,7 @@ end;
 
 procedure TFrmCadastroTalhao.BtExcluirClick(Sender: TObject);
 begin
-       if fMsgPadrao(7,3,9,1).RespBt then
+       if fMsgPadrao(7,3,9,1,EmptyStr).RespBt then
         begin
               Talhao.setDeleteTalhao;
         end;
@@ -98,7 +96,7 @@ procedure TFrmCadastroTalhao.BtSalvarClick(Sender: TObject);
 begin
    if Talhao.getSavarTalhao then
       begin
-            fMsgPadrao(3,3,1,2);
+            fMsgPadrao(3,3,1,2,EmptyStr);
             inherited;
             Talhao.setFrmOnShow;
       end;
@@ -109,13 +107,6 @@ procedure TFrmCadastroTalhao.DbGridDblClick(Sender: TObject);
 begin
   inherited;
       Talhao.setAcaoAdicionarEditar('UPDATE');
-end;
-
-procedure TFrmCadastroTalhao.DbGridDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
-begin
-  inherited;
-      DbGrid.Canvas.TextRect(Rect,Rect.Left + 8,Rect.Top + 8,Column.Field.DisplayText);
 end;
 
 procedure TFrmCadastroTalhao.DbGridTitleClick(Column: TColumn);

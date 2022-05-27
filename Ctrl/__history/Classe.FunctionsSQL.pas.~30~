@@ -18,6 +18,7 @@ interface
 
           procedure pQueryExecute(Tp : Integer; SQLresult : String; Tabela : TFDQuery);
           function  fMontaInsUpd(Fields : String; Where : String; Tabela : String; NFields : Integer) : TResultArray;{}//Campos Obrigatorios
+          function  fMontaQryTempExec(SqlCond : string) : TFDQuery;
 Var
             FieldsValues  :   Array[1..100]   OF String;
             FieldsDB      :   Array[1..100]   OF String;
@@ -97,7 +98,7 @@ begin
                    Tabela.Close;
                    exit;
              end;
-            ShowMessage(SQLresult +' -- '+ IntToStr(Tp));
+            //ShowMessage(SQLresult +' -- Operação: '+ IntToStr(Tp));
 
       Try
             With Tabela do
@@ -129,5 +130,9 @@ begin
 
 end;
 
+function  fMontaQryTempExec(SqlCond : string) : TFDQuery;
+begin
+
+end;
 end.
 

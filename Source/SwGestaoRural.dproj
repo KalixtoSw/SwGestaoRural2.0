@@ -162,6 +162,11 @@
         </DCCReference>
         <DCCReference Include="..\Ctrl\Classe.PropriedadeRural.pas"/>
         <DCCReference Include="..\Ctrl\U_FachadaWSSGS1.pas"/>
+        <DCCReference Include="..\View\UFrmCadastroSemente.pas">
+            <Form>FrmCadastroSemente</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Ctrl\Classe.Semente.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

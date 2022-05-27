@@ -9,7 +9,7 @@ uses
   JvGradientHeaderPanel, Vcl.WinXPanels, JvXPCore, JvXPBar, Classe.Sistema.Mensagens,
   Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit,
   JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
-  JvScrollPanel;
+  JvScrollPanel, UFrmCadastroSemente;
 
 type
   TFrmMenuPrincipal = class(TForm)
@@ -71,6 +71,7 @@ type
     LinePnlNotificacao: TJvGradient;
     JvScrollText1: TJvScrollText;
     JvScrollingWindow1: TJvScrollingWindow;
+    JvXPBar1: TJvXPBar;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -86,6 +87,7 @@ type
     procedure PnlIndicadoresAgricolasMouseEnter(Sender: TObject);
     procedure PnlStatusSistema1MouseEnter(Sender: TObject);
     procedure PnlTituloJanelaMouseEnter(Sender: TObject);
+    procedure JvXPBar1Items0Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -140,6 +142,16 @@ begin
       PnlMenuLateral2.Width := 0;
       y := GetFachadaWSSGS.getUltimosValoresSerieVO(1, 1);
       LbCotacaoDolar.Caption := ' R$: '+ y.valores[0].valor.DecimalString;
+end;
+
+procedure TFrmMenuPrincipal.JvXPBar1Items0Click(Sender: TObject);
+begin
+      try
+           Application.CreateForm(TFrmCadastroSemente,FrmCadastroSemente);
+           FrmCadastroSemente.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroSemente);
+      end;
 end;
 
 procedure TFrmMenuPrincipal.PnlIndicadoresAgricolasMouseEnter(Sender: TObject);

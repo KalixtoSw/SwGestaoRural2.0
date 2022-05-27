@@ -160,7 +160,6 @@
       Color = 8279822
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 18
       object BtNotificação: TJvSpeedButton
         Tag = 1
         Left = 1152
@@ -1103,7 +1102,7 @@
         Width = 200
         Height = 696
         Align = alClient
-        ActiveCard = CrdBtParametros
+        ActiveCard = CrdBtManejoAgricola
         BevelOuter = bvNone
         TabOrder = 0
         object CrdBtParametros: TCard
@@ -1376,6 +1375,7 @@
           end
         end
         object CrdBtManejoAgricola: TCard
+          Tag = 2
           Left = 0
           Top = 0
           Width = 200
@@ -1705,6 +1705,47 @@
               Transparent = True
             end
           end
+          object JvXPBar1: TJvXPBar
+            Left = 0
+            Top = 48
+            Width = 200
+            Height = 40
+            Caption = 'PRATELEIRA DE INSUMOS'
+            Collapsed = True
+            Colors.BorderColor = 10780674
+            Colors.CheckedFrameColor = 14934499
+            Colors.FocusedFrameColor = 8279822
+            Colors.BodyColor = -4862336
+            Colors.BodyBorderColor = 8279822
+            Colors.GradientFrom = 10780674
+            Colors.GradientTo = 8279822
+            Colors.SeparatorColor = 8279822
+            Items = <
+              item
+                Caption = 'GEN'#201'TICA DE CULTIVARES'
+                OnClick = JvXPBar1Items0Click
+              end>
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 15000804
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            HeaderFont.Charset = DEFAULT_CHARSET
+            HeaderFont.Color = 37569
+            HeaderFont.Height = -12
+            HeaderFont.Name = 'Segoe UI'
+            HeaderFont.Style = [fsBold]
+            HeaderHeight = 30
+            HeaderRounded = False
+            HotTrackColor = 15000804
+            OwnerDraw = False
+            RollDelay = 10
+            ShowItemFrame = False
+            RoundedItemFrame = 0
+            TopSpace = 0
+            Align = alTop
+            ParentFont = False
+          end
         end
         object CrdBtFerramentas: TCard
           Left = 0
@@ -1909,8 +1950,6 @@
           Color = 4671041
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 6
-          ExplicitTop = 275
           object PnlDolar: TJvPanel
             Left = 0
             Top = 0
@@ -1944,8 +1983,6 @@
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitTop = 15
-              ExplicitHeight = 91
               object ImgDolar: TImage
                 Left = 0
                 Top = 0
@@ -2372,7 +2409,6 @@
             Color = 4671041
             ParentBackground = False
             TabOrder = 1
-            ExplicitLeft = 5
             object LbTituloSoja: TLabel
               Left = 0
               Top = 0
@@ -4402,7 +4438,6 @@
             Color = 4671041
             ParentBackground = False
             TabOrder = 2
-            ExplicitLeft = 5
             object LbTituloMilho: TLabel
               Left = 0
               Top = 0
@@ -4606,7 +4641,6 @@
             Color = 4671041
             ParentBackground = False
             TabOrder = 3
-            ExplicitLeft = 5
             object LbTituloTrigo: TLabel
               Left = 0
               Top = 0
@@ -4866,7 +4900,6 @@
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 200
         object ImgNotificacao: TImage
           Left = 0
           Top = 0

@@ -25,7 +25,11 @@ uses
   UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin},
   Vcl.Dialogs,
   System.SysUtils {FrmLogin},
-  UFrmCadastroPropriedadeRural in '..\View\UFrmCadastroPropriedadeRural.pas' {FrmCadastroPropriedadeRural};
+  UFrmCadastroPropriedadeRural in '..\View\UFrmCadastroPropriedadeRural.pas' {FrmCadastroPropriedadeRural},
+  Classe.PropriedadeRural in '..\Ctrl\Classe.PropriedadeRural.pas',
+  U_FachadaWSSGS1 in '..\Ctrl\U_FachadaWSSGS1.pas',
+  UFrmCadastroSemente in '..\View\UFrmCadastroSemente.pas' {FrmCadastroSemente},
+  Classe.Semente in '..\Ctrl\Classe.Semente.pas';
 
 {$R *.res}
 
@@ -35,6 +39,7 @@ begin
 
   Application.Title := 'Gestão Rural 1.0';
   Application.CreateForm(TDMPrincipal, DMPrincipal);
+  Application.CreateForm(TFrmCadastroSemente, FrmCadastroSemente);
   if (DmPrincipal.conexao.fConectarBancoDados = True) then
   Begin
 
