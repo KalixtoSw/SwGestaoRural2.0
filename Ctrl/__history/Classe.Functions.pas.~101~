@@ -6,7 +6,7 @@ uses
   JvPanel, Vcl.Forms, Vcl.WinXPanels,JvDBUltimGrid, System.MaskUtils,Classe.FunctionsSQL,
   Vcl.StdCtrls, JvCombobox, System.SysUtils, FireDAC.Comp.Client,IdHashMessageDigest,
   Winapi.Windows, Vcl.Controls, Winapi.Messages, Vcl.Mask, Vcl.Dialogs,Math,
-  Generics.Collections, Classe.Sistema.Mensagens;
+  Generics.Collections, Classe.Sistema.Mensagens, Data.DB, JvSpeedButton;
 
   Type
         TBGridPadrao = class(TJvDBUltimGrid);
@@ -26,6 +26,7 @@ uses
   Procedure pMakeRounded(Control: TWinControl);{7}
   procedure pEditSetFocus(Form : TForm ; FTag : Integer);{8}
   procedure pMontaComboBoxTempExec(Combo : TJvComboBox; Select : string; Key : string; TextCombo : string);{9}
+  procedure pCtrlMenu(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean);{10}
 
   function fCheckEmptyText(const EditMask: TEditMask ;const Text:String):Boolean;{1}
   function fTrocaVirgPPto(Valor: string): String;{2}
@@ -40,6 +41,7 @@ uses
   function fGetRandomPassword(Size: Integer; Tipo : Integer = 1): String;{10}
   function fMaiorValor(VlrA : Double; VlrB : Double) : Integer;{11}
   function fAjustaDataNull(VrDt    :   TDate)  :   String;{12}
+  function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;{13}
 
 var
       BtnNew,BtnOld : Integer;
@@ -507,5 +509,86 @@ begin
                     Result    :=  (FormatDateTime('dd/mm/yyyy',VrDt));
                 end;
 end;
+
+
+function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;
+var
+        Qry1,Qry2       : TFDQuery;
+        DsQry1,DsQry2   : TDataSource;
+begin
+
+        try
+             Qry1 := TFDQuery.Create(nil);
+             Qry1.Connection := DMPrincipal.FDConnection;
+             Qry1.Close;
+             Qry1.SQL.Clear;
+             Qry1.SQL.Add(SelectTbDetalhe+IntToStr(IdPropR));
+             Qry1.Open;
+             Qry1.Active := True;
+             Qry1.Refresh;
+
+             DsQry1 := TDataSource.Create(nil);
+             DsQry1.DataSet := Qry1;
+
+        except on E: Exception do
+        end;
+
+         try
+             Qry2 := TFDQuery.Create(nil);
+             Qry2.Connection := DMPrincipal.FDConnection;
+             Qry2.Close;
+             Qry2.SQL.Clear;
+             Qry2.SQL.Add(SelectTbMaster+IntToStr(IdPropR));
+             Qry2.Open;
+             Qry2.Active := True;
+             Qry2.Refresh;
+
+             DsQry2 := TDataSource.Create(nil);
+             DsQry2.DataSet := Qry2;
+
+        except on E: Exception do
+        end;
+
+        try
+                Result := DsQry1;
+
+        finally
+                
+        end;
+end;
+
+
+procedure pCtrlMenu(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean);
+Var
+    I : Integer;
+Begin
+    if Ativar then
+    Begin// percorrer todos os componentes do Form
+        for I := 0 to Frm.ComponentCount - 1 do
+        Begin// Primeira verificação é se o componente é um painel e Tag <> 0 indica painel de menu
+            if (Frm.Components[I] IS TJvPanel) AND ( (Frm.Components[I] as TJvPanel ).Tag <> 0) then
+            Begin
+                if ( (Frm.Components[I] as TJvPanel ).Tag = Bt.Tag ) then// testa se o painel é o amarrado ao botão associado
+                Begin//Mostrar o Painel associado ao botão de ação do mouse Visible True
+                    (Frm.Components[I] as TJvPanel ).Visible := True;
+                    (Frm.Components[I] as TJvPanel ).Left    := bt.Left-(Frm.Components[I] as TJvPanel ).Width - 1;
+                    (Frm.Components[I] as TJvPanel ).Top     := 24;
+                End Else Begin // Esconde os outros menus abertos anteriores
+                    (Frm.Components[I] as TJvPanel ).Visible := False;
+                End;
+            End;
+        End;// Fim Do For
+    End Else Begin     // Fim do metodo ATIVAR
+        for I := 0 to Frm.ComponentCount - 1 do
+        Begin
+            if (Frm.Components[I] IS TJvPanel) AND ( (Frm.Components[I] as TJvPanel ).Tag <> 0) then
+            Begin
+                 (Frm.Components[I] as TJvPanel ).Visible := False;
+            End;
+        End;
+
+    End;
+
+End;
 
 end.

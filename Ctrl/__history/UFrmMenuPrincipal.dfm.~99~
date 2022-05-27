@@ -463,7 +463,6 @@
           0000000000000000000000000000000000000000000000000000000000000000
           000000000000}
         GrayedInactive = False
-        MarkDropDown = False
         OnMouseEnter = BtNotificaçãoMouseEnter
         ExplicitLeft = 1136
       end
@@ -4848,13 +4847,12 @@
       Visible = False
       object LinePnlNotificacao: TJvGradient
         Left = 0
-        Top = 106
+        Top = 48
         Width = 250
         Height = 2
         Align = alTop
         StartColor = 8279822
         EndColor = 8279822
-        ExplicitTop = 48
         ExplicitWidth = 200
       end
       object PnlTituloNotificacoes: TJvPanel
@@ -5185,37 +5183,6 @@
           ExplicitWidth = 135
           ExplicitHeight = 22
         end
-      end
-      object JvScrollText1: TJvScrollText
-        Left = 0
-        Top = 48
-        Width = 250
-        Height = 58
-        Cursor = crHandPoint
-        Alignment = taLeftJustify
-        Items.Strings = (
-          'Novo Talh'#227'o cirado'
-          'Valor Alterado'
-          'Seu novo C'#243'digo gerado...')
-        BackgroundColor = 4671041
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        Align = alTop
-        WordWrap = False
-      end
-      object JvScrollingWindow1: TJvScrollingWindow
-        Left = 0
-        Top = 108
-        Width = 250
-        Flat = True
-        EdgeInner = esNone
-        EdgeOuter = esNone
-        Color = 14067595
-        ParentColor = False
-        TabOrder = 2
       end
     end
   end

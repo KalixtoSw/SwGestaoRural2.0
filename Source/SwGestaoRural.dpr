@@ -26,7 +26,8 @@ uses
   Vcl.Dialogs,
   System.SysUtils {FrmLogin},
   UFrmCadastroPropriedadeRural in '..\View\UFrmCadastroPropriedadeRural.pas' {FrmCadastroPropriedadeRural},
-  Classe.PropriedadeRural in '..\Ctrl\Classe.PropriedadeRural.pas';
+  Classe.PropriedadeRural in '..\Ctrl\Classe.PropriedadeRural.pas',
+  U_FachadaWSSGS1 in '..\Ctrl\U_FachadaWSSGS1.pas';
 
 {$R *.res}
 
