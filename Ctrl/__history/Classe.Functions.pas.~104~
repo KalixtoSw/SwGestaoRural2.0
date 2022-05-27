@@ -571,8 +571,8 @@ Begin
                 if ( (Frm.Components[I] as TJvPanel ).Tag = Bt.Tag ) then// testa se o painel é o amarrado ao botão associado
                 Begin//Mostrar o Painel associado ao botão de ação do mouse Visible True
                     (Frm.Components[I] as TJvPanel ).Visible := True;
-                    (Frm.Components[I] as TJvPanel ).Left    := bt.Left-(Frm.Components[I] as TJvPanel ).Width - 1;
-                    (Frm.Components[I] as TJvPanel ).Top     := 0;
+                    (Frm.Components[I] as TJvPanel ).Left    := bt.Left-(Frm.Components[I] as TJvPanel ).Width+48;
+                    (Frm.Components[I] as TJvPanel ).Top     := 72;
                 End Else Begin // Esconde os outros menus abertos anteriores
                     (Frm.Components[I] as TJvPanel ).Visible := False;
                 End;

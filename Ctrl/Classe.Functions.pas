@@ -27,6 +27,7 @@ uses
   procedure pEditSetFocus(Form : TForm ; FTag : Integer);{8}
   procedure pMontaComboBoxTempExec(Combo : TJvComboBox; Select : string; Key : string; TextCombo : string);{9}
   procedure pCtrlMenu(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean);{10}
+  procedure pCtrlMenuCard(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean);{10}
 
   function fCheckEmptyText(const EditMask: TEditMask ;const Text:String):Boolean;{1}
   function fTrocaVirgPPto(Valor: string): String;{2}
@@ -584,6 +585,39 @@ Begin
             if (Frm.Components[I] IS TJvPanel) AND ( (Frm.Components[I] as TJvPanel ).Tag <> 0) then
             Begin
                  (Frm.Components[I] as TJvPanel ).Visible := False;
+            End;
+        End;
+
+    End;
+
+End;
+
+procedure pCtrlMenuCard(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean);
+Var
+    I : Integer;
+Begin
+    if Ativar then
+    Begin// percorrer todos os componentes do Form
+        for I := 0 to Frm.ComponentCount - 1 do
+        Begin// Primeira verificação é se o componente é um painel e Tag <> 0 indica painel de menu
+            if (Frm.Components[I] IS TCard) AND ( (Frm.Components[I] as TCard ).Tag <> 0) then
+            Begin
+                if ( (Frm.Components[I] as TCard ).Tag = Bt.Tag ) then// testa se o painel é o amarrado ao botão associado
+                Begin//Mostrar o Painel associado ao botão de ação do mouse Visible True
+                    (Frm.Components[I] as TCard ).Visible := True;
+                    (Frm.Components[I] as TCard ).Left    := bt.Left-(Frm.Components[I] as TCard ).Width+48;
+                    //(Frm.Components[I] as TCard ).Top     := 72;
+                End Else Begin // Esconde os outros menus abertos anteriores
+                    (Frm.Components[I] as TCard ).Visible := False;
+                End;
+            End;
+        End;// Fim Do For
+    End Else Begin     // Fim do metodo ATIVAR
+        for I := 0 to Frm.ComponentCount - 1 do
+        Begin
+            if (Frm.Components[I] IS TCard) AND ( (Frm.Components[I] as TCard ).Tag <> 0) then
+            Begin
+                 (Frm.Components[I] as TCard ).Visible := False;
             End;
         End;
 

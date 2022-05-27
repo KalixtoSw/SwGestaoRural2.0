@@ -8,7 +8,8 @@ uses
   JvExtComponent, JvPanel, Classe.Functions, JvExControls, JvSpeedButton,
   JvGradientHeaderPanel, Vcl.WinXPanels, JvXPCore, JvXPBar, Classe.Sistema.Mensagens,
   Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit,
-  JvEmbeddedForms, Vcl.Imaging.jpeg;
+  JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
+  JvScrollPanel, UFrmCadastroSemente;
 
 type
   TFrmMenuPrincipal = class(TForm)
@@ -68,6 +69,9 @@ type
     LbtituloNotificacao: TLabel;
     PnlStatusSistema1: TJvPanel;
     LinePnlNotificacao: TJvGradient;
+    JvScrollText1: TJvScrollText;
+    JvScrollingWindow1: TJvScrollingWindow;
+    JvXPBar1: TJvXPBar;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -83,6 +87,8 @@ type
     procedure PnlIndicadoresAgricolasMouseEnter(Sender: TObject);
     procedure PnlStatusSistema1MouseEnter(Sender: TObject);
     procedure PnlTituloJanelaMouseEnter(Sender: TObject);
+    procedure JvXPBar1Items0Click(Sender: TObject);
+    procedure BtManejoAgricolaMouseEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,6 +114,11 @@ end;
 procedure TFrmMenuPrincipal.BtManejoAgricolaClick(Sender: TObject);
 begin
       pMenuRetratil(CrdBtManejoAgricola,PnlMenuLateral2,BtManejoAgricola.Tag);
+end;
+
+procedure TFrmMenuPrincipal.BtManejoAgricolaMouseEnter(Sender: TObject);
+begin
+        pCtrlMenuCard(Self,TComponent(Sender) AS TJvSpeedButton , True);
 end;
 
 procedure TFrmMenuPrincipal.BtNotificaçãoMouseEnter(Sender: TObject);
@@ -137,6 +148,16 @@ begin
       PnlMenuLateral2.Width := 0;
       y := GetFachadaWSSGS.getUltimosValoresSerieVO(1, 1);
       LbCotacaoDolar.Caption := ' R$: '+ y.valores[0].valor.DecimalString;
+end;
+
+procedure TFrmMenuPrincipal.JvXPBar1Items0Click(Sender: TObject);
+begin
+      try
+           Application.CreateForm(TFrmCadastroSemente,FrmCadastroSemente);
+           FrmCadastroSemente.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroSemente);
+      end;
 end;
 
 procedure TFrmMenuPrincipal.PnlIndicadoresAgricolasMouseEnter(Sender: TObject);

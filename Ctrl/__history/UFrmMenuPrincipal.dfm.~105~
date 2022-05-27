@@ -160,7 +160,6 @@
       Color = 8279822
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 18
       object BtNotificação: TJvSpeedButton
         Tag = 1
         Left = 1152
@@ -463,6 +462,7 @@
           0000000000000000000000000000000000000000000000000000000000000000
           000000000000}
         GrayedInactive = False
+        MarkDropDown = False
         OnMouseEnter = BtNotificaçãoMouseEnter
         ExplicitLeft = 1136
       end
@@ -937,6 +937,7 @@
           000000000000}
         GrayedInactive = False
         Style = bsNew
+        OnMouseEnter = BtManejoAgricolaMouseEnter
         OnClick = BtManejoAgricolaClick
         ExplicitTop = 42
       end
@@ -1102,7 +1103,7 @@
         Width = 200
         Height = 696
         Align = alClient
-        ActiveCard = CrdBtParametros
+        ActiveCard = CrdBtManejoAgricola
         BevelOuter = bvNone
         TabOrder = 0
         object CrdBtParametros: TCard
@@ -1375,6 +1376,7 @@
           end
         end
         object CrdBtManejoAgricola: TCard
+          Tag = 2
           Left = 0
           Top = 0
           Width = 200
@@ -1704,6 +1706,46 @@
               Transparent = True
             end
           end
+          object JvXPBar1: TJvXPBar
+            Left = 0
+            Top = 48
+            Width = 200
+            Height = 60
+            Caption = 'PRATELEIRA DE INSUMOS'
+            Colors.BorderColor = 10780674
+            Colors.CheckedFrameColor = 14934499
+            Colors.FocusedFrameColor = 8279822
+            Colors.BodyColor = -4862336
+            Colors.BodyBorderColor = 8279822
+            Colors.GradientFrom = 10780674
+            Colors.GradientTo = 8279822
+            Colors.SeparatorColor = 8279822
+            Items = <
+              item
+                Caption = 'GEN'#201'TICA DE CULTIVARES'
+                OnClick = JvXPBar1Items0Click
+              end>
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 15000804
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            HeaderFont.Charset = DEFAULT_CHARSET
+            HeaderFont.Color = 37569
+            HeaderFont.Height = -12
+            HeaderFont.Name = 'Segoe UI'
+            HeaderFont.Style = [fsBold]
+            HeaderHeight = 30
+            HeaderRounded = False
+            HotTrackColor = 15000804
+            OwnerDraw = False
+            RollDelay = 10
+            ShowItemFrame = False
+            RoundedItemFrame = 0
+            TopSpace = 0
+            Align = alTop
+            ParentFont = False
+          end
         end
         object CrdBtFerramentas: TCard
           Left = 0
@@ -1908,8 +1950,6 @@
           Color = 4671041
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 6
-          ExplicitTop = 275
           object PnlDolar: TJvPanel
             Left = 0
             Top = 0
@@ -1943,8 +1983,6 @@
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitTop = 15
-              ExplicitHeight = 91
               object ImgDolar: TImage
                 Left = 0
                 Top = 0
@@ -2371,7 +2409,6 @@
             Color = 4671041
             ParentBackground = False
             TabOrder = 1
-            ExplicitLeft = 5
             object LbTituloSoja: TLabel
               Left = 0
               Top = 0
@@ -4401,7 +4438,6 @@
             Color = 4671041
             ParentBackground = False
             TabOrder = 2
-            ExplicitLeft = 5
             object LbTituloMilho: TLabel
               Left = 0
               Top = 0
@@ -4605,7 +4641,6 @@
             Color = 4671041
             ParentBackground = False
             TabOrder = 3
-            ExplicitLeft = 5
             object LbTituloTrigo: TLabel
               Left = 0
               Top = 0
@@ -4835,9 +4870,9 @@
     end
     object PnlViewNotificacoes: TJvPanel
       Tag = 1
-      Left = 1001
-      Top = 72
-      Width = 200
+      Left = 552
+      Top = 89
+      Width = 250
       Height = 696
       Align = alCustom
       BevelOuter = bvNone
@@ -4847,17 +4882,19 @@
       Visible = False
       object LinePnlNotificacao: TJvGradient
         Left = 0
-        Top = 48
-        Width = 200
+        Top = 106
+        Width = 250
         Height = 2
         Align = alTop
         StartColor = 8279822
         EndColor = 8279822
+        ExplicitTop = 48
+        ExplicitWidth = 200
       end
       object PnlTituloNotificacoes: TJvPanel
         Left = 0
         Top = 0
-        Width = 200
+        Width = 250
         Height = 48
         Transparent = True
         Align = alTop
@@ -5166,7 +5203,7 @@
         object LbtituloNotificacao: TLabel
           Left = 48
           Top = 0
-          Width = 152
+          Width = 202
           Height = 48
           Align = alClient
           Alignment = taCenter
@@ -5181,6 +5218,37 @@
           ExplicitWidth = 135
           ExplicitHeight = 22
         end
+      end
+      object JvScrollText1: TJvScrollText
+        Left = 0
+        Top = 48
+        Width = 250
+        Height = 58
+        Cursor = crHandPoint
+        Alignment = taLeftJustify
+        Items.Strings = (
+          'Novo Talh'#227'o cirado'
+          'Valor Alterado'
+          'Seu novo C'#243'digo gerado...')
+        BackgroundColor = 4671041
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        Align = alTop
+        WordWrap = False
+      end
+      object JvScrollingWindow1: TJvScrollingWindow
+        Left = 0
+        Top = 108
+        Width = 250
+        Flat = True
+        EdgeInner = esNone
+        EdgeOuter = esNone
+        Color = 14067595
+        ParentColor = False
+        TabOrder = 2
       end
     end
   end

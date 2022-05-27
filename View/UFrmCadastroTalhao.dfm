@@ -5,10 +5,17 @@ inherited FrmCadastroTalhao: TFrmCadastroTalhao
   PixelsPerInch = 96
   TextHeight = 15
   inherited PnlFundo: TJvPanel
+    inherited PnlTituloJanela: TJvPanel
+      inherited LbTituloJanela: TLabel
+        Height = 32
+      end
+    end
     inherited CrdPnlPrincipal: TCardPanel
-      ActiveCard = CrdCampos
       inherited CrdConsulta: TCard
         inherited PnlPesquisa: TJvPanel
+          inherited LbPesquisa: TLabel
+            Width = 1024
+          end
           inherited EdtPesquisa: TMaskEdit
             OnKeyPress = EdtPesquisaKeyPress
           end

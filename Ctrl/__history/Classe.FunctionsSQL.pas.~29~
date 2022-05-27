@@ -97,7 +97,7 @@ begin
                    Tabela.Close;
                    exit;
              end;
-            //ShowMessage(SQLresult +' -- Numero do Parametro de operação'+ IntToStr(Tp));
+            //ShowMessage(SQLresult +' -- Operação: '+ IntToStr(Tp));
 
       Try
             With Tabela do
