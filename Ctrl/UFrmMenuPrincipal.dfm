@@ -1102,7 +1102,7 @@
         Width = 200
         Height = 696
         Align = alClient
-        ActiveCard = CrdBtManejoAgricola
+        ActiveCard = CrdBtParametros
         BevelOuter = bvNone
         TabOrder = 0
         object CrdBtParametros: TCard
@@ -1709,7 +1709,7 @@
             Left = 0
             Top = 48
             Width = 200
-            Height = 40
+            Height = 32
             Caption = 'PRATELEIRA DE INSUMOS'
             Collapsed = True
             Colors.BorderColor = 10780674
@@ -1724,6 +1724,10 @@
               item
                 Caption = 'GEN'#201'TICA DE CULTIVARES'
                 OnClick = JvXPBar1Items0Click
+              end
+              item
+                Caption = 'CADASTRO DE PRODUTO'
+                OnClick = JvXPBar1Items1Click
               end>
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 15000804
@@ -4866,6 +4870,31 @@
             end
           end
         end
+        object LbMenuPNoticiasRodaPe: TJvScrollText
+          Left = 0
+          Top = 678
+          Width = 950
+          Height = 18
+          Alignment = taLeftJustify
+          Items.Strings = (
+            
+              'Os mercados internacionais est'#227'o apontando queda nas bolsas de C' +
+              'hicago e S'#227'o Paulo para o Milho e a Soja...'
+            '')
+          Active = True
+          Delay = 25
+          ScrollDirection = drFromRight
+          BackgroundColor = 8279822
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          Align = alBottom
+          ParentBackground = False
+          WordWrap = False
+          ExplicitTop = 676
+        end
       end
     end
     object PnlViewNotificacoes: TJvPanel
@@ -4896,9 +4925,10 @@
         Top = 0
         Width = 250
         Height = 48
-        Transparent = True
         Align = alTop
         BevelOuter = bvNone
+        Color = 11758165
+        ParentBackground = False
         TabOrder = 0
         object ImgNotificacao: TImage
           Left = 0
@@ -5230,6 +5260,8 @@
           'Novo Talh'#227'o cirado'
           'Valor Alterado'
           'Seu novo C'#243'digo gerado...')
+        Delay = 5
+        ScrollDirection = drFromTop
         BackgroundColor = 4671041
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -5238,17 +5270,7 @@
         Font.Style = [fsBold]
         Align = alTop
         WordWrap = False
-      end
-      object JvScrollingWindow1: TJvScrollingWindow
-        Left = 0
-        Top = 108
-        Width = 250
-        Flat = True
-        EdgeInner = esNone
-        EdgeOuter = esNone
-        Color = 14067595
-        ParentColor = False
-        TabOrder = 2
+        OnMouseEnter = JvScrollText1MouseEnter
       end
     end
   end

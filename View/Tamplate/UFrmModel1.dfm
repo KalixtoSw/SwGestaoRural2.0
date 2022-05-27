@@ -197,7 +197,7 @@ object FrmModel1: TFrmModel1
             BorderStyle = bsNone
             Color = 12613966
             TabOrder = 0
-            Text = 'Informe o texto para pesquisa'
+            Text = ''
             OnKeyDown = EdtPesquisaKeyDown
           end
           object RbConsBasica: TRadioButton
