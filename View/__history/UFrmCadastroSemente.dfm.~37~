@@ -337,7 +337,7 @@ inherited FrmCadastroSemente: TFrmCadastroSemente
                       ParentFont = False
                       Spacing = 20
                       OnClick = BtAddTecnClick
-                      ExplicitTop = -1
+                      ExplicitTop = 4
                     end
                   end
                   object PnlTecnBtCancelar: TJvPanel
@@ -522,7 +522,7 @@ inherited FrmCadastroSemente: TFrmCadastroSemente
                   ParentBackground = False
                   TabOrder = 1
                   Visible = False
-                  ExplicitTop = 40
+                  ExplicitTop = -79
                   object LbTecDescricao: TLabel
                     Left = 10
                     Top = 15

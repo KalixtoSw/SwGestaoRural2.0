@@ -44,7 +44,6 @@ type
     ObrEdtCampo1: TMaskEdit;
     PnlTecFieldBtsSalvarCancelar: TJvPanel;
     BtTecFieldSalvar: TJvSpeedButton;
-    PnlCtrlFieldTecGenetica: TJvPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);

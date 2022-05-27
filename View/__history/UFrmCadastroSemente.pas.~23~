@@ -43,8 +43,7 @@ type
     LineCampo1_1: TJvGradient;
     ObrEdtCampo1: TMaskEdit;
     PnlTecFieldBtsSalvarCancelar: TJvPanel;
-    BtTecFieldSalvar: TJvSpeedButton;
-    PnlCtrlFieldTecGenetica: TJvPanel;
+    JvSpeedButton1: TJvSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -55,7 +54,7 @@ type
     procedure DbGridDblClick(Sender: TObject);
     procedure EdtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure BtAddTecnClick(Sender: TObject);
-    procedure BtTecFieldSalvarClick(Sender: TObject);
+    procedure JvSpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
     Semente : TSemente;
@@ -143,10 +142,10 @@ begin
         Semente.setFrmOnShow;
 end;
 
-procedure TFrmCadastroSemente.BtTecFieldSalvarClick(Sender: TObject);
+procedure TFrmCadastroSemente.JvSpeedButton1Click(Sender: TObject);
 begin
   inherited;
-        Semente.pSalvarTecGenetica;
+        Semente.pAdicionaTecGenetica;
 end;
 
 end.
