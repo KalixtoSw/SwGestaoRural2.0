@@ -49,12 +49,14 @@ Var
         DbgrdTecGenetica     : TJvDBUltimGrid;
         RadioBasica          : TRadioButton;
         RadioFull            : TRadioButton;
+        AlertView            : TJvDesktopAlert;
         Table                : string;
         IDKey                : string;
         IDKeyVaue            : string;
         IDKeyFilter          : string;
         NCampos              : Integer;
         InsUpd               : string;
+
 
 
 implementation
@@ -70,6 +72,7 @@ begin
         Dbgrd            := FrmCadastroProduto.DbGrid;
         RadioBasica      := FrmCadastroProduto.RbConsBasica;
         RadioFull        := FrmCadastroProduto.RbConsFull;
+        AlertView        := FrmCadastroProduto.DsktpAlertSistema;
         Table            := 'produto';
         IDKey            := ' prd_idproduto = ';
         IDKeyVaue        := 'prd_idproduto';
@@ -99,13 +102,19 @@ begin
 
       if (InsUpd = 'INSERT') then
       begin
+
         setAlert('Registro inserido com sucesso! ');
+        AlertView.MessageText := FAlert;
+        AlertView.Execute;
         Result := fEventoSalvar(InsUpd, Frm, Dbgrd, Table, IDKey, IDKeyVaue, NCampos);
 
       end else if (InsUpd = 'UPDATE') then begin
         setAlert('Registro alterado com sucesso! ');
+        AlertView.MessageText := FAlert;
+        AlertView.Execute;
         VlrKeyUpd := Dbgrd.DataSource.DataSet.FieldByName(IDKeyVaue).AsInteger;
         Result := fEventoSalvar(InsUpd, Frm, Dbgrd, Table, IDKey, IntToStr(VlrKeyUpd), NCampos);
+
       end;
         plimpaDadosInterface(Frm, 1);
         Result := True;
@@ -137,6 +146,8 @@ begin
       fEventoInsUpdDel('DELETE',Frm,Dbgrd,Table,IDKeyVaue,IDKey,(VlrKeyDel));
       pAtivarDBGrid(Dbgrd);
       setAlert('Registro excluído com sucesso! ');
+      AlertView.MessageText := FAlert;
+      AlertView.Execute;
 
 end;
 
