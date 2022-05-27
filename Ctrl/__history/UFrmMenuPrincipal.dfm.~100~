@@ -4848,13 +4848,12 @@
       Visible = False
       object LinePnlNotificacao: TJvGradient
         Left = 0
-        Top = 106
+        Top = 48
         Width = 250
         Height = 2
         Align = alTop
         StartColor = 8279822
         EndColor = 8279822
-        ExplicitTop = 48
         ExplicitWidth = 200
       end
       object PnlTituloNotificacoes: TJvPanel
@@ -5188,10 +5187,8 @@
       end
       object JvScrollText1: TJvScrollText
         Left = 0
-        Top = 48
+        Top = 50
         Width = 250
-        Height = 58
-        Cursor = crHandPoint
         Alignment = taLeftJustify
         Items.Strings = (
           'Novo Talh'#227'o cirado'
@@ -5205,17 +5202,9 @@
         Font.Style = [fsBold]
         Align = alTop
         WordWrap = False
-      end
-      object JvScrollingWindow1: TJvScrollingWindow
-        Left = 0
-        Top = 108
-        Width = 250
-        Flat = True
-        EdgeInner = esNone
-        EdgeOuter = esNone
-        Color = 14067595
-        ParentColor = False
-        TabOrder = 2
+        ExplicitLeft = 40
+        ExplicitTop = 230
+        ExplicitWidth = 200
       end
     end
   end

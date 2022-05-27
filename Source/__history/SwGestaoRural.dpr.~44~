@@ -22,7 +22,11 @@ uses
   Classe.EnvioEmail in '..\Ctrl\Classe.EnvioEmail.pas',
   Classe.StatusUsuario in '..\Ctrl\Classe.StatusUsuario.pas',
   UFrmConfigServidor in '..\View\UFrmConfigServidor.pas' {FrmConfigServidor},
-  UFrmLogin in '..\View\UFrmLogin.pas', Vcl.Dialogs, System.SysUtils {FrmLogin};
+  UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin},
+  Vcl.Dialogs,
+  System.SysUtils {FrmLogin},
+  UFrmCadastroPropriedadeRural in '..\View\UFrmCadastroPropriedadeRural.pas' {FrmCadastroPropriedadeRural},
+  Classe.PropriedadeRural in '..\Ctrl\Classe.PropriedadeRural.pas';
 
 {$R *.res}
 

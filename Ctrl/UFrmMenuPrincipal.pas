@@ -7,7 +7,9 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, JvExExtCtrls,
   JvExtComponent, JvPanel, Classe.Functions, JvExControls, JvSpeedButton,
   JvGradientHeaderPanel, Vcl.WinXPanels, JvXPCore, JvXPBar, Classe.Sistema.Mensagens,
-  Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit;
+  Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit,
+  JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
+  JvScrollPanel;
 
 type
   TFrmMenuPrincipal = class(TForm)
@@ -33,6 +35,42 @@ type
     ImgBtParametros: TImage;
     BarParametros1: TJvXPBar;
     BarParametros2: TJvXPBar;
+    CrdPnlMenuPrincipal: TCardPanel;
+    CrdDashboard: TCard;
+    PnlIndicadoresAgricolas: TJvPanel;
+    PnlDolar: TJvPanel;
+    LbTituloDolar: TLabel;
+    PnlImgDolar: TPanel;
+    ImgDolar: TImage;
+    PnlDolar1: TJvPanel;
+    LbCotacaoDolar: TLabel;
+    PnlSoja: TJvPanel;
+    LbTituloSoja: TLabel;
+    PnlImgSoja: TPanel;
+    ImgSoja: TImage;
+    Pnl2Soja: TJvPanel;
+    LbVlrSoja: TLabel;
+    PnlMilho: TJvPanel;
+    LbTituloMilho: TLabel;
+    PnlImgMilho: TPanel;
+    ImgMilho: TImage;
+    Pnl2Milho: TJvPanel;
+    LbVlrMilho: TLabel;
+    PnlTrigo: TJvPanel;
+    LbTituloTrigo: TLabel;
+    PnlImgTrigo: TPanel;
+    ImgTrigo: TImage;
+    Pnl2Trigo: TJvPanel;
+    LbVlrTrigo: TLabel;
+    BtNotificação: TJvSpeedButton;
+    PnlViewNotificacoes: TJvPanel;
+    PnlTituloNotificacoes: TJvPanel;
+    ImgNotificacao: TImage;
+    LbtituloNotificacao: TLabel;
+    PnlStatusSistema1: TJvPanel;
+    LinePnlNotificacao: TJvGradient;
+    JvScrollText1: TJvScrollText;
+    JvScrollingWindow1: TJvScrollingWindow;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -43,6 +81,11 @@ type
     procedure BarParametros2Items2Click(Sender: TObject);
     procedure BarParametros2Items3Click(Sender: TObject);
     procedure BarParametros2Items1Click(Sender: TObject);
+    procedure BtNotificaçãoMouseEnter(Sender: TObject);
+    procedure CrdDashboardMouseEnter(Sender: TObject);
+    procedure PnlIndicadoresAgricolasMouseEnter(Sender: TObject);
+    procedure PnlStatusSistema1MouseEnter(Sender: TObject);
+    procedure PnlTituloJanelaMouseEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,7 +99,7 @@ implementation
 
 uses
      UFrmModel1, UFrmMensagemSistema, UFrmCadastroUsuario, UFrmPesquisaAuxiliar, UFrmCadastroTalhao,
-  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural;
+  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural, U_FachadaWSSGS1;
 
 {$R *.dfm}
 
@@ -70,9 +113,19 @@ begin
       pMenuRetratil(CrdBtManejoAgricola,PnlMenuLateral2,BtManejoAgricola.Tag);
 end;
 
+procedure TFrmMenuPrincipal.BtNotificaçãoMouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,TComponent(Sender) AS TJvSpeedButton , True);
+end;
+
 procedure TFrmMenuPrincipal.BtParametrosClick(Sender: TObject);
 begin
       pMenuRetratil(CrdBtParametros,PnlMenuLateral2,BtParametros.Tag);
+end;
+
+procedure TFrmMenuPrincipal.CrdDashboardMouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,nil,False);
 end;
 
 procedure TFrmMenuPrincipal.FormResize(Sender: TObject);
@@ -81,8 +134,27 @@ begin
 end;
 
 procedure TFrmMenuPrincipal.FormShow(Sender: TObject);
+var
+      y: WSSerieVO;
 begin
       PnlMenuLateral2.Width := 0;
+      y := GetFachadaWSSGS.getUltimosValoresSerieVO(1, 1);
+      LbCotacaoDolar.Caption := ' R$: '+ y.valores[0].valor.DecimalString;
+end;
+
+procedure TFrmMenuPrincipal.PnlIndicadoresAgricolasMouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,nil,False);
+end;
+
+procedure TFrmMenuPrincipal.PnlStatusSistema1MouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,nil,False);
+end;
+
+procedure TFrmMenuPrincipal.PnlTituloJanelaMouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,nil,False);
 end;
 
 procedure TFrmMenuPrincipal.BarParametros1Items0Click(Sender: TObject);

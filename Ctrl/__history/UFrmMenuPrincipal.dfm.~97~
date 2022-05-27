@@ -463,7 +463,6 @@
           0000000000000000000000000000000000000000000000000000000000000000
           000000000000}
         GrayedInactive = False
-        MarkDropDown = False
         OnMouseEnter = BtNotificaçãoMouseEnter
         ExplicitLeft = 1136
       end
@@ -4836,9 +4835,9 @@
     end
     object PnlViewNotificacoes: TJvPanel
       Tag = 1
-      Left = 552
-      Top = 89
-      Width = 250
+      Left = 1001
+      Top = 72
+      Width = 200
       Height = 696
       Align = alCustom
       BevelOuter = bvNone
@@ -4848,25 +4847,22 @@
       Visible = False
       object LinePnlNotificacao: TJvGradient
         Left = 0
-        Top = 106
-        Width = 250
+        Top = 48
+        Width = 200
         Height = 2
         Align = alTop
         StartColor = 8279822
         EndColor = 8279822
-        ExplicitTop = 48
-        ExplicitWidth = 200
       end
       object PnlTituloNotificacoes: TJvPanel
         Left = 0
         Top = 0
-        Width = 250
+        Width = 200
         Height = 48
         Transparent = True
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 200
         object ImgNotificacao: TImage
           Left = 0
           Top = 0
@@ -5170,7 +5166,7 @@
         object LbtituloNotificacao: TLabel
           Left = 48
           Top = 0
-          Width = 202
+          Width = 152
           Height = 48
           Align = alClient
           Alignment = taCenter
@@ -5185,37 +5181,6 @@
           ExplicitWidth = 135
           ExplicitHeight = 22
         end
-      end
-      object JvScrollText1: TJvScrollText
-        Left = 0
-        Top = 48
-        Width = 250
-        Height = 58
-        Cursor = crHandPoint
-        Alignment = taLeftJustify
-        Items.Strings = (
-          'Novo Talh'#227'o cirado'
-          'Valor Alterado'
-          'Seu novo C'#243'digo gerado...')
-        BackgroundColor = 4671041
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        Align = alTop
-        WordWrap = False
-      end
-      object JvScrollingWindow1: TJvScrollingWindow
-        Left = 0
-        Top = 108
-        Width = 250
-        Flat = True
-        EdgeInner = esNone
-        EdgeOuter = esNone
-        Color = 14067595
-        ParentColor = False
-        TabOrder = 2
       end
     end
   end
