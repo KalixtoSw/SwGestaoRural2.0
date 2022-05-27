@@ -1,4 +1,4 @@
-unit Classe.Semente;
+unit Classe.Semente;//Modulo Genetica de Cultivares
 
 interface
 uses
@@ -7,25 +7,35 @@ uses
   Graphics, Vcl.WinXPanels, System.Math, JvDesktopAlert, Classe.Sistema.Mensagens,
   Vcl.Dialogs, JvCombobox, FireDAC.Comp.Client, Data.DB, System.UITypes,
   Vcl.StdCtrls, Winapi.Windows, Vcl.DBGrids, Vcl.Grids;
+type
+        RetTecGenetica = record
+
+                tcs_descricao,tcs_genetica,tcs_tipo   : string;
+                tcs_ciclofull    : Integer;
+                DsQryTecGenetica : TDataSource;
+        end;
 
 type
         TSemente = Class
 
         private
 
-        Frm             : TForm;
-        Dbgrd           : TJvDBUltimGrid;
-        Table           : string;
-        IDKey           : string;
-        IDKeyVaue       : string;
-        IDKeyFilter     : string;
-        NCampos         : Integer;
-        InsUpd          : string;
-        FAlert          : string;
+        Frm                  : TForm;
+        Dbgrd                : TJvDBUltimGrid;
+        DbgrdTecGenetica     : TJvDBUltimGrid;
+        Table                : string;
+        IDKey                : string;
+        IDKeyVaue            : string;
+        IDKeyFilter          : string;
+        NCampos              : Integer;
+        InsUpd               : string;
+        FAlert               : string;
 
-        FNomeSemente    : string;
+        FNomeSemente         : string;
 
         public
+
+        DsTecGenetica : TDataSource;
 
         constructor CreateObjTSemente;
         destructor  DestroyObjTSemente;
@@ -42,6 +52,11 @@ type
         procedure setDelete;
         function  getSavar: Boolean;
         function  getCancelar: Boolean;
+
+        //functions e procedures adicionais ao projeto
+        function  fMontaGrdTecGenetica(Act : Integer) : RetTecGenetica;
+        procedure pAdicionaTecGenetica;
+        procedure pSalvarTecGenetica;
 End;
 
 implementation
@@ -63,6 +78,8 @@ begin
         IDKeyFilter := 'smt_descricao LIKE ';
         NCampos     := 1;
         InsUpd      := EmptyStr;
+
+        DbgrdTecGenetica := FrmCadastroSemente.DbGrdTecGenetica;
 end;
 
 destructor TSemente.DestroyObjTSemente;
@@ -109,19 +126,82 @@ begin
 
 end;
 
+procedure TSemente.pAdicionaTecGenetica;
+begin
+     FrmCadastroSemente.PnlTecnologiaFields.Visible := True;
+     fMontaGrdTecGenetica(0);
+     FrmCadastroSemente.EdTecDescricao.SetFocus;
+end;
+
+procedure TSemente.pSalvarTecGenetica;
+begin
+     fMontaGrdTecGenetica(1);
+end;
+
+function TSemente.fMontaGrdTecGenetica(Act : Integer) : RetTecGenetica;
+var
+        Vlrsmt_Id : Integer;
+begin
+        Vlrsmt_Id := Dbgrd.DataSource.DataSet.FieldByName('smt_Id').AsInteger;
+        if (Act = 0) or (Act = 2) then
+        begin
+        try
+                DsTecGenetica := fMontaQryTempExec('select * from tecnologia_semente WHERE smt_Id = '+IntToStr(Vlrsmt_Id));
+                DbgrdTecGenetica.DataSource := DsTecGenetica;
+                FrmCadastroSemente.EdTecDescricao.DataSource      := DsTecGenetica;
+                FrmCadastroSemente.EdTecDescricao.DataField       := 'tcs_descricao';
+                FrmCadastroSemente.CbbTecGeneticaTipo.DataSource  := DsTecGenetica;
+                FrmCadastroSemente.CbbTecGeneticaTipo.DataField   := 'tcs_tipo';
+                FrmCadastroSemente.EdtTecGenetica.DataSource      := DsTecGenetica;
+                FrmCadastroSemente.EdtTecGenetica.DataField       := 'tcs_genetica';
+                FrmCadastroSemente.EdtTecGeneticaCiclo.DataSource := DsTecGenetica;
+                FrmCadastroSemente.EdtTecGeneticaCiclo.DataField  := 'tcs_ciclofull';
+
+                Result.tcs_descricao := DsTecGenetica.DataSet.FieldByName('tcs_descricao').AsString;
+                Result.tcs_genetica  := DsTecGenetica.DataSet.FieldByName('tcs_genetica').AsString;
+                Result.tcs_tipo      := DsTecGenetica.DataSet.FieldByName('tcs_tipo').AsString;
+                Result.tcs_ciclofull := DsTecGenetica.DataSet.FieldByName('tcs_ciclofull').AsInteger;
+
+                Result.DsQryTecGenetica := DsTecGenetica;
+
+                if Act = 0 then
+                begin
+                        DsTecGenetica.DataSet.Refresh;
+                        DsTecGenetica.DataSet.Insert;
+                end;
+
+        except on E: Exception do
+        end;
+        end else if Act = 1 then begin
+
+                if DsTecGenetica.DataSet.State in [dsInsert,dsEdit] then
+                begin
+                        DsTecGenetica.DataSet.FieldByName('smt_Id').AsInteger := Vlrsmt_Id;
+                        DsTecGenetica.DataSet.Post;
+                        DsTecGenetica.DataSet.Close;
+                        DsTecGenetica.DataSet.Open;
+                        fMontaGrdTecGenetica(2);
+                end;
+        end;
+
+end;
+
 procedure TSemente.setAcaoAdicionarEditar(ActInsUpd: string);
 begin
         if ActInsUpd = 'INSERT' then
         begin
-            FrmCadastroSemente.PnlTecnologiaBtsSaveCancel.Visible := False;
-            FrmCadastroSemente.PnlTecnologiaFields.Visible := False;
+            FrmCadastroSemente.PnlTecnologiaBtsSaveCancel.Visible       := False;
+            FrmCadastroSemente.PnlTecnologiaFields.Visible              := False;
+            FrmCadastroSemente.PnlCtrlFieldTecGenetica.Visible          := False;
+
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKey, IDKeyVaue, NCampos);
 
         end
         else if ActInsUpd = 'UPDATE' then
         begin
-                FrmCadastroSemente.PnlTecnologiaBtsSaveCancel.Visible := True;
-                FrmCadastroSemente.PnlTecnologiaFields.Visible := True;
+            FrmCadastroSemente.PnlCtrlFieldTecGenetica.Visible          := True;
+            FrmCadastroSemente.PnlTecnologiaBtsSaveCancel.Visible       := True;
+            fMontaGrdTecGenetica(2);
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKeyVaue,IDKey, NCampos);
             pCarregaDadosInterface(Frm);
         end;
@@ -147,6 +227,9 @@ begin
       pCarregarBancoDado(0, Table, IDKey, NCampos);
       Dbgrd.DataSource := DMPrincipal.DsCmdSql_1;
       pAtivarDBGrid(Dbgrd);
+      FrmCadastroSemente.PnlTecnologiaBtsSaveCancel.Visible     := False;
+      FrmCadastroSemente.PnlTecnologiaFields.Visible            := False;
+      FrmCadastroSemente.PnlCtrlFieldTecGenetica.Visible        := False;
 end;
 
 procedure TSemente.setNomeSemente(pNomeSemente: string);

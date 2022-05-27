@@ -147,7 +147,7 @@ begin
         if (Act = 0) or (Act = 2) then
         begin
         try
-                DsTecGenetica := fMontaQryTempExec('select * from tecnologia_semente WHERE smt_Id = '+IntToStr(Vlrsmt_Id)+' ORDER BY DESC smt_Id');
+                DsTecGenetica := fMontaQryTempExec('select * from tecnologia_semente WHERE smt_Id = '+IntToStr(Vlrsmt_Id));
                 DbgrdTecGenetica.DataSource := DsTecGenetica;
                 FrmCadastroSemente.EdTecDescricao.DataSource      := DsTecGenetica;
                 FrmCadastroSemente.EdTecDescricao.DataField       := 'tcs_descricao';
@@ -202,7 +202,7 @@ begin
         begin
 
             FrmCadastroSemente.PnlTecnologiaBtsSaveCancel.Visible       := True;
-            FrmCadastroSemente.PnlCtrlFieldTecGenetica.Height           := 34;
+            FrmCadastroSemente.PnlCtrlFieldTecGenetica.Visible        := False;
             fMontaGrdTecGenetica(2);
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKeyVaue,IDKey, NCampos);
             pCarregaDadosInterface(Frm);
