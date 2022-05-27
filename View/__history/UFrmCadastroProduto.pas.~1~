@@ -1,0 +1,27 @@
+unit UFrmCadastroProduto;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UFrmModel1, Data.DB, JvComponentBase,
+  JvDesktopAlert, JvBaseDlg, Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid,
+  JvDBUltimGrid, Vcl.StdCtrls, Vcl.Mask, Vcl.WinXPanels, JvExControls,
+  JvSpeedButton, Vcl.ExtCtrls, JvExExtCtrls, JvExtComponent, JvPanel;
+
+type
+  TFrmCadastroProduto = class(TFrmModel1)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmCadastroProduto: TFrmCadastroProduto;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -9,7 +9,7 @@ uses
   JvGradientHeaderPanel, Vcl.WinXPanels, JvXPCore, JvXPBar, Classe.Sistema.Mensagens,
   Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit,
   JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
-  JvScrollPanel, UFrmCadastroSemente;
+  JvScrollPanel, UFrmCadastroSemente, JvaScrollText;
 
 type
   TFrmMenuPrincipal = class(TForm)
@@ -70,8 +70,8 @@ type
     PnlStatusSistema1: TJvPanel;
     LinePnlNotificacao: TJvGradient;
     JvScrollText1: TJvScrollText;
-    JvScrollingWindow1: TJvScrollingWindow;
     JvXPBar1: TJvXPBar;
+    LbMenuPNoticiasRodaPe: TJvScrollText;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -88,6 +88,8 @@ type
     procedure PnlStatusSistema1MouseEnter(Sender: TObject);
     procedure PnlTituloJanelaMouseEnter(Sender: TObject);
     procedure JvXPBar1Items0Click(Sender: TObject);
+    procedure JvXPBar1Items1Click(Sender: TObject);
+    procedure JvScrollText1MouseEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,7 +103,7 @@ implementation
 
 uses
      UFrmModel1, UFrmMensagemSistema, UFrmCadastroUsuario, UFrmPesquisaAuxiliar, UFrmCadastroTalhao,
-  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural, U_FachadaWSSGS1;
+  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural, U_FachadaWSSGS1, UFrmCadastroProduto;
 
 {$R *.dfm}
 
@@ -144,6 +146,14 @@ begin
       LbCotacaoDolar.Caption := ' R$: '+ y.valores[0].valor.DecimalString;
 end;
 
+procedure TFrmMenuPrincipal.JvScrollText1MouseEnter(Sender: TObject);
+begin
+        JvScrollText1.Active := True;
+        pdelay(2500);
+        JvScrollText1.Visible := False;
+
+end;
+
 procedure TFrmMenuPrincipal.JvXPBar1Items0Click(Sender: TObject);
 begin
       try
@@ -151,6 +161,16 @@ begin
            FrmCadastroSemente.ShowModal;
       finally
             FreeAndNil(FrmCadastroSemente);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.JvXPBar1Items1Click(Sender: TObject);
+begin
+     try
+           Application.CreateForm(TFrmCadastroProduto,FrmCadastroProduto);
+           FrmCadastroProduto.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroProduto);
       end;
 end;
 

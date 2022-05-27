@@ -29,7 +29,9 @@ uses
   Classe.PropriedadeRural in '..\Ctrl\Classe.PropriedadeRural.pas',
   U_FachadaWSSGS1 in '..\Ctrl\U_FachadaWSSGS1.pas',
   UFrmCadastroSemente in '..\View\UFrmCadastroSemente.pas' {FrmCadastroSemente},
-  Classe.Semente in '..\Ctrl\Classe.Semente.pas';
+  Classe.Semente in '..\Ctrl\Classe.Semente.pas',
+  UFrmCadastroProduto in '..\View\UFrmCadastroProduto.pas' {FrmCadastroProduto},
+  Classe.Produto in '..\Ctrl\Classe.Produto.pas';
 
 {$R *.res}
 
