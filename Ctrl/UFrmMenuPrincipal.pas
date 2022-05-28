@@ -9,7 +9,8 @@ uses
   JvGradientHeaderPanel, Vcl.WinXPanels, JvXPCore, JvXPBar, Classe.Sistema.Mensagens,
   Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit,
   JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
-  JvScrollPanel, UFrmCadastroSemente, JvaScrollText;
+  JvScrollPanel, UFrmCadastroSemente, JvaScrollText, Vcl.Imaging.pngimage,
+  JvComponentBase, JvBalloonHint, JvHint;
 
 type
   TFrmMenuPrincipal = class(TForm)
@@ -72,6 +73,11 @@ type
     JvScrollText1: TJvScrollText;
     JvXPBar1: TJvXPBar;
     LbMenuPNoticiasRodaPe: TJvScrollText;
+    ImgConectado: TImage;
+    ImgDesconectado: TImage;
+    Timer1: TTimer;
+    JvHint1: TJvHint;
+    JvBalloonHint1: TJvBalloonHint;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -90,6 +96,7 @@ type
     procedure JvXPBar1Items0Click(Sender: TObject);
     procedure JvXPBar1Items1Click(Sender: TObject);
     procedure JvScrollText1MouseEnter(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -187,6 +194,19 @@ end;
 procedure TFrmMenuPrincipal.PnlTituloJanelaMouseEnter(Sender: TObject);
 begin
         pCtrlMenu(Self,nil,False);
+end;
+
+procedure TFrmMenuPrincipal.Timer1Timer(Sender: TObject);
+
+begin
+        if IsConnectedToInternet then
+        begin
+             ImgConectado.Visible       := True;
+             ImgDesconectado.Visible    := False;
+        end else begin
+             ImgConectado.Visible       := False;
+             ImgDesconectado.Visible    := True;
+        end;
 end;
 
 procedure TFrmMenuPrincipal.BarParametros1Items0Click(Sender: TObject);

@@ -6,7 +6,8 @@ uses
   JvPanel, Vcl.Forms, Vcl.WinXPanels,JvDBUltimGrid, System.MaskUtils,Classe.FunctionsSQL,
   Vcl.StdCtrls, JvCombobox, System.SysUtils, FireDAC.Comp.Client,IdHashMessageDigest,
   Winapi.Windows, Vcl.Controls, Winapi.Messages, Vcl.Mask, Vcl.Dialogs,Math,
-  Generics.Collections, Classe.Sistema.Mensagens, Data.DB, JvSpeedButton;
+  Generics.Collections, Classe.Sistema.Mensagens, Data.DB, JvSpeedButton,
+   Winapi.WinInet;
 
   Type
         TBGridPadrao = class(TJvDBUltimGrid);
@@ -43,6 +44,7 @@ uses
   function fMaiorValor(VlrA : Double; VlrB : Double) : Integer;{11}
   function fAjustaDataNull(VrDt    :   TDate)  :   String;{12}
   function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;{13}
+  function IsConnectedToInternet: Boolean;{14}
 
 var
       BtnNew,BtnOld : Integer;
@@ -624,5 +626,16 @@ Begin
     End;
 
 End;
+
+function IsConnectedToInternet: Boolean;
+var
+  dwConnectionTypes: DWORD;
+begin
+        dwConnectionTypes :=
+        INTERNET_CONNECTION_MODEM +
+        INTERNET_CONNECTION_LAN +
+        INTERNET_CONNECTION_PROXY;
+        Result := InternetGetConnectedState(@dwConnectionTypes, 0);
+end;
 
 end.
