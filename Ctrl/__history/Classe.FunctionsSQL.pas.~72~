@@ -18,7 +18,7 @@ interface
 
           procedure pQueryExecute(Tp : Integer; SQLresult : String; Tabela : TFDQuery);
           function  fMontaInsUpd(Fields : String; Where : String; Tabela : String; NFields : Integer) : TResultArray;{}//Campos Obrigatorios
-          function  fMontaQryTempExec(SqlCond : string) : TDataSource;
+          function  fMontaQryTempExec(SqlCond : string) : TDataSet;
           procedure pDestroyQryTempExec(DsQry :TDataSource);
           function  fMontaQryTempExecDetail(SqlCond : string; KeyReslt : string) : Integer;
 Var
@@ -135,12 +135,14 @@ begin
 
 end;
 
-function  fMontaQryTempExec(SqlCond : string) : TDataSource;
+function  fMontaQryTempExec(SqlCond : string) : TDataSet;
 Var
-        Qry : TFDQuery;
+        Qry     : TFDQuery;
+        DsQry   : TDataSet;
 begin
          try
-             Qry := TFDQuery.Create(nil);
+             Qry        := TFDQuery.Create(nil);
+             DsQry      := TDataSet.Create(nil);
              Qry.Connection := DMPrincipal.FDConnection;
              Qry.Close;
              Qry.SQL.Clear;
@@ -149,8 +151,7 @@ begin
              Qry.Active := True;
              Qry.Refresh;
 
-             Result := TDataSource.Create(nil);
-             Result.DataSet := Qry;
+             Result.DataSource.DataSet := Qry.DataSource;
 
         except on E: Exception do
         end;
@@ -160,25 +161,20 @@ Var
         Qry : TFDQuery;
         VlrI : Integer;
 begin
-        VlrI := 0;
          try
              Qry := TFDQuery.Create(nil);
              Qry.Connection := DMPrincipal.FDConnection;
              Qry.Close;
              Qry.SQL.Clear;
-             ShowMessage(SqlCond);
              Qry.SQL.Add(SqlCond);
              Qry.Open;
-             Qry.Refresh;
-             Qry.First;
-
-             VlrI := Qry.FieldByName(KeyReslt).AsInteger;
+             Result := Qry.FieldByName(KeyReslt).AsInteger;
         except
 
 
         end;
 
-        Result := VlrI;
+
 
 end;
 

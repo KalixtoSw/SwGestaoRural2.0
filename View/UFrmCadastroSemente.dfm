@@ -11,6 +11,7 @@ inherited FrmCadastroSemente: TFrmCadastroSemente
       end
     end
     inherited CrdPnlPrincipal: TCardPanel
+      ActiveCard = CrdCampos
       inherited CrdConsulta: TCard
         inherited PnlPesquisa: TJvPanel
           inherited LbPesquisa: TLabel
@@ -101,8 +102,8 @@ inherited FrmCadastroSemente: TFrmCadastroSemente
                 TitleFont.Height = -12
                 TitleFont.Name = 'Segoe UI'
                 TitleFont.Style = [fsBold]
+                OnCellClick = DbGrdTecGeneticaCellClick
                 OnDrawColumnCell = DbGridDrawColumnCell
-                OnDblClick = DbGridDblClick
                 AutoAppend = False
                 ClearSelection = False
                 AlternateRowColor = 8279822
