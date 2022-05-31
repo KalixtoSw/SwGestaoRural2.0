@@ -1,7 +1,6 @@
 ﻿object FrmMenuPrincipal: TFrmMenuPrincipal
   Left = 0
   Top = 0
-  CustomHint = BalloonHint1
   Align = alClient
   AlphaBlend = True
   AlphaBlendValue = 250
@@ -26,7 +25,6 @@
     Top = 8
     Width = 1200
     Height = 768
-    CustomHint = BalloonHint1
     BevelOuter = bvNone
     Color = clWhite
     Font.Charset = ANSI_CHARSET
@@ -43,7 +41,6 @@
       Width = 1200
       Height = 24
       Cursor = crHandPoint
-      CustomHint = BalloonHint1
       OnMouseEnter = PnlTituloJanelaMouseEnter
       Align = alTop
       BevelOuter = bvNone
@@ -55,7 +52,6 @@
         Top = 0
         Width = 24
         Height = 24
-        CustomHint = BalloonHint1
         Align = alRight
         BevelOuter = bvNone
         Color = 14067595
@@ -67,7 +63,6 @@
           Width = 24
           Height = 24
           Cursor = crHandPoint
-          CustomHint = BalloonHint1
           Align = alClient
           Flat = True
           Glyph.Data = {
@@ -160,7 +155,6 @@
       Top = 24
       Width = 1200
       Height = 48
-      CustomHint = BalloonHint1
       Align = alTop
       BevelOuter = bvNone
       Color = 8279822
@@ -173,7 +167,6 @@
         Width = 48
         Height = 48
         Cursor = crHandPoint
-        CustomHint = BalloonHint1
         Align = alRight
         Flat = True
         Glyph.Data = {
@@ -478,7 +471,6 @@
         Top = 0
         Width = 1152
         Height = 48
-        CustomHint = BalloonHint1
         Transparent = True
         OnMouseEnter = PnlStatusSistema1MouseEnter
         Align = alClient
@@ -491,7 +483,6 @@
       Top = 72
       Width = 50
       Height = 696
-      CustomHint = BalloonHint1
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 2
@@ -503,7 +494,6 @@
         Height = 48
         Cursor = crHandPoint
         Hint = 'FERRAMENTAS'
-        CustomHint = BalloonHint1
         Align = alTop
         Flat = True
         Glyph.Data = {
@@ -651,7 +641,6 @@
         Height = 48
         Cursor = crHandPoint
         Hint = 'MANEJO AGR'#205'COLA'
-        CustomHint = BalloonHint1
         Align = alTop
         Flat = True
         Glyph.Data = {
@@ -959,7 +948,6 @@
         Height = 48
         Cursor = crHandPoint
         Hint = 'PARAMETROS DO SISTEMA'
-        CustomHint = BalloonHint1
         Align = alTop
         Flat = True
         Glyph.Data = {
@@ -1105,7 +1093,6 @@
         Width = 50
         Height = 50
         Hint = 'Conectado a Internet'
-        CustomHint = BalloonHint1
         Align = alBottom
         Center = True
         ParentShowHint = False
@@ -1172,7 +1159,6 @@
           C042C7BF688389DE83DF7BC40000000049454E44AE426082}
         Proportional = True
         ShowHint = True
-        Visible = False
         ExplicitTop = 591
       end
       object ImgDesconectado: TImage
@@ -1181,7 +1167,6 @@
         Width = 50
         Height = 50
         Hint = 'Sem conex'#227'o com a Internet'
-        CustomHint = BalloonHint1
         Align = alBottom
         Center = True
         ParentShowHint = False
@@ -1243,7 +1228,6 @@
       Top = 72
       Width = 200
       Height = 696
-      CustomHint = BalloonHint1
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 3
@@ -1252,7 +1236,6 @@
         Top = 0
         Width = 200
         Height = 696
-        CustomHint = BalloonHint1
         Align = alClient
         ActiveCard = CrdBtParametros
         BevelOuter = bvNone
@@ -1262,7 +1245,6 @@
           Top = 0
           Width = 200
           Height = 696
-          CustomHint = BalloonHint1
           Caption = 'CrdBtParametros'
           CardIndex = 0
           Color = 4671041
@@ -1273,7 +1255,6 @@
             Top = 0
             Width = 200
             Height = 48
-            CustomHint = BalloonHint1
             GradientStartColor = 8279822
             GradientEndColor = 14067595
             GradientStyle = grHorizontal
@@ -1292,7 +1273,6 @@
               Top = 0
               Width = 48
               Height = 48
-              CustomHint = BalloonHint1
               Align = alCustom
               Picture.Data = {
                 07544269746D617042100000424D421000000000000042000000280000002000
@@ -1435,7 +1415,6 @@
             Top = 48
             Width = 200
             Height = 100
-            CustomHint = BalloonHint1
             Caption = 'PAR'#194'METROS DO SISTEMA'
             Colors.BorderColor = 10780674
             Colors.CheckedFrameColor = 14934499
@@ -1482,7 +1461,6 @@
             Top = 148
             Width = 200
             Height = 32
-            CustomHint = BalloonHint1
             Caption = 'PAR'#194'METROS RURAIS'
             Collapsed = True
             Colors.BorderColor = 10780674
@@ -1537,7 +1515,6 @@
           Top = 0
           Width = 200
           Height = 696
-          CustomHint = BalloonHint1
           Caption = 'CrdBtManejoAgricola'
           CardIndex = 1
           Color = 4671041
@@ -1548,7 +1525,6 @@
             Top = 0
             Width = 200
             Height = 48
-            CustomHint = BalloonHint1
             GradientStartColor = 8279822
             GradientEndColor = 14067595
             GradientStyle = grHorizontal
@@ -1567,7 +1543,6 @@
               Top = 0
               Width = 48
               Height = 48
-              CustomHint = BalloonHint1
               Align = alCustom
               Picture.Data = {
                 07544269746D617042240000424D422400000000000042000000280000003000
@@ -1870,7 +1845,6 @@
             Top = 48
             Width = 200
             Height = 32
-            CustomHint = BalloonHint1
             Caption = 'PRATELEIRA DE INSUMOS'
             Collapsed = True
             Colors.BorderColor = 10780674
@@ -1917,7 +1891,6 @@
           Top = 0
           Width = 200
           Height = 696
-          CustomHint = BalloonHint1
           Caption = 'CrdBtFerramentas'
           CardIndex = 2
           Color = 4671041
@@ -1928,7 +1901,6 @@
             Top = 0
             Width = 200
             Height = 48
-            CustomHint = BalloonHint1
             GradientStartColor = 8279822
             GradientEndColor = 14067595
             GradientStyle = grHorizontal
@@ -1947,7 +1919,6 @@
               Top = 0
               Width = 48
               Height = 48
-              CustomHint = BalloonHint1
               Align = alCustom
               Picture.Data = {
                 07544269746D617042100000424D421000000000000042000000280000002000
@@ -2093,7 +2064,6 @@
       Top = 72
       Width = 950
       Height = 696
-      CustomHint = BalloonHint1
       Align = alClient
       ActiveCard = CrdDashboard
       BevelOuter = bvNone
@@ -2104,7 +2074,6 @@
         Top = 0
         Width = 950
         Height = 696
-        CustomHint = BalloonHint1
         Caption = 'CrdDashboard'
         CardIndex = 0
         TabOrder = 0
@@ -2114,7 +2083,6 @@
           Top = 0
           Width = 950
           Height = 106
-          CustomHint = BalloonHint1
           OnMouseEnter = PnlIndicadoresAgricolasMouseEnter
           Align = alTop
           BevelOuter = bvNone
@@ -2126,7 +2094,6 @@
             Top = 0
             Width = 200
             Height = 106
-            CustomHint = BalloonHint1
             Align = alLeft
             BevelOuter = bvNone
             Color = 4671041
@@ -2137,7 +2104,6 @@
               Top = 0
               Width = 200
               Height = 17
-              CustomHint = BalloonHint1
               Align = alTop
               Caption = 'COTA'#199#195'O DO DOLAR'
               Font.Charset = ANSI_CHARSET
@@ -2153,7 +2119,6 @@
               Top = 17
               Width = 96
               Height = 89
-              CustomHint = BalloonHint1
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
@@ -2162,7 +2127,6 @@
                 Top = 0
                 Width = 96
                 Height = 89
-                CustomHint = BalloonHint1
                 Align = alClient
                 Center = True
                 Picture.Data = {
@@ -2552,7 +2516,6 @@
               Top = 17
               Width = 104
               Height = 89
-              CustomHint = BalloonHint1
               Transparent = True
               Align = alClient
               BevelOuter = bvNone
@@ -2562,7 +2525,6 @@
                 Top = 6
                 Width = 104
                 Height = 83
-                CustomHint = BalloonHint1
                 Align = alBottom
                 Alignment = taCenter
                 AutoSize = False
@@ -2581,7 +2543,6 @@
             Top = 0
             Width = 200
             Height = 106
-            CustomHint = BalloonHint1
             Align = alLeft
             BevelOuter = bvNone
             Color = 4671041
@@ -2592,7 +2553,6 @@
               Top = 0
               Width = 200
               Height = 17
-              CustomHint = BalloonHint1
               Align = alTop
               Caption = 'MERCADO DA SOJA'
               Font.Charset = ANSI_CHARSET
@@ -2608,7 +2568,6 @@
               Top = 17
               Width = 96
               Height = 89
-              CustomHint = BalloonHint1
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
@@ -2617,7 +2576,6 @@
                 Top = 0
                 Width = 96
                 Height = 89
-                CustomHint = BalloonHint1
                 Align = alClient
                 Center = True
                 Picture.Data = {
@@ -4586,7 +4544,6 @@
               Top = 17
               Width = 104
               Height = 89
-              CustomHint = BalloonHint1
               Transparent = True
               Align = alClient
               BevelOuter = bvNone
@@ -4596,7 +4553,6 @@
                 Top = 6
                 Width = 104
                 Height = 83
-                CustomHint = BalloonHint1
                 Align = alBottom
                 Alignment = taCenter
                 AutoSize = False
@@ -4616,7 +4572,6 @@
             Top = 0
             Width = 200
             Height = 106
-            CustomHint = BalloonHint1
             Align = alLeft
             BevelOuter = bvNone
             Color = 4671041
@@ -4627,7 +4582,6 @@
               Top = 0
               Width = 200
               Height = 17
-              CustomHint = BalloonHint1
               Align = alTop
               Caption = 'MERCADO DO MILHO'
               Font.Charset = ANSI_CHARSET
@@ -4643,7 +4597,6 @@
               Top = 17
               Width = 96
               Height = 89
-              CustomHint = BalloonHint1
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
@@ -4652,7 +4605,6 @@
                 Top = 0
                 Width = 96
                 Height = 89
-                CustomHint = BalloonHint1
                 Align = alClient
                 Center = True
                 Picture.Data = {
@@ -4795,7 +4747,6 @@
               Top = 17
               Width = 104
               Height = 89
-              CustomHint = BalloonHint1
               Transparent = True
               Align = alClient
               BevelOuter = bvNone
@@ -4805,7 +4756,6 @@
                 Top = 6
                 Width = 104
                 Height = 83
-                CustomHint = BalloonHint1
                 Align = alBottom
                 Alignment = taCenter
                 AutoSize = False
@@ -4825,7 +4775,6 @@
             Top = 0
             Width = 200
             Height = 106
-            CustomHint = BalloonHint1
             Align = alLeft
             BevelOuter = bvNone
             Color = 4671041
@@ -4836,7 +4785,6 @@
               Top = 0
               Width = 200
               Height = 17
-              CustomHint = BalloonHint1
               Align = alTop
               Caption = 'MERCADO DO MILHO'
               Font.Charset = ANSI_CHARSET
@@ -4852,7 +4800,6 @@
               Top = 17
               Width = 96
               Height = 89
-              CustomHint = BalloonHint1
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
@@ -4861,7 +4808,6 @@
                 Top = 0
                 Width = 96
                 Height = 89
-                CustomHint = BalloonHint1
                 Align = alClient
                 Center = True
                 Picture.Data = {
@@ -5035,7 +4981,6 @@
               Top = 17
               Width = 104
               Height = 89
-              CustomHint = BalloonHint1
               Transparent = True
               Align = alClient
               BevelOuter = bvNone
@@ -5045,7 +4990,6 @@
                 Top = 6
                 Width = 104
                 Height = 83
-                CustomHint = BalloonHint1
                 Align = alBottom
                 Alignment = taCenter
                 AutoSize = False
@@ -5066,7 +5010,6 @@
           Top = 678
           Width = 950
           Height = 18
-          CustomHint = BalloonHint1
           Alignment = taLeftJustify
           Items.Strings = (
             
@@ -5094,7 +5037,6 @@
       Top = 89
       Width = 250
       Height = 696
-      CustomHint = BalloonHint1
       Align = alCustom
       BevelOuter = bvNone
       Color = 4671041
@@ -5106,7 +5048,6 @@
         Top = 106
         Width = 250
         Height = 2
-        CustomHint = BalloonHint1
         Align = alTop
         StartColor = 8279822
         EndColor = 8279822
@@ -5118,7 +5059,6 @@
         Top = 0
         Width = 250
         Height = 48
-        CustomHint = BalloonHint1
         Align = alTop
         BevelOuter = bvNone
         Color = 11758165
@@ -5129,7 +5069,6 @@
           Top = 0
           Width = 48
           Height = 48
-          CustomHint = BalloonHint1
           Align = alLeft
           Picture.Data = {
             07544269746D617042240000424D422400000000000042000000280000003000
@@ -5430,7 +5369,6 @@
           Top = 0
           Width = 202
           Height = 48
-          CustomHint = BalloonHint1
           Align = alClient
           Alignment = taCenter
           Caption = 'NOTIFICA'#199#213'ES'
@@ -5451,7 +5389,6 @@
         Width = 250
         Height = 58
         Cursor = crHandPoint
-        CustomHint = BalloonHint1
         Alignment = taLeftJustify
         Items.Strings = (
           'Novo Talh'#227'o cirado'
@@ -5477,9 +5414,17 @@
     Left = 49
     Top = 632
   end
-  object BalloonHint1: TBalloonHint
-    Delay = 2000
-    Left = 977
-    Top = 330
+  object JvHint1: TJvHint
+    Left = 972
+    Top = 410
+  end
+  object JvBalloonHint1: TJvBalloonHint
+    CustomAnimationTime = 2000
+    DefaultBalloonPosition = bpRightUp
+    DefaultIcon = ikNone
+    Options = [boUseDefaultHeader, boShowCloseBtn, boCustomAnimation]
+    UseBalloonAsApplicationHint = True
+    Left = 972
+    Top = 465
   end
 end

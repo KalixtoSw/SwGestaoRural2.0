@@ -5,7 +5,7 @@ interface
 uses
   FireDAC.Comp.Client, FireDAC.Stan.Intf, System.SysUtils, System.IniFiles,
   Vcl.Forms, Winapi.Messages, Vcl.Dialogs, Vcl.Controls, Classe.StatusUsuario,
-  Classe.Functions, Classe.Conexao;
+  Classe.Functions;
 
 type
   TConexao = class
@@ -46,7 +46,8 @@ type
   end;
 
 implementation
-
+uses
+      Classe.Conexao;
 
 { TConexao }
 
@@ -71,7 +72,7 @@ begin
     Sql := Sql + 'SELECT * FROM Usuario WHERE ';
     Sql := Sql + 'user_usuario = ' + QuotedStr(usuario) + ' AND user_senha = ' + QuotedStr(senha);
 
-    if fn_ConectarBancoDados then
+    if fConectarBancoDados then
     begin
       DMPrincipal.QrUsuario.Active := False;
       DMPrincipal.QrUsuario.SQL.Clear;
@@ -180,16 +181,16 @@ begin
   else
   begin
     try
-      FServidor := Ini.ReadString('Configuracao', 'Servidor', '');
-      FBase := Ini.ReadString('Configuracao', 'Base', '');
-      FPorta := Ini.ReadString('Configuracao', 'Porta', '');
-      FLogin := Ini.ReadString('Acesso', 'Login', '');
+      FServidor   := Ini.ReadString('Configuracao', 'Servidor', '');
+      FBase       := Ini.ReadString('Configuracao', 'Base', '');
+      FPorta      := Ini.ReadString('Configuracao', 'Porta', '');
+      FLogin      := Ini.ReadString('Acesso', 'Login', '');
 
-      FSenha := Ini.ReadString('Acesso', 'Senha', '');
-      FSenha := fCriptografiaKey(FSenha, 'Ma81');
+      FSenha      := Ini.ReadString('Acesso', 'Senha', '');
+      FSenha      := fCriptografiaKey(FSenha, 'Ma81');
 
     finally
-      Result := True;
+      Result      := True;
       Ini.Free;
     end;
 
