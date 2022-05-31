@@ -12,7 +12,6 @@ object DMPrincipal: TDMPrincipal
     Top = 10
   end
   object QrUsuario: TFDQuery
-    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'USE gr_desenv;'
@@ -93,7 +92,6 @@ object DMPrincipal: TDMPrincipal
     Top = 5
   end
   object TbUsuario: TFDTable
-    Active = True
     IndexFieldNames = 'user_idUsuario'
     Connection = FDConnection
     UpdateOptions.UpdateTableName = 'Usuario'
@@ -217,5 +215,84 @@ object DMPrincipal: TDMPrincipal
     LoginPrompt = False
     Left = 50
     Top = 60
+  end
+  object QryProduto: TFDQuery
+    ActiveStoredUsage = []
+    AutoCalcFields = False
+    ObjectView = False
+    IndexesActive = False
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateMode]
+    SQL.Strings = (
+      'SELECT'
+      '  prd_idproduto,'
+      '  prd_nome,'
+      '  prd_fabricante,'
+      '  prd_dtcriacao,'
+      '  prd_tipo,'
+      '  tcs_id,'
+      '  smt_Id,'
+      '  prd_status'
+      'FROM produto;')
+    Left = 135
+    Top = 255
+  end
+  object DsQryProduto: TDataSource
+    DataSet = QryProduto
+    Left = 130
+    Top = 305
+  end
+  object QryMovimentacao: TFDQuery
+    ActiveStoredUsage = []
+    AutoCalcFields = False
+    ObjectView = False
+    IndexesActive = False
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateMode]
+    SQL.Strings = (
+      'SELECT'
+      '  mov_id,'
+      '  mov_tipo,'
+      '  mov_datamov,'
+      '  mov_responsavel,'
+      '  mov_obs,'
+      '  mov_descricao'
+      'FROM movimentacao;')
+    Left = 225
+    Top = 255
+  end
+  object DsQryMovimentacao: TDataSource
+    DataSet = QryMovimentacao
+    Left = 225
+    Top = 305
+  end
+  object QryMovProd: TFDQuery
+    ActiveStoredUsage = []
+    AutoCalcFields = False
+    ObjectView = False
+    IndexesActive = False
+    IndexFieldNames = 'mov_id'
+    MasterSource = DsQryMovimentacao
+    MasterFields = 'mov_id'
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateMode]
+    SQL.Strings = (
+      'SELECT'
+      '  mp_id,'
+      '  prd_idproduto,'
+      '  mov_id,'
+      '  mp_qtdUnit,'
+      '  mp_qtdTotal,'
+      '  mp_validade,'
+      '  mp_precoCompra,'
+      '  mp_precoTotal'
+      'FROM movimentacao_produto;')
+    Left = 320
+    Top = 255
+  end
+  object DsQryMovProd: TDataSource
+    DataSet = QryMovProd
+    Left = 320
+    Top = 305
   end
 end

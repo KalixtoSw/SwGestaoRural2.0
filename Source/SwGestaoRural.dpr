@@ -31,7 +31,9 @@ uses
   UFrmCadastroSemente in '..\View\UFrmCadastroSemente.pas' {FrmCadastroSemente},
   Classe.Semente in '..\Ctrl\Classe.Semente.pas',
   UFrmCadastroProduto in '..\View\UFrmCadastroProduto.pas' {FrmCadastroProduto},
-  Classe.Produto in '..\Ctrl\Classe.Produto.pas';
+  Classe.Produto in '..\Ctrl\Classe.Produto.pas',
+  UFrmModuloControleEstoque in '..\View\UFrmModuloControleEstoque.pas' {FrmModuloControleEstoque},
+  Classe.Comum.ControleEstoque in '..\Ctrl\Classe.Comum.ControleEstoque.pas';
 
 {$R *.res}
 

@@ -1,67 +1,36 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Usuario.pas',0,1,177,33,194,0,0,,
-File_1=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Talhao.pas',0,1,142,39,159,0,0,,
-File_2=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Safra.pas',0,1,127,39,144,0,0,,
-File_3=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas',0,1,234,35,254,0,0,,{1
-File_4=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmConfigServidor.pas',0,1,85,45,110,0,0,,
-File_5=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Sistema.Mensagens.pas',0,1,22,86,48,0,0,,
-File_6=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.conexaoEfetiva.pas',0,1,160,42,181,0,0,,
-File_7=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas',0,1,226,1,1,0,0,,
-File_8=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroUsuario.pas',0,1,1,1,1,0,0,,
-File_9=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroTalhao.pas',0,1,19,102,27,0,0,,
+File_0=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas',0,1,87,19,90,0,0,,
+File_1=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas',0,1,95,25,113,0,0,,
+File_2=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas',0,1,149,1,176,0,0,,
+File_3=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas',0,1,228,26,260,0,0,,
+File_4=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas',0,1,160,1,263,0,0,{{138,61},{159,3},{''}}{{166,29},{177,3},{''}}{{179,54},{182,3},{''}}{{184,32},{189,3},{''}}{{191,54},{194,3},{''}}{{196,48},{199,3},{''}}{{201,56},{226,3},{''}}{{228,48},{231,3},{''}}{{233,53},{245,3},{''}}{{247,41},{253,3},{''}}{{254,67},{261,3},{''}}{{263,28},{269,3},{''}}{{271,30},{277,3},{''}},
+File_5=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas',0,1,13,64,686,0,0,,
+File_6=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas',0,1,133,28,152,0,0,,
+File_7=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Usuario.pas',0,1,177,33,194,0,0,,
+File_8=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Talhao.pas',0,1,142,39,159,0,0,,
+File_9=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Safra.pas',0,1,127,39,144,0,0,,
+File_10=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas',0,1,234,35,254,0,0,,{1
+File_11=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmConfigServidor.pas',0,1,85,45,110,0,0,,
+File_12=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Sistema.Mensagens.pas',0,1,22,86,48,0,0,,
+File_13=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.conexaoEfetiva.pas',0,1,160,42,181,0,0,,
 
 [Modules]
-Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas
-Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas
-Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
-Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas
-Module4=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
-Module5=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas
-Module6=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProduto.pas
-Module7=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas
-Module8=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas
-Count=9
+Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
+Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProduto.pas
+Count=2
 EditWindowCount=1
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas]
-ModuleType=TSourceModule
-
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas]
-ModuleType=TSourceModule
-
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas]
-ModuleType=TSourceModule
-
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas]
-ModuleType=TSourceModule
-
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas]
-ModuleType=TSourceModule
-
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProduto.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas]
-ModuleType=TSourceModule
-
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas]
-ModuleType=TSourceModule
-
 [EditWindow0]
-ViewCount=9
-CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas
+ViewCount=2
+CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
 View0=0
 View1=1
-View2=2
-View3=3
-View4=4
-View5=5
-View6=6
-View7=7
-View8=8
 PercentageSizes=1
 Create=1
 Visible=1
@@ -93,19 +62,8 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 
 [View0]
 CustomEditViewType=TEditView
-Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas
-CursorX=1
-CursorY=176
-TopLine=149
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=Borland.FormDesignerView
-
-[View1]
-CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProduto.pas
-CursorX=13
+CursorX=26
 CursorY=140
 TopLine=127
 LeftCol=1
@@ -113,76 +71,10 @@ Elisions=
 Bookmarks=
 EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProduto.pas
 
-[View2]
-CustomEditViewType=TEditView
-Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas
-CursorX=26
-CursorY=260
-TopLine=228
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas
-
-[View3]
-CustomEditViewType=TEditView
-Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas
-CursorX=1
-CursorY=263
-TopLine=160
-LeftCol=1
-Elisions={{138,61},{159,3},{''}}{{166,29},{177,3},{''}}{{179,54},{182,3},{''}}{{184,32},{189,3},{''}}{{191,54},{194,3},{''}}{{196,48},{199,3},{''}}{{201,56},{226,3},{''}}{{228,48},{231,3},{''}}{{233,53},{245,3},{''}}{{247,41},{253,3},{''}}{{254,67},{261,3},{''}}{{263,28},{269,3},{''}}{{271,30},{277,3},{''}}
-Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas
-
-[View4]
-CustomEditViewType=TEditView
-Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas
-CursorX=26
-CursorY=77
-TopLine=74
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas
-
-[View5]
-CustomEditViewType=TEditView
-Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas
-CursorX=20
-CursorY=146
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas
-
-[View6]
-CustomEditViewType=TEditView
-Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
-CursorX=64
-CursorY=686
-TopLine=13
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
-
-[View7]
-CustomEditViewType=TEditView
-Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas
-CursorX=28
-CursorY=152
-TopLine=133
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas
-
-[View8]
+[View1]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
-CursorX=61
+CursorX=45
 CursorY=22
 TopLine=10
 LeftCol=1
@@ -378,8 +270,8 @@ SplitPos=112
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=AboutJVCL,CustomHint
-ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0
+SelectedItem=IndexFieldNames,AfterApplyUpdates
+ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0,Connection=0,ActiveStoredUsage=0,FetchOptions=0,FieldOptions=0,FilterChanges=0,FilterOptions=0,FormatOptions=0,ResourceOptions=0,UpdateOptions=0,FetchOptions.AssignedValues=0,FetchOptions.Cache=0,FetchOptions.Items=0,DataSet=0,MasterSource=0
 
 [ClassBrowserTool]
 PercentageSizes=1

@@ -1,0 +1,70 @@
+program SwGestaoRural;
+
+uses
+  Vcl.Forms,
+  UFrmMenuPrincipal in '..\Ctrl\UFrmMenuPrincipal.pas' {FrmMenuPrincipal},
+  Classe.Functions in '..\Ctrl\Classe.Functions.pas',
+  UFrmModel1 in '..\View\Tamplate\UFrmModel1.pas' {FrmModel1},
+  Classe.FunctionsSQL in '..\Ctrl\Classe.FunctionsSQL.pas',
+  Classe.FunctionsCrud in '..\Ctrl\Classe.FunctionsCrud.pas',
+  Classe.Conexao in '..\Model\Classe.Conexao.pas' {DMPrincipal: TDataModule},
+  Classe.Sistema.Mensagens in '..\Ctrl\Classe.Sistema.Mensagens.pas',
+  UFrmMensagemSistema in '..\View\UFrmMensagemSistema.pas' {FrmMensagemSistema},
+  UFrmCadastroUsuario in '..\View\UFrmCadastroUsuario.pas' {FrmCadastroUsuario},
+  UFrmPesquisaAuxiliar in '..\View\Tamplate\UFrmPesquisaAuxiliar.pas' {FrmPesquisaAuxiliar},
+  Classe.Usuario in '..\Ctrl\Classe.Usuario.pas',
+  UFrmCadastroTalhao in '..\View\UFrmCadastroTalhao.pas' {FrmCadastroTalhao},
+  Classe.Talhao in '..\Ctrl\Classe.Talhao.pas',
+  UFrmCadastroSafra in '..\View\UFrmCadastroSafra.pas' {FrmCadastroSafra},
+  Classe.Safra in '..\Ctrl\Classe.Safra.pas',
+  Classe.conexaoEfetiva in '..\Ctrl\Classe.conexaoEfetiva.pas',
+  Classe.Email in '..\Ctrl\Classe.Email.pas',
+  Classe.EnvioEmail in '..\Ctrl\Classe.EnvioEmail.pas',
+  Classe.StatusUsuario in '..\Ctrl\Classe.StatusUsuario.pas',
+  UFrmConfigServidor in '..\View\UFrmConfigServidor.pas' {FrmConfigServidor},
+  UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin},
+  Vcl.Dialogs,
+  System.SysUtils {FrmLogin},
+  UFrmCadastroPropriedadeRural in '..\View\UFrmCadastroPropriedadeRural.pas' {FrmCadastroPropriedadeRural},
+  Classe.PropriedadeRural in '..\Ctrl\Classe.PropriedadeRural.pas',
+  U_FachadaWSSGS1 in '..\Ctrl\U_FachadaWSSGS1.pas',
+  UFrmCadastroSemente in '..\View\UFrmCadastroSemente.pas' {FrmCadastroSemente},
+  Classe.Semente in '..\Ctrl\Classe.Semente.pas',
+  UFrmCadastroProduto in '..\View\UFrmCadastroProduto.pas' {FrmCadastroProduto},
+  Classe.Produto in '..\Ctrl\Classe.Produto.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+
+  Application.Title := 'Gestão Rural 1.0';
+  Application.CreateForm(TDMPrincipal, DMPrincipal);
+  if (DmPrincipal.conexao.fConectarBancoDados = True) then
+  Begin
+
+      FrmLogin := TFrmLogin.Create(nil);
+      FrmLogin.ShowModal;
+
+
+      Application.CreateForm(TFrmMenuPrincipal, FrmMenuPrincipal);
+
+
+      FrmLogin.Hide;
+      FrmLogin.Free;
+
+  End else
+  Begin
+      fCriarMensagem('CONEXÃO AO BANCO DE DADOS','ERRO AO CONECTAR AO BANCO DE DADOS',
+        'Não foi possível conectar ao Banco de Dados! entre em contato com o Administrador, Erro: '
+        + DMPrincipal.conexao.MsgErro,ExtractFilePath(Application.ExeName ) + 'Icons\Mensagem\Erro.png',
+        'OK');
+      Application.CreateForm(TFrmConfigServidor, FrmConfigServidor);
+  End;
+
+
+   Application.CreateForm(TFrmMensagemSistema, FrmMensagemSistema);
+
+  Application.Run;
+end.
