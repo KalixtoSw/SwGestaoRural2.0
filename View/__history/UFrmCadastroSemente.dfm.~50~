@@ -102,8 +102,8 @@ inherited FrmCadastroSemente: TFrmCadastroSemente
                 TitleFont.Height = -12
                 TitleFont.Name = 'Segoe UI'
                 TitleFont.Style = [fsBold]
+                OnCellClick = DbGrdTecGeneticaCellClick
                 OnDrawColumnCell = DbGridDrawColumnCell
-                OnDblClick = DbGridDblClick
                 AutoAppend = False
                 ClearSelection = False
                 AlternateRowColor = 8279822

@@ -12,7 +12,9 @@ type
 
                 tcs_descricao,tcs_genetica,tcs_tipo   : string;
                 tcs_ciclofull    : Integer;
+                QryTecGenetica   : TFDQuery;
                 DsQryTecGenetica : TDataSource;
+
         end;
 
 type
@@ -21,7 +23,6 @@ type
         private
 
         Frm                  : TForm;
-        Dbgrd                : TJvDBUltimGrid;
         DbgrdTecGenetica     : TJvDBUltimGrid;
         Table                : string;
         IDKey                : string;
@@ -30,12 +31,14 @@ type
         NCampos              : Integer;
         InsUpd               : string;
         FAlert               : string;
-
+        Dbgrd                : TJvDBUltimGrid;
         FNomeSemente         : string;
+
+        DsTecGenetica        : TDataSet;
 
         public
 
-        DsTecGenetica : TDataSource;
+
 
         constructor CreateObjTSemente;
         destructor  DestroyObjTSemente;
@@ -54,9 +57,11 @@ type
         function  getCancelar: Boolean;
 
         //functions e procedures adicionais ao projeto
-        function  fMontaGrdTecGenetica(Act : Integer) : RetTecGenetica;
+        function  fMontaGrdTecGenetica(Act : string;IdKeyValue : Integer) : RetTecGenetica;
         procedure pAdicionaTecGenetica;
         procedure pSalvarTecGenetica;
+        procedure pEventoClickDbGridTec;
+        procedure pConectaCamposTecSem;
 End;
 
 implementation
@@ -130,60 +135,77 @@ procedure TSemente.pAdicionaTecGenetica;
 begin
      FrmCadastroSemente.PnlCtrlFieldTecGenetica.Height  := 160;
      FrmCadastroSemente.PnlTecnologiaFields.Visible := True;
-     fMontaGrdTecGenetica(0);
      FrmCadastroSemente.EdTecDescricao.SetFocus;
+     DbgrdTecGenetica.DataSource.DataSet.Insert;
+     pConectaCamposTecSem;
+end;
+
+procedure TSemente.pConectaCamposTecSem;
+begin
+     FrmCadastroSemente.EdTecDescricao.DataSource            := DbgrdTecGenetica.DataSource;
+     FrmCadastroSemente.EdTecDescricao.DataField             := 'tcs_descricao';
+     FrmCadastroSemente.EdtTecGenetica.DataSource            := DbgrdTecGenetica.DataSource;
+     FrmCadastroSemente.EdtTecGenetica.DataField             := 'tcs_genetica';
+     FrmCadastroSemente.CbbTecGeneticaTipo.DataSource        := DbgrdTecGenetica.DataSource;
+     FrmCadastroSemente.CbbTecGeneticaTipo.DataField         := 'tcs_tipo';
+     FrmCadastroSemente.EdtTecGeneticaCiclo.DataSource       := DbgrdTecGenetica.DataSource;
+     FrmCadastroSemente.EdtTecGeneticaCiclo.DataField        := 'tcs_ciclofull';
 end;
 
 procedure TSemente.pSalvarTecGenetica;
 begin
-     fMontaGrdTecGenetica(1);
+     DbgrdTecGenetica.DataSource.DataSet.FieldByName('smt_Id').AsInteger := Dbgrd.DataSource.DataSet.FieldByName('smt_Id').AsInteger;
+     DbgrdTecGenetica.DataSource.DataSet.Post;
 end;
 
-function TSemente.fMontaGrdTecGenetica(Act : Integer) : RetTecGenetica;
-var
-        Vlrsmt_Id : Integer;
+procedure TSemente.pEventoClickDbGridTec;
 begin
-        Vlrsmt_Id := Dbgrd.DataSource.DataSet.FieldByName('smt_Id').AsInteger;
-        if (Act = 0) or (Act = 2) then
-        begin
-        try
-                DsTecGenetica := fMontaQryTempExec('select * from tecnologia_semente WHERE smt_Id = '+IntToStr(Vlrsmt_Id)+' ORDER BY DESC smt_Id');
-                DbgrdTecGenetica.DataSource := DsTecGenetica;
-                FrmCadastroSemente.EdTecDescricao.DataSource      := DsTecGenetica;
-                FrmCadastroSemente.EdTecDescricao.DataField       := 'tcs_descricao';
-                FrmCadastroSemente.CbbTecGeneticaTipo.DataSource  := DsTecGenetica;
-                FrmCadastroSemente.CbbTecGeneticaTipo.DataField   := 'tcs_tipo';
-                FrmCadastroSemente.EdtTecGenetica.DataSource      := DsTecGenetica;
-                FrmCadastroSemente.EdtTecGenetica.DataField       := 'tcs_genetica';
-                FrmCadastroSemente.EdtTecGeneticaCiclo.DataSource := DsTecGenetica;
-                FrmCadastroSemente.EdtTecGeneticaCiclo.DataField  := 'tcs_ciclofull';
+     FrmCadastroSemente.PnlCtrlFieldTecGenetica.Height  := 160;
+     FrmCadastroSemente.PnlTecnologiaFields.Visible := True;
+     FrmCadastroSemente.EdTecDescricao.SetFocus;
 
-                Result.tcs_descricao := DsTecGenetica.DataSet.FieldByName('tcs_descricao').AsString;
-                Result.tcs_genetica  := DsTecGenetica.DataSet.FieldByName('tcs_genetica').AsString;
-                Result.tcs_tipo      := DsTecGenetica.DataSet.FieldByName('tcs_tipo').AsString;
-                Result.tcs_ciclofull := DsTecGenetica.DataSet.FieldByName('tcs_ciclofull').AsInteger;
+     try
 
-                Result.DsQryTecGenetica := DsTecGenetica;
+        pConectaCamposTecSem;
 
-                if Act = 0 then
-                begin
-                        DsTecGenetica.DataSet.Refresh;
-                        DsTecGenetica.DataSet.Insert;
-                end;
+     except on E: Exception do
+     end;
 
-        except on E: Exception do
-        end;
-        end else if Act = 1 then begin
+end;
 
-                if DsTecGenetica.DataSet.State in [dsInsert,dsEdit] then
-                begin
-                        DsTecGenetica.DataSet.FieldByName('smt_Id').AsInteger := Vlrsmt_Id;
-                        DsTecGenetica.DataSet.Post;
-                        DsTecGenetica.DataSet.Close;
-                        DsTecGenetica.DataSet.Open;
-                        fMontaGrdTecGenetica(2);
-                end;
-        end;
+function TSemente.fMontaGrdTecGenetica(Act : string; IdKeyValue : Integer) : RetTecGenetica;
+var
+        Qry : TFDQuery;
+        SqlCond : string;
+        DsQry   : TDataSource;
+begin
+        if Act = 'UPDATE' then
+         BEGIN
+              try
+                  SqlCond := 'SELECT * FROM tecnologia_semente WHERE smt_Id = '+IntToStr(IdKeyValue);
+                  Qry        := TFDQuery.Create(nil);
+                  DsQry      := TDataSource.Create(nil);
+                  Qry.Connection := DMPrincipal.FDConnection;
+                  Qry.Close;
+                  Qry.SQL.Clear;
+                  Qry.SQL.Add(SqlCond);
+                  Qry.Open;
+                  Qry.Active := True;
+                  Qry.Refresh;
+              finally
+                  Result.QryTecGenetica := Qry;
+                  DsQry.DataSet         := Qry;
+              end;
+
+             Result.DsQryTecGenetica     := DsQry;
+             DbgrdTecGenetica.DataSource :=  DsQry;
+
+             Result.tcs_descricao  := DsQry.DataSet.FieldByName('tcs_descricao').AsString;
+             Result.tcs_genetica   := DsQry.DataSet.FieldByName('tcs_genetica').AsString;
+             Result.tcs_tipo       := DsQry.DataSet.FieldByName('tcs_tipo').AsString;
+             Result.tcs_ciclofull  := DsQry.DataSet.FieldByName('tcs_ciclofull').AsInteger;
+         END;
+         // Espaço para Insert
 
 end;
 
@@ -203,7 +225,7 @@ begin
 
             FrmCadastroSemente.PnlTecnologiaBtsSaveCancel.Visible       := True;
             FrmCadastroSemente.PnlCtrlFieldTecGenetica.Height           := 34;
-            fMontaGrdTecGenetica(2);
+            fMontaGrdTecGenetica(ActInsUpd,Dbgrd.DataSource.DataSet.FieldByName('smt_Id').AsInteger);
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKeyVaue,IDKey, NCampos);
             pCarregaDadosInterface(Frm);
         end;

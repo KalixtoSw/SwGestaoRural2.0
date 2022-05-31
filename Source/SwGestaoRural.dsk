@@ -1,27 +1,41 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\Tamplate\UFrmModel1.pas',0,1,129,20,144,0,0,,
-File_1=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas',0,1,115,13,122,0,0,,
-File_2=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroTalhao.pas',0,1,1,1,1,0,0,,
-File_3=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas',0,1,1,19,25,0,0,,
-File_4=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas',0,1,76,23,99,0,0,,
-File_5=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas',0,1,1,1,5,0,0,,{1,201,1}
-File_6=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Talhao.pas',0,1,1,1,1,0,0,,
-File_7=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSafra.pas',0,1,49,46,63,0,0,,
-File_8=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas',0,1,31,20,144,0,0,{{33,106},{89,3},{''}}{{91,77},{132,3},{''}},
-File_9=TSourceModule,'H:\Desenvolvimento SW\Desenvolvimento SW\CRM_GSM_VFINAL\View\UMenuCrm.pas',0,1,105,27,122,0,0,,
-File_10=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural\View\U_MenuPrincipal.pas',0,1,163,1,164,0,0,,
-File_11=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\U_FachadaWSSGS1.pas',0,1,1,29,12,0,0,,
-File_12=TSourceModule,'C:\Users\F Calixto\Dropbox\PC\Downloads\GoogleOAuth2Authenticator-master\GoogleOAuth2Authenticator-master\AuthenticatorDesign.pas',0,1,1,7,12,0,0,,
+File_0=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Usuario.pas',0,1,177,33,194,0,0,,
+File_1=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Talhao.pas',0,1,142,39,159,0,0,,
+File_2=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Safra.pas',0,1,127,39,144,0,0,,
+File_3=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas',0,1,234,35,254,0,0,,{1
+File_4=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmConfigServidor.pas',0,1,85,45,110,0,0,,
+File_5=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Sistema.Mensagens.pas',0,1,22,86,48,0,0,,
+File_6=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.conexaoEfetiva.pas',0,1,160,42,181,0,0,,
+File_7=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroPropriedadeRural.pas',0,1,226,1,1,0,0,,
+File_8=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroUsuario.pas',0,1,1,1,1,0,0,,
+File_9=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroTalhao.pas',0,1,19,102,27,0,0,,
 
 [Modules]
-Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
-Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas
-Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProduto.pas
-Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas
-Count=4
+Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas
+Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas
+Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
+Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas
+Module4=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
+Module5=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas
+Module6=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProduto.pas
+Module7=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas
+Module8=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas
+Count=9
 EditWindowCount=1
 
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas]
+ModuleType=TSourceModule
+
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas]
+ModuleType=TSourceModule
+
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas]
+ModuleType=TSourceModule
+
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas]
+ModuleType=TSourceModule
+
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas]
@@ -30,16 +44,24 @@ ModuleType=TSourceModule
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProduto.pas]
 ModuleType=TSourceModule
 
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas]
+ModuleType=TSourceModule
+
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas]
 ModuleType=TSourceModule
 
 [EditWindow0]
-ViewCount=4
-CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
+ViewCount=9
+CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas
 View0=0
 View1=1
 View2=2
 View3=3
+View4=4
+View5=5
+View6=6
+View7=7
+View8=8
 PercentageSizes=1
 Create=1
 Visible=1
@@ -48,11 +70,11 @@ State=0
 Left=0
 Top=0
 Width=9917
-Height=8769
+Height=8837
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=9917
-ClientHeight=8769
+ClientHeight=8837
 DockedToMainForm=1
 BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
@@ -61,7 +83,7 @@ LeftPanelClients=PropertyInspector
 LeftPanelData=00000800010000000000FC20000000000000005F0C0000000000000100000000FC2000001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=1672
 RightPanelClients=DockSite3,DockSite4,DockSite2
-RightPanelData=00000800010100000000E40E0000000000000188060000000000000100000000FF0A000009000000446F636B53697465330100000000FE15000009000000446F636B536974653401000000007A1A000009000000446F636B5369746532FFFFFFFF
+RightPanelData=00000800010100000000090F0000000000000188060000000000000100000000FF0A000009000000446F636B53697465330100000000FE15000009000000446F636B53697465340100000000BB1A000009000000446F636B5369746532FFFFFFFF
 BottomPanelSize=1593
 BottomPanelClients=DockSite1,MessageView
 BottomPanelData=0000080001020100000009000000446F636B5369746531DE440000000000000239060000000000000100000000DE4400000F0000004D65737361676556696577466F726DFFFFFFFF
@@ -83,9 +105,9 @@ EditViewName=Borland.FormDesignerView
 [View1]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProduto.pas
-CursorX=27
-CursorY=70
-TopLine=66
+CursorX=13
+CursorY=140
+TopLine=127
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -93,20 +115,75 @@ EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroProd
 
 [View2]
 CustomEditViewType=TEditView
+Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas
+CursorX=26
+CursorY=260
+TopLine=228
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas
+
+[View3]
+CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas
-CursorX=35
-CursorY=28
+CursorX=1
+CursorY=263
+TopLine=160
+LeftCol=1
+Elisions={{138,61},{159,3},{''}}{{166,29},{177,3},{''}}{{179,54},{182,3},{''}}{{184,32},{189,3},{''}}{{191,54},{194,3},{''}}{{196,48},{199,3},{''}}{{201,56},{226,3},{''}}{{228,48},{231,3},{''}}{{233,53},{245,3},{''}}{{247,41},{253,3},{''}}{{254,67},{261,3},{''}}{{263,28},{269,3},{''}}{{271,30},{277,3},{''}}
+Bookmarks=
+EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas
+
+[View4]
+CustomEditViewType=TEditView
+Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas
+CursorX=26
+CursorY=77
+TopLine=74
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas
+
+[View5]
+CustomEditViewType=TEditView
+Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas
+CursorX=20
+CursorY=146
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Produto.pas
+EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Semente.pas
 
-[View3]
+[View6]
+CustomEditViewType=TEditView
+Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
+CursorX=64
+CursorY=686
+TopLine=13
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
+
+[View7]
+CustomEditViewType=TEditView
+Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas
+CursorX=28
+CursorY=152
+TopLine=133
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas
+
+[View8]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
-CursorX=29
-CursorY=27
+CursorX=61
+CursorY=22
 TopLine=10
 LeftCol=1
 Elisions=
@@ -180,7 +257,7 @@ MaxWidth=8932
 MaxHeight=8519
 ClientWidth=10021
 ClientHeight=9788
-BottomPanelSize=8444
+BottomPanelSize=8509
 BottomPanelClients=EditWindow0
 BottomPanelData=0000080000000000000000000000000000000000000000000000000100000000000000000C0000004564697457696E646F775F30FFFFFFFF
 
@@ -193,11 +270,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=692
+Height=760
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=692
+ClientHeight=760
 TBDockHeight=5904
 LRDockWidth=2349
 Dockable=1
@@ -288,11 +365,11 @@ State=0
 Left=0
 Top=24
 Width=1479
-Height=6808
+Height=6875
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1479
-ClientHeight=6808
+ClientHeight=6875
 TBDockHeight=8269
 LRDockWidth=1479
 Dockable=1
@@ -301,7 +378,7 @@ SplitPos=112
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,CustomHint
+SelectedItem=AboutJVCL,CustomHint
 ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0
 
 [ClassBrowserTool]
@@ -575,11 +652,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=1962
+Height=2096
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=1962
+ClientHeight=2096
 TBDockHeight=4894
 LRDockWidth=7151
 Dockable=1
@@ -679,11 +756,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=2423
+Height=2490
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2423
+ClientHeight=2490
 TBDockHeight=4894
 LRDockWidth=5307
 Dockable=1
@@ -770,11 +847,11 @@ State=0
 Left=0
 Top=632
 Width=1672
-Height=962
+Height=1029
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=962
+ClientHeight=1029
 TBDockHeight=9010
 LRDockWidth=1672
 Dockable=1
