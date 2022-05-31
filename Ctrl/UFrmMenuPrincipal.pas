@@ -10,7 +10,7 @@ uses
   Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit,
   JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
   JvScrollPanel, UFrmCadastroSemente, JvaScrollText, Vcl.Imaging.pngimage,
-  JvComponentBase, JvBalloonHint, JvHint;
+  JvComponentBase, JvBalloonHint, JvHint, UFrmModuloControleEstoque;
 
 type
   TFrmMenuPrincipal = class(TForm)
@@ -71,13 +71,14 @@ type
     PnlStatusSistema1: TJvPanel;
     LinePnlNotificacao: TJvGradient;
     JvScrollText1: TJvScrollText;
-    JvXPBar1: TJvXPBar;
+    XPBarManejoAgricola1: TJvXPBar;
     LbMenuPNoticiasRodaPe: TJvScrollText;
     ImgConectado: TImage;
     ImgDesconectado: TImage;
     Timer1: TTimer;
     JvHint1: TJvHint;
     JvBalloonHint1: TJvBalloonHint;
+    JvSpeedButton1: TJvSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -97,6 +98,7 @@ type
     procedure JvXPBar1Items1Click(Sender: TObject);
     procedure JvScrollText1MouseEnter(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure JvXPBar1Items2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -126,7 +128,7 @@ end;
 
 procedure TFrmMenuPrincipal.BtNotificaçãoMouseEnter(Sender: TObject);
 begin
-        pCtrlMenu(Self,TComponent(Sender) AS TJvSpeedButton , True);
+        pCtrlMenu(Self,TComponent(Sender) AS TJvSpeedButton , True,48,72);
 end;
 
 procedure TFrmMenuPrincipal.BtParametrosClick(Sender: TObject);
@@ -136,7 +138,7 @@ end;
 
 procedure TFrmMenuPrincipal.CrdDashboardMouseEnter(Sender: TObject);
 begin
-        pCtrlMenu(Self,nil,False);
+        pCtrlMenu(Self,nil,False,0,0);
 end;
 
 procedure TFrmMenuPrincipal.FormResize(Sender: TObject);
@@ -181,19 +183,29 @@ begin
       end;
 end;
 
+procedure TFrmMenuPrincipal.JvXPBar1Items2Click(Sender: TObject);
+begin
+       try
+           Application.CreateForm(TFrmModuloControleEstoque,FrmModuloControleEstoque);
+           FrmModuloControleEstoque.ShowModal;
+      finally
+            FreeAndNil(FrmModuloControleEstoque);
+      end;
+end;
+
 procedure TFrmMenuPrincipal.PnlIndicadoresAgricolasMouseEnter(Sender: TObject);
 begin
-        pCtrlMenu(Self,nil,False);
+        pCtrlMenu(Self,nil,False,0,0);
 end;
 
 procedure TFrmMenuPrincipal.PnlStatusSistema1MouseEnter(Sender: TObject);
 begin
-        pCtrlMenu(Self,nil,False);
+        pCtrlMenu(Self,nil,False,0,0);
 end;
 
 procedure TFrmMenuPrincipal.PnlTituloJanelaMouseEnter(Sender: TObject);
 begin
-        pCtrlMenu(Self,nil,False);
+        pCtrlMenu(Self,nil,False,0,0);
 end;
 
 procedure TFrmMenuPrincipal.Timer1Timer(Sender: TObject);

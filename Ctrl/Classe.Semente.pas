@@ -101,6 +101,7 @@ function TSemente.getCancelar: Boolean;
 begin
         Result := fEventoCancelar(Frm, Dbgrd, Table, IDKeyVaue, NCampos);
         plimpaDadosInterface(Frm, 1);
+        DbgrdTecGenetica.DataSource.DataSet.Cancel;
         setFrmOnShow;
 end;
 
@@ -128,7 +129,7 @@ begin
               end;
                 plimpaDadosInterface(Frm, 1);
                 Result := True;
-
+                DbgrdTecGenetica.DataSource.DataSet.Cancel;
 end;
 
 procedure TSemente.pAdicionaTecGenetica;
@@ -165,7 +166,7 @@ begin
      FrmCadastroSemente.EdTecDescricao.SetFocus;
 
      try
-
+        DbgrdTecGenetica.DataSource.DataSet.Edit;
         pConectaCamposTecSem;
 
      except on E: Exception do

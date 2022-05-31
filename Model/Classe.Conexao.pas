@@ -44,6 +44,12 @@ type
     TbUsuariouser_email: TStringField;
     TbUsuariouser_nomepessoa: TStringField;
     TbUsuariouser_tipopessoa: TStringField;
+    QryProduto: TFDQuery;
+    DsQryProduto: TDataSource;
+    QryMovimentacao: TFDQuery;
+    DsQryMovimentacao: TDataSource;
+    QryMovProd: TFDQuery;
+    DsQryMovProd: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
