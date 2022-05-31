@@ -5033,8 +5033,8 @@
     end
     object PnlViewNotificacoes: TJvPanel
       Tag = 1
-      Left = 552
-      Top = 89
+      Left = 250
+      Top = 48
       Width = 250
       Height = 696
       Align = alCustom
@@ -5379,8 +5379,8 @@
           Font.Style = [fsBold, fsItalic]
           ParentFont = False
           Layout = tlCenter
-          ExplicitWidth = 135
-          ExplicitHeight = 22
+          ExplicitLeft = 62
+          ExplicitTop = 25
         end
       end
       object JvScrollText1: TJvScrollText

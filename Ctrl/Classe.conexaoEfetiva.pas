@@ -68,10 +68,9 @@ var
   Sql: string;
 begin
   try
-    Sql := 'USE gr_desenv; ';
+    Sql := 'USE '+FBase+'; ';
     Sql := Sql + 'SELECT * FROM Usuario WHERE ';
     Sql := Sql + 'user_usuario = ' + QuotedStr(usuario) + ' AND user_senha = ' + QuotedStr(senha);
-
     if fConectarBancoDados then
     begin
       DMPrincipal.QrUsuario.Active := False;
