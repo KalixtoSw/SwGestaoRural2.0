@@ -71,7 +71,6 @@ begin
     Sql := 'USE '+FBase+'; ';
     Sql := Sql + 'SELECT * FROM Usuario WHERE ';
     Sql := Sql + 'user_usuario = ' + QuotedStr(usuario) + ' AND user_senha = ' + QuotedStr(senha);
-    ShowMessage('sql:  '+sql);
     if fConectarBancoDados then
     begin
       DMPrincipal.QrUsuario.Active := False;
@@ -82,7 +81,6 @@ begin
 
       TStatus.GetInstancia.UsuarioLogado := DMPrincipal.QrUsuariouser_usuario.AsString;
       TStatus.GetInstancia.UsuarioID := DMPrincipal.DsQrUsuario.DataSet.FieldByName('user_idUsuario').AsInteger;
-      ShowMessage(IntToStr(DMPrincipal.DsQrUsuario.DataSet.FieldByName('user_idUsuario').AsInteger));
 
       if TStatus.GetInstancia.UsuarioID > 0 then
       begin
