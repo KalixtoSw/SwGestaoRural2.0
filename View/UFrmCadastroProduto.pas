@@ -8,7 +8,7 @@ uses
   JvDesktopAlert, JvBaseDlg, Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid,
   JvDBUltimGrid, Vcl.StdCtrls, Vcl.Mask, Vcl.WinXPanels, JvExControls,
   JvSpeedButton, Vcl.ExtCtrls, JvExExtCtrls, JvExtComponent, JvPanel, Classe.Produto, Classe.Sistema.Mensagens,
-  JvGradient;
+  JvGradient, JvExStdCtrls, JvCombobox;
 
 type
   TFrmCadastroProduto = class(TFrmModel1)
@@ -27,6 +27,18 @@ type
     LineCampo3: TJvGradient;
     LineCampo3_1: TJvGradient;
     EdtCampo3: TMaskEdit;
+    PnlTecSemente: TJvPanel;
+    PnlCampo4: TJvPanel;
+    LbCampo4: TLabel;
+    LineCampo4: TJvGradient;
+    LineCampo4_1: TJvGradient;
+    CbbCampo4: TJvComboBox;
+    LbTituloTecSemente: TLabel;
+    PnlCampo5: TJvPanel;
+    LbCampo5: TLabel;
+    LineCampo5: TJvGradient;
+    LineCampo5_1: TJvGradient;
+    CbbCampo5: TJvComboBox;
     procedure BtSalvarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -36,6 +48,9 @@ type
     procedure BtExcluirClick(Sender: TObject);
     procedure DbGridDblClick(Sender: TObject);
     procedure EdtPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure CbbCampo2Change(Sender: TObject);
+    procedure CbbCampo4Change(Sender: TObject);
+    procedure CbbCampo4Enter(Sender: TObject);
   private
     { Private declarations }
     Produto : Tproduto;
@@ -47,6 +62,9 @@ var
   FrmCadastroProduto: TFrmCadastroProduto;
 
 implementation
+
+uses
+     Classe.Functions, Classe.FunctionsSQL;
 
 
 {$R *.dfm}
@@ -81,6 +99,29 @@ if Produto.getSavar then
             inherited;
             Produto.setFrmOnShow;
       end;
+end;
+
+procedure TFrmCadastroProduto.CbbCampo2Change(Sender: TObject);
+begin
+  inherited;
+        pEventoChageCbbCategoria(CbbCampo2.Text);
+end;
+
+procedure TFrmCadastroProduto.CbbCampo4Change(Sender: TObject);
+begin
+  inherited;
+
+        fEventoChangeCbbTecSem(fRetVlrCombox(CbbCampo4,0).IdResp);
+end;
+
+procedure TFrmCadastroProduto.CbbCampo4Enter(Sender: TObject);
+begin
+  inherited;
+        if not(CbbCampo4.Text = EmptyStr) then
+        begin
+             fEventoChangeCbbCult;
+             fEventoChangeCbbTecSem(fRetVlrCombox(CbbCampo4,0).IdResp);
+        end;
 end;
 
 procedure TFrmCadastroProduto.DbGridDblClick(Sender: TObject);

@@ -5,6 +5,9 @@ object DMPrincipal: TDMPrincipal
   Height = 645
   Width = 1250
   object MySQLDriver: TFDPhysMySQLDriverLink
+    VendorLib = 
+      'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Output\libm' +
+      'ysql.dll'
     Left = 50
     Top = 10
   end

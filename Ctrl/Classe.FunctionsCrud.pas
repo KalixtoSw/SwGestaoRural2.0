@@ -264,7 +264,7 @@ Begin
                         FieldsDB[(form.Components[I] as TJvCalcEdit).Tag]      := (form.Components[I] as TJvCalcEdit).Hint;
                     end;
                    End;
-                  if form.Components[I] is TComboBox then
+                  if (form.Components[I] is TComboBox) and ((form.Components[I] as TComboBox).Visible = True) then
                     begin
                     if ((form.Components[I] as TComboBox).HelpKeyword = EmptyStr) then
                     begin
@@ -272,7 +272,7 @@ Begin
                         FieldsDB[(form.Components[I] as TComboBox).Tag]      := (form.Components[I] as TComboBox).Hint;
                     end;
                   End;
-                  if form.Components[I] is TJvComboBox then
+                  if (form.Components[I] is TJvComboBox) and ((form.Components[I] as TJvComboBox).Visible = True) then
                     begin
                     if ((form.Components[I] as TJvComboBox).HelpKeyword = EmptyStr) then
                     begin
@@ -281,7 +281,7 @@ Begin
                     end else
                         begin
                              FieldsValues[(form.Components[I] as TJvComboBox).Tag]  := IntToStr(fRetVlrCombox((form.Components[I] as TJvComboBox),0).IdResp);
-                             FieldsDB[(form.Components[I] as TJvComboBox).Tag]      := (form.Components[I] as TJvComboBox).Hint;
+                             FieldsDB[(form.Components[I] as TJvComboBox).Tag]      := (form.Components[I] as TJvComboBox).HelpKeyword;
                         end;
                   End;
             End;
@@ -295,7 +295,7 @@ Var
 Begin
         for I := 0 to form.ComponentCount - 1 do
         begin
-            if Form.Components[I].Tag > 0 then
+            if (Form.Components[I].Tag > 0) then
             Begin
 
                 if (form.Components[I] is TMaskEdit)  then
@@ -318,11 +318,17 @@ Begin
                 end;
                 if (form.Components[I] is TComboBox)  then
                 begin
-                      (form.Components[I] as TComboBox).Text :=  DMPrincipal.DsCmdSql_1.DataSet.FieldByName(((form.Components[I] as TComboBox).Hint)).AsString;
+                      (form.Components[I] as TComboBox).ItemIndex := (form.Components[I] as TComboBox).Items.IndexOf(DMPrincipal.DsCmdSql_1.DataSet.FieldByName(((form.Components[I] as TComboBox).Hint)).AsString);
                 end;
                 if (form.Components[I] is TJvComboBox)  then
                 begin
-                      (form.Components[I] as TJvComboBox).ItemIndex := Form.Tag-1;
+                        if (Form.Components[I] as TJvComboBox).HelpKeyword = EmptyStr then
+                        begin
+                              (form.Components[I] as TJvComboBox).ItemIndex := (form.Components[I] as TJvComboBox).Items.IndexOf(DMPrincipal.DsCmdSql_1.DataSet.FieldByName(((form.Components[I] as TJvComboBox).Hint)).AsString);
+                        end else begin
+
+                        end;
+
                 end;
             End;
         end;

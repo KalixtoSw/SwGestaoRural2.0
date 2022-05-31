@@ -6,7 +6,7 @@ uses
   Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
   Graphics, Vcl.WinXPanels, System.Math, JvDesktopAlert, Classe.Sistema.Mensagens,
   Vcl.Dialogs, JvCombobox, FireDAC.Comp.Client, Data.DB, System.UITypes,
-  Vcl.StdCtrls, Winapi.Windows, Vcl.DBGrids, Vcl.Grids;
+  Vcl.StdCtrls, Winapi.Windows, Vcl.DBGrids, Vcl.Grids, JvPanel;
 
 
 type
@@ -56,6 +56,17 @@ Var
         IDKeyFilter          : string;
         NCampos              : Integer;
         InsUpd               : string;
+        Cbb                  : TComboBox;
+        CbbCult              : TJvComboBox;
+        CbbTec               : TJvComboBox;
+        PnlTecSem            : TjvPanel;
+
+        procedure pEventoChageCbbCategoria(VlrComb : string);
+        function  fEventoChangeCbbCult : Integer;
+        function  fEventoChangeCbbTecSem(KeyConexaoVlr : integer) : Integer;
+        procedure pEventoUpdCbbCult;
+        procedure pEventoUpdCbbTecSem;
+
 
 
 
@@ -77,8 +88,12 @@ begin
         IDKey            := ' prd_idproduto = ';
         IDKeyVaue        := 'prd_idproduto';
         IDKeyFilter      := 'prd_nome LIKE ';
-        NCampos          := 3;
+        NCampos          := 5;
         InsUpd           := EmptyStr;
+        Cbb              := FrmCadastroProduto.CbbCampo2;
+        CbbCult          := FrmCadastroProduto.CbbCampo4;
+        CbbTec           := FrmCadastroProduto.CbbCampo5;
+        PnlTecSem        := FrmCadastroProduto.PnlTecSemente;
 
 end;
 
@@ -121,15 +136,25 @@ begin
 end;
 
 procedure Tproduto.setAcaoAdicionarEditar(ActInsUpd: string);
+var
+        IdUpdVlr : Integer;
 begin
+        pMontaComboTxt(Cbb,'Icons\Cbb\','CbbCatProdutos');
+
         if ActInsUpd = 'INSERT' then
         begin
+            pEventoChageCbbCategoria(Cbb.Text);
+            fEventoChangeCbbCult;
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKey, IDKeyVaue, NCampos);
         end
         else if ActInsUpd = 'UPDATE' then
         begin
+            pEventoUpdCbbCult;
+            pEventoUpdCbbTecSem;
             InsUpd := fEventoInsUpdDel(ActInsUpd, Frm, Dbgrd, Table, IDKeyVaue,IDKey, NCampos);
             pCarregaDadosInterface(Frm);
+            pEventoChageCbbCategoria(cbb.text);
+
         end;
 end;
 
@@ -203,6 +228,52 @@ end;
 procedure Tproduto.SetTipo(const Value: string);
 begin
   FTipo := Value;
+end;
+
+procedure pEventoChageCbbCategoria(VlrComb : string);
+begin
+       if VlrComb = 'SEMENTE' then
+        begin
+             PnlTecSem.Visible  := True;
+             CbbCult.Visible    := True;
+             CbbTec.Visible     := True;
+        end else begin
+             PnlTecSem.Visible  := False;
+             CbbCult.ItemIndex  := -1;
+             CbbTec.ItemIndex   := -1;
+        end;
+end;
+
+function  fEventoChangeCbbCult : Integer;
+var
+        sqlM : string;
+begin
+        sqlM := 'SELECT * FROM semente ';
+        pMontaComboBoxTempExec(CbbCult,sqlM,'smt_Id','smt_descricao');
+end;
+function fEventoChangeCbbTecSem(KeyConexaoVlr : integer) : Integer;
+var
+        SqlD : string;
+begin
+        SqlD := 'SELECT s.smt_Id, s.smt_descricao, ts.tcs_id,ts.tcs_descricao FROM semente s '+
+        'INNER JOIN tecnologia_semente ts ON s.smt_Id = ts.smt_Id and s.smt_Id = ';
+        pMontaComboBoxTempExec(CbbTec,SqlD+ inttostr(KeyConexaoVlr),'tcs_id','tcs_descricao');
+end;
+
+procedure pEventoUpdCbbCult;
+var
+        SqlSemente : string;
+begin
+        SqlSemente := 'SELECT * FROM semente WHERE smt_id = '+IntToStr(Dbgrd.DataSource.DataSet.FieldByName('smt_id').AsInteger);
+        pMontaComboBoxTempExec(CbbCult,SqlSemente,'smt_Id','smt_descricao');
+end;
+
+procedure pEventoUpdCbbTecSem;
+var
+        SqlTecSem : string;
+begin
+        SqlTecSem := 'SELECT * FROM tecnologia_semente WHERE tcs_id = '+IntToStr(Dbgrd.DataSource.DataSet.FieldByName('tcs_id').AsInteger);
+        pMontaComboBoxTempExec(CbbTec,SqlTecSem,'tcs_id','tcs_descricao');
 end;
 
 end.

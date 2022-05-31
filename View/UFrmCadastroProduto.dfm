@@ -59,6 +59,8 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
       inherited CrdCampos: TCard
         inherited PnlFundoCampos: TJvPanel
           inherited PnlFundoCamposInterno: TJvPanel
+            Left = 0
+            ExplicitLeft = 0
             object PnlCampo1: TJvPanel
               Left = 20
               Top = 10
@@ -189,13 +191,7 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
                 Font.Style = [fsBold]
                 ParentFont = False
                 TabOrder = 0
-                Items.Strings = (
-                  'SEMENTE'
-                  'FUNGICIDA'
-                  'INSETICIDA'
-                  'HERBICIDA'
-                  'INSUMO'
-                  'PE'#199'A')
+                OnChange = CbbCampo2Change
               end
             end
             object PnlCampo3: TJvPanel
@@ -206,25 +202,6 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
               FlatBorderColor = clBtnHighlight
               BevelOuter = bvNone
               TabOrder = 2
-              object LbCampo3: TLabel
-                Left = 0
-                Top = 0
-                Width = 300
-                Height = 17
-                Align = alTop
-                Caption = 'FABRICANTE'
-                Color = 4671041
-                Font.Charset = ANSI_CHARSET
-                Font.Color = clWhite
-                Font.Height = -13
-                Font.Name = 'Segoe UI'
-                Font.Style = [fsBold]
-                ParentColor = False
-                ParentFont = False
-                Transparent = False
-                Layout = tlCenter
-                ExplicitWidth = 77
-              end
               object LineCampo3: TJvGradient
                 Left = 0
                 Top = 53
@@ -243,6 +220,25 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
                 StartColor = clWhite
                 EndColor = clWhite
                 ExplicitTop = 25
+              end
+              object LbCampo3: TLabel
+                Left = 0
+                Top = 0
+                Width = 300
+                Height = 17
+                Align = alTop
+                Caption = 'FABRICANTE'
+                Color = 4671041
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -13
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                Transparent = False
+                Layout = tlCenter
+                ExplicitWidth = 77
               end
               object EdtCampo3: TMaskEdit
                 Tag = 3
@@ -264,6 +260,170 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
                 ParentFont = False
                 TabOrder = 0
                 Text = ''
+              end
+            end
+            object PnlTecSemente: TJvPanel
+              Left = 20
+              Top = 240
+              Width = 300
+              Height = 150
+              TabOrder = 3
+              Visible = False
+              object LbTituloTecSemente: TLabel
+                Left = 1
+                Top = 1
+                Width = 298
+                Height = 20
+                Align = alTop
+                Alignment = taCenter
+                Caption = 'TECNOLOGIA DE CULTIVARES'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = 8279822
+                Font.Height = -15
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                ExplicitWidth = 209
+              end
+              object PnlCampo4: TJvPanel
+                Left = 0
+                Top = 30
+                Width = 300
+                Height = 55
+                FlatBorderColor = clBtnHighlight
+                BevelOuter = bvNone
+                TabOrder = 0
+                object LbCampo4: TLabel
+                  Left = 0
+                  Top = 0
+                  Width = 300
+                  Height = 17
+                  Align = alTop
+                  Caption = 'CULTIVARES'
+                  Color = 4671041
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = [fsBold]
+                  ParentColor = False
+                  ParentFont = False
+                  Transparent = False
+                  Layout = tlCenter
+                  ExplicitWidth = 74
+                end
+                object LineCampo4: TJvGradient
+                  Left = 0
+                  Top = 53
+                  Width = 300
+                  Height = 2
+                  Align = alBottom
+                  StartColor = 13738918
+                  EndColor = 13738918
+                end
+                object LineCampo4_1: TJvGradient
+                  Left = 0
+                  Top = 17
+                  Width = 300
+                  Height = 5
+                  Align = alTop
+                  StartColor = clWhite
+                  EndColor = clWhite
+                  ExplicitTop = 25
+                end
+                object CbbCampo4: TJvComboBox
+                  Tag = 4
+                  Left = 0
+                  Top = 22
+                  Width = 300
+                  Height = 23
+                  Hint = 'smt_descricao'
+                  HelpType = htKeyword
+                  HelpKeyword = 'smt_Id'
+                  Align = alTop
+                  BevelInner = bvNone
+                  BevelOuter = bvSpace
+                  Style = csDropDownList
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  TabOrder = 0
+                  Text = ''
+                  OnChange = CbbCampo4Change
+                  OnEnter = CbbCampo4Enter
+                end
+              end
+              object PnlCampo5: TJvPanel
+                Left = 0
+                Top = 90
+                Width = 300
+                Height = 55
+                FlatBorderColor = clBtnHighlight
+                BevelOuter = bvNone
+                TabOrder = 1
+                object LbCampo5: TLabel
+                  Left = 0
+                  Top = 0
+                  Width = 300
+                  Height = 17
+                  Align = alTop
+                  Caption = 'TECNOLOGIA DE CULTIVARES'
+                  Color = 4671041
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = [fsBold]
+                  ParentColor = False
+                  ParentFont = False
+                  Transparent = False
+                  Layout = tlCenter
+                  ExplicitWidth = 181
+                end
+                object LineCampo5: TJvGradient
+                  Left = 0
+                  Top = 53
+                  Width = 300
+                  Height = 2
+                  Align = alBottom
+                  StartColor = 13738918
+                  EndColor = 13738918
+                end
+                object LineCampo5_1: TJvGradient
+                  Left = 0
+                  Top = 17
+                  Width = 300
+                  Height = 5
+                  Align = alTop
+                  StartColor = clWhite
+                  EndColor = clWhite
+                  ExplicitTop = 25
+                end
+                object CbbCampo5: TJvComboBox
+                  Tag = 5
+                  Left = 0
+                  Top = 22
+                  Width = 300
+                  Height = 23
+                  Hint = 'tcs_descricao'
+                  HelpType = htKeyword
+                  HelpKeyword = 'tcs_id'
+                  Align = alTop
+                  BevelInner = bvNone
+                  BevelOuter = bvSpace
+                  Style = csDropDownList
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  TabOrder = 0
+                  Text = ''
+                end
               end
             end
           end
