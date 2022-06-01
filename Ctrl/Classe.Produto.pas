@@ -136,8 +136,6 @@ begin
 end;
 
 procedure Tproduto.setAcaoAdicionarEditar(ActInsUpd: string);
-var
-        IdUpdVlr : Integer;
 begin
         pMontaComboTxt(Cbb,'Icons\Cbb\','CbbCatProdutos');
 

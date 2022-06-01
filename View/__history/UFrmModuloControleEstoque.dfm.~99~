@@ -5908,7 +5908,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 9
-                      ExplicitTop = 210
                       object LbDadosNFCalcImpostos: TLabel
                         Left = 0
                         Top = 0
@@ -6607,7 +6606,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 10
-                      ExplicitTop = 100
                       object LbDadosNFDestinatario: TLabel
                         Left = 0
                         Top = 0
@@ -6622,94 +6620,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Font.Style = [fsBold]
                         ParentFont = False
                         ExplicitWidth = 204
-                      end
-                      object JvDBUltimGrid1: TJvDBUltimGrid
-                        Left = 0
-                        Top = 21
-                        Width = 1014
-                        Height = 89
-                        Cursor = crHandPoint
-                        Align = alClient
-                        BorderStyle = bsNone
-                        Color = clWhite
-                        DataSource = DMPrincipal.DsTbNotaFiscal
-                        DrawingStyle = gdsGradient
-                        GradientEndColor = 9323579
-                        GradientStartColor = 9323579
-                        Font.Charset = ANSI_CHARSET
-                        Font.Color = clWindowText
-                        Font.Height = -12
-                        Font.Name = 'Segoe UI'
-                        Font.Style = []
-                        Options = [dgIndicator, dgTitleClick, dgTitleHotTrack]
-                        ParentFont = False
-                        TabOrder = 0
-                        TitleFont.Charset = ANSI_CHARSET
-                        TitleFont.Color = clWhite
-                        TitleFont.Height = -12
-                        TitleFont.Name = 'Segoe UI'
-                        TitleFont.Style = [fsBold]
-                        AutoAppend = False
-                        ClearSelection = False
-                        AlternateRowColor = 8279822
-                        AlternateRowFontColor = clWhite
-                        SelectColumnsDialogStrings.Caption = 'Select columns'
-                        SelectColumnsDialogStrings.OK = '&OK'
-                        SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
-                        CellHintPosition = gchpMouse
-                        EditControls = <>
-                        RowsHeight = 18
-                        TitleRowHeight = 18
-                        Columns = <
-                          item
-                            Alignment = taCenter
-                            Expanded = False
-                            FieldName = 'nf_id'
-                            Title.Alignment = taCenter
-                            Title.Caption = 'ID'
-                            Width = 50
-                            Visible = True
-                          end
-                          item
-                            Alignment = taCenter
-                            Expanded = False
-                            FieldName = 'nf_numero'
-                            Title.Alignment = taCenter
-                            Title.Caption = 'N'#218'MERO'
-                            Width = 50
-                            Visible = True
-                          end
-                          item
-                            Alignment = taCenter
-                            Expanded = False
-                            FieldName = 'nf_tipoES'
-                            Title.Alignment = taCenter
-                            Title.Caption = 'E/S'
-                            Visible = True
-                          end
-                          item
-                            Alignment = taCenter
-                            Expanded = False
-                            FieldName = 'nf_dtemissao'
-                            Title.Alignment = taCenter
-                            Title.Caption = 'EMISS'#195'O'
-                            Visible = True
-                          end
-                          item
-                            Alignment = taCenter
-                            Expanded = False
-                            FieldName = 'nf_vlrtotal'
-                            Title.Alignment = taCenter
-                            Title.Caption = 'TOTAL'
-                            Visible = True
-                          end
-                          item
-                            Expanded = False
-                            FieldName = 'nf_cnpjForn'
-                            Title.Alignment = taCenter
-                            Title.Caption = 'CNPJ'
-                            Visible = True
-                          end>
                       end
                     end
                   end
@@ -6729,8 +6639,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     ParentBackground = False
                     TabOrder = 2
                     object JvSpeedButton1: TJvSpeedButton
-                      Left = 355
-                      Top = 23
+                      Left = 945
+                      Top = 13
                       Width = 61
                       Height = 50
                       HotTrackFont.Charset = ANSI_CHARSET
@@ -6835,7 +6745,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       DataField = 'prd_idproduto'
                       DataSource = DMPrincipal.DsTbNotaFiscalItem
                       LookupField = 'prd_idproduto'
-                      LookupDisplay = 'prd_nome'
+                      LookupDisplay = 'prd_codInterno'
                       LookupSource = DMPrincipal.DsQryProduto
                       TabOrder = 2
                     end

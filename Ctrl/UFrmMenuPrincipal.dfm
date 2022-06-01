@@ -1844,9 +1844,8 @@
             Left = 0
             Top = 48
             Width = 200
-            Height = 32
+            Height = 112
             Caption = 'PRATELEIRA DE INSUMOS'
-            Collapsed = True
             Colors.BorderColor = 10780674
             Colors.CheckedFrameColor = 14934499
             Colors.FocusedFrameColor = 8279822
@@ -1867,6 +1866,10 @@
               item
                 Caption = 'COMPRAS DE INSUMOS'
                 OnClick = JvXPBar1Items2Click
+              end
+              item
+                Caption = 'CADASTRO DE EMBALAGEM'
+                OnClick = XPBarManejoAgricola1Items3Click
               end>
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 15000804

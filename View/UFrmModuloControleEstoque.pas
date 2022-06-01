@@ -154,14 +154,12 @@ type
     FundoNFAddItens: TJvGradient;
     PnlDNFICodProduto: TJvPanel;
     LbDNFICodProduto: TLabel;
-    EdtDNFICodProduto: TJvDBSearchEdit;
-    EdtDNFINomeProduto: TDBEdit;
     PnlDNFINomeProduto: TJvPanel;
     LbDNFINomeProduto: TLabel;
-    JvDBLookupCombo1: TJvDBLookupCombo;
+    CbbDNFICodProduto: TJvDBLookupCombo;
     JvSpeedButton1: TJvSpeedButton;
     DbGrid: TJvDBUltimGrid;
-    JvDBUltimGrid1: TJvDBUltimGrid;
+    EdtDNFINomeProduto: TJvDBLookupCombo;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -266,7 +264,7 @@ end;
 
 procedure TFrmModuloControleEstoque.JvSpeedButton1Click(Sender: TObject);
 begin
-                DMPrincipal.TbNotaFiscalItem.Post;
+                CtrlEst_NF.pEventoBtSavarNFItem;
 end;
 
 procedure TFrmModuloControleEstoque.PnlFundoBtsNavCadProdutoMouseEnter(

@@ -230,10 +230,7 @@ end;
 
 procedure TFrmModuloControleEstoque.BtNFAddItensClick(Sender: TObject);
 begin
-                DMPrincipal.TbNotaFiscal.Post;
-                DMPrincipal.TbNotaFiscal.Last;
-                DMPrincipal.TbNotaFiscal.Edit;
-                DMPrincipal.TbNotaFiscalItem.Insert;
+        CtrlEst_NF.pEventoBtAddItens;
 end;
 
 procedure TFrmModuloControleEstoque.BtPosicaoFisicaMouseEnter(Sender: TObject);
@@ -243,7 +240,7 @@ end;
 
 procedure TFrmModuloControleEstoque.BtSalvarNFClick(Sender: TObject);
 begin
-        DMPrincipal.TbNotaFiscal.Post;
+        CtrlEst_NF.pEventoBtSavarNF;
 end;
 
 procedure TFrmModuloControleEstoque.FormCreate(Sender: TObject);
@@ -300,11 +297,7 @@ end;
 
 procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
 begin
-        DMPrincipal.TbNotaFiscal.Active         := True;
-        DMPrincipal.TbFornecedor.Active         := True;
-        DMPrincipal.QryProduto.Active           := True;
-        DMPrincipal.TbNotaFiscalItem.Active     := True;
-        DMPrincipal.TbNotaFiscal.Insert;
+        CtrlEst_NF.pEventoNewNF;
 end;
 
 end.

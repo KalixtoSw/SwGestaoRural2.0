@@ -33,7 +33,11 @@ uses
   UFrmCadastroProduto in '..\View\UFrmCadastroProduto.pas' {FrmCadastroProduto},
   Classe.Produto in '..\Ctrl\Classe.Produto.pas',
   UFrmModuloControleEstoque in '..\View\UFrmModuloControleEstoque.pas' {FrmModuloControleEstoque},
-  Classe.Comum.ControleEstoque in '..\Ctrl\Classe.Comum.ControleEstoque.pas';
+  Classe.Comum.ControleEstoque in '..\Ctrl\Classe.Comum.ControleEstoque.pas',
+  UFrmControleEstoquePesqNF in '..\View\UFrmControleEstoquePesqNF.pas' {FrmPesqNF},
+  Classe.NF.ControleEstoque in '..\Ctrl\Classe.NF.ControleEstoque.pas',
+  UFrmProdutoEmbalagem in '..\View\UFrmProdutoEmbalagem.pas' {FrmProdutoEmbalagem},
+  Classe.Produto.Embalagem in '..\Ctrl\Classe.Produto.Embalagem.pas';
 
 {$R *.res}
 
@@ -43,6 +47,7 @@ begin
 
   Application.Title := 'Gestão Rural 1.0';
   Application.CreateForm(TDMPrincipal, DMPrincipal);
+  Application.CreateForm(TFrmProdutoEmbalagem, FrmProdutoEmbalagem);
   if (DmPrincipal.conexao.fConectarBancoDados = True) then
   Begin
 

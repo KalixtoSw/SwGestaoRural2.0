@@ -264,7 +264,7 @@ Begin
                         FieldsDB[(form.Components[I] as TJvCalcEdit).Tag]      := (form.Components[I] as TJvCalcEdit).Hint;
                     end;
                    End;
-                  if form.Components[I] is TComboBox then
+                  if (form.Components[I] is TComboBox) and ((form.Components[I] as TComboBox).Visible = True) then
                     begin
                     if ((form.Components[I] as TComboBox).HelpKeyword = EmptyStr) then
                     begin

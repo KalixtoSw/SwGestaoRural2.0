@@ -11,6 +11,7 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
       end
     end
     inherited CrdPnlPrincipal: TCardPanel
+      ActiveCard = CrdCampos
       inherited CrdConsulta: TCard
         inherited PnlPesquisa: TJvPanel
           inherited LbPesquisa: TLabel

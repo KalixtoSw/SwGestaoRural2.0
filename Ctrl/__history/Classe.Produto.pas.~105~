@@ -88,7 +88,7 @@ begin
         IDKey            := ' prd_idproduto = ';
         IDKeyVaue        := 'prd_idproduto';
         IDKeyFilter      := 'prd_nome LIKE ';
-        NCampos          := 5;
+        NCampos          := 6;
         InsUpd           := EmptyStr;
         Cbb              := FrmCadastroProduto.CbbCampo2;
         CbbCult          := FrmCadastroProduto.CbbCampo4;
@@ -257,7 +257,6 @@ var
 begin
         SqlD := 'SELECT s.smt_Id, s.smt_descricao, ts.tcs_id,ts.tcs_descricao FROM semente s '+
         'INNER JOIN tecnologia_semente ts ON s.smt_Id = ts.smt_Id and s.smt_Id = ';
-        ShowMessage(IntToStr(KeyConexaoVlr));
         pMontaComboBoxTempExec(CbbTec,SqlD+ inttostr(KeyConexaoVlr),'tcs_id','tcs_descricao');
 end;
 

@@ -18,7 +18,7 @@ interface
 
           procedure pQueryExecute(Tp : Integer; SQLresult : String; Tabela : TFDQuery);
           function  fMontaInsUpd(Fields : String; Where : String; Tabela : String; NFields : Integer) : TResultArray;{}//Campos Obrigatorios
-          function  fMontaQryTempExec(SqlCond : string) : TDataSet;
+          function  fMontaQryTempExec(SqlCond : string) : TFDQuery;
           procedure pDestroyQryTempExec(DsQry :TDataSource);
           function  fMontaQryTempExecDetail(SqlCond : string; KeyReslt : string) : Integer;
 Var
@@ -135,14 +135,12 @@ begin
 
 end;
 
-function  fMontaQryTempExec(SqlCond : string) : TDataSet;
+function  fMontaQryTempExec(SqlCond : string) : TFDQuery;
 Var
         Qry     : TFDQuery;
-        DsQry   : TDataSet;
 begin
          try
              Qry        := TFDQuery.Create(nil);
-             DsQry      := TDataSet.Create(nil);
              Qry.Connection := DMPrincipal.FDConnection;
              Qry.Close;
              Qry.SQL.Clear;
@@ -151,7 +149,7 @@ begin
              Qry.Active := True;
              Qry.Refresh;
 
-             Result.DataSource.DataSet := Qry.DataSource;
+             Result := Qry;
 
         except on E: Exception do
         end;

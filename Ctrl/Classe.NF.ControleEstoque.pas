@@ -31,6 +31,7 @@ uses
         procedure pEventoNewNF;
         procedure pEventoBtAddItens;
         procedure pEventoBtSavarNF;
+        procedure pEventoBtSavarNFItem;
 
   Published
         property NumNF : Integer                read FNumNF                     write setNumNF;
@@ -81,12 +82,23 @@ begin
         TbShtConsultaNF.Show;
 end;
 
+procedure TCrtrlEstoque_NF.pEventoBtSavarNFItem;
+begin
+        try
+             TbNotaFiscalItem.Post;
+             TbNotaFiscalItem.Refresh;
+        except on E: Exception do
+
+
+        end;
+end;
+
 procedure TCrtrlEstoque_NF.pEventoNewNF;
 begin
 
         TbNotaFiscal.Active         := True;
         TbFornecedor.Active         := True;
-        TbProduto.Active           := True;
+        TbProduto.Active            := True;
         TbNotaFiscalItem.Active     := True;
         TbNotaFiscal.Insert;
 

@@ -1,0 +1,253 @@
+inherited FrmProdutoEmbalagem: TFrmProdutoEmbalagem
+  Caption = 'FrmProdutoEmbalagem'
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 15
+  inherited PnlFundo: TJvPanel
+    inherited PnlTituloJanela: TJvPanel
+      inherited LbTituloJanela: TLabel
+        Height = 32
+      end
+    end
+    inherited CrdPnlPrincipal: TCardPanel
+      ActiveCard = CrdCampos
+      inherited CrdConsulta: TCard
+        inherited PnlPesquisa: TJvPanel
+          inherited LbPesquisa: TLabel
+            Width = 1024
+          end
+          inherited EdtPesquisa: TMaskEdit
+            OnKeyPress = EdtPesquisaKeyPress
+          end
+        end
+        inherited PnlBtsInsertDelete: TJvPanel
+          inherited BtExcluir: TJvSpeedButton
+            OnClick = BtExcluirClick
+          end
+        end
+      end
+      inherited CrdCampos: TCard
+        inherited PnlFundoCampos: TJvPanel
+          inherited PnlFundoCamposInterno: TJvPanel
+            Left = 0
+            ExplicitLeft = 0
+            object PnalCampo1: TJvPanel
+              Left = 15
+              Top = 35
+              Width = 300
+              Height = 40
+              BevelOuter = bvNone
+              Color = 14067595
+              ParentBackground = False
+              TabOrder = 0
+              object LbCampo1: TLabel
+                Left = 0
+                Top = 0
+                Width = 300
+                Height = 15
+                Align = alTop
+                Caption = 'EMBALAGEM DE PRODUTOS AGR'#205'COLAS'
+                Color = 4671041
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                Transparent = False
+                ExplicitWidth = 228
+              end
+              object EdtCampo1: TJvEdit
+                Tag = 1
+                Left = 0
+                Top = 15
+                Width = 300
+                Height = 23
+                Hint = 'prde_descricao'
+                BevelInner = bvNone
+                BevelOuter = bvNone
+                Flat = True
+                ParentFlat = False
+                Align = alTop
+                BorderStyle = bsNone
+                TabOrder = 0
+                Text = ''
+              end
+            end
+            object PnlCampo2: TJvPanel
+              Left = 15
+              Top = 103
+              Width = 300
+              Height = 40
+              BevelOuter = bvNone
+              Color = 14067595
+              ParentBackground = False
+              TabOrder = 1
+              object LbCampo2: TLabel
+                Left = 0
+                Top = 0
+                Width = 300
+                Height = 15
+                Align = alTop
+                Caption = 'UNIDADE DE MEDIDA'
+                Color = 4671041
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                Transparent = False
+                ExplicitWidth = 122
+              end
+              object CbbCampo2: TJvComboBox
+                Tag = 2
+                Left = 0
+                Top = 15
+                Width = 300
+                Height = 23
+                Hint = 'prde_unimedida'
+                Align = alTop
+                Style = csDropDownList
+                TabOrder = 0
+                Text = 'BALDE'
+                Items.Strings = (
+                  'AMPOLA'
+                  'BALDE'
+                  'BANDEJ'
+                  'BARRA'
+                  'BISNAG'
+                  'BLOCO'
+                  'BOBINA'
+                  'CM'
+                  'CX'
+                  'CX2'
+                  'CX3'
+                  'CX5'
+                  'CX10'
+                  'CX15'
+                  'CX20'
+                  'CX25'
+                  'CX50'
+                  'CX100'
+                  'DUZIA'
+                  'EMBAL'
+                  'FARDO'
+                  'FRASCO'
+                  'GALAO'
+                  'GF'
+                  'GRAMAS'
+                  'KG'
+                  'LITRO'
+                  'M'
+                  'M2'
+                  'M3'
+                  'MILHEI'
+                  'PALETE'
+                  'SACO'
+                  'TANQUE'
+                  'TON')
+                ItemIndex = 1
+              end
+            end
+            object PnlCampo3: TJvPanel
+              Left = 15
+              Top = 171
+              Width = 166
+              Height = 40
+              BevelOuter = bvNone
+              Color = 14067595
+              ParentBackground = False
+              TabOrder = 2
+              object LbCampo3: TLabel
+                Left = 0
+                Top = 0
+                Width = 166
+                Height = 15
+                Align = alTop
+                Caption = 'CONVERSOR'
+                Color = 4671041
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                Transparent = False
+                ExplicitWidth = 71
+              end
+              object EdtCampo3: TJvCalcEdit
+                Tag = 3
+                Left = 0
+                Top = 15
+                Width = 166
+                Height = 23
+                Hint = 'prde_conversor'
+                BevelInner = bvNone
+                BevelOuter = bvNone
+                Flat = True
+                ParentFlat = False
+                Align = alTop
+                Alignment = taCenter
+                BorderStyle = bsNone
+                TabOrder = 0
+                Value = 1.000000000000000000
+                DecimalPlacesAlwaysShown = False
+                ExplicitWidth = 300
+              end
+            end
+            object PnlCampo4: TJvPanel
+              Left = 15
+              Top = 240
+              Width = 166
+              Height = 40
+              BevelOuter = bvNone
+              Color = 14067595
+              ParentBackground = False
+              TabOrder = 3
+              object LbCampo4: TLabel
+                Left = 0
+                Top = 0
+                Width = 166
+                Height = 15
+                Align = alTop
+                Caption = 'QUANTIDADE REFERENCIAL'
+                Color = 4671041
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                Transparent = False
+                ExplicitWidth = 155
+              end
+              object EdtCampo4: TJvCalcEdit
+                Tag = 4
+                Left = 0
+                Top = 15
+                Width = 166
+                Height = 23
+                Hint = 'prde_qtdereferencial'
+                BevelInner = bvNone
+                BevelOuter = bvNone
+                Flat = True
+                ParentFlat = False
+                Align = alTop
+                Alignment = taCenter
+                BorderStyle = bsNone
+                TabOrder = 0
+                DecimalPlacesAlwaysShown = False
+                ExplicitWidth = 300
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

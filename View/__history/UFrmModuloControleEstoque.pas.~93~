@@ -13,7 +13,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, UFrmControleEstoquePesqNF,
   JvDBLookup, JvExStdCtrls, JvCombobox, JvDBCombobox, Vcl.DBCtrls, JvDBControls,
   JvMaskEdit, Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, JvDateTimePicker,
-  JvDBDateTimePicker, JvDBFindEdit, JvEdit, JvDBSearchEdit;
+  JvDBDateTimePicker, JvDBFindEdit, JvEdit, JvDBSearchEdit, Classe.NF.ControleEstoque;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -154,14 +154,12 @@ type
     FundoNFAddItens: TJvGradient;
     PnlDNFICodProduto: TJvPanel;
     LbDNFICodProduto: TLabel;
-    EdtDNFICodProduto: TJvDBSearchEdit;
     EdtDNFINomeProduto: TDBEdit;
     PnlDNFINomeProduto: TJvPanel;
     LbDNFINomeProduto: TLabel;
-    JvDBLookupCombo1: TJvDBLookupCombo;
+    CbbDNFICodProduto: TJvDBLookupCombo;
     JvSpeedButton1: TJvSpeedButton;
     DbGrid: TJvDBUltimGrid;
-    JvDBUltimGrid1: TJvDBUltimGrid;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -185,6 +183,8 @@ type
 
 
   public    { Public declarations }
+        CtrlEst_NF : TCrtrlEstoque_NF;
+
   end;
 
 var
@@ -228,10 +228,7 @@ end;
 
 procedure TFrmModuloControleEstoque.BtNFAddItensClick(Sender: TObject);
 begin
-                DMPrincipal.TbNotaFiscal.Post;
-                DMPrincipal.TbNotaFiscal.Last;
-                DMPrincipal.TbNotaFiscal.Edit;
-                DMPrincipal.TbNotaFiscalItem.Insert;
+        CtrlEst_NF.pEventoBtAddItens;
 end;
 
 procedure TFrmModuloControleEstoque.BtPosicaoFisicaMouseEnter(Sender: TObject);
@@ -241,12 +238,13 @@ end;
 
 procedure TFrmModuloControleEstoque.BtSalvarNFClick(Sender: TObject);
 begin
-        DMPrincipal.TbNotaFiscal.Post;
+        CtrlEst_NF.pEventoBtSavarNF;
 end;
 
 procedure TFrmModuloControleEstoque.FormCreate(Sender: TObject);
 begin
-        CtrlEstoque := TCrtlEstoque.CreateObjTCrtlEstoque;
+        CtrlEstoque     := TCrtlEstoque.CreateObjTCrtlEstoque;
+        CtrlEst_NF      := TCrtrlEstoque_NF.CreateObjTCrtrlEstoque_NF;
 end;
 
 procedure TFrmModuloControleEstoque.FormResize(Sender: TObject);
@@ -266,7 +264,7 @@ end;
 
 procedure TFrmModuloControleEstoque.JvSpeedButton1Click(Sender: TObject);
 begin
-                DMPrincipal.TbNotaFiscalItem.Post;
+                CtrlEst_NF.pEventoBtSavarNFItem;
 end;
 
 procedure TFrmModuloControleEstoque.PnlFundoBtsNavCadProdutoMouseEnter(
@@ -297,11 +295,7 @@ end;
 
 procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
 begin
-        DMPrincipal.TbNotaFiscal.Active         := True;
-        DMPrincipal.TbFornecedor.Active         := True;
-        DMPrincipal.QryProduto.Active           := True;
-        DMPrincipal.TbNotaFiscalItem.Active     := True;
-        DMPrincipal.TbNotaFiscal.Insert;
+        CtrlEst_NF.pEventoNewNF;
 end;
 
 end.
