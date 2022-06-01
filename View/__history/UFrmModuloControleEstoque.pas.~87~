@@ -13,7 +13,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, UFrmControleEstoquePesqNF,
   JvDBLookup, JvExStdCtrls, JvCombobox, JvDBCombobox, Vcl.DBCtrls, JvDBControls,
   JvMaskEdit, Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, JvDateTimePicker,
-  JvDBDateTimePicker;
+  JvDBDateTimePicker, JvDBFindEdit, JvEdit, JvDBSearchEdit;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -108,6 +108,60 @@ type
     PnlFldDtESNF: TJvPanel;
     LbFldDtESNF: TLabel;
     EdtDtFldDtESNF: TJvDBDateTimePicker;
+    PnlFldHoraESNF: TJvPanel;
+    LbFldHoraESNF: TLabel;
+    PnlDadosNFItens: TJvPanel;
+    PnlDadosNFCalcImpostos: TJvPanel;
+    PnlDadosNFDestinatario: TJvPanel;
+    LbDadosNFDestinatario: TLabel;
+    LbDadosNFCalcImpostos: TLabel;
+    PnlImpostoNFBaseIcms: TJvPanel;
+    LbImpostoNFBaseIcms: TLabel;
+    EdtImpostoNFBaseIcms: TJvDBCalcEdit;
+    PnlImpostoNFVlrFrete: TJvPanel;
+    LbImpostoNFVlrFrete: TLabel;
+    EdtImpostoNFVlrFrete: TJvDBCalcEdit;
+    PnlImpostoNFIcms: TJvPanel;
+    LbImpostoNFIcms: TLabel;
+    EdtImpostoNFIcms: TJvDBCalcEdit;
+    PnlImpostoNFBaseIcmsST: TJvPanel;
+    LbImpostoNFBaseIcmsST: TLabel;
+    EdtImpostoNFBaseIcmsST: TJvDBCalcEdit;
+    PnlImpostoNFIcmsST: TJvPanel;
+    LbImpostoNFIcmsST: TLabel;
+    EdtImpostoNFIcmsST: TJvDBCalcEdit;
+    PnlImpostoNFVlrProdutos: TJvPanel;
+    LbImpostoNFVlrProdutos: TLabel;
+    EdtImpostoNFVlrProdutos: TJvDBCalcEdit;
+    PnlImpostoNFVlrSeguro: TJvPanel;
+    LbImpostoNFVlrSeguro: TLabel;
+    EdtImpostoNFVlrSeguro: TJvDBCalcEdit;
+    PnlImpostoNFVlrDesconto: TJvPanel;
+    LbImpostoNFVlrDesconto: TLabel;
+    EdtImpostoNFVlrDesconto: TJvDBCalcEdit;
+    PnlImpostoNFVlrOutrasDespesas: TJvPanel;
+    LbImpostoNFVlrOutrasDespesas: TLabel;
+    EdtImpostoNFVlrOutrasDespesas: TJvDBCalcEdit;
+    PnlImpostoNFVlrIPI: TJvPanel;
+    LbImpostoNFVlrIPI: TLabel;
+    EdtImpostoNFVlrIPI: TJvDBCalcEdit;
+    PnlImpostoNFVlrtNF: TJvPanel;
+    LbImpostoNFVlrtNF: TLabel;
+    EdtImpostoNFVlrtNF: TJvDBCalcEdit;
+    JvDBComboBox1: TJvDBComboBox;
+    PnlNFAddItens: TJvPanel;
+    BtNFAddItens: TJvSpeedButton;
+    FundoNFAddItens: TJvGradient;
+    PnlDNFICodProduto: TJvPanel;
+    LbDNFICodProduto: TLabel;
+    EdtDNFICodProduto: TJvDBSearchEdit;
+    EdtDNFINomeProduto: TDBEdit;
+    PnlDNFINomeProduto: TJvPanel;
+    LbDNFINomeProduto: TLabel;
+    JvDBLookupCombo1: TJvDBLookupCombo;
+    JvSpeedButton1: TJvSpeedButton;
+    DbGrid: TJvDBUltimGrid;
+    JvDBUltimGrid1: TJvDBUltimGrid;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -124,6 +178,8 @@ type
     procedure BtFiltroNFDataEmissaoClick(Sender: TObject);
     procedure TbShtLancamentosShow(Sender: TObject);
     procedure BtSalvarNFClick(Sender: TObject);
+    procedure BtNFAddItensClick(Sender: TObject);
+    procedure JvSpeedButton1Click(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
 
@@ -170,6 +226,14 @@ begin
         CrdNotaFiscal.Show;
 end;
 
+procedure TFrmModuloControleEstoque.BtNFAddItensClick(Sender: TObject);
+begin
+                DMPrincipal.TbNotaFiscal.Post;
+                DMPrincipal.TbNotaFiscal.Last;
+                DMPrincipal.TbNotaFiscalItem.Insert;
+                DMPrincipal.TbNotaFiscal.Edit;
+end;
+
 procedure TFrmModuloControleEstoque.BtPosicaoFisicaMouseEnter(Sender: TObject);
 begin
         pCtrlMenu(Self,nil,False,0,0);
@@ -200,6 +264,11 @@ begin
         CrdPrincipal.Show;
 end;
 
+procedure TFrmModuloControleEstoque.JvSpeedButton1Click(Sender: TObject);
+begin
+                DMPrincipal.TbNotaFiscalItem.Post;
+end;
+
 procedure TFrmModuloControleEstoque.PnlFundoBtsNavCadProdutoMouseEnter(
   Sender: TObject);
 begin
@@ -228,8 +297,10 @@ end;
 
 procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
 begin
-        DMPrincipal.TbNotaFiscal.Active := True;
-        DMPrincipal.TbFornecedor.Active := True;
+        DMPrincipal.TbNotaFiscal.Active         := True;
+        DMPrincipal.TbFornecedor.Active         := True;
+        DMPrincipal.QryProduto.Active           := True;
+        DMPrincipal.TbNotaFiscalItem.Active     := True;
         DMPrincipal.TbNotaFiscal.Insert;
 end;
 

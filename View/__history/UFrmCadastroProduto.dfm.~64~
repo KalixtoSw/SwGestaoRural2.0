@@ -353,7 +353,7 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
                   TabOrder = 0
                   Text = ''
                   OnChange = CbbCampo4Change
-                  OnClick = CbbCampo4Click
+                  OnEnter = CbbCampo4Enter
                 end
               end
               object PnlCampo5: TJvPanel
@@ -423,7 +423,6 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
                   ParentFont = False
                   TabOrder = 0
                   Text = ''
-                  OnClick = CbbCampo5Click
                 end
               end
             end

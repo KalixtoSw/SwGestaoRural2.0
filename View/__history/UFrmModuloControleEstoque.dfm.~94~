@@ -4615,7 +4615,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 Width = 1022
                 Height = 610
                 Cursor = crHandPoint
-                ActivePage = TbShtLancamentos
+                ActivePage = TbShtConsultaNF
                 Align = alClient
                 TabOrder = 0
                 object TbShtConsultaNF: TTabSheet
@@ -5356,7 +5356,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         ListSettings.OutfilteredValueFont.Height = -11
                         ListSettings.OutfilteredValueFont.Name = 'Tahoma'
                         ListSettings.OutfilteredValueFont.Style = []
-                        ExplicitWidth = 200
                       end
                     end
                     object PnlFldFornecNF: TJvPanel
@@ -5400,7 +5399,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         ListField = 'frn_NomeFantasia'
                         ListSource = DMPrincipal.DsTbFornecedor
                         TabOrder = 0
-                        ExplicitWidth = 300
                       end
                     end
                     object PnlFldNumeroNF: TJvPanel
@@ -5445,7 +5443,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         DecimalPlacesAlwaysShown = False
                         DataField = 'nf_numero'
                         DataSource = DMPrincipal.DsTbNotaFiscal
-                        ExplicitWidth = 200
                       end
                     end
                     object PnlFldSerieNF: TJvPanel
@@ -5570,9 +5567,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         DataField = 'nf_nop'
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         TabOrder = 0
-                        ExplicitLeft = 195
-                        ExplicitTop = 20
-                        ExplicitWidth = 121
                       end
                     end
                     object PnlFldDtEmissaoNF: TJvPanel
@@ -5610,14 +5604,10 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 140
                         Height = 23
                         Align = alTop
-                        Date = 44713.000000000000000000
                         TabOrder = 0
                         DropDownDate = 44713.000000000000000000
                         DataField = 'nf_dtemissao'
                         DataSource = DMPrincipal.DsTbNotaFiscal
-                        ExplicitLeft = 60
-                        ExplicitTop = 25
-                        ExplicitWidth = 186
                       end
                     end
                     object PnlFldDtESNF: TJvPanel
@@ -5655,14 +5645,10 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 150
                         Height = 23
                         Align = alTop
-                        Date = 44713.000000000000000000
                         TabOrder = 0
                         DropDownDate = 44713.000000000000000000
                         DataField = 'nf_dtES'
                         DataSource = DMPrincipal.DsTbNotaFiscal
-                        ExplicitLeft = 60
-                        ExplicitTop = 25
-                        ExplicitWidth = 186
                       end
                     end
                     object PnlFldHoraESNF: TJvPanel
@@ -5694,24 +5680,222 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         ParentFont = False
                         ExplicitWidth = 131
                       end
-                      object EdtFldHoraESNF: TJvDBMaskEdit
+                      object JvDBComboBox1: TJvDBComboBox
                         Left = 0
                         Top = 15
-                        Width = 147
+                        Width = 150
                         Height = 23
-                        BiDiMode = bdRightToLeft
-                        BorderStyle = bsNone
+                        Cursor = crHandPoint
+                        Align = alTop
+                        BevelInner = bvNone
+                        BevelOuter = bvNone
                         DataField = 'nf_horaES'
                         DataSource = DMPrincipal.DsTbNotaFiscal
-                        MaxLength = 5
-                        ParentBiDiMode = False
+                        Items.Strings = (
+                          '00:00'
+                          '00:15'
+                          '00:30'
+                          '00:45'
+                          '01:00'
+                          '01:15'
+                          '01:30'
+                          '01:45'
+                          '02:00'
+                          '02:15'
+                          '02:30'
+                          '02:45'
+                          '03:00'
+                          '03:15'
+                          '03:30'
+                          '03:45'
+                          '04:00'
+                          '04:15'
+                          '04:30'
+                          '04:45'
+                          '05:00'
+                          '05:15'
+                          '05:30'
+                          '05:45'
+                          '06:00'
+                          '06:15'
+                          '06:30'
+                          '06:45'
+                          '07:00'
+                          '07:15'
+                          '07:30'
+                          '07:45'
+                          '08:00'
+                          '08:15'
+                          '08:30'
+                          '08:45'
+                          '09:00'
+                          '09:15'
+                          '09:30'
+                          '09:45'
+                          '10:00'
+                          '10:15'
+                          '10:30'
+                          '10:45'
+                          '11:00'
+                          '11:15'
+                          '11:30'
+                          '11:45'
+                          '12:00'
+                          '12:15'
+                          '12:30'
+                          '12:45'
+                          '13:00'
+                          '13:15'
+                          '13:30'
+                          '13:45'
+                          '14:00'
+                          '14:15'
+                          '14:30'
+                          '14:45'
+                          '15:00'
+                          '15:15'
+                          '15:30'
+                          '15:45'
+                          '16:00'
+                          '16:15'
+                          '16:30'
+                          '16:45'
+                          '17:00'
+                          '17:15'
+                          '17:30'
+                          '17:45'
+                          '18:00'
+                          '18:15'
+                          '18:30'
+                          '18:45'
+                          '19:00'
+                          '19:15'
+                          '19:30'
+                          '19:45'
+                          '20:00'
+                          '20:15'
+                          '20:30'
+                          '20:45'
+                          '21:00'
+                          '21:15'
+                          '21:30'
+                          '21:45'
+                          '22:00'
+                          '22:15'
+                          '22:30'
+                          '22:45'
+                          '23:00'
+                          '23:15'
+                          '23:30'
+                          '23:45')
                         TabOrder = 0
-                        EditMask = '!99:99;1;'
+                        Values.Strings = (
+                          '00:00'
+                          '00:15'
+                          '00:30'
+                          '00:45'
+                          '01:00'
+                          '01:15'
+                          '01:30'
+                          '01:45'
+                          '02:00'
+                          '02:15'
+                          '02:30'
+                          '02:45'
+                          '03:00'
+                          '03:15'
+                          '03:30'
+                          '03:45'
+                          '04:00'
+                          '04:15'
+                          '04:30'
+                          '04:45'
+                          '05:00'
+                          '05:15'
+                          '05:30'
+                          '05:45'
+                          '06:00'
+                          '06:15'
+                          '06:30'
+                          '06:45'
+                          '07:00'
+                          '07:15'
+                          '07:30'
+                          '07:45'
+                          '08:00'
+                          '08:15'
+                          '08:30'
+                          '08:45'
+                          '09:00'
+                          '09:15'
+                          '09:30'
+                          '09:45'
+                          '10:00'
+                          '10:15'
+                          '10:30'
+                          '10:45'
+                          '11:00'
+                          '11:15'
+                          '11:30'
+                          '11:45'
+                          '12:00'
+                          '12:15'
+                          '12:30'
+                          '12:45'
+                          '13:00'
+                          '13:15'
+                          '13:30'
+                          '13:45'
+                          '14:00'
+                          '14:15'
+                          '14:30'
+                          '14:45'
+                          '15:00'
+                          '15:15'
+                          '15:30'
+                          '15:45'
+                          '16:00'
+                          '16:15'
+                          '16:30'
+                          '16:45'
+                          '17:00'
+                          '17:15'
+                          '17:30'
+                          '17:45'
+                          '18:00'
+                          '18:15'
+                          '18:30'
+                          '18:45'
+                          '19:00'
+                          '19:15'
+                          '19:30'
+                          '19:45'
+                          '20:00'
+                          '20:15'
+                          '20:30'
+                          '20:45'
+                          '21:00'
+                          '21:15'
+                          '21:30'
+                          '21:45'
+                          '22:00'
+                          '22:15'
+                          '22:30'
+                          '22:45'
+                          '23:00'
+                          '23:15'
+                          '23:30'
+                          '23:45')
+                        ListSettings.OutfilteredValueFont.Charset = DEFAULT_CHARSET
+                        ListSettings.OutfilteredValueFont.Color = clRed
+                        ListSettings.OutfilteredValueFont.Height = -11
+                        ListSettings.OutfilteredValueFont.Name = 'Tahoma'
+                        ListSettings.OutfilteredValueFont.Style = []
                       end
                     end
                     object PnlDadosNFCalcImpostos: TJvPanel
                       Left = 0
-                      Top = 210
+                      Top = 100
                       Width = 1014
                       Height = 110
                       HotTrackFont.Charset = DEFAULT_CHARSET
@@ -5724,7 +5908,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 9
-                      ExplicitTop = 200
+                      ExplicitTop = 210
                       object LbDadosNFCalcImpostos: TLabel
                         Left = 0
                         Top = 0
@@ -5760,14 +5944,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'BASE C'#193'CULO ICMS'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 108
                         end
                         object EdtImpostoNFBaseIcms: TJvDBCalcEdit
                           Left = 0
@@ -5780,7 +5964,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_baseicms'
                           DataSource = DMPrincipal.DsTbNotaFiscal
                         end
                       end
@@ -5797,21 +5981,21 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 1
+                        TabOrder = 5
                         object LbImpostoNFVlrFrete: TLabel
                           Left = 0
                           Top = 0
                           Width = 150
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'VALOR DO FRETE'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 93
                         end
                         object EdtImpostoNFVlrFrete: TJvDBCalcEdit
                           Left = 0
@@ -5824,7 +6008,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_vlrfrete'
                           DataSource = DMPrincipal.DsTbNotaFiscal
                         end
                       end
@@ -5841,21 +6025,21 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 2
+                        TabOrder = 1
                         object LbImpostoNFIcms: TLabel
                           Left = 0
                           Top = 0
                           Width = 150
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'VALOR DO ICMS'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 90
                         end
                         object EdtImpostoNFIcms: TJvDBCalcEdit
                           Left = 0
@@ -5868,7 +6052,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_vlricms'
                           DataSource = DMPrincipal.DsTbNotaFiscal
                         end
                       end
@@ -5885,21 +6069,21 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 3
+                        TabOrder = 2
                         object LbImpostoNFBaseIcmsST: TLabel
                           Left = 0
                           Top = 0
                           Width = 150
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'BASE C'#193'LCULO ICMS ST'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 131
                         end
                         object EdtImpostoNFBaseIcmsST: TJvDBCalcEdit
                           Left = 0
@@ -5912,7 +6096,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_baseicms_st'
                           DataSource = DMPrincipal.DsTbNotaFiscal
                         end
                       end
@@ -5929,21 +6113,21 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 4
+                        TabOrder = 3
                         object LbImpostoNFIcmsST: TLabel
                           Left = 0
                           Top = 0
                           Width = 150
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'VALOR DO ICMS ST'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 107
                         end
                         object EdtImpostoNFIcmsST: TJvDBCalcEdit
                           Left = 0
@@ -5956,14 +6140,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_vlricms_st'
                           DataSource = DMPrincipal.DsTbNotaFiscal
                         end
                       end
                       object PnlImpostoNFVlrProdutos: TJvPanel
                         Left = 630
                         Top = 20
-                        Width = 150
+                        Width = 151
                         Height = 40
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
@@ -5973,26 +6157,26 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 5
+                        TabOrder = 4
                         object LbImpostoNFVlrProdutos: TLabel
                           Left = 0
                           Top = 0
-                          Width = 150
+                          Width = 151
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'TOTAL DOS PRODUTOS'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 129
                         end
                         object EdtImpostoNFVlrProdutos: TJvDBCalcEdit
                           Left = 0
                           Top = 15
-                          Width = 150
+                          Width = 151
                           Height = 23
                           Align = alTop
                           DecimalPlaces = 0
@@ -6000,7 +6184,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_vlrprodutos'
                           DataSource = DMPrincipal.DsTbNotaFiscal
                         end
                       end
@@ -6024,14 +6208,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 149
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'VALOR DO SEGURO'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 106
                         end
                         object EdtImpostoNFVlrSeguro: TJvDBCalcEdit
                           Left = 0
@@ -6044,9 +6228,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_vlrseguro'
                           DataSource = DMPrincipal.DsTbNotaFiscal
-                          ExplicitWidth = 150
                         end
                       end
                       object PnlImpostoNFVlrDesconto: TJvPanel
@@ -6069,14 +6252,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'VALOR DO DESCONTO'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 124
                         end
                         object EdtImpostoNFVlrDesconto: TJvDBCalcEdit
                           Left = 0
@@ -6089,7 +6272,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_vlrdesconto'
                           DataSource = DMPrincipal.DsTbNotaFiscal
                         end
                       end
@@ -6113,14 +6296,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'OUTRAS DESPESAS'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 106
                         end
                         object EdtImpostoNFVlrOutrasDespesas: TJvDBCalcEdit
                           Left = 0
@@ -6133,7 +6316,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_vlroutrasdespesas'
                           DataSource = DMPrincipal.DsTbNotaFiscal
                         end
                       end
@@ -6157,14 +6340,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'VALOR DO IPI'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 76
                         end
                         object EdtImpostoNFVlrIPI: TJvDBCalcEdit
                           Left = 0
@@ -6177,13 +6360,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_vlrip'
                           DataSource = DMPrincipal.DsTbNotaFiscal
                         end
                       end
                       object PnlImpostoNFVlrtNF: TJvPanel
                         Left = 787
-                        Top = 65
+                        Top = 20
                         Width = 150
                         Height = 40
                         HotTrackFont.Charset = DEFAULT_CHARSET
@@ -6201,14 +6384,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 15
                           Align = alTop
-                          Caption = 'N'#218'MERO DA NF'
+                          Caption = 'VALOR TOTAL DA NF'
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
                           ParentFont = False
-                          ExplicitWidth = 88
+                          ExplicitWidth = 113
                         end
                         object EdtImpostoNFVlrtNF: TJvDBCalcEdit
                           Left = 0
@@ -6221,14 +6404,197 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
-                          DataField = 'nf_numero'
+                          DataField = 'nf_vlrtotal'
                           DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                      object PnlNFAddItens: TJvPanel
+                        Left = 787
+                        Top = 66
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        TabOrder = 11
+                        object FundoNFAddItens: TJvGradient
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 40
+                          StartColor = 10780674
+                          EndColor = 8279822
+                          ExplicitLeft = 95
+                          ExplicitTop = 25
+                          ExplicitWidth = 100
+                          ExplicitHeight = 41
+                        end
+                        object BtNFAddItens: TJvSpeedButton
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 40
+                          Cursor = crHandPoint
+                          Align = alClient
+                          Caption = 'PRODUTO'
+                          Flat = True
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          Glyph.Data = {
+                            C20F0000424DC20F0000000000004200000028000000200000001F0000000100
+                            200003000000800F0000983A0000983A000000000000000000000000FF0000FF
+                            0000FF00000000000000A28D8100A28D8101A28D812FA28D8194A28D81D9A28D
+                            81FCA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FCA28D81D9A28D8194A28D812FA28D8101A28D
+                            810000000000A28D8100A28D8104A28D8162A28D81DDA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81DDA28D8163A28D
+                            8104A28D8100A08C7F00A28D8162A28D81F2A28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81F2A28D
+                            8162A18B8000A28D8131A28D81DBA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81DBA28D8131A28D8199A28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D8199A28D81DBA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D80FFA28C
+                            80FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81DBA28D81FDA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFC4B7AFFFCCC1
+                            BAFFA48F84FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FDA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFA08B7FFFDBD3CFFFE9E4
+                            E2FFA48F84FFA08B7FFFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA18B7FFFA18C7FFFA18C7FFFA18C7FFFA18C7FFFA18C7FFFA18C7FFFA18C
+                            7FFFA18C7FFFA18C7FFFA18C80FFA59085FFB6A69DFFB9A9A1FFE5DFDBFFEFEB
+                            E9FFBCACA4FFB8A89FFFA89489FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA793
+                            87FFC7BBB3FFD1C6C0FFD1C6C0FFD1C6C0FFD1C6C0FFD1C6C0FFD1C6C0FFD1C6
+                            C0FFD1C6C0FFD1C7C1FFBAAAA2FFAC998EFFEEEBE8FFF9F8F7FFFDFCFCFFFEFD
+                            FDFFF9F8F7FFF5F3F2FFB7A79EFFA18B7FFFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18C7FFFB6A5
+                            9CFFFAF9F8FFF9F8F8FFF5F3F1FFF5F3F2FFF5F3F2FFF5F3F2FFF5F3F2FFF5F3
+                            F2FFF5F3F2FFF6F4F3FFCEC3BCFFA48F84FFB6A69DFFB9A9A1FFE5DFDBFFEFEB
+                            E9FFBCACA4FFB8A89FFFA89489FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFB8A8
+                            9FFFFCFBFAFFCFC4BEFFAC998EFFAD9B90FFAD9B90FFAD9B90FFAD9B90FFAD9B
+                            90FFAD9B90FFAD9B90FFA89489FFA28D81FFA18B7FFFA08B7FFFDBD3CFFFE9E4
+                            E2FFA48F84FFA08B7FFFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFB8A8
+                            9FFFFCFBFAFFC8BCB5FFA08A7EFFA18C80FFA18C80FFA18C80FFA18C80FFA18C
+                            80FFA18C80FFA18C80FFA28D80FFA28D81FFA28D81FFA28D80FFBDAEA5FFC4B6
+                            AEFFA48F83FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFB8A8
+                            9FFFFCFBFAFFC8BCB5FFA08B7FFFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA79387FFAB988EFFA38E
+                            82FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFB8A8
+                            9FFFFCFBFAFFC8BCB5FFA08B7FFFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFC4B7AFFFEDE9E6FFAF9D
+                            92FFA18C80FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFB8A8
+                            9FFFFCFBFAFFC8BCB5FFA08B7FFFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA08B7FFFC9BDB6FFF7F5F4FFB19F
+                            95FFA18C80FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFB8A8
+                            9FFFFCFBFAFFC8BCB5FFA08B7FFFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA08B7FFFC9BDB6FFF7F5F4FFB19F
+                            95FFA18C80FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFB8A8
+                            9FFFFCFBFAFFC8BBB4FF9F897DFFA18B7FFFA18B7FFFA18B7FFFA18B7FFFA18B
+                            7FFFA18B7FFFA18B7FFFA18B7FFFA18B7FFF9F897DFFC8BCB5FFF7F5F4FFB19F
+                            95FFA18C80FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18B7FFFB8A8
+                            9FFFFBFAFAFFE3DDD9FFCFC4BDFFD0C5BFFFD0C5BFFFD0C5BFFFCFC5BEFFCFC4
+                            BEFFCFC5BEFFD0C5BFFFD0C5BFFFD0C5BFFFCEC4BDFFE3DDD9FFF7F5F4FFB19F
+                            95FFA18C80FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18C80FFAF9E
+                            93FFF3F1EFFFFFFFFFFFF6F4F3FFF5F3F1FFF5F3F1FFF5F3F1FFF8F6F5FFFEFE
+                            FEFFF7F6F5FFF5F3F1FFF5F3F1FFF5F2F1FFF7F6F5FFFFFFFFFFF1EDEBFFAC99
+                            8EFFA18C80FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFCEC2BCFFFDFDFCFFD2C8C2FFAC9A8FFFAD9B90FFAC998EFFC5B8B1FFFAF9
+                            F9FFC1B4ACFFAC998EFFAD9A90FFAD9A8FFFD5CCC7FFFDFCFCFFCABEB7FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA18C
+                            80FFA89489FFE5DFDBFFF3F1EFFFB2A097FFA08A7EFF9F897DFFBCADA5FFFAF8
+                            F8FFB8A89FFF9F8A7DFFA08A7EFFB6A59CFFF5F3F2FFE0D9D5FFA69286FFA28D
+                            80FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA18C7FFFB6A59CFFF5F3F2FFE1DBD7FFAF9D93FFAC998EFFC5B8B1FFFAF9
+                            F9FFC1B4ACFFAC998EFFB09E94FFE5DFDBFFF3F1EFFFB2A096FFA18C80FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA18C80FFCBBFB9FFFCFCFBFFF7F5F4FFF5F3F2FFF8F7F6FFFEFE
+                            FEFFF8F6F5FFF5F3F2FFF7F5F4FFFBFBFAFFC7BAB3FFA18C80FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FDA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA69287FFCCC0BAFFDAD2CDFFDAD1CCFFD9D1CCFFD9D0
+                            CBFFD9D1CCFFDAD1CCFFDAD2CDFFCABFB8FFA59186FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FDA28D81DBA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA18C80FFA18C80FFA18C80FFA18C80FFA18C
+                            80FFA18C80FFA18C80FFA18C80FFA18C80FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81DBA28D8199A28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D8199A28D8131A28D81DBA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81DBA28D8131A28E7F00A28D8162A28D81F2A28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81F2A28D
+                            8162A28B7F00A28D8100A28D8104A28D8163A28D81DDA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81DDA28D8163A28D
+                            8104A28D810000000000A28D8100A28D8101A28D812FA28D8194A28D81D9A28D
+                            81FCA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D81FFA28D
+                            81FFA28D81FFA28D81FFA28D81FCA28D81D9A28D8195A28D812FA28D8101A28D
+                            810000000000}
+                          GrayedInactive = False
+                          HotTrackFont.Charset = ANSI_CHARSET
+                          HotTrackFont.Color = clWindowText
+                          HotTrackFont.Height = -12
+                          HotTrackFont.Name = 'Segoe UI Semibold'
+                          HotTrackFont.Style = []
+                          Layout = blGlyphLeft
+                          ParentFont = False
+                          Spacing = 20
+                          Transparent = True
+                          OnClick = BtNFAddItensClick
+                          ExplicitLeft = 45
+                          ExplicitTop = 10
+                          ExplicitWidth = 25
+                          ExplicitHeight = 25
                         end
                       end
                     end
                     object PnlDadosNFDestinatario: TJvPanel
                       Left = 0
-                      Top = 100
+                      Top = 210
                       Width = 1014
                       Height = 110
                       HotTrackFont.Charset = DEFAULT_CHARSET
@@ -6241,7 +6607,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 10
-                      ExplicitTop = 90
+                      ExplicitTop = 100
                       object LbDadosNFDestinatario: TLabel
                         Left = 0
                         Top = 0
@@ -6256,6 +6622,94 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Font.Style = [fsBold]
                         ParentFont = False
                         ExplicitWidth = 204
+                      end
+                      object JvDBUltimGrid1: TJvDBUltimGrid
+                        Left = 0
+                        Top = 21
+                        Width = 1014
+                        Height = 89
+                        Cursor = crHandPoint
+                        Align = alClient
+                        BorderStyle = bsNone
+                        Color = clWhite
+                        DataSource = DMPrincipal.DsTbNotaFiscal
+                        DrawingStyle = gdsGradient
+                        GradientEndColor = 9323579
+                        GradientStartColor = 9323579
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWindowText
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI'
+                        Font.Style = []
+                        Options = [dgIndicator, dgTitleClick, dgTitleHotTrack]
+                        ParentFont = False
+                        TabOrder = 0
+                        TitleFont.Charset = ANSI_CHARSET
+                        TitleFont.Color = clWhite
+                        TitleFont.Height = -12
+                        TitleFont.Name = 'Segoe UI'
+                        TitleFont.Style = [fsBold]
+                        AutoAppend = False
+                        ClearSelection = False
+                        AlternateRowColor = 8279822
+                        AlternateRowFontColor = clWhite
+                        SelectColumnsDialogStrings.Caption = 'Select columns'
+                        SelectColumnsDialogStrings.OK = '&OK'
+                        SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
+                        CellHintPosition = gchpMouse
+                        EditControls = <>
+                        RowsHeight = 18
+                        TitleRowHeight = 18
+                        Columns = <
+                          item
+                            Alignment = taCenter
+                            Expanded = False
+                            FieldName = 'nf_id'
+                            Title.Alignment = taCenter
+                            Title.Caption = 'ID'
+                            Width = 50
+                            Visible = True
+                          end
+                          item
+                            Alignment = taCenter
+                            Expanded = False
+                            FieldName = 'nf_numero'
+                            Title.Alignment = taCenter
+                            Title.Caption = 'N'#218'MERO'
+                            Width = 50
+                            Visible = True
+                          end
+                          item
+                            Alignment = taCenter
+                            Expanded = False
+                            FieldName = 'nf_tipoES'
+                            Title.Alignment = taCenter
+                            Title.Caption = 'E/S'
+                            Visible = True
+                          end
+                          item
+                            Alignment = taCenter
+                            Expanded = False
+                            FieldName = 'nf_dtemissao'
+                            Title.Alignment = taCenter
+                            Title.Caption = 'EMISS'#195'O'
+                            Visible = True
+                          end
+                          item
+                            Alignment = taCenter
+                            Expanded = False
+                            FieldName = 'nf_vlrtotal'
+                            Title.Alignment = taCenter
+                            Title.Caption = 'TOTAL'
+                            Visible = True
+                          end
+                          item
+                            Expanded = False
+                            FieldName = 'nf_cnpjForn'
+                            Title.Alignment = taCenter
+                            Title.Caption = 'CNPJ'
+                            Visible = True
+                          end>
                       end
                     end
                   end
@@ -6274,8 +6728,155 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     Color = 15329769
                     ParentBackground = False
                     TabOrder = 2
-                    ExplicitTop = 325
-                    ExplicitHeight = 207
+                    object JvSpeedButton1: TJvSpeedButton
+                      Left = 355
+                      Top = 23
+                      Width = 61
+                      Height = 50
+                      HotTrackFont.Charset = ANSI_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -12
+                      HotTrackFont.Name = 'Segoe UI Semibold'
+                      HotTrackFont.Style = []
+                      OnClick = JvSpeedButton1Click
+                    end
+                    object PnlDNFICodProduto: TJvPanel
+                      Left = 10
+                      Top = 5
+                      Width = 50
+                      Height = 40
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      BevelOuter = bvNone
+                      Color = 4671041
+                      ParentBackground = False
+                      TabOrder = 0
+                      object LbDNFICodProduto: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 50
+                        Height = 15
+                        Align = alTop
+                        Caption = 'C'#211'DIGO'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWhite
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 46
+                      end
+                      object EdtDNFICodProduto: TJvDBSearchEdit
+                        Left = 0
+                        Top = 15
+                        Width = 50
+                        Height = 23
+                        DataSource = DMPrincipal.DsQryProduto
+                        DataResult = 'prd_codInterno'
+                        DataField = 'prd_codInterno'
+                        Align = alTop
+                        Alignment = taCenter
+                        TabOrder = 0
+                        Text = 'EdtDNFICodProduto'
+                      end
+                    end
+                    object PnlDNFINomeProduto: TJvPanel
+                      Left = 74
+                      Top = 5
+                      Width = 200
+                      Height = 40
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      BevelOuter = bvNone
+                      Color = 4671041
+                      ParentBackground = False
+                      TabOrder = 1
+                      object LbDNFINomeProduto: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 200
+                        Height = 15
+                        Align = alTop
+                        Caption = 'PRODUTO'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWhite
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 56
+                      end
+                      object EdtDNFINomeProduto: TDBEdit
+                        Left = 0
+                        Top = 15
+                        Width = 200
+                        Height = 23
+                        Align = alTop
+                        BevelInner = bvNone
+                        BevelOuter = bvNone
+                        BorderStyle = bsNone
+                        DataField = 'prd_nome'
+                        DataSource = DMPrincipal.DsQryProduto
+                        ReadOnly = True
+                        TabOrder = 0
+                      end
+                    end
+                    object JvDBLookupCombo1: TJvDBLookupCombo
+                      Left = 74
+                      Top = 51
+                      Width = 200
+                      Height = 22
+                      DataField = 'prd_idproduto'
+                      DataSource = DMPrincipal.DsTbNotaFiscalItem
+                      LookupField = 'prd_idproduto'
+                      LookupDisplay = 'prd_nome'
+                      LookupSource = DMPrincipal.DsQryProduto
+                      TabOrder = 2
+                    end
+                    object DbGrid: TJvDBUltimGrid
+                      Left = 0
+                      Top = 79
+                      Width = 1014
+                      Height = 133
+                      Cursor = crHandPoint
+                      Align = alBottom
+                      BorderStyle = bsNone
+                      Color = clWhite
+                      DataSource = DMPrincipal.DsTbNotaFiscalItem
+                      DrawingStyle = gdsGradient
+                      GradientEndColor = 9323579
+                      GradientStartColor = 9323579
+                      Font.Charset = ANSI_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -12
+                      Font.Name = 'Segoe UI'
+                      Font.Style = []
+                      Options = [dgTitles, dgColumnResize, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                      ParentFont = False
+                      TabOrder = 3
+                      TitleFont.Charset = ANSI_CHARSET
+                      TitleFont.Color = clWhite
+                      TitleFont.Height = -12
+                      TitleFont.Name = 'Segoe UI'
+                      TitleFont.Style = [fsBold]
+                      AutoAppend = False
+                      ClearSelection = False
+                      AlternateRowColor = 8279822
+                      AlternateRowFontColor = clWhite
+                      SelectColumnsDialogStrings.Caption = 'Select columns'
+                      SelectColumnsDialogStrings.OK = '&OK'
+                      SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
+                      CellHintPosition = gchpMouse
+                      EditControls = <>
+                      RowsHeight = 19
+                      TitleRowHeight = 19
+                    end
                   end
                 end
               end

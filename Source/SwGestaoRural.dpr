@@ -34,7 +34,8 @@ uses
   Classe.Produto in '..\Ctrl\Classe.Produto.pas',
   UFrmModuloControleEstoque in '..\View\UFrmModuloControleEstoque.pas' {FrmModuloControleEstoque},
   Classe.Comum.ControleEstoque in '..\Ctrl\Classe.Comum.ControleEstoque.pas',
-  UFrmControleEstoquePesqNF in '..\View\UFrmControleEstoquePesqNF.pas' {FrmPesqNF};
+  UFrmControleEstoquePesqNF in '..\View\UFrmControleEstoquePesqNF.pas' {FrmPesqNF},
+  Classe.NF.ControleEstoque in '..\Ctrl\Classe.NF.ControleEstoque.pas';
 
 {$R *.res}
 
