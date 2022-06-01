@@ -4907,7 +4907,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     Align = alBottom
                     BevelOuter = bvNone
                     TabOrder = 0
-                    ExplicitTop = 539
                     object PnlBtCancelNF: TJvPanel
                       Left = 150
                       Top = 0
@@ -4923,8 +4922,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 0
-                      ExplicitLeft = 0
-                      ExplicitTop = -1
                       object JvGradient1: TJvGradient
                         Left = 0
                         Top = 0
@@ -5116,7 +5113,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 1
-                      ExplicitLeft = 5
                       object JvGradient2: TJvGradient
                         Left = 0
                         Top = 0
@@ -5300,7 +5296,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     Left = 0
                     Top = 0
                     Width = 1014
-                    Height = 300
+                    Height = 320
                     HotTrackFont.Charset = DEFAULT_CHARSET
                     HotTrackFont.Color = clWindowText
                     HotTrackFont.Height = -11
@@ -5308,13 +5304,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     HotTrackFont.Style = []
                     Align = alTop
                     BevelOuter = bvNone
-                    Color = 16765828
+                    Color = clWhite
                     ParentBackground = False
                     TabOrder = 1
                     object PnlFldTipoMovNF: TJvPanel
                       Left = 10
                       Top = 5
-                      Width = 200
+                      Width = 150
                       Height = 40
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
@@ -5328,22 +5324,22 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       object LbFldTipoMovNF: TLabel
                         Left = 0
                         Top = 0
-                        Width = 200
+                        Width = 150
                         Height = 15
                         Align = alTop
-                        Caption = 'TIPO DE MOVIMENTA'#199#195'O NF'
+                        Caption = 'MOVIMENTA'#199#195'O'
                         Font.Charset = ANSI_CHARSET
                         Font.Color = clWhite
                         Font.Height = -12
                         Font.Name = 'Segoe UI Semibold'
                         Font.Style = [fsBold]
                         ParentFont = False
-                        ExplicitWidth = 162
+                        ExplicitWidth = 96
                       end
                       object CbbFldTipoMovNF: TJvDBComboBox
                         Left = 0
                         Top = 15
-                        Width = 200
+                        Width = 150
                         Height = 23
                         Align = alTop
                         DataField = 'nf_tipoES'
@@ -5360,14 +5356,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         ListSettings.OutfilteredValueFont.Height = -11
                         ListSettings.OutfilteredValueFont.Name = 'Tahoma'
                         ListSettings.OutfilteredValueFont.Style = []
-                        ExplicitLeft = 115
-                        ExplicitWidth = 145
+                        ExplicitWidth = 200
                       end
                     end
                     object PnlFldFornecNF: TJvPanel
-                      Left = 235
+                      Left = 180
                       Top = 5
-                      Width = 300
+                      Width = 340
                       Height = 40
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
@@ -5381,7 +5376,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       object LbFldFornecNF: TLabel
                         Left = 0
                         Top = 0
-                        Width = 300
+                        Width = 340
                         Height = 15
                         Align = alTop
                         Caption = 'FORNECEDOR'
@@ -5393,10 +5388,10 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         ParentFont = False
                         ExplicitWidth = 75
                       end
-                      object DBLookupComboBox1: TDBLookupComboBox
+                      object CbbFldFornecNF: TDBLookupComboBox
                         Left = 0
                         Top = 15
-                        Width = 300
+                        Width = 340
                         Height = 23
                         Align = alTop
                         DataField = 'frn_id'
@@ -5405,11 +5400,883 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         ListField = 'frn_NomeFantasia'
                         ListSource = DMPrincipal.DsTbFornecedor
                         TabOrder = 0
-                        ExplicitLeft = 90
-                        ExplicitTop = 20
-                        ExplicitWidth = 145
+                        ExplicitWidth = 300
                       end
                     end
+                    object PnlFldNumeroNF: TJvPanel
+                      Left = 540
+                      Top = 5
+                      Width = 150
+                      Height = 40
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      BevelOuter = bvNone
+                      Color = 4671041
+                      ParentBackground = False
+                      TabOrder = 2
+                      object LbFldNumeroNF: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 150
+                        Height = 15
+                        Align = alTop
+                        Caption = 'N'#218'MERO DA NF'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWhite
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 88
+                      end
+                      object EdtFldNumeroNF: TJvDBCalcEdit
+                        Left = 0
+                        Top = 15
+                        Width = 150
+                        Height = 23
+                        Align = alTop
+                        DecimalPlaces = 0
+                        DisplayFormat = '0'
+                        ShowButton = False
+                        TabOrder = 0
+                        DecimalPlacesAlwaysShown = False
+                        DataField = 'nf_numero'
+                        DataSource = DMPrincipal.DsTbNotaFiscal
+                        ExplicitWidth = 200
+                      end
+                    end
+                    object PnlFldSerieNF: TJvPanel
+                      Left = 710
+                      Top = 5
+                      Width = 150
+                      Height = 40
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      BevelOuter = bvNone
+                      Color = 4671041
+                      ParentBackground = False
+                      TabOrder = 3
+                      object LbFldSerieNF: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 150
+                        Height = 15
+                        Align = alTop
+                        Caption = 'N'#218'MERO DE S'#201'RIE'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWhite
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 101
+                      end
+                      object EdtFldSerieNF: TJvDBCalcEdit
+                        Left = 0
+                        Top = 15
+                        Width = 150
+                        Height = 23
+                        Align = alTop
+                        DecimalPlaces = 0
+                        DisplayFormat = '0'
+                        ShowButton = False
+                        TabOrder = 0
+                        DecimalPlacesAlwaysShown = False
+                        DataField = 'nf_serie'
+                        DataSource = DMPrincipal.DsTbNotaFiscal
+                      end
+                    end
+                    object PnlFldCnpjNF: TJvPanel
+                      Left = 870
+                      Top = 5
+                      Width = 140
+                      Height = 40
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      BevelOuter = bvNone
+                      Color = 4671041
+                      ParentBackground = False
+                      TabOrder = 4
+                      object FldCnpjNF: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 140
+                        Height = 15
+                        Align = alTop
+                        Caption = 'CNPJ'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWhite
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 27
+                      end
+                      object EdtFldCnpjNF: TJvDBMaskEdit
+                        Left = 0
+                        Top = 15
+                        Width = 140
+                        Height = 23
+                        DataField = 'nf_cnpjForn'
+                        DataSource = DMPrincipal.DsTbNotaFiscal
+                        TabOrder = 0
+                        EditMask = ''
+                      end
+                    end
+                    object PnlFldNatOperNF: TJvPanel
+                      Left = 10
+                      Top = 60
+                      Width = 350
+                      Height = 40
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      BevelOuter = bvNone
+                      Color = 4671041
+                      ParentBackground = False
+                      TabOrder = 5
+                      object LbFldNatOperNF: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 350
+                        Height = 15
+                        Align = alTop
+                        Caption = 'NATUREZA DA OPERA'#199#195'O'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWhite
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 143
+                      end
+                      object EdtFldNatOperNF: TDBEdit
+                        Left = 0
+                        Top = 15
+                        Width = 350
+                        Height = 23
+                        Align = alTop
+                        DataField = 'nf_nop'
+                        DataSource = DMPrincipal.DsTbNotaFiscal
+                        TabOrder = 0
+                        ExplicitLeft = 195
+                        ExplicitTop = 20
+                        ExplicitWidth = 121
+                      end
+                    end
+                    object PnlFldDtEmissaoNF: TJvPanel
+                      Left = 380
+                      Top = 60
+                      Width = 140
+                      Height = 40
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      BevelOuter = bvNone
+                      Color = 4671041
+                      ParentBackground = False
+                      TabOrder = 6
+                      object LbFldDtEmissaoNF: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 140
+                        Height = 15
+                        Align = alTop
+                        Caption = 'DATA D EMISS'#195'O'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWhite
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 97
+                      end
+                      object EdtDtFldDtEmissaoNF: TJvDBDateTimePicker
+                        Left = 0
+                        Top = 15
+                        Width = 140
+                        Height = 23
+                        Align = alTop
+                        Date = 44713.000000000000000000
+                        TabOrder = 0
+                        DropDownDate = 44713.000000000000000000
+                        DataField = 'nf_dtemissao'
+                        DataSource = DMPrincipal.DsTbNotaFiscal
+                        ExplicitLeft = 60
+                        ExplicitTop = 25
+                        ExplicitWidth = 186
+                      end
+                    end
+                    object PnlFldDtESNF: TJvPanel
+                      Left = 540
+                      Top = 60
+                      Width = 150
+                      Height = 40
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      BevelOuter = bvNone
+                      Color = 4671041
+                      ParentBackground = False
+                      TabOrder = 7
+                      object LbFldDtESNF: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 150
+                        Height = 15
+                        Align = alTop
+                        Caption = 'DATA DE ENTRADA/SA'#205'DA'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWhite
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 146
+                      end
+                      object EdtDtFldDtESNF: TJvDBDateTimePicker
+                        Left = 0
+                        Top = 15
+                        Width = 150
+                        Height = 23
+                        Align = alTop
+                        Date = 44713.000000000000000000
+                        TabOrder = 0
+                        DropDownDate = 44713.000000000000000000
+                        DataField = 'nf_dtES'
+                        DataSource = DMPrincipal.DsTbNotaFiscal
+                        ExplicitLeft = 60
+                        ExplicitTop = 25
+                        ExplicitWidth = 186
+                      end
+                    end
+                    object PnlFldHoraESNF: TJvPanel
+                      Left = 710
+                      Top = 60
+                      Width = 150
+                      Height = 40
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      BevelOuter = bvNone
+                      Color = 4671041
+                      ParentBackground = False
+                      TabOrder = 8
+                      object LbFldHoraESNF: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 150
+                        Height = 15
+                        Align = alTop
+                        Caption = 'HORA ENTRADA/SA'#205'DA'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clWhite
+                        Font.Height = -12
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 131
+                      end
+                      object EdtFldHoraESNF: TJvDBMaskEdit
+                        Left = 0
+                        Top = 15
+                        Width = 147
+                        Height = 23
+                        BiDiMode = bdRightToLeft
+                        BorderStyle = bsNone
+                        DataField = 'nf_horaES'
+                        DataSource = DMPrincipal.DsTbNotaFiscal
+                        MaxLength = 5
+                        ParentBiDiMode = False
+                        TabOrder = 0
+                        EditMask = '!99:99;1;'
+                      end
+                    end
+                    object PnlDadosNFCalcImpostos: TJvPanel
+                      Left = 0
+                      Top = 210
+                      Width = 1014
+                      Height = 110
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      Align = alBottom
+                      BevelOuter = bvNone
+                      Color = clWhite
+                      ParentBackground = False
+                      TabOrder = 9
+                      ExplicitTop = 200
+                      object LbDadosNFCalcImpostos: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 1014
+                        Height = 21
+                        Align = alTop
+                        Caption = 'C'#193'LCULO DO IMPOSTO'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clBlack
+                        Font.Height = -16
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 171
+                      end
+                      object PnlImpostoNFBaseIcms: TJvPanel
+                        Left = 10
+                        Top = 20
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 0
+                        object LbImpostoNFBaseIcms: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 15
+                          Align = alTop
+                          Caption = 'BASE C'#193'CULO ICMS'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 108
+                        end
+                        object EdtImpostoNFBaseIcms: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 150
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_baseicms'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                      object PnlImpostoNFVlrFrete: TJvPanel
+                        Left = 10
+                        Top = 65
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 5
+                        object LbImpostoNFVlrFrete: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 15
+                          Align = alTop
+                          Caption = 'VALOR DO FRETE'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 93
+                        end
+                        object EdtImpostoNFVlrFrete: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 150
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_vlrfrete'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                      object PnlImpostoNFIcms: TJvPanel
+                        Left = 165
+                        Top = 20
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 1
+                        object LbImpostoNFIcms: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 15
+                          Align = alTop
+                          Caption = 'VALOR DO ICMS'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 90
+                        end
+                        object EdtImpostoNFIcms: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 150
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_vlricms'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                      object PnlImpostoNFBaseIcmsST: TJvPanel
+                        Left = 320
+                        Top = 20
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 2
+                        object LbImpostoNFBaseIcmsST: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 15
+                          Align = alTop
+                          Caption = 'BASE C'#193'LCULO ICMS ST'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 131
+                        end
+                        object EdtImpostoNFBaseIcmsST: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 150
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_baseicms_st'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                      object PnlImpostoNFIcmsST: TJvPanel
+                        Left = 475
+                        Top = 20
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 3
+                        object LbImpostoNFIcmsST: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 15
+                          Align = alTop
+                          Caption = 'VALOR DO ICMS ST'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 107
+                        end
+                        object EdtImpostoNFIcmsST: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 150
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_vlricms_st'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                      object PnlImpostoNFVlrProdutos: TJvPanel
+                        Left = 630
+                        Top = 20
+                        Width = 200
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 4
+                        object LbImpostoNFVlrProdutos: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 200
+                          Height = 15
+                          Align = alTop
+                          Caption = 'VALOR TOTAL DOS PRODUTOS'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 169
+                        end
+                        object EdtImpostoNFVlrProdutos: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 200
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_vlrprodutos'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                          ExplicitWidth = 150
+                        end
+                      end
+                      object PnlImpostoNFVlrSeguro: TJvPanel
+                        Left = 165
+                        Top = 65
+                        Width = 149
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 6
+                        object LbImpostoNFVlrSeguro: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 149
+                          Height = 15
+                          Align = alTop
+                          Caption = 'VALOR DO SEGURO'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 106
+                        end
+                        object EdtImpostoNFVlrSeguro: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 149
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_vlrseguro'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                          ExplicitWidth = 150
+                        end
+                      end
+                      object PnlImpostoNFVlrDesconto: TJvPanel
+                        Left = 320
+                        Top = 65
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 7
+                        object LbImpostoNFVlrDesconto: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 15
+                          Align = alTop
+                          Caption = 'VALOR DO DESCONTO'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 124
+                        end
+                        object EdtImpostoNFVlrDesconto: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 150
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_vlrdesconto'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                      object PnlImpostoNFVlrOutrasDespesas: TJvPanel
+                        Left = 476
+                        Top = 65
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 8
+                        object LbImpostoNFVlrOutrasDespesas: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 15
+                          Align = alTop
+                          Caption = 'OUTRAS DESPESAS'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 106
+                        end
+                        object EdtImpostoNFVlrOutrasDespesas: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 150
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_vlroutrasdespesas'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                      object PnlImpostoNFVlrIPI: TJvPanel
+                        Left = 631
+                        Top = 65
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 9
+                        object LbImpostoNFVlrIPI: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 15
+                          Align = alTop
+                          Caption = 'VALOR DO IPI'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 76
+                        end
+                        object EdtImpostoNFVlrIPI: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 150
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_vlrip'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                      object PnlImpostoNFVlrtNF: TJvPanel
+                        Left = 787
+                        Top = 65
+                        Width = 150
+                        Height = 40
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'Tahoma'
+                        HotTrackFont.Style = []
+                        BevelOuter = bvNone
+                        Color = 4671041
+                        ParentBackground = False
+                        TabOrder = 10
+                        object LbImpostoNFVlrtNF: TLabel
+                          Left = 0
+                          Top = 0
+                          Width = 150
+                          Height = 15
+                          Align = alTop
+                          Caption = 'VALOR TOTAL DA NF'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -12
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                          ExplicitWidth = 113
+                        end
+                        object EdtImpostoNFVlrtNF: TJvDBCalcEdit
+                          Left = 0
+                          Top = 15
+                          Width = 150
+                          Height = 23
+                          Align = alTop
+                          DecimalPlaces = 0
+                          DisplayFormat = '0'
+                          ShowButton = False
+                          TabOrder = 0
+                          DecimalPlacesAlwaysShown = False
+                          DataField = 'nf_vlrtotal'
+                          DataSource = DMPrincipal.DsTbNotaFiscal
+                        end
+                      end
+                    end
+                    object PnlDadosNFDestinatario: TJvPanel
+                      Left = 0
+                      Top = 100
+                      Width = 1014
+                      Height = 110
+                      HotTrackFont.Charset = DEFAULT_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -11
+                      HotTrackFont.Name = 'Tahoma'
+                      HotTrackFont.Style = []
+                      Align = alBottom
+                      BevelOuter = bvNone
+                      Color = clWhite
+                      ParentBackground = False
+                      TabOrder = 10
+                      ExplicitTop = 90
+                      object LbDadosNFDestinatario: TLabel
+                        Left = 0
+                        Top = 0
+                        Width = 1014
+                        Height = 21
+                        Align = alTop
+                        Caption = 'DESTINAT'#193'RIO/REMETENTE'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clBlack
+                        Font.Height = -16
+                        Font.Name = 'Segoe UI Semibold'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        ExplicitWidth = 204
+                      end
+                    end
+                  end
+                  object PnlDadosNFItens: TJvPanel
+                    Left = 0
+                    Top = 320
+                    Width = 1014
+                    Height = 212
+                    HotTrackFont.Charset = DEFAULT_CHARSET
+                    HotTrackFont.Color = clWindowText
+                    HotTrackFont.Height = -11
+                    HotTrackFont.Name = 'Tahoma'
+                    HotTrackFont.Style = []
+                    Align = alClient
+                    BevelOuter = bvNone
+                    Color = 15329769
+                    ParentBackground = False
+                    TabOrder = 2
+                    ExplicitTop = 325
+                    ExplicitHeight = 207
                   end
                 end
               end
@@ -5605,9 +6472,5 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
         end
       end
     end
-  end
-  object JvXPStyleManager1: TJvXPStyleManager
-    Left = 947
-    Top = 216
   end
 end
