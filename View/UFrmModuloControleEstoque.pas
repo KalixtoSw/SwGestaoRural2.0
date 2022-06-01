@@ -10,7 +10,8 @@ uses
   JvExtComponent, JvPanel, JvExControls, JvSpeedButton, Vcl.WinXPanels,
   Vcl.WinXCtrls, JvNavigationPane, Vcl.ComCtrls, JvgTab, JvComponentBase,
   JvXPCore, JvExComCtrls, JvComCtrls, Vcl.StdCtrls, JvGradient, Data.DB,
-  Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid;
+  Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, UFrmControleEstoquePesqNF,
+  JvDBLookup, JvExStdCtrls, JvCombobox, JvDBCombobox, Vcl.DBCtrls, JvDBControls;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -74,6 +75,20 @@ type
     PnlConsultaNFDbGrd: TJvPanel;
     DbGrdConsultaNF: TJvDBUltimGrid;
     PnlSplit1: TJvPanel;
+    PnlBtsSaveCancelNF: TJvPanel;
+    PnlBtCancelNF: TJvPanel;
+    PnlBtSaveNF: TJvPanel;
+    JvGradient1: TJvGradient;
+    JvGradient2: TJvGradient;
+    BtSalvarNF: TJvSpeedButton;
+    BtCancelarNF: TJvSpeedButton;
+    PnlDadosNF: TJvPanel;
+    PnlFldTipoMovNF: TJvPanel;
+    CbbFldTipoMovNF: TJvDBComboBox;
+    LbFldTipoMovNF: TLabel;
+    PnlFldFornecNF: TJvPanel;
+    LbFldFornecNF: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -87,6 +102,9 @@ type
     procedure PnlHdeCtrlEntrada2Click(Sender: TObject);
     procedure BtMenuCtrlEntradaNFClick(Sender: TObject);
     procedure BtBackMenuPrincipalClick(Sender: TObject);
+    procedure BtFiltroNFDataEmissaoClick(Sender: TObject);
+    procedure TbShtLancamentosShow(Sender: TObject);
+    procedure BtSalvarNFClick(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
 
@@ -118,6 +136,16 @@ begin
         pCtrlMenu(Self,TComponent(Sender) AS TJvSpeedButton , True,400,0);
 end;
 
+procedure TFrmModuloControleEstoque.BtFiltroNFDataEmissaoClick(Sender: TObject);
+begin
+        try
+           Application.CreateForm(TFrmPesqNF,FrmPesqNF);
+           FrmPesqNF.ShowModal;
+      finally
+            FreeAndNil(FrmPesqNF);
+      end;
+end;
+
 procedure TFrmModuloControleEstoque.BtMenuCtrlEntradaNFClick(Sender: TObject);
 begin
         CrdNotaFiscal.Show;
@@ -126,6 +154,11 @@ end;
 procedure TFrmModuloControleEstoque.BtPosicaoFisicaMouseEnter(Sender: TObject);
 begin
         pCtrlMenu(Self,nil,False,0,0);
+end;
+
+procedure TFrmModuloControleEstoque.BtSalvarNFClick(Sender: TObject);
+begin
+        DMPrincipal.TbNotaFiscal.Post;
 end;
 
 procedure TFrmModuloControleEstoque.FormCreate(Sender: TObject);
@@ -172,6 +205,13 @@ end;
 procedure TFrmModuloControleEstoque.PnlTituloJanelaMouseEnter(Sender: TObject);
 begin
         pCtrlMenu(Self,nil,False,0,0);
+end;
+
+procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
+begin
+        DMPrincipal.TbNotaFiscal.Active := True;
+        DMPrincipal.TbFornecedor.Active := True;
+        DMPrincipal.TbNotaFiscal.Insert;
 end;
 
 end.
