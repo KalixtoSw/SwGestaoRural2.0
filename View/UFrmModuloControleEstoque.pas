@@ -11,7 +11,9 @@ uses
   Vcl.WinXCtrls, JvNavigationPane, Vcl.ComCtrls, JvgTab, JvComponentBase,
   JvXPCore, JvExComCtrls, JvComCtrls, Vcl.StdCtrls, JvGradient, Data.DB,
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, UFrmControleEstoquePesqNF,
-  JvDBLookup, JvExStdCtrls, JvCombobox, JvDBCombobox, Vcl.DBCtrls, JvDBControls;
+  JvDBLookup, JvExStdCtrls, JvCombobox, JvDBCombobox, Vcl.DBCtrls, JvDBControls,
+  JvMaskEdit, Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, JvDateTimePicker,
+  JvDBDateTimePicker;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -63,7 +65,6 @@ type
     PgCntrlCtrlEntradaNF: TJvPageControl;
     TbShtConsultaNF: TTabSheet;
     TbShtLancamentos: TTabSheet;
-    JvXPStyleManager1: TJvXPStyleManager;
     PnlInformeModuloNF: TRelativePanel;
     FundoInformeModuloNF: TJvGradient;
     LbInformeModuloNF: TLabel;
@@ -88,7 +89,66 @@ type
     LbFldTipoMovNF: TLabel;
     PnlFldFornecNF: TJvPanel;
     LbFldFornecNF: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
+    CbbFldFornecNF: TDBLookupComboBox;
+    PnlFldNumeroNF: TJvPanel;
+    LbFldNumeroNF: TLabel;
+    EdtFldNumeroNF: TJvDBCalcEdit;
+    PnlFldSerieNF: TJvPanel;
+    LbFldSerieNF: TLabel;
+    EdtFldSerieNF: TJvDBCalcEdit;
+    PnlFldCnpjNF: TJvPanel;
+    FldCnpjNF: TLabel;
+    EdtFldCnpjNF: TJvDBMaskEdit;
+    PnlFldNatOperNF: TJvPanel;
+    LbFldNatOperNF: TLabel;
+    EdtFldNatOperNF: TDBEdit;
+    PnlFldDtEmissaoNF: TJvPanel;
+    LbFldDtEmissaoNF: TLabel;
+    EdtDtFldDtEmissaoNF: TJvDBDateTimePicker;
+    PnlFldDtESNF: TJvPanel;
+    LbFldDtESNF: TLabel;
+    EdtDtFldDtESNF: TJvDBDateTimePicker;
+    PnlFldHoraESNF: TJvPanel;
+    LbFldHoraESNF: TLabel;
+    EdtFldHoraESNF: TJvDBMaskEdit;
+    PnlDadosNFItens: TJvPanel;
+    PnlDadosNFCalcImpostos: TJvPanel;
+    PnlDadosNFDestinatario: TJvPanel;
+    LbDadosNFDestinatario: TLabel;
+    LbDadosNFCalcImpostos: TLabel;
+    PnlImpostoNFBaseIcms: TJvPanel;
+    LbImpostoNFBaseIcms: TLabel;
+    EdtImpostoNFBaseIcms: TJvDBCalcEdit;
+    PnlImpostoNFVlrFrete: TJvPanel;
+    LbImpostoNFVlrFrete: TLabel;
+    EdtImpostoNFVlrFrete: TJvDBCalcEdit;
+    PnlImpostoNFIcms: TJvPanel;
+    LbImpostoNFIcms: TLabel;
+    EdtImpostoNFIcms: TJvDBCalcEdit;
+    PnlImpostoNFBaseIcmsST: TJvPanel;
+    LbImpostoNFBaseIcmsST: TLabel;
+    EdtImpostoNFBaseIcmsST: TJvDBCalcEdit;
+    PnlImpostoNFIcmsST: TJvPanel;
+    LbImpostoNFIcmsST: TLabel;
+    EdtImpostoNFIcmsST: TJvDBCalcEdit;
+    PnlImpostoNFVlrProdutos: TJvPanel;
+    LbImpostoNFVlrProdutos: TLabel;
+    EdtImpostoNFVlrProdutos: TJvDBCalcEdit;
+    PnlImpostoNFVlrSeguro: TJvPanel;
+    LbImpostoNFVlrSeguro: TLabel;
+    EdtImpostoNFVlrSeguro: TJvDBCalcEdit;
+    PnlImpostoNFVlrDesconto: TJvPanel;
+    LbImpostoNFVlrDesconto: TLabel;
+    EdtImpostoNFVlrDesconto: TJvDBCalcEdit;
+    PnlImpostoNFVlrOutrasDespesas: TJvPanel;
+    LbImpostoNFVlrOutrasDespesas: TLabel;
+    EdtImpostoNFVlrOutrasDespesas: TJvDBCalcEdit;
+    PnlImpostoNFVlrIPI: TJvPanel;
+    LbImpostoNFVlrIPI: TLabel;
+    EdtImpostoNFVlrIPI: TJvDBCalcEdit;
+    PnlImpostoNFVlrtNF: TJvPanel;
+    LbImpostoNFVlrtNF: TLabel;
+    EdtImpostoNFVlrtNF: TJvDBCalcEdit;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

@@ -87,6 +87,14 @@ type
     DsTbNotaFiscal: TDataSource;
     TbFornecedor: TFDTable;
     DsTbFornecedor: TDataSource;
+    TbFornecedorfrn_id: TFDAutoIncField;
+    TbFornecedorfrn_idPessoa: TIntegerField;
+    TbFornecedorfrn_dtcriacao: TSQLTimeStampField;
+    TbFornecedorfrn_desde: TDateField;
+    TbFornecedorfrn_dataCadastro: TDateField;
+    TbFornecedorfrn_observacao: TStringField;
+    TbFornecedorfrn_cnpj: TStringField;
+    TbFornecedorfrn_NomeFantasia: TStringField;
     TbNotaFiscalnf_id: TFDAutoIncField;
     TbNotaFiscalnf_dtcriacao: TSQLTimeStampField;
     TbNotaFiscalnf_numero: TIntegerField;
@@ -109,20 +117,10 @@ type
     TbNotaFiscalnf_vlrip: TBCDField;
     TbNotaFiscalnf_vlrprodutos: TBCDField;
     TbNotaFiscalfrn_id: TIntegerField;
-    TbNotaFiscalnf_dtentrada: TDateTimeField;
+    TbNotaFiscalnf_dtES: TDateTimeField;
     TbNotaFiscalnf_dtemissao: TDateTimeField;
-    TbNotaFiscalnf_dtsaida: TDateTimeField;
-    TbNotaFiscalnf_horaentrada: TTimeField;
-    TbNotaFiscalnf_horasaida: TTimeField;
+    TbNotaFiscalnf_horaES: TTimeField;
     TbNotaFiscalnf_tipoES: TStringField;
-    TbFornecedorfrn_id: TFDAutoIncField;
-    TbFornecedorfrn_idPessoa: TIntegerField;
-    TbFornecedorfrn_dtcriacao: TSQLTimeStampField;
-    TbFornecedorfrn_desde: TDateField;
-    TbFornecedorfrn_dataCadastro: TDateField;
-    TbFornecedorfrn_observacao: TStringField;
-    TbFornecedorfrn_cnpj: TStringField;
-    TbFornecedorfrn_NomeFantasia: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

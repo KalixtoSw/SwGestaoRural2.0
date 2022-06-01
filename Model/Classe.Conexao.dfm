@@ -231,6 +231,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'prd_idproduto'
       Origin = 'prd_idproduto'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object QryProdutoprd_nome: TStringField
       AutoGenerateValue = arDefault
@@ -292,6 +293,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'mov_id'
       Origin = 'mov_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object QryMovimentacaomov_tipo: TStringField
       AutoGenerateValue = arDefault
@@ -351,6 +353,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'mp_id'
       Origin = 'mp_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object QryMovProdprd_idproduto: TIntegerField
       AutoGenerateValue = arDefault
@@ -417,6 +420,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'nfi_id'
       Origin = 'nfi_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object QryNotaFiscalItemnf_id: TIntegerField
       AutoGenerateValue = arDefault
@@ -486,6 +490,7 @@ object DMPrincipal: TDMPrincipal
     object TbNotaFiscalnf_id: TFDAutoIncField
       FieldName = 'nf_id'
       Origin = 'nf_id'
+      ProviderFlags = [pfInWhere, pfInKey]
     end
     object TbNotaFiscalnf_dtcriacao: TSQLTimeStampField
       AutoGenerateValue = arDefault
@@ -620,30 +625,20 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'frn_id'
       Origin = 'frn_id'
     end
-    object TbNotaFiscalnf_dtentrada: TDateTimeField
+    object TbNotaFiscalnf_dtES: TDateTimeField
       AutoGenerateValue = arDefault
-      FieldName = 'nf_dtentrada'
-      Origin = 'nf_dtentrada'
+      FieldName = 'nf_dtES'
+      Origin = 'nf_dtES'
     end
     object TbNotaFiscalnf_dtemissao: TDateTimeField
       AutoGenerateValue = arDefault
       FieldName = 'nf_dtemissao'
       Origin = 'nf_dtemissao'
     end
-    object TbNotaFiscalnf_dtsaida: TDateTimeField
+    object TbNotaFiscalnf_horaES: TTimeField
       AutoGenerateValue = arDefault
-      FieldName = 'nf_dtsaida'
-      Origin = 'nf_dtsaida'
-    end
-    object TbNotaFiscalnf_horaentrada: TTimeField
-      AutoGenerateValue = arDefault
-      FieldName = 'nf_horaentrada'
-      Origin = 'nf_horaentrada'
-    end
-    object TbNotaFiscalnf_horasaida: TTimeField
-      AutoGenerateValue = arDefault
-      FieldName = 'nf_horasaida'
-      Origin = 'nf_horasaida'
+      FieldName = 'nf_horaES'
+      Origin = 'nf_horaES'
     end
     object TbNotaFiscalnf_tipoES: TStringField
       AutoGenerateValue = arDefault
@@ -658,7 +653,6 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbFornecedor: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -676,11 +670,12 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.UpdateTableName = 'gr_desenv.Fornecedor'
     TableName = 'gr_desenv.Fornecedor'
     Left = 260
-    Top = 445
+    Top = 440
     object TbFornecedorfrn_id: TFDAutoIncField
       FieldName = 'frn_id'
       Origin = 'frn_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object TbFornecedorfrn_idPessoa: TIntegerField
       AutoGenerateValue = arDefault
