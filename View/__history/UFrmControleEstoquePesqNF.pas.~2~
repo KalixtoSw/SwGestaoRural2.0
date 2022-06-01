@@ -1,0 +1,34 @@
+unit UFrmControleEstoquePesqNF;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, JvExControls, JvSpeedButton,
+  Vcl.ExtCtrls, JvExExtCtrls, JvExtComponent, JvPanel;
+
+type
+  TFrmPesqNF = class(TForm)
+    PnlTituloJanela: TJvPanel;
+    BtClose: TJvSpeedButton;
+    JvPanel1: TJvPanel;
+    procedure BtCloseClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPesqNF: TFrmPesqNF;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmPesqNF.BtCloseClick(Sender: TObject);
+begin
+        Close;
+end;
+
+end.

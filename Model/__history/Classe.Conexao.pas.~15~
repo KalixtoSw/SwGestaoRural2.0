@@ -1,0 +1,146 @@
+unit Classe.Conexao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
+  FireDAC.Comp.DataSet, Classe.conexaoEfetiva;
+
+type
+  TDMPrincipal = class(TDataModule)
+    MySQLDriver: TFDPhysMySQLDriverLink;
+    QrUsuario: TFDQuery;
+    fldFDQuery1user_idUsuario: TFDAutoIncField;
+    QrUsuariouser_idPessoa: TIntegerField;
+    QrUsuariouser_dtcriacao: TSQLTimeStampField;
+    QrUsuariouser_usuario: TStringField;
+    QrUsuariouser_senha: TStringField;
+    QrUsuariouser_dataUltAcesso: TDateField;
+    QrUsuariouser_celular: TStringField;
+    QrUsuariouser_email: TStringField;
+    QrUsuariouser_nomepessoa: TStringField;
+    QrUsuariouser_tipopessoa: TStringField;
+    DsQrUsuario: TDataSource;
+    TbUsuario: TFDTable;
+    DsTbUsuario: TDataSource;
+    DsCmdSql_1: TDataSource;
+    CmdSql_1: TFDQuery;
+    CmdSqlCombox1: TFDQuery;
+    DSCmdSqlCombox1: TDataSource;
+    DSCmdSqlBuscaAux: TDataSource;
+    CmdSqlBuscaAux: TFDQuery;
+    FDConnection: TFDConnection;
+    TbUsuariouser_idUsuario: TFDAutoIncField;
+    TbUsuariouser_idPessoa: TIntegerField;
+    TbUsuariouser_dtcriacao: TSQLTimeStampField;
+    TbUsuariouser_usuario: TStringField;
+    TbUsuariouser_senha: TStringField;
+    TbUsuariouser_dataUltAcesso: TDateField;
+    TbUsuariouser_celular: TStringField;
+    TbUsuariouser_email: TStringField;
+    TbUsuariouser_nomepessoa: TStringField;
+    TbUsuariouser_tipopessoa: TStringField;
+    QryProduto: TFDQuery;
+    DsQryProduto: TDataSource;
+    QryMovimentacao: TFDQuery;
+    DsQryMovimentacao: TDataSource;
+    QryMovProd: TFDQuery;
+    DsQryMovProd: TDataSource;
+    QryNotaFiscal: TFDQuery;
+    DsNotaFiscal: TDataSource;
+    QryNotaFiscalItem: TFDQuery;
+    DsNotaFiscalItem: TDataSource;
+    QryNotaFiscalItemnfi_id: TFDAutoIncField;
+    QryNotaFiscalItemnf_id: TIntegerField;
+    QryNotaFiscalItemprd_idproduto: TIntegerField;
+    QryNotaFiscalItemprde_Id: TIntegerField;
+    QryNotaFiscalItemnfi_cfop: TIntegerField;
+    QryNotaFiscalItemnfi_qtde: TBCDField;
+    QryNotaFiscalItemnfi_vlrunit: TBCDField;
+    QryNotaFiscalItemnfi_vlrtotal: TBCDField;
+    QryNotaFiscalnf_id: TFDAutoIncField;
+    QryNotaFiscalnf_dtcriacao: TSQLTimeStampField;
+    QryNotaFiscalnf_numero: TIntegerField;
+    QryNotaFiscalnf_serie: TIntegerField;
+    QryNotaFiscalnf_numeroChar: TStringField;
+    QryNotaFiscalnf_chaveacesso: TStringField;
+    QryNotaFiscalnf_nop: TStringField;
+    QryNotaFiscalnf_ie: TStringField;
+    QryNotaFiscalnf_im: TStringField;
+    QryNotaFiscalnf_cnpjForn: TStringField;
+    QryNotaFiscalnf_baseicms: TBCDField;
+    QryNotaFiscalnf_vlricms: TBCDField;
+    QryNotaFiscalnf_baseicms_st: TBCDField;
+    QryNotaFiscalnf_vlricms_st: TBCDField;
+    QryNotaFiscalnf_vlrtotal: TBCDField;
+    QryNotaFiscalnf_vlrfrete: TBCDField;
+    QryNotaFiscalnf_vlrseguro: TBCDField;
+    QryNotaFiscalnf_vlrdesconto: TBCDField;
+    QryNotaFiscalnf_vlroutrasdespesas: TBCDField;
+    QryNotaFiscalnf_vlrip: TBCDField;
+    QryNotaFiscalnf_vlrprodutos: TBCDField;
+    QryNotaFiscalfrn_id: TIntegerField;
+    QryNotaFiscalnf_dtentrada: TDateTimeField;
+    QryNotaFiscalnf_dtemissao: TDateTimeField;
+    QryNotaFiscalnf_dtsaida: TDateTimeField;
+    QryNotaFiscalnf_horaentrada: TTimeField;
+    QryNotaFiscalnf_horasaida: TTimeField;
+    QryNotaFiscalnf_tipoES: TStringField;
+    QryMovimentacaomov_id: TFDAutoIncField;
+    QryMovimentacaomov_tipo: TStringField;
+    QryMovimentacaomov_datamov: TDateTimeField;
+    QryMovimentacaomov_responsavel: TStringField;
+    QryMovimentacaomov_obs: TStringField;
+    QryMovimentacaomov_descricao: TStringField;
+    QryMovimentacaomov_origem: TStringField;
+    QryProdutoprd_idproduto: TFDAutoIncField;
+    QryProdutoprd_nome: TStringField;
+    QryProdutoprd_fabricante: TStringField;
+    QryProdutoprd_dtcriacao: TSQLTimeStampField;
+    QryProdutoprd_tipo: TStringField;
+    QryProdutotcs_id: TIntegerField;
+    QryProdutosmt_Id: TIntegerField;
+    QryProdutoprd_status: TStringField;
+    QryMovProdmp_id: TFDAutoIncField;
+    QryMovProdprd_idproduto: TIntegerField;
+    QryMovProdmov_id: TIntegerField;
+    QryMovProdmp_qtdUnit: TBCDField;
+    QryMovProdmp_qtdTotal: TBCDField;
+    QryMovProdmp_validade: TDateTimeField;
+    QryMovProdmp_precoCompra: TBCDField;
+    QryMovProdmp_precoTotal: TBCDField;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+
+    conexao    : TConexao;
+
+  end;
+
+var
+  DMPrincipal: TDMPrincipal;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDMPrincipal.DataModuleCreate(Sender: TObject);
+begin
+     conexao    := TConexao.Create( FDConnection );
+end;
+
+procedure TDMPrincipal.DataModuleDestroy(Sender: TObject);
+begin
+    conexao.Destroy;
+end;
+
+end.

@@ -33,7 +33,8 @@ uses
   UFrmCadastroProduto in '..\View\UFrmCadastroProduto.pas' {FrmCadastroProduto},
   Classe.Produto in '..\Ctrl\Classe.Produto.pas',
   UFrmModuloControleEstoque in '..\View\UFrmModuloControleEstoque.pas' {FrmModuloControleEstoque},
-  Classe.Comum.ControleEstoque in '..\Ctrl\Classe.Comum.ControleEstoque.pas';
+  Classe.Comum.ControleEstoque in '..\Ctrl\Classe.Comum.ControleEstoque.pas',
+  UFrmControleEstoquePesqNF in '..\View\UFrmControleEstoquePesqNF.pas' {FrmPesqNF};
 
 {$R *.res}
 

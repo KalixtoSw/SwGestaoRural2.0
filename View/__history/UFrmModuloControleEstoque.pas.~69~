@@ -9,7 +9,9 @@ uses
   Classe.FunctionsSQL, UFrmMensagemSistema, Vcl.ExtCtrls, JvExExtCtrls,
   JvExtComponent, JvPanel, JvExControls, JvSpeedButton, Vcl.WinXPanels,
   Vcl.WinXCtrls, JvNavigationPane, Vcl.ComCtrls, JvgTab, JvComponentBase,
-  JvXPCore, JvExComCtrls, JvComCtrls;
+  JvXPCore, JvExComCtrls, JvComCtrls, Vcl.StdCtrls, JvGradient, Data.DB,
+  Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, UFrmControleEstoquePesqNF,
+  JvDBLookup, JvExStdCtrls, JvCombobox, JvDBCombobox, Vcl.DBCtrls, JvDBControls;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -62,6 +64,32 @@ type
     TbShtConsultaNF: TTabSheet;
     TbShtLancamentos: TTabSheet;
     JvXPStyleManager1: TJvXPStyleManager;
+    PnlInformeModuloNF: TRelativePanel;
+    FundoInformeModuloNF: TJvGradient;
+    LbInformeModuloNF: TLabel;
+    BtBackMenuPrincipal: TJvSpeedButton;
+    PnlConsultaNFFiltros: TJvPanel;
+    PnlBtFiltroNFDataEmissao: TJvPanel;
+    FundoBtFiltroNFDataEmissao: TJvGradient;
+    BtFiltroNFDataEmissao: TJvSpeedButton;
+    PnlConsultaNFDbGrd: TJvPanel;
+    DbGrdConsultaNF: TJvDBUltimGrid;
+    PnlSplit1: TJvPanel;
+    PnlBtsSaveCancelNF: TJvPanel;
+    PnlBtCancelNF: TJvPanel;
+    PnlBtSaveNF: TJvPanel;
+    JvGradient1: TJvGradient;
+    JvGradient2: TJvGradient;
+    BtSalvarNF: TJvSpeedButton;
+    BtCancelarNF: TJvSpeedButton;
+    PnlDadosNF: TJvPanel;
+    PnlFldTipoMovNF: TJvPanel;
+    CbbFldTipoMovNF: TJvDBComboBox;
+    LbFldTipoMovNF: TLabel;
+    PnlFldFornecNF: TJvPanel;
+    LbFldFornecNF: TLabel;
+    JvDBNavigator1: TJvDBNavigator;
+    DBLookupComboBox1: TDBLookupComboBox;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -74,6 +102,9 @@ type
     procedure PnlHdeCtrlEntrada1Click(Sender: TObject);
     procedure PnlHdeCtrlEntrada2Click(Sender: TObject);
     procedure BtMenuCtrlEntradaNFClick(Sender: TObject);
+    procedure BtBackMenuPrincipalClick(Sender: TObject);
+    procedure BtFiltroNFDataEmissaoClick(Sender: TObject);
+    procedure TbShtLancamentosShow(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
 
@@ -89,6 +120,11 @@ implementation
 
 {$R *.dfm}
 
+procedure TFrmModuloControleEstoque.BtBackMenuPrincipalClick(Sender: TObject);
+begin
+        CrdPrincipal.Show;
+end;
+
 procedure TFrmModuloControleEstoque.BtCloseClick(Sender: TObject);
 begin
         Close;
@@ -98,6 +134,16 @@ procedure TFrmModuloControleEstoque.BtCtrlEntradasMouseEnter(Sender: TObject);
 begin
         pCtrlMenu(Self,nil,False,0,0);
         pCtrlMenu(Self,TComponent(Sender) AS TJvSpeedButton , True,400,0);
+end;
+
+procedure TFrmModuloControleEstoque.BtFiltroNFDataEmissaoClick(Sender: TObject);
+begin
+        try
+           Application.CreateForm(TFrmPesqNF,FrmPesqNF);
+           FrmPesqNF.ShowModal;
+      finally
+            FreeAndNil(FrmPesqNF);
+      end;
 end;
 
 procedure TFrmModuloControleEstoque.BtMenuCtrlEntradaNFClick(Sender: TObject);
@@ -127,6 +173,7 @@ begin
         CtrlEstoque.pCtrlPosicaopnlBt3(PnlFundoBtsNav1,420);
         CtrlEstoque.pCtrlPosicaopnlBt4(PnlFundoBtsNav1,625);
         CtrlEstoque.pCtrlPosicaopnlBt5(PnlFundoBtsNav1,830);
+        CrdPrincipal.Show;
 end;
 
 procedure TFrmModuloControleEstoque.PnlFundoBtsNavCadProdutoMouseEnter(
@@ -153,6 +200,12 @@ end;
 procedure TFrmModuloControleEstoque.PnlTituloJanelaMouseEnter(Sender: TObject);
 begin
         pCtrlMenu(Self,nil,False,0,0);
+end;
+
+procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
+begin
+        DMPrincipal.TbNotaFiscal.Active := True;
+        DMPrincipal.TbFornecedor.Active := True;
 end;
 
 end.
