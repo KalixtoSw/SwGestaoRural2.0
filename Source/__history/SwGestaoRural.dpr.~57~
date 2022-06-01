@@ -32,7 +32,9 @@ uses
   Classe.Semente in '..\Ctrl\Classe.Semente.pas',
   UFrmCadastroProduto in '..\View\UFrmCadastroProduto.pas' {FrmCadastroProduto},
   Classe.Produto in '..\Ctrl\Classe.Produto.pas',
-  UFrmModuloControleEstoque in '..\View\UFrmModuloControleEstoque.pas' {FrmModuloControleEstoque};
+  UFrmModuloControleEstoque in '..\View\UFrmModuloControleEstoque.pas' {FrmModuloControleEstoque},
+  Classe.Comum.ControleEstoque in '..\Ctrl\Classe.Comum.ControleEstoque.pas',
+  UFrmControleEstoquePesqNF in '..\View\UFrmControleEstoquePesqNF.pas' {FrmPesqNF};
 
 {$R *.res}
 
@@ -42,7 +44,6 @@ begin
 
   Application.Title := 'Gestão Rural 1.0';
   Application.CreateForm(TDMPrincipal, DMPrincipal);
-  Application.CreateForm(TFrmModuloControleEstoque, FrmModuloControleEstoque);
   if (DmPrincipal.conexao.fConectarBancoDados = True) then
   Begin
 

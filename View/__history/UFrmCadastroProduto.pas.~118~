@@ -50,7 +50,7 @@ type
     procedure EdtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure CbbCampo2Change(Sender: TObject);
     procedure CbbCampo4Change(Sender: TObject);
-    procedure CbbCampo5Click(Sender: TObject);
+    procedure CbbCampo4Enter(Sender: TObject);
   private
     { Private declarations }
     Produto : Tproduto;
@@ -110,15 +110,18 @@ end;
 procedure TFrmCadastroProduto.CbbCampo4Change(Sender: TObject);
 begin
   inherited;
-        
-        fEventoChangeCbbCult;
+
         fEventoChangeCbbTecSem(fRetVlrCombox(CbbCampo4,0).IdResp);
 end;
 
-procedure TFrmCadastroProduto.CbbCampo5Click(Sender: TObject);
+procedure TFrmCadastroProduto.CbbCampo4Enter(Sender: TObject);
 begin
   inherited;
-        fEventoChangeCbbTecSem(fRetVlrCombox(CbbCampo4,0).IdResp);
+        if not(CbbCampo4.Text = EmptyStr) then
+        begin
+             fEventoChangeCbbCult;
+             fEventoChangeCbbTecSem(fRetVlrCombox(CbbCampo4,0).IdResp);
+        end;
 end;
 
 procedure TFrmCadastroProduto.DbGridDblClick(Sender: TObject);

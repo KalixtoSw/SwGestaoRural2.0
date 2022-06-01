@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
-  FireDAC.Comp.DataSet, Classe.conexaoEfetiva;
+  FireDAC.Comp.DataSet, Classe.conexaoEfetiva, FireDAC.Comp.UI;
 
 type
   TDMPrincipal = class(TDataModule)
@@ -50,16 +50,6 @@ type
     DsQryMovimentacao: TDataSource;
     QryMovProd: TFDQuery;
     DsQryMovProd: TDataSource;
-    QryNotaFiscalItem: TFDQuery;
-    DsNotaFiscalItem: TDataSource;
-    QryNotaFiscalItemnfi_id: TFDAutoIncField;
-    QryNotaFiscalItemnf_id: TIntegerField;
-    QryNotaFiscalItemprd_idproduto: TIntegerField;
-    QryNotaFiscalItemprde_Id: TIntegerField;
-    QryNotaFiscalItemnfi_cfop: TIntegerField;
-    QryNotaFiscalItemnfi_qtde: TBCDField;
-    QryNotaFiscalItemnfi_vlrunit: TBCDField;
-    QryNotaFiscalItemnfi_vlrtotal: TBCDField;
     QryMovimentacaomov_id: TFDAutoIncField;
     QryMovimentacaomov_tipo: TStringField;
     QryMovimentacaomov_datamov: TDateTimeField;
@@ -121,6 +111,18 @@ type
     TbNotaFiscalnf_dtemissao: TDateTimeField;
     TbNotaFiscalnf_horaES: TTimeField;
     TbNotaFiscalnf_tipoES: TStringField;
+    DsTbNotaFiscalItem: TDataSource;
+    TbNotaFiscalItemnfi_id: TFDAutoIncField;
+    TbNotaFiscalItemnf_id: TIntegerField;
+    TbNotaFiscalItemprd_idproduto: TIntegerField;
+    TbNotaFiscalItemprde_Id: TIntegerField;
+    TbNotaFiscalItemnfi_cfop: TIntegerField;
+    TbNotaFiscalItemnfi_qtde: TBCDField;
+    TbNotaFiscalItemnfi_vlrunit: TBCDField;
+    TbNotaFiscalItemnfi_vlrtotal: TBCDField;
+    QryProdutoprd_codInterno: TIntegerField;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    TbNotaFiscalItem: TFDTable;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

@@ -11,7 +11,6 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
       end
     end
     inherited CrdPnlPrincipal: TCardPanel
-      ActiveCard = CrdCampos
       inherited CrdConsulta: TCard
         inherited PnlPesquisa: TJvPanel
           inherited LbPesquisa: TLabel
@@ -29,6 +28,14 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
         inherited PnlDbGrid: TJvPanel
           inherited DbGrid: TJvDBUltimGrid
             Columns = <
+              item
+                Alignment = taCenter
+                Expanded = False
+                FieldName = 'prd_codInterno'
+                Title.Alignment = taCenter
+                Title.Caption = 'C'#211'D INT'
+                Visible = True
+              end
               item
                 Expanded = False
                 FieldName = 'prd_nome'
@@ -424,6 +431,66 @@ inherited FrmCadastroProduto: TFrmCadastroProduto
                   TabOrder = 0
                   Text = ''
                 end
+              end
+            end
+            object PnlCampo6: TJvPanel
+              Left = 350
+              Top = 10
+              Width = 300
+              Height = 55
+              FlatBorderColor = clBtnHighlight
+              BevelOuter = bvNone
+              TabOrder = 4
+              object LbCampo6: TLabel
+                Left = 0
+                Top = 0
+                Width = 300
+                Height = 17
+                Align = alTop
+                Caption = 'C'#211'DIGO INTERNO'
+                Color = 4671041
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -13
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                Transparent = False
+                Layout = tlCenter
+                ExplicitWidth = 112
+              end
+              object JvGradient1: TJvGradient
+                Left = 0
+                Top = 53
+                Width = 300
+                Height = 2
+                Align = alBottom
+                StartColor = 13738918
+                EndColor = 13738918
+              end
+              object JvGradient2: TJvGradient
+                Left = 0
+                Top = 17
+                Width = 300
+                Height = 5
+                Align = alTop
+                StartColor = clWhite
+                EndColor = clWhite
+                ExplicitTop = 25
+              end
+              object JvCalcEdit1: TJvCalcEdit
+                Tag = 6
+                Left = 0
+                Top = 22
+                Width = 300
+                Height = 31
+                Hint = 'prd_codInterno'
+                Align = alClient
+                BorderStyle = bsNone
+                ShowButton = False
+                TabOrder = 0
+                DecimalPlacesAlwaysShown = False
               end
             end
           end

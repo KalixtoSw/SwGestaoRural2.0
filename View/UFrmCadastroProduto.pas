@@ -8,7 +8,7 @@ uses
   JvDesktopAlert, JvBaseDlg, Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid,
   JvDBUltimGrid, Vcl.StdCtrls, Vcl.Mask, Vcl.WinXPanels, JvExControls,
   JvSpeedButton, Vcl.ExtCtrls, JvExExtCtrls, JvExtComponent, JvPanel, Classe.Produto, Classe.Sistema.Mensagens,
-  JvGradient, JvExStdCtrls, JvCombobox;
+  JvGradient, JvExStdCtrls, JvCombobox, JvExMask, JvToolEdit, JvBaseEdits;
 
 type
   TFrmCadastroProduto = class(TFrmModel1)
@@ -39,6 +39,11 @@ type
     LineCampo5: TJvGradient;
     LineCampo5_1: TJvGradient;
     CbbCampo5: TJvComboBox;
+    PnlCampo6: TJvPanel;
+    LbCampo6: TLabel;
+    JvGradient1: TJvGradient;
+    JvGradient2: TJvGradient;
+    JvCalcEdit1: TJvCalcEdit;
     procedure BtSalvarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

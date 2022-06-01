@@ -257,7 +257,6 @@ var
 begin
         SqlD := 'SELECT s.smt_Id, s.smt_descricao, ts.tcs_id,ts.tcs_descricao FROM semente s '+
         'INNER JOIN tecnologia_semente ts ON s.smt_Id = ts.smt_Id and s.smt_Id = ';
-        ShowMessage(IntToStr(KeyConexaoVlr));
         pMontaComboBoxTempExec(CbbTec,SqlD+ inttostr(KeyConexaoVlr),'tcs_id','tcs_descricao');
 end;
 

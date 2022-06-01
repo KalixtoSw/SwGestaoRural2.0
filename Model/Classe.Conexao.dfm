@@ -272,6 +272,11 @@ object DMPrincipal: TDMPrincipal
       Origin = 'prd_status'
       Size = 1
     end
+    object QryProdutoprd_codInterno: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prd_codInterno'
+      Origin = 'prd_codInterno'
+    end
   end
   object DsQryProduto: TDataSource
     DataSet = QryProduto
@@ -404,75 +409,11 @@ object DMPrincipal: TDMPrincipal
     Left = 310
     Top = 310
   end
-  object QryNotaFiscalItem: TFDQuery
-    ActiveStoredUsage = []
-    AutoCalcFields = False
-    IndexFieldNames = 'nf_id'
-    AggregatesActive = True
-    MasterFields = 'nf_id'
-    Connection = FDConnection
-    UpdateOptions.AssignedValues = [uvUpdateMode]
-    SQL.Strings = (
-      'SELECT * FROM nota_fiscal_item;')
-    Left = 190
-    Top = 385
-    object QryNotaFiscalItemnfi_id: TFDAutoIncField
-      FieldName = 'nfi_id'
-      Origin = 'nfi_id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object QryNotaFiscalItemnf_id: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'nf_id'
-      Origin = 'nf_id'
-    end
-    object QryNotaFiscalItemprd_idproduto: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'prd_idproduto'
-      Origin = 'prd_idproduto'
-    end
-    object QryNotaFiscalItemprde_Id: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'prde_Id'
-      Origin = 'prde_Id'
-    end
-    object QryNotaFiscalItemnfi_cfop: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'nfi_cfop'
-      Origin = 'nfi_cfop'
-    end
-    object QryNotaFiscalItemnfi_qtde: TBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'nfi_qtde'
-      Origin = 'nfi_qtde'
-      Precision = 10
-      Size = 2
-    end
-    object QryNotaFiscalItemnfi_vlrunit: TBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'nfi_vlrunit'
-      Origin = 'nfi_vlrunit'
-      Precision = 10
-      Size = 2
-    end
-    object QryNotaFiscalItemnfi_vlrtotal: TBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'nfi_vlrtotal'
-      Origin = 'nfi_vlrtotal'
-      Precision = 10
-      Size = 2
-    end
-  end
-  object DsNotaFiscalItem: TDataSource
-    DataSet = QryNotaFiscalItem
-    Left = 190
-    Top = 435
-  end
   object TbNotaFiscal: TFDTable
     Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
+    DetailFields = 'nf_id'
     Connection = FDConnection
     UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
     UpdateOptions.UpdateChangedFields = False
@@ -484,6 +425,7 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.CheckUpdatable = False
     UpdateOptions.AutoCommitUpdates = True
     UpdateOptions.UpdateTableName = 'gr_desenv.nota_fiscal'
+    UpdateOptions.AutoIncFields = 'nf_id'
     TableName = 'gr_desenv.nota_fiscal'
     Left = 260
     Top = 385
@@ -491,6 +433,8 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'nf_id'
       Origin = 'nf_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+      ClientAutoIncrement = False
     end
     object TbNotaFiscalnf_dtcriacao: TSQLTimeStampField
       AutoGenerateValue = arDefault
@@ -669,8 +613,8 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.AutoCommitUpdates = True
     UpdateOptions.UpdateTableName = 'gr_desenv.Fornecedor'
     TableName = 'gr_desenv.Fornecedor'
-    Left = 260
-    Top = 440
+    Left = 255
+    Top = 485
     object TbFornecedorfrn_id: TFDAutoIncField
       FieldName = 'frn_id'
       Origin = 'frn_id'
@@ -719,6 +663,86 @@ object DMPrincipal: TDMPrincipal
   object DsTbFornecedor: TDataSource
     DataSet = TbFornecedor
     Left = 305
-    Top = 445
+    Top = 490
+  end
+  object TbNotaFiscalItem: TFDTable
+    Active = True
+    ObjectView = False
+    IndexFieldNames = 'nf_id'
+    MasterSource = DsTbNotaFiscal
+    MasterFields = 'nf_id'
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'nota_fiscal_item'
+    UpdateOptions.AutoIncFields = 'nfi_id'
+    TableName = 'nota_fiscal_item'
+    Left = 255
+    Top = 435
+    object TbNotaFiscalItemnfi_id: TFDAutoIncField
+      FieldName = 'nfi_id'
+      Origin = 'nfi_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+      ClientAutoIncrement = False
+    end
+    object TbNotaFiscalItemnf_id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_id'
+      Origin = 'nf_id'
+    end
+    object TbNotaFiscalItemprd_idproduto: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prd_idproduto'
+      Origin = 'prd_idproduto'
+    end
+    object TbNotaFiscalItemprde_Id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_Id'
+      Origin = 'prde_Id'
+    end
+    object TbNotaFiscalItemnfi_cfop: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nfi_cfop'
+      Origin = 'nfi_cfop'
+    end
+    object TbNotaFiscalItemnfi_qtde: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nfi_qtde'
+      Origin = 'nfi_qtde'
+      Precision = 10
+      Size = 2
+    end
+    object TbNotaFiscalItemnfi_vlrunit: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nfi_vlrunit'
+      Origin = 'nfi_vlrunit'
+      Precision = 10
+      Size = 2
+    end
+    object TbNotaFiscalItemnfi_vlrtotal: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nfi_vlrtotal'
+      Origin = 'nfi_vlrtotal'
+      Precision = 10
+      Size = 2
+    end
+  end
+  object DsTbNotaFiscalItem: TDataSource
+    DataSet = TbNotaFiscalItem
+    Left = 300
+    Top = 435
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 380
+    Top = 15
   end
 end

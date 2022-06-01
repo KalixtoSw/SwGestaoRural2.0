@@ -13,7 +13,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, UFrmControleEstoquePesqNF,
   JvDBLookup, JvExStdCtrls, JvCombobox, JvDBCombobox, Vcl.DBCtrls, JvDBControls,
   JvMaskEdit, Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, JvDateTimePicker,
-  JvDBDateTimePicker;
+  JvDBDateTimePicker, JvDBFindEdit, JvEdit, JvDBSearchEdit, Classe.NF.ControleEstoque;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -110,7 +110,6 @@ type
     EdtDtFldDtESNF: TJvDBDateTimePicker;
     PnlFldHoraESNF: TJvPanel;
     LbFldHoraESNF: TLabel;
-    EdtFldHoraESNF: TJvDBMaskEdit;
     PnlDadosNFItens: TJvPanel;
     PnlDadosNFCalcImpostos: TJvPanel;
     PnlDadosNFDestinatario: TJvPanel;
@@ -149,6 +148,20 @@ type
     PnlImpostoNFVlrtNF: TJvPanel;
     LbImpostoNFVlrtNF: TLabel;
     EdtImpostoNFVlrtNF: TJvDBCalcEdit;
+    JvDBComboBox1: TJvDBComboBox;
+    PnlNFAddItens: TJvPanel;
+    BtNFAddItens: TJvSpeedButton;
+    FundoNFAddItens: TJvGradient;
+    PnlDNFICodProduto: TJvPanel;
+    LbDNFICodProduto: TLabel;
+    EdtDNFICodProduto: TJvDBSearchEdit;
+    EdtDNFINomeProduto: TDBEdit;
+    PnlDNFINomeProduto: TJvPanel;
+    LbDNFINomeProduto: TLabel;
+    JvDBLookupCombo1: TJvDBLookupCombo;
+    JvSpeedButton1: TJvSpeedButton;
+    DbGrid: TJvDBUltimGrid;
+    JvDBUltimGrid1: TJvDBUltimGrid;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -165,11 +178,15 @@ type
     procedure BtFiltroNFDataEmissaoClick(Sender: TObject);
     procedure TbShtLancamentosShow(Sender: TObject);
     procedure BtSalvarNFClick(Sender: TObject);
+    procedure BtNFAddItensClick(Sender: TObject);
+    procedure JvSpeedButton1Click(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
 
 
   public    { Public declarations }
+        CtrlEst_NF : TCrtrlEstoque_NF;
+
   end;
 
 var
@@ -211,6 +228,11 @@ begin
         CrdNotaFiscal.Show;
 end;
 
+procedure TFrmModuloControleEstoque.BtNFAddItensClick(Sender: TObject);
+begin
+        CtrlEst_NF.pEventoBtAddItens;
+end;
+
 procedure TFrmModuloControleEstoque.BtPosicaoFisicaMouseEnter(Sender: TObject);
 begin
         pCtrlMenu(Self,nil,False,0,0);
@@ -218,12 +240,13 @@ end;
 
 procedure TFrmModuloControleEstoque.BtSalvarNFClick(Sender: TObject);
 begin
-        DMPrincipal.TbNotaFiscal.Post;
+        CtrlEst_NF.pEventoBtSavarNF;
 end;
 
 procedure TFrmModuloControleEstoque.FormCreate(Sender: TObject);
 begin
-        CtrlEstoque := TCrtlEstoque.CreateObjTCrtlEstoque;
+        CtrlEstoque     := TCrtlEstoque.CreateObjTCrtlEstoque;
+        CtrlEst_NF      := TCrtrlEstoque_NF.CreateObjTCrtrlEstoque_NF;
 end;
 
 procedure TFrmModuloControleEstoque.FormResize(Sender: TObject);
@@ -239,6 +262,11 @@ begin
         CtrlEstoque.pCtrlPosicaopnlBt4(PnlFundoBtsNav1,625);
         CtrlEstoque.pCtrlPosicaopnlBt5(PnlFundoBtsNav1,830);
         CrdPrincipal.Show;
+end;
+
+procedure TFrmModuloControleEstoque.JvSpeedButton1Click(Sender: TObject);
+begin
+                DMPrincipal.TbNotaFiscalItem.Post;
 end;
 
 procedure TFrmModuloControleEstoque.PnlFundoBtsNavCadProdutoMouseEnter(
@@ -269,9 +297,7 @@ end;
 
 procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
 begin
-        DMPrincipal.TbNotaFiscal.Active := True;
-        DMPrincipal.TbFornecedor.Active := True;
-        DMPrincipal.TbNotaFiscal.Insert;
+        CtrlEst_NF.pEventoNewNF;
 end;
 
 end.

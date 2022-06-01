@@ -88,7 +88,7 @@ begin
         IDKey            := ' prd_idproduto = ';
         IDKeyVaue        := 'prd_idproduto';
         IDKeyFilter      := 'prd_nome LIKE ';
-        NCampos          := 5;
+        NCampos          := 6;
         InsUpd           := EmptyStr;
         Cbb              := FrmCadastroProduto.CbbCampo2;
         CbbCult          := FrmCadastroProduto.CbbCampo4;
