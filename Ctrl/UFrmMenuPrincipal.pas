@@ -99,6 +99,7 @@ type
     procedure JvScrollText1MouseEnter(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure JvXPBar1Items2Click(Sender: TObject);
+    procedure XPBarManejoAgricola1Items3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -112,7 +113,7 @@ implementation
 
 uses
      UFrmModel1, UFrmMensagemSistema, UFrmCadastroUsuario, UFrmPesquisaAuxiliar, UFrmCadastroTalhao,
-  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural, U_FachadaWSSGS1, UFrmCadastroProduto;
+  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural, U_FachadaWSSGS1, UFrmCadastroProduto, UFrmProdutoEmbalagem;
 
 {$R *.dfm}
 
@@ -218,6 +219,16 @@ begin
         end else begin
              ImgConectado.Visible       := False;
              ImgDesconectado.Visible    := True;
+        end;
+end;
+
+procedure TFrmMenuPrincipal.XPBarManejoAgricola1Items3Click(Sender: TObject);
+begin
+        try
+           Application.CreateForm(TFrmProdutoEmbalagem,FrmProdutoEmbalagem);
+           FrmProdutoEmbalagem.ShowModal;
+        finally
+            FreeAndNil(FrmProdutoEmbalagem);
         end;
 end;
 

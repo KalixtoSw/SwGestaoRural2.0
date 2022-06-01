@@ -1840,7 +1840,7 @@
               Transparent = True
             end
           end
-          object JvXPBar1: TJvXPBar
+          object XPBarManejoAgricola1: TJvXPBar
             Left = 0
             Top = 48
             Width = 200
@@ -2082,6 +2082,14 @@
         CardIndex = 0
         TabOrder = 0
         OnMouseEnter = CrdDashboardMouseEnter
+        object JvSpeedButton1: TJvSpeedButton
+          Left = 375
+          Top = 195
+          Width = 166
+          Height = 101
+          Caption = 'CONTROLE DE ESTOQUE'
+          OnClick = JvXPBar1Items2Click
+        end
         object PnlIndicadoresAgricolas: TJvPanel
           Left = 0
           Top = 0

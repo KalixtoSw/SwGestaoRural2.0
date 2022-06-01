@@ -138,7 +138,7 @@ end;
 
 procedure TFrmMenuPrincipal.CrdDashboardMouseEnter(Sender: TObject);
 begin
-        pCtrlMenu(Self,nil,False);
+        pCtrlMenu(Self,nil,False,0,0);
 end;
 
 procedure TFrmMenuPrincipal.FormResize(Sender: TObject);
@@ -195,17 +195,17 @@ end;
 
 procedure TFrmMenuPrincipal.PnlIndicadoresAgricolasMouseEnter(Sender: TObject);
 begin
-        pCtrlMenu(Self,nil,False);
+        pCtrlMenu(Self,nil,False,0,0);
 end;
 
 procedure TFrmMenuPrincipal.PnlStatusSistema1MouseEnter(Sender: TObject);
 begin
-        pCtrlMenu(Self,nil,False);
+        pCtrlMenu(Self,nil,False,0,0);
 end;
 
 procedure TFrmMenuPrincipal.PnlTituloJanelaMouseEnter(Sender: TObject);
 begin
-        pCtrlMenu(Self,nil,False);
+        pCtrlMenu(Self,nil,False,0,0);
 end;
 
 procedure TFrmMenuPrincipal.Timer1Timer(Sender: TObject);

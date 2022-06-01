@@ -98,7 +98,7 @@ end;
 
 procedure TFrmCadastroProduto.BtSalvarClick(Sender: TObject);
 begin
-if Produto.getSavar then
+      if Produto.getSavar then
       begin
             fMsgPadrao(3,3,1,2,EmptyStr);
             inherited;

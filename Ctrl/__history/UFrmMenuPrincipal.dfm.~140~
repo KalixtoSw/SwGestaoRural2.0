@@ -1237,7 +1237,7 @@
         Width = 200
         Height = 696
         Align = alClient
-        ActiveCard = CrdBtParametros
+        ActiveCard = CrdBtManejoAgricola
         BevelOuter = bvNone
         TabOrder = 0
         object CrdBtParametros: TCard
@@ -1840,7 +1840,7 @@
               Transparent = True
             end
           end
-          object JvXPBar1: TJvXPBar
+          object XPBarManejoAgricola1: TJvXPBar
             Left = 0
             Top = 48
             Width = 200
@@ -1863,6 +1863,10 @@
               item
                 Caption = 'CADASTRO DE PRODUTO'
                 OnClick = JvXPBar1Items1Click
+              end
+              item
+                Caption = 'COMPRAS DE INSUMOS'
+                OnClick = JvXPBar1Items2Click
               end>
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 15000804
@@ -2078,6 +2082,14 @@
         CardIndex = 0
         TabOrder = 0
         OnMouseEnter = CrdDashboardMouseEnter
+        object JvSpeedButton1: TJvSpeedButton
+          Left = 375
+          Top = 195
+          Width = 166
+          Height = 101
+          Caption = 'CONTROLE DE ESTOQUE'
+          OnClick = JvXPBar1Items2Click
+        end
         object PnlIndicadoresAgricolas: TJvPanel
           Left = 0
           Top = 0
@@ -5379,8 +5391,8 @@
           Font.Style = [fsBold, fsItalic]
           ParentFont = False
           Layout = tlCenter
-          ExplicitLeft = 62
-          ExplicitTop = 25
+          ExplicitWidth = 135
+          ExplicitHeight = 22
         end
       end
       object JvScrollText1: TJvScrollText

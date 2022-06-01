@@ -219,15 +219,16 @@ Begin
             Begin
                 if form.Components[I] is TMaskEdit then
                 begin
-                    if ((form.Components[I] as TMaskEdit).HelpKeyword = EmptyStr) then
+
+                    if NOT((form.Components[I] as TMaskEdit).HelpKeyword = EmptyStr) then
                     begin
 
                         FieldsValues[(form.Components[I] as TMaskEdit).Tag]  := QuotedStr((form.Components[I] as TMaskEdit).Text);
-                        FieldsDB[(form.Components[I] as TMaskEdit).Tag]      := (form.Components[I] as TMaskEdit).Hint;
+                        FieldsDB[(form.Components[I] as TMaskEdit).Tag]      := (form.Components[I] as TMaskEdit).HelpKeyword;
 
                     end else begin
 
-                          FieldsValues[(form.Components[I] as TMaskEdit).Tag]  := QuotedStr((form.Components[I] as TMaskEdit).HelpKeyword);
+                          FieldsValues[(form.Components[I] as TMaskEdit).Tag]  := QuotedStr((form.Components[I] as TMaskEdit).Text);
                           FieldsDB[(form.Components[I] as TMaskEdit).Tag]      := (form.Components[I] as TMaskEdit).Hint;
                     end;
                 end;
@@ -242,14 +243,14 @@ Begin
 
                     end else begin
 
-                          FieldsValues[(form.Components[I] as TMemo).Tag]  := QuotedStr((form.Components[I] as TMemo).HelpKeyword);
-                          FieldsDB[(form.Components[I] as TMemo).Tag]      := (form.Components[I] as TMemo).Hint;
+                          FieldsValues[(form.Components[I] as TMemo).Tag]  := QuotedStr((form.Components[I] as TMemo).Lines.Text);
+                          FieldsDB[(form.Components[I] as TMemo).Tag]      := (form.Components[I] as TMemo).HelpKeyword;
                     end;
                 end;
 
                 if form.Components[I] is TCalendarPicker then
                 begin
-                    if ((form.Components[I] as TCalendarPicker).HelpKeyword = EmptyStr) then
+                    if not((form.Components[I] as TCalendarPicker).HelpKeyword = EmptyStr) then
                     begin
 
                         FieldsValues[(form.Components[I] as TCalendarPicker).Tag]  := QuotedStr(FormatDateTime('yyyy-mm-dd',(form.Components[I] as TCalendarPicker).date));

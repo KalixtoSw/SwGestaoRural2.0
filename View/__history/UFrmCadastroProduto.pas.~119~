@@ -8,7 +8,7 @@ uses
   JvDesktopAlert, JvBaseDlg, Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid,
   JvDBUltimGrid, Vcl.StdCtrls, Vcl.Mask, Vcl.WinXPanels, JvExControls,
   JvSpeedButton, Vcl.ExtCtrls, JvExExtCtrls, JvExtComponent, JvPanel, Classe.Produto, Classe.Sistema.Mensagens,
-  JvGradient, JvExStdCtrls, JvCombobox;
+  JvGradient, JvExStdCtrls, JvCombobox, JvExMask, JvToolEdit, JvBaseEdits;
 
 type
   TFrmCadastroProduto = class(TFrmModel1)
@@ -39,6 +39,11 @@ type
     LineCampo5: TJvGradient;
     LineCampo5_1: TJvGradient;
     CbbCampo5: TJvComboBox;
+    PnlCampo6: TJvPanel;
+    LbCampo6: TLabel;
+    JvGradient1: TJvGradient;
+    JvGradient2: TJvGradient;
+    JvCalcEdit1: TJvCalcEdit;
     procedure BtSalvarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -50,7 +55,7 @@ type
     procedure EdtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure CbbCampo2Change(Sender: TObject);
     procedure CbbCampo4Change(Sender: TObject);
-    procedure CbbCampo5Click(Sender: TObject);
+    procedure CbbCampo4Enter(Sender: TObject);
   private
     { Private declarations }
     Produto : Tproduto;
@@ -114,10 +119,14 @@ begin
         fEventoChangeCbbTecSem(fRetVlrCombox(CbbCampo4,0).IdResp);
 end;
 
-procedure TFrmCadastroProduto.CbbCampo5Click(Sender: TObject);
+procedure TFrmCadastroProduto.CbbCampo4Enter(Sender: TObject);
 begin
   inherited;
-        fEventoChangeCbbTecSem(fRetVlrCombox(CbbCampo4,0).IdResp);
+        if not(CbbCampo4.Text = EmptyStr) then
+        begin
+             fEventoChangeCbbCult;
+             fEventoChangeCbbTecSem(fRetVlrCombox(CbbCampo4,0).IdResp);
+        end;
 end;
 
 procedure TFrmCadastroProduto.DbGridDblClick(Sender: TObject);
