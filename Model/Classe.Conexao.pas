@@ -123,6 +123,16 @@ type
     QryProdutoprd_codInterno: TIntegerField;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     TbNotaFiscalItem: TFDTable;
+    TbProdutoEmbalagem: TFDTable;
+    DsTbProdutoEmbalagem: TDataSource;
+    TbProdutoEmbalagemprde_Id: TFDAutoIncField;
+    TbProdutoEmbalagemprde_dtcriacao: TSQLTimeStampField;
+    TbProdutoEmbalagemprde_descricao: TStringField;
+    TbProdutoEmbalagemprde_unimedida: TStringField;
+    TbProdutoEmbalagemprde_conversor: TBCDField;
+    TbProdutoEmbalagemprde_qtdereferencial: TBCDField;
+    TbNotaFiscalItemProduto: TStringField;
+    TbNotaFiscalItemEmbalagem: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

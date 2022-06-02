@@ -4,7 +4,7 @@ interface
 uses
   System.SysUtils, Classe.Functions, Classe.FunctionsCrud,Classe.FunctionsSQL,
   Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
-  FireDAC.Comp.Client, Vcl.ComCtrls;
+  FireDAC.Comp.Client, Vcl.ComCtrls, JvDBControls, Vcl.Dialogs;
 
   type
       TCrtrlEstoque_NF = class
@@ -16,6 +16,13 @@ uses
     FTbFornecedor: TFDTable;
     FTbShtLancamentos: TTabSheet;
     FTbShtConsultaNF: TTabSheet;
+    FNFIQtde: Integer;
+    FNFIVlrUnit: Double;
+    FNFIVlrTotal: Double;
+
+    CNFIQtde    : TJvDBCalcEdit;
+    CNFIVlrUnit : TJvDBCalcEdit;
+    CNFIVlrTotal: TJvDBCalcEdit;
     procedure setNumNF(const Value: Integer);
     procedure setTbNotaFiscal(const Value: TFDTable);
     procedure setTbNotaFiscalItem(const Value: TFDTable);
@@ -23,6 +30,9 @@ uses
     procedure setTbFornecedor(const Value: TFDTable);
     procedure setTbShtConsultaNF(const Value: TTabSheet);
     procedure setTbShtLancamentos(const Value: TTabSheet);
+    procedure setNFIQtde(const Value: Integer);
+    procedure setNFIVlrTotal(const Value: Double);
+    procedure setNFIVlrUnit(const Value: Double);
 
   Public
         constructor CreateObjTCrtrlEstoque_NF;
@@ -32,6 +42,7 @@ uses
         procedure pEventoBtAddItens;
         procedure pEventoBtSavarNF;
         procedure pEventoBtSavarNFItem;
+        function  fCalcTotalNFItem : Double;
 
   Published
         property NumNF : Integer                read FNumNF                     write setNumNF;
@@ -41,6 +52,11 @@ uses
         property TbFornecedor : TFDTable        read FTbFornecedor              write setTbFornecedor;
         property TbShtLancamentos : TTabSheet   read FTbShtLancamentos          write setTbShtLancamentos;
         property TbShtConsultaNF : TTabSheet    read FTbShtConsultaNF           write setTbShtConsultaNF;
+        property NFIQtde        : Integer       read FNFIQtde                   write setNFIQtde;
+        property NFIVlrUnit     : Double        read FNFIVlrUnit                write setNFIVlrUnit;
+        property NFIVlrTotal    : Double        read FNFIVlrTotal               write setNFIVlrTotal;
+
+
 
   end;
 
@@ -61,11 +77,24 @@ begin
         FTbFornecedor           :=      DMPrincipal.TbFornecedor;
         TbShtLancamentos        :=      FrmModuloControleEstoque.TbShtLancamentos;
         TbShtConsultaNF         :=      FrmModuloControleEstoque.TbShtConsultaNF;
+        CNFIQtde                :=      FrmModuloControleEstoque.EdtDNFIQdte;
+        CNFIVlrUnit             :=      FrmModuloControleEstoque.EdtDNFIVlrUnit;
 end;
 
 destructor TCrtrlEstoque_NF.DestroyObjTCrtrlEstoque_NF;
 begin
 
+end;
+
+function TCrtrlEstoque_NF.fCalcTotalNFItem: Double;
+begin
+        setNFIQtde(CNFIQtde.AsInteger);
+        setNFIVlrUnit(CNFIVlrUnit.Value);
+
+        if (FNFIQtde > 0) and (FNFIVlrUnit > 0) then
+        begin
+             Result := FNFIQtde * FNFIVlrUnit;
+        end;
 end;
 
 procedure TCrtrlEstoque_NF.pEventoBtAddItens;
@@ -102,6 +131,21 @@ begin
         TbNotaFiscalItem.Active     := True;
         TbNotaFiscal.Insert;
 
+end;
+
+procedure TCrtrlEstoque_NF.setNFIQtde(const Value: Integer);
+begin
+  FNFIQtde := Value;
+end;
+
+procedure TCrtrlEstoque_NF.setNFIVlrTotal(const Value: Double);
+begin
+  FNFIVlrTotal := Value;
+end;
+
+procedure TCrtrlEstoque_NF.setNFIVlrUnit(const Value: Double);
+begin
+  FNFIVlrUnit := Value;
 end;
 
 procedure TCrtrlEstoque_NF.setNumNF(const Value: Integer);
