@@ -157,9 +157,26 @@ type
     PnlDNFINomeProduto: TJvPanel;
     LbDNFINomeProduto: TLabel;
     CbbDNFICodProduto: TJvDBLookupCombo;
-    JvSpeedButton1: TJvSpeedButton;
+    BtDNFIBtSavar: TJvSpeedButton;
     DbGrid: TJvDBUltimGrid;
     EdtDNFINomeProduto: TJvDBLookupCombo;
+    PnlDNFIEmbalagem: TJvPanel;
+    LbDNFIEmbalagem: TLabel;
+    CbbDNFIEmbalagem: TJvDBLookupCombo;
+    PnlDNFIQdte: TJvPanel;
+    LbDNFIQdte: TLabel;
+    EdtDNFIQdte: TJvDBCalcEdit;
+    PnlDNFIVlrUnit: TJvPanel;
+    LbDNFIVlrUnit: TLabel;
+    EdtDNFIVlrUnit: TJvDBCalcEdit;
+    PnlDNFIVlrTotal: TJvPanel;
+    LbDNFIVlrTotal: TLabel;
+    PnlDNFICFOP: TJvPanel;
+    LbDNFICFOP: TLabel;
+    EdtDNFICFOP: TJvDBCalcEdit;
+    PnlDNFIBtSavar: TJvPanel;
+    FundoDNFIBtSavar: TJvGradient;
+    EdtDNFIVlrTotal: TDBEdit;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -177,7 +194,8 @@ type
     procedure TbShtLancamentosShow(Sender: TObject);
     procedure BtSalvarNFClick(Sender: TObject);
     procedure BtNFAddItensClick(Sender: TObject);
-    procedure JvSpeedButton1Click(Sender: TObject);
+    procedure BtDNFIBtSavarClick(Sender: TObject);
+    procedure EdtDNFIVlrUnitExit(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
 
@@ -241,6 +259,16 @@ begin
         CtrlEst_NF.pEventoBtSavarNF;
 end;
 
+procedure TFrmModuloControleEstoque.EdtDNFIVlrUnitExit(Sender: TObject);
+var
+        vlr : Currency;
+begin
+        vlr := CtrlEst_NF.fCalcTotalNFItem;
+        EdtDNFIVlrTotal.Text := FloatToStr(vlr);
+        DMPrincipal.DsTbNotaFiscalItem.DataSet.Refresh;
+
+end;
+
 procedure TFrmModuloControleEstoque.FormCreate(Sender: TObject);
 begin
         CtrlEstoque     := TCrtlEstoque.CreateObjTCrtlEstoque;
@@ -262,7 +290,7 @@ begin
         CrdPrincipal.Show;
 end;
 
-procedure TFrmModuloControleEstoque.JvSpeedButton1Click(Sender: TObject);
+procedure TFrmModuloControleEstoque.BtDNFIBtSavarClick(Sender: TObject);
 begin
                 CtrlEst_NF.pEventoBtSavarNFItem;
 end;
