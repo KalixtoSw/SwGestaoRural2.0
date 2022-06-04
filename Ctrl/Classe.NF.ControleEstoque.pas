@@ -55,9 +55,6 @@ uses
         property NFIQtde        : Integer       read FNFIQtde                   write setNFIQtde;
         property NFIVlrUnit     : Double        read FNFIVlrUnit                write setNFIVlrUnit;
         property NFIVlrTotal    : Double        read FNFIVlrTotal               write setNFIVlrTotal;
-
-
-
   end;
 
 

@@ -79,7 +79,6 @@ begin
         TbShtConsultaNF         :=      FrmModuloControleEstoque.TbShtConsultaNF;
         CNFIQtde                :=      FrmModuloControleEstoque.EdtDNFIQdte;
         CNFIVlrUnit             :=      FrmModuloControleEstoque.EdtDNFIVlrUnit;
-        CNFIVlrTotal            :=      FrmModuloControleEstoque.EdtDNFIVlrTotal;
 end;
 
 destructor TCrtrlEstoque_NF.DestroyObjTCrtrlEstoque_NF;
@@ -87,19 +86,15 @@ begin
 
 end;
 
-function  fCalcTotalNFItem : Double;
+function TCrtrlEstoque_NF.fCalcTotalNFItem: Double;
 begin
         setNFIQtde(CNFIQtde.AsInteger);
         setNFIVlrUnit(CNFIVlrUnit.Value);
 
         if (FNFIQtde > 0) and (FNFIVlrUnit > 0) then
         begin
-             setNFIVlrTotal(FNFIQtde * FNFIVlrUnit);
-             CNFIVlrTotal.Value := FNFIVlrTotal;
-        end else begin
-             showmessage('Campos em branco');
+             Result := FNFIQtde * FNFIVlrUnit;
         end;
-
 end;
 
 procedure TCrtrlEstoque_NF.pEventoBtAddItens;
