@@ -1,17 +1,24 @@
 unit Classe.NF.ControleEstoque;
 
 interface
-uses
-  System.SysUtils, Classe.Functions, Classe.FunctionsCrud,Classe.FunctionsSQL,
-  Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
-  FireDAC.Comp.Client, Vcl.ComCtrls, JvDBControls, Vcl.Dialogs;
 
-  type
-      TCrtrlEstoque_NF = class
-  Private
+uses
+  System.SysUtils, Classe.Functions, Classe.FunctionsCrud, Classe.FunctionsSQL,
+  Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
+  FireDAC.Comp.Client, Vcl.ComCtrls, JvDBControls, Vcl.Dialogs, Data.DB,
+  JvDBDateTimePicker, JvDesktopAlert, JvDBDatePickerEdit, JvSpeedButton,
+  JvPanel;
+
+type
+  TCrtrlEstoque_NF = class
+  private
     FNumNF: Integer;
     FTbNotaFiscal: TFDTable;
     FTbNotaFiscalItem: TFDTable;
+    FDSNF: TDataSource;
+    FDSNFI: TDataSource;
+    FDBgrdNF : TJvDBUltimGrid;
+    FDbGridNFItens : TJvDBUltimGrid;
     FTbProduto: TFDQuery;
     FTbFornecedor: TFDTable;
     FTbShtLancamentos: TTabSheet;
@@ -20,9 +27,15 @@ uses
     FNFIVlrUnit: Double;
     FNFIVlrTotal: Double;
 
-    CNFIQtde    : TJvDBCalcEdit;
-    CNFIVlrUnit : TJvDBCalcEdit;
     CNFIVlrTotal: TJvDBCalcEdit;
+    DtEmissaoNF: TJvDBDatePickerEdit;
+    DtVencimentoNF: TJvDBDatePickerEdit;
+    DtEntSadNF: TJvDBDatePickerEdit;
+    Alert: TJvDesktopAlert;
+    BtAddItemNF : TJvSpeedButton;
+    BtSavarItemNF : TJvSpeedButton;
+    PnlDadosNFItens : TjvPanel;
+
     procedure setNumNF(const Value: Integer);
     procedure setTbNotaFiscal(const Value: TFDTable);
     procedure setTbNotaFiscalItem(const Value: TFDTable);
@@ -34,48 +47,67 @@ uses
     procedure setNFIVlrTotal(const Value: Double);
     procedure setNFIVlrUnit(const Value: Double);
 
-  Public
-        constructor CreateObjTCrtrlEstoque_NF;
-        destructor DestroyObjTCrtrlEstoque_NF;
 
-        procedure pEventoNewNF;
-        procedure pEventoBtAddItens;
-        procedure pEventoBtSavarNF;
-        procedure pEventoBtSavarNFItem;
-        function  fCalcTotalNFItem : Double;
+  public
+    constructor CreateObjTCrtrlEstoque_NF;
+    destructor DestroyObjTCrtrlEstoque_NF;
 
-  Published
-        property NumNF : Integer                read FNumNF                     write setNumNF;
-        property TbNotaFiscal : TFDTable        read FTbNotaFiscal              write setTbNotaFiscal;
-        property TbNotaFiscalItem : TFDTable    read FTbNotaFiscalItem          write setTbNotaFiscalItem;
-        property TbProduto : TFDQuery           read FTbProduto                 write setTbProduto;
-        property TbFornecedor : TFDTable        read FTbFornecedor              write setTbFornecedor;
-        property TbShtLancamentos : TTabSheet   read FTbShtLancamentos          write setTbShtLancamentos;
-        property TbShtConsultaNF : TTabSheet    read FTbShtConsultaNF           write setTbShtConsultaNF;
-        property NFIQtde        : Integer       read FNFIQtde                   write setNFIQtde;
-        property NFIVlrUnit     : Double        read FNFIVlrUnit                write setNFIVlrUnit;
-        property NFIVlrTotal    : Double        read FNFIVlrTotal               write setNFIVlrTotal;
+    procedure pEventoNewNF;
+    procedure pEventoBtAddItens;
+    procedure pEventoBtSavarNF;
+    procedure pEventoBtSavarNFItem;
+    procedure pEventoUpdateNF;
+    procedure pEventoBtCancelarNF;
+    procedure pEventoBtDeleteNF;
+    function  fpCalcTotalNF : Double;
+    function fCalcTotalNFItem(FNFIVlrUnit: Double; FNFIQtde: Double): Double;
+    function fSomaVlrItensNF: Double;
+
+  published
+    property NumNF: Integer read FNumNF write setNumNF;
+    property TbNotaFiscal: TFDTable read FTbNotaFiscal write setTbNotaFiscal;
+    property TbNotaFiscalItem: TFDTable read FTbNotaFiscalItem write setTbNotaFiscalItem;
+    property TbProduto: TFDQuery read FTbProduto write setTbProduto;
+    property TbFornecedor: TFDTable read FTbFornecedor write setTbFornecedor;
+    property TbShtLancamentos: TTabSheet read FTbShtLancamentos write setTbShtLancamentos;
+    property TbShtConsultaNF: TTabSheet read FTbShtConsultaNF write setTbShtConsultaNF;
+    property NFIQtde: Integer read FNFIQtde write setNFIQtde;
+    property NFIVlrUnit: Double read FNFIVlrUnit write setNFIVlrUnit;
+    property NFIVlrTotal: Double read FNFIVlrTotal write setNFIVlrTotal;
   end;
+
+var
+  ID_NF: Integer;
 
 
 implementation
 
 uses
-     UFrmModuloControleEstoque;
+  UFrmModuloControleEstoque, Classe.Sistema.Mensagens;
 
 { TCrtrlEstoque_NF }
 
 constructor TCrtrlEstoque_NF.CreateObjTCrtrlEstoque_NF;
 begin
-        FNumNF  := 0;
-        FTbNotaFiscal           :=      DMPrincipal.TbNotaFiscal;
-        FTbNotaFiscalItem       :=      DMPrincipal.TbNotaFiscalItem;
-        FTbProduto              :=      DMPrincipal.QryProduto;
-        FTbFornecedor           :=      DMPrincipal.TbFornecedor;
-        TbShtLancamentos        :=      FrmModuloControleEstoque.TbShtLancamentos;
-        TbShtConsultaNF         :=      FrmModuloControleEstoque.TbShtConsultaNF;
-        CNFIQtde                :=      FrmModuloControleEstoque.EdtDNFIQdte;
-        CNFIVlrUnit             :=      FrmModuloControleEstoque.EdtDNFIVlrUnit;
+  FNumNF := 0;
+  ID_NF := 0;
+  FTbNotaFiscal := DMPrincipal.TbNotaFiscal;
+  FTbNotaFiscalItem := DMPrincipal.TbNotaFiscalItem;
+  FTbProduto := DMPrincipal.QryProduto;
+  FTbFornecedor := DMPrincipal.TbFornecedor;
+  TbShtLancamentos := FrmModuloControleEstoque.TbShtLancamentos;
+  TbShtConsultaNF := FrmModuloControleEstoque.TbShtConsultaNF;
+  FDSNF := DMPrincipal.DsTbNotaFiscal;
+  FDSNFI := DMPrincipal.DsTbNotaFiscalItem;
+  DtEmissaoNF := FrmModuloControleEstoque.EdtDtFldDtEmissaoNF;
+  DtVencimentoNF := FrmModuloControleEstoque.EdtFldDtVencimentoNF;
+  DtEntSadNF := FrmModuloControleEstoque.EdtDtFldDtESNF;
+  Alert := FrmModuloControleEstoque.Alert;
+  FDBgrdNF := FrmModuloControleEstoque.DbGrdConsultaNF;
+  BtAddItemNF := FrmModuloControleEstoque.BtNFAddItens;
+  BtSavarItemNF := FrmModuloControleEstoque.BtDNFIBtSavar;
+  FDbGridNFItens := FrmModuloControleEstoque.DbGridNFItens;
+  PnlDadosNFItens := FrmModuloControleEstoque.PnlDadosNFItens;
 end;
 
 destructor TCrtrlEstoque_NF.DestroyObjTCrtrlEstoque_NF;
@@ -83,51 +115,135 @@ begin
 
 end;
 
-function TCrtrlEstoque_NF.fCalcTotalNFItem: Double;
+function TCrtrlEstoque_NF.fCalcTotalNFItem(FNFIVlrUnit: Double; FNFIQtde: Double): Double;
 begin
-        setNFIQtde(CNFIQtde.AsInteger);
-        setNFIVlrUnit(CNFIVlrUnit.Value);
+  if (FNFIQtde > 0) and (FNFIVlrUnit > 0) then
+  begin
+    Result := FNFIQtde * FNFIVlrUnit;
+  end;
+end;
 
-        if (FNFIQtde > 0) and (FNFIVlrUnit > 0) then
+function TCrtrlEstoque_NF.fpCalcTotalNF: Double;
+var
+        VlrIcms,VlrIcmsSt,VlrFrete,VlrSeguro,VlrDesconto,
+        VlrOutDesp,VlrIpi, VlrProduto : Double;
+begin
+        Result := 0;
+        VlrIcms     := FrmModuloControleEstoque.EdtImpostoNFIcms.Value;
+        VlrIcmsSt   := FrmModuloControleEstoque.EdtImpostoNFIcmsST.Value;
+        VlrFrete    := FrmModuloControleEstoque.EdtImpostoNFVlrFrete.Value;
+        VlrSeguro   := FrmModuloControleEstoque.EdtImpostoNFVlrSeguro.Value;
+        VlrDesconto := ((FrmModuloControleEstoque.EdtImpostoNFVlrDesconto.Value) * -1);
+        VlrOutDesp  := FrmModuloControleEstoque.EdtImpostoNFVlrOutrasDespesas.Value;
+        VlrIpi      := FrmModuloControleEstoque.EdtImpostoNFVlrIPI.Value;
+        VlrProduto  := FrmModuloControleEstoque.EdtImpostoNFVlrProdutos.Value;
+
+        Result := Result + VlrIcms+VlrIcmsSt+VlrFrete+VlrDesconto+VlrOutDesp+VlrIpi+VlrProduto;
+end;
+
+function TCrtrlEstoque_NF.fSomaVlrItensNF: Double;
+var
+  SumT: Double;
+begin
+  SumT := 0;
+  FDSNFI.DataSet.First;
+  while not FDSNFI.DataSet.Eof do
+  begin
+    SumT := SumT + FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
+    FDSNFI.DataSet.Next;
+  end;
+
+  Result := SumT;
+
+end;
+
+procedure TCrtrlEstoque_NF.pEventoBtCancelarNF;
+begin
+        FDSNF.DataSet.Cancel;
+        DMPrincipal.FDConnection.Rollback;
+        PnlDadosNFItens.Enabled := True;
+        TbShtConsultaNF.Show;
+end;
+
+procedure TCrtrlEstoque_NF.pEventoBtDeleteNF;
+begin
+        if fMsgPadrao(7,3,9,1,EmptyStr).RespBt then
         begin
-             Result := FNFIQtde * FNFIVlrUnit;
+             FDSNF.DataSet.Delete;
+             FDSNF.DataSet.Close;
+             FDSNF.DataSet.Open;
+             TbShtConsultaNF.Show;
+             Alert.HeaderText := 'Gestão Rural';
+             Alert.MessageText := 'Nota Fiscal Excluída com sucesso!';
+             Alert.Execute();
+             pAtivarDBGrid(FDBgrdNF);
         end;
 end;
 
 procedure TCrtrlEstoque_NF.pEventoBtAddItens;
 begin
-        TbNotaFiscal.Post;
-        TbNotaFiscal.Last;
-        TbNotaFiscal.Edit;
-        TbNotaFiscalItem.Insert;
+  FDSNFI.DataSet.Insert;
+  FDSNFI.DataSet.FieldByName('nf_id').AsInteger := ID_NF;
+  PnlDadosNFItens.Enabled := True;
+  BtAddItemNF.Enabled := False;
+  BtSavarItemNF.Enabled := True;
+
+
 end;
 
 procedure TCrtrlEstoque_NF.pEventoBtSavarNF;
 begin
-        DMPrincipal.TbNotaFiscal.Post;
-        TbShtConsultaNF.Show;
+  FDSNF.DataSet.Post;
+  DMPrincipal.FDConnection.Commit;
+  TbShtConsultaNF.Show;
 end;
 
 procedure TCrtrlEstoque_NF.pEventoBtSavarNFItem;
 begin
-        try
-             TbNotaFiscalItem.Post;
-             TbNotaFiscalItem.Refresh;
-        except on E: Exception do
-
-
-        end;
+  FDSNFI.DataSet.Post;
+  FDSNFI.DataSet.Close;
+  FDSNFI.DataSet.Open;
+  BtAddItemNF.Enabled := True;
+  BtSavarItemNF.Enabled := False;
+  PnlDadosNFItens.Enabled := False;
+  pAtivarDBGrid(FDbGridNFItens);
+  FDSNF.DataSet.FieldByName('nf_vlrprodutos').AsFloat := fSomaVlrItensNF;
 end;
 
 procedure TCrtrlEstoque_NF.pEventoNewNF;
 begin
 
-        TbNotaFiscal.Active         := True;
-        TbFornecedor.Active         := True;
-        TbProduto.Active            := True;
-        TbNotaFiscalItem.Active     := True;
-        TbNotaFiscal.Insert;
+    DMPrincipal.FDConnection.InTransaction;
+    TbNotaFiscal.Active := True;
+    TbNotaFiscalItem.Active := True;
+    TbFornecedor.Active := True;
+    TbProduto.Active := True;
+    BtAddItemNF.Enabled := True;
+    BtSavarItemNF.Enabled := False;
+    PnlDadosNFItens.Enabled := False;
 
+    FDSNF.DataSet.Insert;
+    FDSNF.DataSet.Post;
+    FDSNF.DataSet.Last;
+    FDSNF.DataSet.Edit;
+    ID_NF := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
+
+    DtEmissaoNF.Date := fAjustaDataNull(DtEmissaoNF.Date);
+    DtVencimentoNF.Date := fAjustaDataNull(DtVencimentoNF.Date);
+    DtEntSadNF.Date := fAjustaDataNull(DtEntSadNF.Date);
+  
+end;
+
+procedure TCrtrlEstoque_NF.pEventoUpdateNF;
+begin
+  FDSNFI.DataSet.Open;
+  FDSNF.DataSet.Edit;
+  ID_NF := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
+  BtAddItemNF.Enabled := True;
+  BtSavarItemNF.Enabled := False;
+  PnlDadosNFItens.Enabled := False;
+  pAtivarDBGrid(FDbGridNFItens);
+  TbShtLancamentos.Show;
 end;
 
 procedure TCrtrlEstoque_NF.setNFIQtde(const Value: Integer);
@@ -181,3 +297,4 @@ begin
 end;
 
 end.
+

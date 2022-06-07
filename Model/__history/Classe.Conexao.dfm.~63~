@@ -410,6 +410,7 @@ object DMPrincipal: TDMPrincipal
     Top = 310
   end
   object TbNotaFiscal: TFDTable
+    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     DetailFields = 'nf_id'
@@ -589,6 +590,21 @@ object DMPrincipal: TDMPrincipal
       Origin = 'nf_tipoES'
       Size = 1
     end
+    object TbNotaFiscalnf_dtvencimento: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_dtvencimento'
+      Origin = 'nf_dtvencimento'
+    end
+    object TbNotaFiscalFornecedor: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Fornecedor'
+      LookupDataSet = TbFornecedor
+      LookupKeyFields = 'frn_id'
+      LookupResultField = 'frn_NomeFantasia'
+      KeyFields = 'frn_id'
+      Size = 100
+      Lookup = True
+    end
   end
   object DsTbNotaFiscal: TDataSource
     DataSet = TbNotaFiscal
@@ -596,6 +612,7 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbFornecedor: TFDTable
+    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -732,6 +749,26 @@ object DMPrincipal: TDMPrincipal
       Precision = 10
       Size = 2
     end
+    object TbNotaFiscalItemProduto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Produto'
+      LookupDataSet = QryProduto
+      LookupKeyFields = 'prd_idproduto'
+      LookupResultField = 'prd_nome'
+      KeyFields = 'prd_idproduto'
+      Size = 50
+      Lookup = True
+    end
+    object TbNotaFiscalItemEmbalagem: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Embalagem'
+      LookupDataSet = TbProdutoEmbalagem
+      LookupKeyFields = 'prde_Id'
+      LookupResultField = 'prde_descricao'
+      KeyFields = 'prde_Id'
+      Size = 50
+      Lookup = True
+    end
   end
   object DsTbNotaFiscalItem: TDataSource
     DataSet = TbNotaFiscalItem
@@ -744,7 +781,6 @@ object DMPrincipal: TDMPrincipal
     Top = 15
   end
   object TbProdutoEmbalagem: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -761,12 +797,13 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.AutoCommitUpdates = True
     UpdateOptions.UpdateTableName = 'produto_embalagem'
     TableName = 'produto_embalagem'
-    Left = 255
+    Left = 250
     Top = 535
     object TbProdutoEmbalagemprde_Id: TFDAutoIncField
       FieldName = 'prde_Id'
       Origin = 'prde_Id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object TbProdutoEmbalagemprde_dtcriacao: TSQLTimeStampField
       AutoGenerateValue = arDefault

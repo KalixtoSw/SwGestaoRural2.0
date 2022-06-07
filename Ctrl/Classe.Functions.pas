@@ -47,7 +47,7 @@ uses
   function fCriptografiaKey( Senha, key : string ) : string;{9}
   function fGetRandomPassword(Size: Integer; Tipo : Integer = 1): String;{10}
   function fMaiorValor(VlrA : Double; VlrB : Double) : Integer;{11}
-  function fAjustaDataNull(VrDt    :   TDate)  :   String;{12}
+  function fAjustaDataNull(VrDt    :   TDate)  :   TDate;{12}
   function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;{13}
   function IsConnectedToInternet: Boolean;{14}
 
@@ -563,14 +563,14 @@ begin
         end;
 end;
 
-function fAjustaDataNull(VrDt    :   TDate)  :   String;
+function fAjustaDataNull(VrDt    :   TDate)  :   TDate;
 begin
      if FormatDateTime('yyyy/mm/dd',VrDt) = '1899/12/30' then
             begin
-                Result    :=  'NULL';
+                Result    :=  StrtoDate(FormatDateTime('dd/mm/yyyy',Now));
             end else
                 begin
-                    Result    :=  (FormatDateTime('dd/mm/yyyy',VrDt));
+                    Result    :=  StrtoDate(FormatDateTime('dd/mm/yyyy',VrDt));
                 end;
 end;
 

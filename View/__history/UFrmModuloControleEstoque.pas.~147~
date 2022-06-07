@@ -13,7 +13,9 @@ uses
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, UFrmControleEstoquePesqNF,
   JvDBLookup, JvExStdCtrls, JvCombobox, JvDBCombobox, Vcl.DBCtrls, JvDBControls,
   JvMaskEdit, Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, JvDateTimePicker,
-  JvDBDateTimePicker, JvDBFindEdit, JvEdit, JvDBSearchEdit, Classe.NF.ControleEstoque;
+  JvDBDateTimePicker, JvDBFindEdit, JvEdit, JvDBSearchEdit, Classe.NF.ControleEstoque,
+  JvBaseDlg, JvDesktopAlert, JvCheckedMaskEdit, JvDatePickerEdit,
+  JvDBDatePickerEdit, System.Math;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -104,10 +106,8 @@ type
     EdtFldNatOperNF: TDBEdit;
     PnlFldDtEmissaoNF: TJvPanel;
     LbFldDtEmissaoNF: TLabel;
-    EdtDtFldDtEmissaoNF: TJvDBDateTimePicker;
     PnlFldDtESNF: TJvPanel;
     LbFldDtESNF: TLabel;
-    EdtDtFldDtESNF: TJvDBDateTimePicker;
     PnlFldHoraESNF: TJvPanel;
     LbFldHoraESNF: TLabel;
     PnlDadosNFItens: TJvPanel;
@@ -147,7 +147,6 @@ type
     EdtImpostoNFVlrIPI: TJvDBCalcEdit;
     PnlImpostoNFVlrtNF: TJvPanel;
     LbImpostoNFVlrtNF: TLabel;
-    EdtImpostoNFVlrtNF: TJvDBCalcEdit;
     JvDBComboBox1: TJvDBComboBox;
     PnlNFAddItens: TJvPanel;
     BtNFAddItens: TJvSpeedButton;
@@ -157,7 +156,6 @@ type
     PnlDNFINomeProduto: TJvPanel;
     LbDNFINomeProduto: TLabel;
     CbbDNFICodProduto: TJvDBLookupCombo;
-    BtDNFIBtSavar: TJvSpeedButton;
     DbGrid: TJvDBUltimGrid;
     EdtDNFINomeProduto: TJvDBLookupCombo;
     PnlDNFIEmbalagem: TJvPanel;
@@ -174,9 +172,21 @@ type
     PnlDNFICFOP: TJvPanel;
     LbDNFICFOP: TLabel;
     EdtDNFICFOP: TJvDBCalcEdit;
+    EdtDNFIVlrTotal: TDBEdit;
+    PnlDNFIFields: TJvPanel;
     PnlDNFIBtSavar: TJvPanel;
     FundoDNFIBtSavar: TJvGradient;
-    EdtDNFIVlrTotal: TDBEdit;
+    BtDNFIBtSavar: TJvSpeedButton;
+    pnlFldDtVencimentoNF: TJvPanel;
+    LbFldDtVencimentoNF: TLabel;
+    PnlBtDeletelNF: TJvPanel;
+    FundoBtDeletelNF: TJvGradient;
+    BtBtDeletelNF: TJvSpeedButton;
+    Alert: TJvDesktopAlert;
+    EdtDtFldDtEmissaoNF: TJvDBDatePickerEdit;
+    EdtDtFldDtESNF: TJvDBDatePickerEdit;
+    EdtFldDtVencimentoNF: TJvDBDatePickerEdit;
+    EdtImpostoNFVlrtNF: TDBEdit;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -196,6 +206,13 @@ type
     procedure BtNFAddItensClick(Sender: TObject);
     procedure BtDNFIBtSavarClick(Sender: TObject);
     procedure EdtDNFIVlrUnitExit(Sender: TObject);
+    procedure DbGrdConsultaNFDblClick(Sender: TObject);
+    procedure TbShtConsultaNFShow(Sender: TObject);
+    procedure BtCancelarNFClick(Sender: TObject);
+    procedure PgCntrlCtrlEntradaNFResize(Sender: TObject);
+    procedure BtBtDeletelNFClick(Sender: TObject);
+    procedure EdtDNFIQdteExit(Sender: TObject);
+    procedure EdtImpostoNFVlrProdutosExit(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
 
@@ -207,6 +224,7 @@ type
 
 var
   FrmModuloControleEstoque: TFrmModuloControleEstoque;
+  ActInsUpd : string;
 
 
 implementation
@@ -216,6 +234,16 @@ implementation
 procedure TFrmModuloControleEstoque.BtBackMenuPrincipalClick(Sender: TObject);
 begin
         CrdPrincipal.Show;
+end;
+
+procedure TFrmModuloControleEstoque.BtBtDeletelNFClick(Sender: TObject);
+begin
+        CtrlEst_NF.pEventoBtDeleteNF
+end;
+
+procedure TFrmModuloControleEstoque.BtCancelarNFClick(Sender: TObject);
+begin
+        CtrlEst_NF.pEventoBtCancelarNF
 end;
 
 procedure TFrmModuloControleEstoque.BtCloseClick(Sender: TObject);
@@ -241,6 +269,8 @@ end;
 
 procedure TFrmModuloControleEstoque.BtMenuCtrlEntradaNFClick(Sender: TObject);
 begin
+        DMPrincipal.TbNotaFiscal.Open;
+        pAtivarDBGrid(DbGrdConsultaNF);
         CrdNotaFiscal.Show;
 end;
 
@@ -259,20 +289,41 @@ begin
         CtrlEst_NF.pEventoBtSavarNF;
 end;
 
-procedure TFrmModuloControleEstoque.EdtDNFIVlrUnitExit(Sender: TObject);
-var
-        vlr : Currency;
+procedure TFrmModuloControleEstoque.DbGrdConsultaNFDblClick(Sender: TObject);
 begin
-        vlr := CtrlEst_NF.fCalcTotalNFItem;
-        EdtDNFIVlrTotal.Text := FloatToStr(vlr);
-        DbGrid.Refresh;
+        ActInsUpd := 'UPDATE';
+        CtrlEst_NF.pEventoUpdateNF;
+end;
 
+procedure TFrmModuloControleEstoque.EdtDNFIQdteExit(Sender: TObject);
+begin
+        if EdtDNFIQdte.Value > 0 then
+        begin
+                EdtDNFIVlrTotal.Text := FloatToStr( CtrlEst_NF.fCalcTotalNFItem(EdtDNFIVlrUnit.Value,EdtDNFIQdte.Value));
+        end;
+
+end;
+
+procedure TFrmModuloControleEstoque.EdtDNFIVlrUnitExit(Sender: TObject);
+begin
+        if EdtDNFIVlrUnit.Value > 0 then
+        begin
+            EdtDNFIVlrTotal.Text := FloatToStr( CtrlEst_NF.fCalcTotalNFItem(EdtDNFIVlrUnit.Value,EdtDNFIQdte.Value));
+        end;
+end;
+
+procedure TFrmModuloControleEstoque.EdtImpostoNFVlrProdutosExit(
+  Sender: TObject);
+begin
+        EdtImpostoNFVlrtNF.text:= IfThen(EdtImpostoNFVlrProdutos.Value > 0 ,FloatToStr(CtrlEst_NF.fpCalcTotalNF),0);
+//        EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
 end;
 
 procedure TFrmModuloControleEstoque.FormCreate(Sender: TObject);
 begin
         CtrlEstoque     := TCrtlEstoque.CreateObjTCrtlEstoque;
         CtrlEst_NF      := TCrtrlEstoque_NF.CreateObjTCrtrlEstoque_NF;
+        ActInsUpd       := EmptyStr;
 end;
 
 procedure TFrmModuloControleEstoque.FormResize(Sender: TObject);
@@ -293,6 +344,11 @@ end;
 procedure TFrmModuloControleEstoque.BtDNFIBtSavarClick(Sender: TObject);
 begin
                 CtrlEst_NF.pEventoBtSavarNFItem;
+end;
+
+procedure TFrmModuloControleEstoque.PgCntrlCtrlEntradaNFResize(Sender: TObject);
+begin
+        PgCntrlCtrlEntradaNF.ActivePage := TbShtConsultaNF;
 end;
 
 procedure TFrmModuloControleEstoque.PnlFundoBtsNavCadProdutoMouseEnter(
@@ -321,9 +377,18 @@ begin
         pCtrlMenu(Self,nil,False,0,0);
 end;
 
+procedure TFrmModuloControleEstoque.TbShtConsultaNFShow(Sender: TObject);
+begin
+        ActInsUpd := EmptyStr;
+end;
+
 procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
 begin
-        CtrlEst_NF.pEventoNewNF;
+        if not(ActInsUpd = 'UPDATE') then
+        begin
+                ActInsUpd := 'INSERT';
+                CtrlEst_NF.pEventoNewNF;
+        end;
 end;
 
 end.

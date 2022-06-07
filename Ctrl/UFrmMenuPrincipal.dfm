@@ -1844,7 +1844,7 @@
             Left = 0
             Top = 48
             Width = 200
-            Height = 112
+            Height = 120
             Caption = 'PRATELEIRA DE INSUMOS'
             Colors.BorderColor = 10780674
             Colors.CheckedFrameColor = 14934499
@@ -4801,14 +4801,14 @@
               Width = 200
               Height = 17
               Align = alTop
-              Caption = 'MERCADO DO MILHO'
+              Caption = 'MERCADO DO TRIGO'
               Font.Charset = ANSI_CHARSET
               Font.Color = clWhite
               Font.Height = -13
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 135
+              ExplicitWidth = 131
             end
             object PnlImgTrigo: TPanel
               Left = 0

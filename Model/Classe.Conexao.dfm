@@ -411,7 +411,6 @@ object DMPrincipal: TDMPrincipal
     Top = 310
   end
   object TbNotaFiscal: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     DetailFields = 'nf_id'
@@ -590,6 +589,21 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'nf_tipoES'
       Origin = 'nf_tipoES'
       Size = 1
+    end
+    object TbNotaFiscalnf_dtvencimento: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_dtvencimento'
+      Origin = 'nf_dtvencimento'
+    end
+    object TbNotaFiscalFornecedor: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Fornecedor'
+      LookupDataSet = TbFornecedor
+      LookupKeyFields = 'frn_id'
+      LookupResultField = 'frn_NomeFantasia'
+      KeyFields = 'frn_id'
+      Size = 100
+      Lookup = True
     end
   end
   object DsTbNotaFiscal: TDataSource
@@ -791,6 +805,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'prde_Id'
       Origin = 'prde_Id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object TbProdutoEmbalagemprde_dtcriacao: TSQLTimeStampField
       AutoGenerateValue = arDefault
