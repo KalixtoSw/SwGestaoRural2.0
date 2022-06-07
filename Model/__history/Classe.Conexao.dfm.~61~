@@ -218,6 +218,7 @@ object DMPrincipal: TDMPrincipal
   end
   object QryProduto: TFDQuery
     ActiveStoredUsage = []
+    Active = True
     AutoCalcFields = False
     ObjectView = False
     IndexesActive = False
@@ -425,6 +426,7 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.CheckUpdatable = False
     UpdateOptions.AutoCommitUpdates = True
     UpdateOptions.UpdateTableName = 'gr_desenv.nota_fiscal'
+    UpdateOptions.AutoIncFields = 'nf_id'
     TableName = 'gr_desenv.nota_fiscal'
     Left = 260
     Top = 385
@@ -589,6 +591,11 @@ object DMPrincipal: TDMPrincipal
       Origin = 'nf_tipoES'
       Size = 1
     end
+    object TbNotaFiscalnf_dtvencimento: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_dtvencimento'
+      Origin = 'nf_dtvencimento'
+    end
   end
   object DsTbNotaFiscal: TDataSource
     DataSet = TbNotaFiscal
@@ -596,6 +603,7 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbFornecedor: TFDTable
+    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -681,6 +689,7 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.CheckUpdatable = False
     UpdateOptions.AutoCommitUpdates = True
     UpdateOptions.UpdateTableName = 'nota_fiscal_item'
+    UpdateOptions.AutoIncFields = 'nfi_id'
     TableName = 'nota_fiscal_item'
     Left = 255
     Top = 435
@@ -689,6 +698,7 @@ object DMPrincipal: TDMPrincipal
       Origin = 'nfi_id'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
+      ClientAutoIncrement = False
     end
     object TbNotaFiscalItemnf_id: TIntegerField
       AutoGenerateValue = arDefault
@@ -731,6 +741,26 @@ object DMPrincipal: TDMPrincipal
       Precision = 10
       Size = 2
     end
+    object TbNotaFiscalItemProduto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Produto'
+      LookupDataSet = QryProduto
+      LookupKeyFields = 'prd_idproduto'
+      LookupResultField = 'prd_nome'
+      KeyFields = 'prd_idproduto'
+      Size = 50
+      Lookup = True
+    end
+    object TbNotaFiscalItemEmbalagem: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Embalagem'
+      LookupDataSet = TbProdutoEmbalagem
+      LookupKeyFields = 'prde_Id'
+      LookupResultField = 'prde_descricao'
+      KeyFields = 'prde_Id'
+      Size = 50
+      Lookup = True
+    end
   end
   object DsTbNotaFiscalItem: TDataSource
     DataSet = TbNotaFiscalItem
@@ -741,5 +771,68 @@ object DMPrincipal: TDMPrincipal
     Provider = 'Forms'
     Left = 380
     Top = 15
+  end
+  object TbProdutoEmbalagem: TFDTable
+    Active = True
+    ObjectView = False
+    CachedUpdates = True
+    IndexName = 'PRIMARY'
+    AggregatesActive = True
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'produto_embalagem'
+    TableName = 'produto_embalagem'
+    Left = 250
+    Top = 535
+    object TbProdutoEmbalagemprde_Id: TFDAutoIncField
+      FieldName = 'prde_Id'
+      Origin = 'prde_Id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object TbProdutoEmbalagemprde_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_dtcriacao'
+      Origin = 'prde_dtcriacao'
+    end
+    object TbProdutoEmbalagemprde_descricao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_descricao'
+      Origin = 'prde_descricao'
+      Size = 50
+    end
+    object TbProdutoEmbalagemprde_unimedida: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_unimedida'
+      Origin = 'prde_unimedida'
+      Size = 25
+    end
+    object TbProdutoEmbalagemprde_conversor: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_conversor'
+      Origin = 'prde_conversor'
+      Precision = 10
+      Size = 3
+    end
+    object TbProdutoEmbalagemprde_qtdereferencial: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_qtdereferencial'
+      Origin = 'prde_qtdereferencial'
+      Precision = 10
+      Size = 3
+    end
+  end
+  object DsTbProdutoEmbalagem: TDataSource
+    DataSet = TbProdutoEmbalagem
+    Left = 305
+    Top = 540
   end
 end

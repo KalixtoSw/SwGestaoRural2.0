@@ -133,6 +133,8 @@ type
     TbProdutoEmbalagemprde_qtdereferencial: TBCDField;
     TbNotaFiscalItemProduto: TStringField;
     TbNotaFiscalItemEmbalagem: TStringField;
+    TbNotaFiscalnf_dtvencimento: TDateTimeField;
+    TbNotaFiscalFornecedor: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

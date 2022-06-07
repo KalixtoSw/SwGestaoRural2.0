@@ -20,6 +20,7 @@ uses
   procedure pCentralizaPanel(Pnl : TJvPanel ; Frm : TForm);{1}
   procedure pMenuRetratil(Card : TCard; Pnl : TJvPanel ; IdBtn : Integer);{2}
   procedure pMenuRetratilFixo( Pnl : TJvPanel );{3}
+  procedure pMenuRetratilVariavel( Control: TWinControl; VlrMax : Integer; VlrMin: Integer );
   procedure pAtivarDBGrid(Dbg : TJvDBUltimGrid);{4}
   procedure pMontaComboBox(Cmb : TJvComboBox;Tp : Integer; SQLresult : String; Tabela : TFDQuery; IdKey1 : String; IdKey2 : string);overload;{5}
   procedure pMontaComboBox(Cmb : TComboBox;Tp : Integer; SQLresult : String; Tabela : TFDQuery; IdKey1 : String; IdKey2 : string);overload;{5}
@@ -28,7 +29,7 @@ uses
   procedure pEditSetFocus(Form : TForm ; FTag : Integer);{8}
   procedure pMontaComboBoxTempExec(Combo : TJvComboBox; Select : string; Key : string; TextCombo : string);overload;{9}
   procedure pMontaComboBoxTempExec(Combo : TComboBox; Select : string; Key : string; TextCombo : string);overload;
-  procedure pCtrlMenu(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean);{10}
+  procedure pCtrlMenu(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean; FLeft : Integer; FTop : Integer);{10}
   procedure pCtrlMenuCard(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean);{10}
   procedure pComboMasterDetail(CbbM : TJvComboBox; CbbD : TJvComboBox; SqlM: string; SqlD : string;
   KeyDescM : string;KeyDescD : string; KeyVlrM : string );
@@ -129,6 +130,16 @@ begin
           Pnl.Height    := 50;
       end Else begin
           Pnl.Height    := 100;
+      end;
+end;
+
+procedure pMenuRetratilVariavel( Control: TWinControl; VlrMax : Integer; VlrMin: Integer );
+begin
+      if Control.Height = VlrMax  then
+      begin
+          Control.Height    := VlrMin;
+      end Else begin
+          Control.Height    := VlrMax;
       end;
 end;
 
@@ -611,7 +622,7 @@ begin
 end;
 
 
-procedure pCtrlMenu(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean);
+procedure pCtrlMenu(Frm: TForm;Bt: TJvSpeedButton; Ativar: Boolean; FLeft : Integer; FTop : Integer);
 Var
     I : Integer;
 Begin
@@ -624,8 +635,8 @@ Begin
                 if ( (Frm.Components[I] as TJvPanel ).Tag = Bt.Tag ) then// testa se o painel é o amarrado ao botão associado
                 Begin//Mostrar o Painel associado ao botão de ação do mouse Visible True
                     (Frm.Components[I] as TJvPanel ).Visible := True;
-                    (Frm.Components[I] as TJvPanel ).Left    := bt.Left-(Frm.Components[I] as TJvPanel ).Width+48;
-                    (Frm.Components[I] as TJvPanel ).Top     := 72;
+                    (Frm.Components[I] as TJvPanel ).Left    := bt.Left-(Frm.Components[I] as TJvPanel ).Width+FLeft;
+                    (Frm.Components[I] as TJvPanel ).Top     := FTop;
                 End Else Begin // Esconde os outros menus abertos anteriores
                     (Frm.Components[I] as TJvPanel ).Visible := False;
                 End;

@@ -11,7 +11,6 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
       end
     end
     inherited CrdPnlPrincipal: TCardPanel
-      ActiveCard = CrdCampos
       inherited CrdConsulta: TCard
         inherited PnlPesquisa: TJvPanel
           inherited LbPesquisa: TLabel
@@ -21,6 +20,8 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
         inherited PnlBtsInsertDelete: TJvPanel
           inherited BtExcluir: TJvSpeedButton
             OnClick = BtExcluirClick
+            ExplicitLeft = 724
+            ExplicitTop = -6
           end
         end
         inherited PnlDbGrid: TJvPanel
