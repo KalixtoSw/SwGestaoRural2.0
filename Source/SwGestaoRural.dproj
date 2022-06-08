@@ -155,10 +155,6 @@
             <Form>FrmConfigServidor</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\View\UFrmLogin.pas">
-            <Form>FrmLogin</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="..\View\UFrmCadastroPropriedadeRural.pas">
             <Form>FrmCadastroPropriedadeRural</Form>
             <FormType>dfm</FormType>
@@ -190,6 +186,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Ctrl\Classe.Produto.Embalagem.pas"/>
+        <DCCReference Include="..\View\UFrmLogin.pas">
+            <Form>FrmLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

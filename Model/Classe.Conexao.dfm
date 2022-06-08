@@ -920,6 +920,7 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbMov_Produto: TFDTable
+    Active = True
     ObjectView = False
     IndexFieldNames = 'mov_id'
     MasterSource = DsTbMovimentacao
@@ -942,7 +943,7 @@ object DMPrincipal: TDMPrincipal
     object TbMov_Produtomp_id: TFDAutoIncField
       FieldName = 'mp_id'
       Origin = 'mp_id'
-      ReadOnly = True
+      ProviderFlags = [pfInWhere, pfInKey]
     end
     object TbMov_Produtoprd_idproduto: TIntegerField
       AutoGenerateValue = arDefault
@@ -961,10 +962,10 @@ object DMPrincipal: TDMPrincipal
       Precision = 10
       Size = 3
     end
-    object TbMov_Produtomp_qtdTotal: TBCDField
+    object TbMov_Produtomp_qtdContabil: TBCDField
       AutoGenerateValue = arDefault
-      FieldName = 'mp_qtdTotal'
-      Origin = 'mp_qtdTotal'
+      FieldName = 'mp_qtdContabil'
+      Origin = 'mp_qtdContabil'
       Precision = 10
       Size = 3
     end
@@ -986,6 +987,12 @@ object DMPrincipal: TDMPrincipal
       Origin = 'mp_precoTotal'
       Precision = 10
       Size = 2
+    end
+    object TbMov_Produtomp_tipo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'mp_tipo'
+      Origin = 'mp_tipo'
+      Size = 1
     end
   end
   object DsTbMov_Produto: TDataSource
@@ -1011,7 +1018,7 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.UpdateTableName = 'gr_desenv.nota_fiscal'
     UpdateOptions.AutoIncFields = 'nf_id'
     TableName = 'gr_desenv.nota_fiscal'
-    Left = 725
+    Left = 720
     Top = 395
     object FDAutoIncField1: TFDAutoIncField
       FieldName = 'nf_id'
@@ -1292,7 +1299,276 @@ object DMPrincipal: TDMPrincipal
   end
   object DsTbNotaFiscalItemP: TDataSource
     DataSet = TbNotaFiscalItemP
-    Left = 765
+    Left = 770
     Top = 445
+  end
+  object QryProcNotaFiscal: TFDQuery
+    ActiveStoredUsage = []
+    AutoCalcFields = False
+    ObjectView = False
+    IndexesActive = False
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    SQL.Strings = (
+      'SELECT * FROM nota_fiscal WHERE nf_procEstoque = 0')
+    Left = 860
+    Top = 310
+    object QryProcNotaFiscalnf_id: TFDAutoIncField
+      FieldName = 'nf_id'
+      Origin = 'nf_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object QryProcNotaFiscalnf_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_dtcriacao'
+      Origin = 'nf_dtcriacao'
+    end
+    object QryProcNotaFiscalnf_numero: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_numero'
+      Origin = 'nf_numero'
+    end
+    object QryProcNotaFiscalnf_serie: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_serie'
+      Origin = 'nf_serie'
+    end
+    object QryProcNotaFiscalnf_numeroChar: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_numeroChar'
+      Origin = 'nf_numeroChar'
+      Size = 100
+    end
+    object QryProcNotaFiscalnf_chaveacesso: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_chaveacesso'
+      Origin = 'nf_chaveacesso'
+      Size = 100
+    end
+    object QryProcNotaFiscalnf_nop: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_nop'
+      Origin = 'nf_nop'
+      Size = 255
+    end
+    object QryProcNotaFiscalnf_ie: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_ie'
+      Origin = 'nf_ie'
+      Size = 25
+    end
+    object QryProcNotaFiscalnf_im: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_im'
+      Origin = 'nf_im'
+      Size = 25
+    end
+    object QryProcNotaFiscalnf_cnpjForn: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_cnpjForn'
+      Origin = 'nf_cnpjForn'
+      Size = 25
+    end
+    object QryProcNotaFiscalnf_baseicms: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_baseicms'
+      Origin = 'nf_baseicms'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_vlricms: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_vlricms'
+      Origin = 'nf_vlricms'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_baseicms_st: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_baseicms_st'
+      Origin = 'nf_baseicms_st'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_vlricms_st: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_vlricms_st'
+      Origin = 'nf_vlricms_st'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_vlrtotal: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_vlrtotal'
+      Origin = 'nf_vlrtotal'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_vlrfrete: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_vlrfrete'
+      Origin = 'nf_vlrfrete'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_vlrseguro: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_vlrseguro'
+      Origin = 'nf_vlrseguro'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_vlrdesconto: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_vlrdesconto'
+      Origin = 'nf_vlrdesconto'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_vlroutrasdespesas: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_vlroutrasdespesas'
+      Origin = 'nf_vlroutrasdespesas'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_vlrip: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_vlrip'
+      Origin = 'nf_vlrip'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalnf_vlrprodutos: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_vlrprodutos'
+      Origin = 'nf_vlrprodutos'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalfrn_id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'frn_id'
+      Origin = 'frn_id'
+    end
+    object QryProcNotaFiscalnf_dtES: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_dtES'
+      Origin = 'nf_dtES'
+    end
+    object QryProcNotaFiscalnf_dtemissao: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_dtemissao'
+      Origin = 'nf_dtemissao'
+    end
+    object QryProcNotaFiscalnf_horaES: TTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_horaES'
+      Origin = 'nf_horaES'
+    end
+    object QryProcNotaFiscalnf_tipoES: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_tipoES'
+      Origin = 'nf_tipoES'
+      Size = 1
+    end
+    object QryProcNotaFiscalnf_dtvencimento: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_dtvencimento'
+      Origin = 'nf_dtvencimento'
+    end
+    object QryProcNotaFiscalnf_procEstoque: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_procEstoque'
+      Origin = 'nf_procEstoque'
+    end
+  end
+  object DsQryProcNotaFiscal: TDataSource
+    DataSet = QryProcNotaFiscal
+    Left = 860
+    Top = 360
+  end
+  object QryProcNotaFiscalItem: TFDQuery
+    ActiveStoredUsage = []
+    ObjectView = False
+    IndexFieldNames = 'nf_id'
+    MasterSource = DsQryProcNotaFiscal
+    MasterFields = 'nf_id'
+    Connection = FDConnection
+    FetchOptions.AssignedValues = [evCache]
+    FetchOptions.Cache = [fiBlobs, fiMeta]
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM nota_fiscal_item')
+    Left = 945
+    Top = 305
+    object QryProcNotaFiscalItemnfi_id: TFDAutoIncField
+      FieldName = 'nfi_id'
+      Origin = 'nfi_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object QryProcNotaFiscalItemnf_id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_id'
+      Origin = 'nf_id'
+    end
+    object QryProcNotaFiscalItemprd_idproduto: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prd_idproduto'
+      Origin = 'prd_idproduto'
+    end
+    object QryProcNotaFiscalItemprde_Id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_Id'
+      Origin = 'prde_Id'
+    end
+    object QryProcNotaFiscalItemnfi_cfop: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nfi_cfop'
+      Origin = 'nfi_cfop'
+    end
+    object QryProcNotaFiscalItemnfi_qtde: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nfi_qtde'
+      Origin = 'nfi_qtde'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalItemnfi_vlrunit: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nfi_vlrunit'
+      Origin = 'nfi_vlrunit'
+      Precision = 10
+      Size = 2
+    end
+    object QryProcNotaFiscalItemnfi_vlrtotal: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'nfi_vlrtotal'
+      Origin = 'nfi_vlrtotal'
+      Precision = 10
+      Size = 2
+    end
+  end
+  object DsQryProcNotaFiscalItem: TDataSource
+    DataSet = QryProcNotaFiscalItem
+    Left = 945
+    Top = 355
   end
 end

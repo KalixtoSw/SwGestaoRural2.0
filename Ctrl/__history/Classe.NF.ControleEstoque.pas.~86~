@@ -6,7 +6,8 @@ uses
   System.SysUtils, Classe.Functions, Classe.FunctionsCrud, Classe.FunctionsSQL,
   Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
   FireDAC.Comp.Client, Vcl.ComCtrls, JvDBControls, Vcl.Dialogs, Data.DB,
-  JvDBDateTimePicker, JvDesktopAlert, JvDBDatePickerEdit, JvSpeedButton;
+  JvDBDateTimePicker, JvDesktopAlert, JvDBDatePickerEdit, JvSpeedButton,
+  JvPanel, System.Math;
 
 type
   TCrtrlEstoque_NF = class
@@ -17,6 +18,7 @@ type
     FDSNF: TDataSource;
     FDSNFI: TDataSource;
     FDBgrdNF : TJvDBUltimGrid;
+    FDbGridNFItens : TJvDBUltimGrid;
     FTbProduto: TFDQuery;
     FTbFornecedor: TFDTable;
     FTbShtLancamentos: TTabSheet;
@@ -32,6 +34,7 @@ type
     Alert: TJvDesktopAlert;
     BtAddItemNF : TJvSpeedButton;
     BtSavarItemNF : TJvSpeedButton;
+    PnlDadosNFItens : TjvPanel;
 
     procedure setNumNF(const Value: Integer);
     procedure setTbNotaFiscal(const Value: TFDTable);
@@ -59,6 +62,7 @@ type
     function  fpCalcTotalNF : Double;
     function fCalcTotalNFItem(FNFIVlrUnit: Double; FNFIQtde: Double): Double;
     function fSomaVlrItensNF: Double;
+//    function fProcNFEstoque : Boolean;
 
   published
     property NumNF: Integer read FNumNF write setNumNF;
@@ -71,6 +75,18 @@ type
     property NFIQtde: Integer read FNFIQtde write setNFIQtde;
     property NFIVlrUnit: Double read FNFIVlrUnit write setNFIVlrUnit;
     property NFIVlrTotal: Double read FNFIVlrTotal write setNFIVlrTotal;
+  end;
+
+   TMinhaThread = class(TThread)
+  private
+
+  protected
+      procedure Execute; override;
+  public
+
+    constructor Create();
+    function fProcNFEstoque : Boolean;
+
   end;
 
 var
@@ -103,6 +119,8 @@ begin
   FDBgrdNF := FrmModuloControleEstoque.DbGrdConsultaNF;
   BtAddItemNF := FrmModuloControleEstoque.BtNFAddItens;
   BtSavarItemNF := FrmModuloControleEstoque.BtDNFIBtSavar;
+  FDbGridNFItens := FrmModuloControleEstoque.DbGridNFItens;
+  PnlDadosNFItens := FrmModuloControleEstoque.PnlDadosNFItens;
 end;
 
 destructor TCrtrlEstoque_NF.DestroyObjTCrtrlEstoque_NF;
@@ -136,6 +154,68 @@ begin
         Result := Result + VlrIcms+VlrIcmsSt+VlrFrete+VlrDesconto+VlrOutDesp+VlrIpi+VlrProduto;
 end;
 
+function TMinhaThread.fProcNFEstoque: Boolean;
+var
+        IDMov : Integer;
+        TpMov : string;
+        FDSNF,FDSNFI,FDSENTRADA,FDSENTRADAITEM : Tdatasource;
+begin
+        try
+        DMPrincipal.QryProcNotaFiscal.Active := True;
+        DMPrincipal.QryProcNotaFiscalItem.Active := True;
+        DMPrincipal.TbMovimentacao.Active := True;
+        DMPrincipal.TbMov_Produto.Active := True;
+        TpMov := EmptyStr;
+        IDMov := 0;
+
+        FDSNF           := DMPrincipal.DsQryProcNotaFiscal;
+        FDSNFI          := DMPrincipal.DsQryProcNotaFiscalItem;
+        FDSENTRADA      := DMPrincipal.DsTbMovimentacao;
+        FDSENTRADAITEM  := DMPrincipal.DsTbMov_Produto;
+        FDSNF.DataSet.Active := True;
+        FDSNFI.DataSet.Active := True;
+        FDSENTRADA.DataSet.Active := True;
+        FDSENTRADAITEM.DataSet.Active := True;
+
+        while not (FDSNF.DataSet.Eof) do
+        begin
+               TpMov := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
+               FDSENTRADA.DataSet.Insert;
+               FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := TpMov;
+               FDSENTRADA.DataSet.FieldByName('mov_datamov').AsDateTime := Now;
+               FDSENTRADA.DataSet.FieldByName('mov_descricao').AsString := 'MOVIMENTAÇÃO ('+TpMov+') NO ESTOQUE';
+               FDSENTRADA.DataSet.FieldByName('mov_origem').Asstring := 'MÓDULO NF';
+               FDSENTRADA.DataSet.FieldByName('nf_id').AsInteger := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
+               FDSENTRADA.DataSet.Post;
+               FDSENTRADA.DataSet.Last;
+               IDMov := FDSENTRADA.DataSet.FieldByName('mov_id').AsInteger;
+
+                while not FDSNFI.DataSet.Eof do
+                begin
+                       FDSENTRADAITEM.DataSet.Insert;
+                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := IDMov;
+                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := FDSNFI.DataSet.FieldByName('prd_idproduto').AsInteger;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoTotal').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_tipo').AsString := TpMov;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdContabil').AsFloat := IfThen(TpMov = 'S',(FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat * -1),FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat);
+
+                       FDSENTRADAITEM.DataSet.Post;
+                       FDSNFI.DataSet.Next;
+                end;
+                FDSNF.DataSet.Edit;
+                FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger := 1;
+                FDSNF.DataSet.Post;
+                FDSNF.DataSet.Next;
+        end;
+        Result := True;
+        except on E: Exception do
+                Result := False;
+        end;
+
+end;
+
 function TCrtrlEstoque_NF.fSomaVlrItensNF: Double;
 var
   SumT: Double;
@@ -156,6 +236,7 @@ procedure TCrtrlEstoque_NF.pEventoBtCancelarNF;
 begin
         FDSNF.DataSet.Cancel;
         DMPrincipal.FDConnection.Rollback;
+        PnlDadosNFItens.Enabled := True;
         TbShtConsultaNF.Show;
 end;
 
@@ -178,12 +259,18 @@ procedure TCrtrlEstoque_NF.pEventoBtAddItens;
 begin
   FDSNFI.DataSet.Insert;
   FDSNFI.DataSet.FieldByName('nf_id').AsInteger := ID_NF;
-  BtAddItemNF.Enabled := True;
+  PnlDadosNFItens.Enabled := True;
+  BtAddItemNF.Enabled := False;
+  BtSavarItemNF.Enabled := True;
+
+
 end;
 
 procedure TCrtrlEstoque_NF.pEventoBtSavarNF;
 begin
+  FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger := 0;
   FDSNF.DataSet.Post;
+  FDSNF.DataSet.Refresh;
   DMPrincipal.FDConnection.Commit;
   TbShtConsultaNF.Show;
 end;
@@ -195,7 +282,8 @@ begin
   FDSNFI.DataSet.Open;
   BtAddItemNF.Enabled := True;
   BtSavarItemNF.Enabled := False;
-
+  PnlDadosNFItens.Enabled := False;
+  pAtivarDBGrid(FDbGridNFItens);
   FDSNF.DataSet.FieldByName('nf_vlrprodutos').AsFloat := fSomaVlrItensNF;
 end;
 
@@ -209,6 +297,7 @@ begin
     TbProduto.Active := True;
     BtAddItemNF.Enabled := True;
     BtSavarItemNF.Enabled := False;
+    PnlDadosNFItens.Enabled := False;
 
     FDSNF.DataSet.Insert;
     FDSNF.DataSet.Post;
@@ -229,6 +318,8 @@ begin
   ID_NF := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
   BtAddItemNF.Enabled := True;
   BtSavarItemNF.Enabled := False;
+  PnlDadosNFItens.Enabled := False;
+  pAtivarDBGrid(FDbGridNFItens);
   TbShtLancamentos.Show;
 end;
 
@@ -280,6 +371,27 @@ end;
 procedure TCrtrlEstoque_NF.setTbShtLancamentos(const Value: TTabSheet);
 begin
   FTbShtLancamentos := Value;
+end;
+
+{ TMinhaThread }
+
+constructor TMinhaThread.Create;
+begin
+        inherited Create(True);
+{ Chama o contrutor herdado. Ele irá temporariamente colocar o
+    thread em estado de espera para depois executá-lo. }
+  FreeOnTerminate := True; // Libera da memoria o objeto após terminar.
+
+  { Configura sua prioridade na lista de processos do Sistema operacional. }
+  Priority := TpLower;
+
+  Resume; // Inicia o Thread.
+end;
+
+procedure TMinhaThread.Execute;
+begin
+  inherited;
+       fProcNFEstoque;
 end;
 
 end.

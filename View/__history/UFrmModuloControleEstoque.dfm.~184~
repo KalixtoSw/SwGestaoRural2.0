@@ -4615,7 +4615,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 Width = 1022
                 Height = 610
                 Cursor = crHandPoint
-                ActivePage = TbShtLancamentos
+                ActivePage = TbShtConsultaNF
                 Align = alClient
                 TabOrder = 0
                 OnResize = PgCntrlCtrlEntradaNFResize
@@ -4924,6 +4924,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Title.Caption = 'VALOR TOTAL'
                           Visible = True
                         end>
+                    end
+                    object ActivityIndicator: TActivityIndicator
+                      Left = 275
+                      Top = 220
+                      ParentCustomHint = False
+                      FrameDelay = 75
+                      IndicatorSize = aisXLarge
+                      IndicatorType = aitRotatingSector
                     end
                   end
                   object PnlSplit1: TJvPanel
@@ -5359,7 +5367,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 2
-                      ExplicitLeft = 150
                       object FundoBtDeletelNF: TJvGradient
                         Left = 0
                         Top = 0
@@ -6649,7 +6656,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           DataSource = DMPrincipal.DsTbNotaFiscal
                           Enabled = False
                           TabOrder = 0
-                          ExplicitTop = 16
                         end
                       end
                       object PnlNFAddItens: TJvPanel
@@ -6927,7 +6933,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     Color = 15329769
                     ParentBackground = False
                     TabOrder = 2
-                    ExplicitTop = 314
                     object DbGridNFItens: TJvDBUltimGrid
                       Left = 0
                       Top = 50
@@ -7060,7 +7065,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Left = 0
                           Top = 15
                           Width = 50
-                          Height = 24
+                          Height = 23
                           Align = alTop
                           DecimalPlaces = 0
                           DisplayFormat = '0'
@@ -7238,7 +7243,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Left = 0
                           Top = 15
                           Width = 50
-                          Height = 24
+                          Height = 23
                           Align = alTop
                           AutoSelect = False
                           ShowButton = False
@@ -7744,5 +7749,15 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
     Buttons = <>
     Left = 1140
     Top = 45
+  end
+  object Thread_NF: TJvThread
+    Exclusive = True
+    MaxCount = 0
+    RunOnCreate = True
+    FreeOnTerminate = True
+    ThreadName = 'NF_Thread'
+    OnExecute = Thread_NFExecute
+    Left = 590
+    Top = 276
   end
 end
