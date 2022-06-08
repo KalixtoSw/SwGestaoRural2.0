@@ -2093,6 +2093,13 @@
           Caption = 'CONTROLE DE ESTOQUE'
           OnClick = JvXPBar1Items2Click
         end
+        object JvSpeedButton2: TJvSpeedButton
+          Left = 650
+          Top = 195
+          Width = 171
+          Height = 25
+          OnClick = JvSpeedButton2Click
+        end
         object PnlIndicadoresAgricolas: TJvPanel
           Left = 0
           Top = 0

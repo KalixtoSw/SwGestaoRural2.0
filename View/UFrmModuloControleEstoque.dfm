@@ -4637,6 +4637,18 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     Color = clWhite
                     ParentBackground = False
                     TabOrder = 0
+                    object JvSpeedButton1: TJvSpeedButton
+                      Left = 15
+                      Top = 95
+                      Width = 176
+                      Height = 25
+                      Caption = 'MOVIMENTA ESTOQUE'
+                      HotTrackFont.Charset = ANSI_CHARSET
+                      HotTrackFont.Color = clWindowText
+                      HotTrackFont.Height = -12
+                      HotTrackFont.Name = 'Segoe UI Semibold'
+                      HotTrackFont.Style = []
+                    end
                     object PnlBtFiltroNFDataEmissao: TJvPanel
                       Left = 0
                       Top = 0
@@ -5573,16 +5585,19 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         Items.Strings = (
                           'ENTRADA'
-                          'SA'#205'DA')
+                          'SA'#205'DA'
+                          'SERVI'#199'O')
                         TabOrder = 0
                         Values.Strings = (
                           'E'
-                          'S')
+                          'S'
+                          'R')
                         ListSettings.OutfilteredValueFont.Charset = DEFAULT_CHARSET
                         ListSettings.OutfilteredValueFont.Color = clRed
                         ListSettings.OutfilteredValueFont.Height = -11
                         ListSettings.OutfilteredValueFont.Name = 'Tahoma'
                         ListSettings.OutfilteredValueFont.Style = []
+                        ExplicitWidth = 149
                       end
                     end
                     object PnlFldFornecNF: TJvPanel
@@ -7241,7 +7256,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           AutoSelect = False
                           ShowButton = False
                           TabOrder = 0
-                          Value = 15.000000000000000000
                           DecimalPlacesAlwaysShown = False
                           OnExit = EdtDNFIQdteExit
                           DataField = 'nfi_qtde'
@@ -7333,7 +7347,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           DisplayFormat = ',0.###'
                           ShowButton = False
                           TabOrder = 0
-                          Value = 10.000000000000000000
                           DecimalPlacesAlwaysShown = False
                           OnExit = EdtDNFIVlrUnitExit
                           DataField = 'nfi_vlrunit'

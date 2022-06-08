@@ -134,6 +134,28 @@ type
     TbNotaFiscalItemProduto: TStringField;
     TbNotaFiscalItemEmbalagem: TStringField;
     TbNotaFiscalnf_dtvencimento: TDateTimeField;
+    TbNotaFiscalFornecedor: TStringField;
+    TbNotaFiscalnf_procEstoque: TIntegerField;
+    FDTbMovimentacao: TFDTable;
+    DsTbMovimentacao: TDataSource;
+    FDTbMov_Produto: TFDTable;
+    DsTbMov_Produto: TDataSource;
+    FDTbMovimentacaomov_id: TFDAutoIncField;
+    FDTbMovimentacaomov_tipo: TStringField;
+    FDTbMovimentacaomov_datamov: TDateTimeField;
+    FDTbMovimentacaomov_responsavel: TStringField;
+    FDTbMovimentacaomov_obs: TStringField;
+    FDTbMovimentacaomov_descricao: TStringField;
+    FDTbMovimentacaomov_origem: TStringField;
+    FDTbMovimentacaonf_id: TFDAutoIncField;
+    FDTbMov_Produtomp_id: TFDAutoIncField;
+    FDTbMov_Produtoprd_idproduto: TIntegerField;
+    FDTbMov_Produtomov_id: TIntegerField;
+    FDTbMov_Produtomp_qtdUnit: TBCDField;
+    FDTbMov_Produtomp_qtdTotal: TBCDField;
+    FDTbMov_Produtomp_validade: TDateTimeField;
+    FDTbMov_Produtomp_precoCompra: TBCDField;
+    FDTbMov_Produtomp_precoTotal: TBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

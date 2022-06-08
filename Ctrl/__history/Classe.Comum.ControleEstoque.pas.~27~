@@ -3,7 +3,7 @@ unit Classe.Comum.ControleEstoque;
 interface
 
 uses
-  JvPanel, Classe.Functions;
+  JvPanel, Classe.Functions, Data.DB, System.SysUtils,Classe.Conexao;
 
 type
       TCrtlEstoque = class
@@ -11,12 +11,17 @@ type
     FPnlBtEstFisico: TJvPanel;
     FPnlBtEntradas: TJvPanel;
     FPnlBtCadProduto: TJvPanel;
-    FPnlBtRelatorios: TJvPanel;
+    FPnlBtCadGerais: TJvPanel;
     FPnlBtSaidas: TJvPanel;
+    FDSNF       : TDataSource;
+    FDSNFI      : TDataSource;
+    FDSENTRADA  : TDataSource;
+    FDSENTRADAITEM : TDataSource;
+
     procedure SetPnlBtEstFisico(const Value: TJvPanel);
     procedure setPnlBtEntradas(const Value: TJvPanel);
     procedure setPnlBtCadProduto(const Value: TJvPanel);
-    procedure setPnlBtRelatorios(const Value: TJvPanel);
+    procedure setPnlBtCadGerais(const Value: TJvPanel);
     procedure setPnlBtSaidas(const Value: TJvPanel);
 
       Public
@@ -28,20 +33,23 @@ type
         procedure pCtrlPosicaopnlBt4(PnlFundo : TJvPanel;Pos : Integer);
         procedure pCtrlPosicaopnlBt5(PnlFundo : TJvPanel;Pos : Integer);
 
+        function fProcessaEntEstporNF : boolean;
+
+
 
        published
         property PnlBtEstFisico : TJvPanel read FPnlBtEstFisico         write SetPnlBtEstFisico;
         property PnlBtEntradas  : TJvPanel read FPnlBtEntradas          write setPnlBtEntradas;
         property PnlBtCadProduto: TJvPanel read FPnlBtCadProduto        write setPnlBtCadProduto;
         property PnlBtSaidas    : TJvPanel read FPnlBtSaidas            write setPnlBtSaidas;
-        property PnlBtRelatorios: TJvPanel read FPnlBtRelatorios        write setPnlBtRelatorios;
+        property PnlBtRelatorios: TJvPanel read FPnlBtCadGerais        write setPnlBtCadGerais;
 
       end;
 
 implementation
 
 uses
-     UFrmModuloControleEstoque;
+     UFrmModuloControleEstoque ;
 
 { TCrrlEstoque }
 
@@ -51,7 +59,20 @@ begin
         setPnlBtEntradas(FrmModuloControleEstoque.PnlFundoBtsNavEntradas);
         setPnlBtCadProduto(FrmModuloControleEstoque.PnlFundoBtsNavCadProduto);
         setPnlBtSaidas(FrmModuloControleEstoque.PnlFundoBtsNavSaida);
-        setPnlBtRelatorios(FrmModuloControleEstoque.PnlFundoBtsNavRelatorios);
+        setPnlBtCadGerais(FrmModuloControleEstoque.PnlFundoBtsNavCadGerais);
+
+
+        {FDSNF           := DMPrincipal.DsTbNotaFiscalP;
+        FDSNFI          := DMPrincipal.DsTbNotaFiscalItemP;
+        FDSENTRADA      := DMPrincipal.DsTbMovimentacao;
+        FDSENTRADAITEM  := DMPrincipal.DsTbMov_Produto;}
+
+
+        {DMPrincipal.TbNotaFiscalP.Active := True;
+        DMPrincipal.TbNotaFiscalItemP.Active := True;
+        DMPrincipal.FDTbMovimentacao.Active := True;
+        DMPrincipal.FDTbMov_Produto.Active := True;}
+
 end;
 
 destructor TCrtlEstoque.DestroyObjTCrtlEstoque;
@@ -59,11 +80,50 @@ begin
 
 end;
 
+function TCrtlEstoque.fProcessaEntEstporNF: boolean;
+var
+        IDMov : Integer;
+begin
+        FDSNF.DataSet.Filtered := False;
+        FDSNF.DataSet.Filter   := 'nf_procEstoque = 0';
+        FDSNF.DataSet.Filtered := True;
+        FDSNF.DataSet.First;
+
+        while not FDSNF.DataSet.Eof do
+        begin
+               FDSENTRADA.DataSet.Insert;
+               FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
+               FDSENTRADA.DataSet.FieldByName('mov_datamov').AsDateTime := Now;
+               FDSENTRADA.DataSet.FieldByName('mov_descricao').AsString := 'MOVIMENTAÇÃO DE ESTOQUE';
+               FDSENTRADA.DataSet.FieldByName('mov_origem').Asstring := 'MÓDULO NF';
+               FDSENTRADA.DataSet.FieldByName('nf_id').AsInteger := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
+               FDSENTRADA.DataSet.Post;
+               FDSENTRADA.DataSet.First;
+               IDMov := FDSENTRADA.DataSet.FieldByName('mov_id').AsInteger;
+
+                while not FDSNFI.DataSet.Eof do
+                begin
+                       FDSENTRADAITEM.DataSet.Insert;
+                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := IDMov;
+                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := FDSNFI.DataSet.FieldByName('prd_idproduto').AsInteger;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoTotal').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
+                       FDSENTRADAITEM.DataSet.Post;
+                       FDSNFI.DataSet.Next;
+                end;
+                FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger := 1;
+                FDSNF.DataSet.Post;
+                FDSNF.DataSet.Next;
+        end;
+
+end;
+
 procedure TCrtlEstoque.pCtrlPosicaopnlBt1(PnlFundo : TJvPanel;Pos : Integer);
 begin
         FPnlBtEstFisico.Height    := PnlFundo.Height - 10;
         FPnlBtEstFisico.Left      := PnlFundo.Left+Pos;
-        FPnlBtEstFisico.Top       := Pos;
+        FPnlBtEstFisico.Top       := 5;
         pMakeRounded(FPnlBtEstFisico);
 end;
 
@@ -93,10 +153,10 @@ end;
 
 procedure TCrtlEstoque.pCtrlPosicaopnlBt5(PnlFundo: TJvPanel; Pos: Integer);
 begin
-        FPnlBtRelatorios.Height    := PnlFundo.Height - 10;
-        FPnlBtRelatorios.Left      := PnlFundo.Left+Pos;
-        FPnlBtRelatorios.Top       := 5;
-        pMakeRounded(FPnlBtRelatorios);
+        FPnlBtCadGerais.Height    := PnlFundo.Height - 10;
+        FPnlBtCadGerais.Left      := PnlFundo.Left+Pos;
+        FPnlBtCadGerais.Top       := 5;
+        pMakeRounded(FPnlBtCadGerais);
 end;
 
 procedure TCrtlEstoque.setPnlBtCadProduto(const Value: TJvPanel);
@@ -114,9 +174,9 @@ begin
   FPnlBtEstFisico := Value;
 end;
 
-procedure TCrtlEstoque.setPnlBtRelatorios(const Value: TJvPanel);
+procedure TCrtlEstoque.setPnlBtCadGerais(const Value: TJvPanel);
 begin
-  FPnlBtRelatorios := Value;
+  FPnlBtCadGerais := Value;
 end;
 
 procedure TCrtlEstoque.setPnlBtSaidas(const Value: TJvPanel);

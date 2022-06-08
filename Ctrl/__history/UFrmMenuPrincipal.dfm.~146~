@@ -1844,9 +1844,8 @@
             Left = 0
             Top = 48
             Width = 200
-            Height = 32
+            Height = 120
             Caption = 'PRATELEIRA DE INSUMOS'
-            Collapsed = True
             Colors.BorderColor = 10780674
             Colors.CheckedFrameColor = 14934499
             Colors.FocusedFrameColor = 8279822
@@ -1867,6 +1866,10 @@
               item
                 Caption = 'COMPRAS DE INSUMOS'
                 OnClick = JvXPBar1Items2Click
+              end
+              item
+                Caption = 'CADASTRO DE EMBALAGEM'
+                OnClick = XPBarManejoAgricola1Items3Click
               end>
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 15000804
@@ -2090,6 +2093,12 @@
           Caption = 'CONTROLE DE ESTOQUE'
           OnClick = JvXPBar1Items2Click
         end
+        object JvSpeedButton2: TJvSpeedButton
+          Left = 650
+          Top = 195
+          Width = 171
+          Height = 25
+        end
         object PnlIndicadoresAgricolas: TJvPanel
           Left = 0
           Top = 0
@@ -2114,7 +2123,7 @@
             object LbTituloDolar: TLabel
               Left = 0
               Top = 0
-              Width = 200
+              Width = 132
               Height = 17
               Align = alTop
               Caption = 'COTA'#199#195'O DO DOLAR'
@@ -2124,7 +2133,6 @@
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 132
             end
             object PnlImgDolar: TPanel
               Left = 0
@@ -2563,7 +2571,7 @@
             object LbTituloSoja: TLabel
               Left = 0
               Top = 0
-              Width = 200
+              Width = 123
               Height = 17
               Align = alTop
               Caption = 'MERCADO DA SOJA'
@@ -2573,7 +2581,6 @@
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 123
             end
             object PnlImgSoja: TPanel
               Left = 0
@@ -4592,7 +4599,7 @@
             object LbTituloMilho: TLabel
               Left = 0
               Top = 0
-              Width = 200
+              Width = 135
               Height = 17
               Align = alTop
               Caption = 'MERCADO DO MILHO'
@@ -4602,7 +4609,6 @@
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 135
             end
             object PnlImgMilho: TPanel
               Left = 0
@@ -4795,17 +4801,16 @@
             object LbTituloTrigo: TLabel
               Left = 0
               Top = 0
-              Width = 200
+              Width = 131
               Height = 17
               Align = alTop
-              Caption = 'MERCADO DO MILHO'
+              Caption = 'MERCADO DO TRIGO'
               Font.Charset = ANSI_CHARSET
               Font.Color = clWhite
               Font.Height = -13
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 135
             end
             object PnlImgTrigo: TPanel
               Left = 0
@@ -5379,8 +5384,8 @@
         object LbtituloNotificacao: TLabel
           Left = 48
           Top = 0
-          Width = 202
-          Height = 48
+          Width = 135
+          Height = 22
           Align = alClient
           Alignment = taCenter
           Caption = 'NOTIFICA'#199#213'ES'
@@ -5391,8 +5396,6 @@
           Font.Style = [fsBold, fsItalic]
           ParentFont = False
           Layout = tlCenter
-          ExplicitWidth = 135
-          ExplicitHeight = 22
         end
       end
       object JvScrollText1: TJvScrollText

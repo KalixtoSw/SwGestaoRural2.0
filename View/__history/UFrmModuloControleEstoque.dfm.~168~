@@ -4615,7 +4615,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 Width = 1022
                 Height = 610
                 Cursor = crHandPoint
-                ActivePage = TbShtLancamentos
+                ActivePage = TbShtConsultaNF
                 Align = alClient
                 TabOrder = 0
                 OnResize = PgCntrlCtrlEntradaNFResize
@@ -6937,6 +6937,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       DataSource = DMPrincipal.DsTbNotaFiscalItem
                       DrawingStyle = gdsClassic
+                      FixedColor = 4671041
                       GradientEndColor = 9323579
                       GradientStartColor = 9323579
                       Font.Charset = ANSI_CHARSET

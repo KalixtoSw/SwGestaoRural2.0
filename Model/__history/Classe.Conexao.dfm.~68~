@@ -344,7 +344,6 @@ object DMPrincipal: TDMPrincipal
   end
   object QryMovProd: TFDQuery
     ActiveStoredUsage = []
-    AutoCalcFields = False
     ObjectView = False
     IndexesActive = False
     Connection = FDConnection
@@ -411,7 +410,6 @@ object DMPrincipal: TDMPrincipal
     Top = 310
   end
   object TbNotaFiscal: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     DetailFields = 'nf_id'
@@ -596,6 +594,21 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'nf_dtvencimento'
       Origin = 'nf_dtvencimento'
     end
+    object TbNotaFiscalFornecedor: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Fornecedor'
+      LookupDataSet = TbFornecedor
+      LookupKeyFields = 'frn_id'
+      LookupResultField = 'frn_NomeFantasia'
+      KeyFields = 'frn_id'
+      Size = 100
+      Lookup = True
+    end
+    object TbNotaFiscalnf_procEstoque: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_procEstoque'
+      Origin = 'nf_procEstoque'
+    end
   end
   object DsTbNotaFiscal: TDataSource
     DataSet = TbNotaFiscal
@@ -603,7 +616,6 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbFornecedor: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -673,7 +685,6 @@ object DMPrincipal: TDMPrincipal
     Top = 490
   end
   object TbNotaFiscalItem: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     MasterSource = DsTbNotaFiscal
@@ -834,5 +845,146 @@ object DMPrincipal: TDMPrincipal
     DataSet = TbProdutoEmbalagem
     Left = 305
     Top = 540
+  end
+  object FDTbMovimentacao: TFDTable
+    Active = True
+    ObjectView = False
+    IndexFieldNames = 'mov_id'
+    DetailFields = 'nf_id'
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'movimentacao'
+    UpdateOptions.AutoIncFields = 'nf_id'
+    TableName = 'movimentacao'
+    Left = 490
+    Top = 385
+    object FDTbMovimentacaomov_id: TFDAutoIncField
+      AutoGenerateValue = arNone
+      FieldName = 'mov_id'
+      Origin = 'mov_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object FDTbMovimentacaomov_tipo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'mov_tipo'
+      Origin = 'mov_tipo'
+      Size = 1
+    end
+    object FDTbMovimentacaomov_datamov: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'mov_datamov'
+      Origin = 'mov_datamov'
+    end
+    object FDTbMovimentacaomov_responsavel: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'mov_responsavel'
+      Origin = 'mov_responsavel'
+      Size = 50
+    end
+    object FDTbMovimentacaomov_obs: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'mov_obs'
+      Origin = 'mov_obs'
+      Size = 255
+    end
+    object FDTbMovimentacaomov_descricao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'mov_descricao'
+      Origin = 'mov_descricao'
+      Size = 100
+    end
+    object FDTbMovimentacaomov_origem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'mov_origem'
+      Origin = 'mov_origem'
+      Size = 25
+    end
+    object FDTbMovimentacaonf_id: TFDAutoIncField
+      FieldName = 'nf_id'
+      Origin = 'nf_id'
+    end
+  end
+  object DsTbMovimentacao: TDataSource
+    DataSet = FDTbMovimentacao
+    Left = 535
+    Top = 385
+  end
+  object FDTbMov_Produto: TFDTable
+    ObjectView = False
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'gr_desenv.movimentacao_produto'
+    UpdateOptions.AutoIncFields = 'nfi_id'
+    TableName = 'gr_desenv.movimentacao_produto'
+    Left = 485
+    Top = 435
+    object FDTbMov_Produtomp_id: TFDAutoIncField
+      FieldName = 'mp_id'
+      Origin = 'mp_id'
+    end
+    object FDTbMov_Produtoprd_idproduto: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prd_idproduto'
+      Origin = 'prd_idproduto'
+    end
+    object FDTbMov_Produtomov_id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'mov_id'
+      Origin = 'mov_id'
+    end
+    object FDTbMov_Produtomp_qtdUnit: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'mp_qtdUnit'
+      Origin = 'mp_qtdUnit'
+      Precision = 10
+      Size = 3
+    end
+    object FDTbMov_Produtomp_qtdTotal: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'mp_qtdTotal'
+      Origin = 'mp_qtdTotal'
+      Precision = 10
+      Size = 3
+    end
+    object FDTbMov_Produtomp_validade: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'mp_validade'
+      Origin = 'mp_validade'
+    end
+    object FDTbMov_Produtomp_precoCompra: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'mp_precoCompra'
+      Origin = 'mp_precoCompra'
+      Precision = 10
+      Size = 2
+    end
+    object FDTbMov_Produtomp_precoTotal: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'mp_precoTotal'
+      Origin = 'mp_precoTotal'
+      Precision = 10
+      Size = 2
+    end
+  end
+  object DsTbMov_Produto: TDataSource
+    DataSet = FDTbMov_Produto
+    Left = 530
+    Top = 435
   end
 end
