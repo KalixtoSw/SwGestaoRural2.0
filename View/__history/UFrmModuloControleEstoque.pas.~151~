@@ -156,7 +156,7 @@ type
     PnlDNFINomeProduto: TJvPanel;
     LbDNFINomeProduto: TLabel;
     CbbDNFICodProduto: TJvDBLookupCombo;
-    DbGrid: TJvDBUltimGrid;
+    DbGridNFItens: TJvDBUltimGrid;
     EdtDNFINomeProduto: TJvDBLookupCombo;
     PnlDNFIEmbalagem: TJvPanel;
     LbDNFIEmbalagem: TLabel;
@@ -213,6 +213,13 @@ type
     procedure BtBtDeletelNFClick(Sender: TObject);
     procedure EdtDNFIQdteExit(Sender: TObject);
     procedure EdtImpostoNFVlrProdutosExit(Sender: TObject);
+    procedure EdtImpostoNFVlrFreteExit(Sender: TObject);
+    procedure EdtImpostoNFVlrSeguroExit(Sender: TObject);
+    procedure EdtImpostoNFVlrDescontoExit(Sender: TObject);
+    procedure EdtImpostoNFVlrOutrasDespesasExit(Sender: TObject);
+    procedure EdtImpostoNFVlrIPIExit(Sender: TObject);
+    procedure EdtImpostoNFIcmsExit(Sender: TObject);
+    procedure EdtImpostoNFIcmsSTExit(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
 
@@ -312,11 +319,74 @@ begin
         end;
 end;
 
+procedure TFrmModuloControleEstoque.EdtImpostoNFIcmsExit(Sender: TObject);
+begin
+        if EdtImpostoNFIcms.Value > 0 then
+        begin
+                EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
+        end;
+end;
+
+procedure TFrmModuloControleEstoque.EdtImpostoNFIcmsSTExit(Sender: TObject);
+begin
+        if EdtImpostoNFIcmsST.Value > 0 then
+        begin
+                EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
+        end;
+end;
+
+procedure TFrmModuloControleEstoque.EdtImpostoNFVlrDescontoExit(
+  Sender: TObject);
+begin
+        if EdtImpostoNFVlrDesconto.Value > 0 then
+        begin
+                EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
+        end;
+
+end;
+
+procedure TFrmModuloControleEstoque.EdtImpostoNFVlrFreteExit(Sender: TObject);
+begin
+        if EdtImpostoNFVlrFrete.Value > 0 then
+        begin
+                EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
+        end;
+end;
+
+procedure TFrmModuloControleEstoque.EdtImpostoNFVlrIPIExit(Sender: TObject);
+begin
+        if EdtImpostoNFVlrIPI.Value > 0 then
+        begin
+                EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
+        end;
+
+end;
+
+procedure TFrmModuloControleEstoque.EdtImpostoNFVlrOutrasDespesasExit(
+  Sender: TObject);
+begin
+        if EdtImpostoNFVlrOutrasDespesas.Value > 0 then
+        begin
+                EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
+        end;
+
+end;
+
 procedure TFrmModuloControleEstoque.EdtImpostoNFVlrProdutosExit(
   Sender: TObject);
 begin
-        EdtImpostoNFVlrtNF.text:= IfThen(EdtImpostoNFVlrProdutos.Value > 0 ,FloatToStr(CtrlEst_NF.fpCalcTotalNF),0);
-//        EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
+        if EdtImpostoNFVlrProdutos.Value > 0 then
+        begin
+                EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
+        end;
+end;
+
+procedure TFrmModuloControleEstoque.EdtImpostoNFVlrSeguroExit(Sender: TObject);
+begin
+        if EdtImpostoNFVlrSeguro.Value > 0 then
+        begin
+                EdtImpostoNFVlrtNF.text := FloatToStr(CtrlEst_NF.fpCalcTotalNF);
+        end;
 end;
 
 procedure TFrmModuloControleEstoque.FormCreate(Sender: TObject);

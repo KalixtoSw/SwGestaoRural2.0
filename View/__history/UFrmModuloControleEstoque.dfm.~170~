@@ -4615,7 +4615,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 Width = 1022
                 Height = 610
                 Cursor = crHandPoint
-                ActivePage = TbShtConsultaNF
+                ActivePage = TbShtLancamentos
                 Align = alClient
                 TabOrder = 0
                 OnResize = PgCntrlCtrlEntradaNFResize
@@ -5573,16 +5573,19 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         Items.Strings = (
                           'ENTRADA'
-                          'SA'#205'DA')
+                          'SA'#205'DA'
+                          'SERVI'#199'O')
                         TabOrder = 0
                         Values.Strings = (
                           'E'
-                          'S')
+                          'S'
+                          'R')
                         ListSettings.OutfilteredValueFont.Charset = DEFAULT_CHARSET
                         ListSettings.OutfilteredValueFont.Color = clRed
                         ListSettings.OutfilteredValueFont.Height = -11
                         ListSettings.OutfilteredValueFont.Name = 'Tahoma'
                         ListSettings.OutfilteredValueFont.Style = []
+                        ExplicitWidth = 149
                       end
                     end
                     object PnlFldFornecNF: TJvPanel
@@ -5667,6 +5670,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         DisplayFormat = '0'
                         ShowButton = False
                         TabOrder = 0
+                        Value = 85.000000000000000000
                         DecimalPlacesAlwaysShown = False
                         DataField = 'nf_numero'
                         DataSource = DMPrincipal.DsTbNotaFiscal
@@ -6284,6 +6288,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           DisplayFormat = '0'
                           ShowButton = False
                           TabOrder = 0
+                          Value = 10.000000000000000000
                           DecimalPlacesAlwaysShown = False
                           OnExit = EdtImpostoNFIcmsExit
                           DataField = 'nf_vlricms'
@@ -6373,6 +6378,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           DisplayFormat = '0'
                           ShowButton = False
                           TabOrder = 0
+                          Value = 15.000000000000000000
                           DecimalPlacesAlwaysShown = False
                           OnExit = EdtImpostoNFIcmsSTExit
                           DataField = 'nf_vlricms_st'
@@ -6419,6 +6425,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           ReadOnly = True
                           ShowButton = False
                           TabOrder = 0
+                          Value = 8725.000000000000000000
                           DecimalPlacesAlwaysShown = False
                           OnExit = EdtImpostoNFVlrProdutosExit
                           DataField = 'nf_vlrprodutos'
@@ -6464,6 +6471,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           DisplayFormat = '0'
                           ShowButton = False
                           TabOrder = 0
+                          Value = 10.000000000000000000
                           DecimalPlacesAlwaysShown = False
                           OnExit = EdtImpostoNFVlrSeguroExit
                           DataField = 'nf_vlrseguro'
@@ -6926,7 +6934,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     ParentBackground = False
                     TabOrder = 2
                     ExplicitTop = 314
-                    object DbGrid: TJvDBUltimGrid
+                    object DbGridNFItens: TJvDBUltimGrid
                       Left = 0
                       Top = 50
                       Width = 1014
@@ -6936,6 +6944,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       BorderStyle = bsNone
                       Color = clWhite
                       DataSource = DMPrincipal.DsTbNotaFiscalItem
+                      DrawingStyle = gdsClassic
+                      FixedColor = 4671041
                       GradientEndColor = 9323579
                       GradientStartColor = 9323579
                       Font.Charset = ANSI_CHARSET
@@ -7239,7 +7249,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           AutoSelect = False
                           ShowButton = False
                           TabOrder = 0
-                          Value = 15.000000000000000000
+                          Value = 10.000000000000000000
                           DecimalPlacesAlwaysShown = False
                           OnExit = EdtDNFIQdteExit
                           DataField = 'nfi_qtde'

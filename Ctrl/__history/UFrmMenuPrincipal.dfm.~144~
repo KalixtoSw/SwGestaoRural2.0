@@ -16,6 +16,7 @@
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
@@ -1844,9 +1845,8 @@
             Left = 0
             Top = 48
             Width = 200
-            Height = 32
+            Height = 120
             Caption = 'PRATELEIRA DE INSUMOS'
-            Collapsed = True
             Colors.BorderColor = 10780674
             Colors.CheckedFrameColor = 14934499
             Colors.FocusedFrameColor = 8279822
@@ -1867,6 +1867,10 @@
               item
                 Caption = 'COMPRAS DE INSUMOS'
                 OnClick = JvXPBar1Items2Click
+              end
+              item
+                Caption = 'CADASTRO DE EMBALAGEM'
+                OnClick = XPBarManejoAgricola1Items3Click
               end>
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 15000804
@@ -2089,6 +2093,13 @@
           Height = 101
           Caption = 'CONTROLE DE ESTOQUE'
           OnClick = JvXPBar1Items2Click
+        end
+        object JvSpeedButton2: TJvSpeedButton
+          Left = 650
+          Top = 195
+          Width = 171
+          Height = 25
+          OnClick = JvSpeedButton2Click
         end
         object PnlIndicadoresAgricolas: TJvPanel
           Left = 0
@@ -4798,14 +4809,14 @@
               Width = 200
               Height = 17
               Align = alTop
-              Caption = 'MERCADO DO MILHO'
+              Caption = 'MERCADO DO TRIGO'
               Font.Charset = ANSI_CHARSET
               Font.Color = clWhite
               Font.Height = -13
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 135
+              ExplicitWidth = 131
             end
             object PnlImgTrigo: TPanel
               Left = 0

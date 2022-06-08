@@ -10,7 +10,8 @@ uses
   Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit,
   JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
   JvScrollPanel, UFrmCadastroSemente, JvaScrollText, Vcl.Imaging.pngimage,
-  JvComponentBase, JvBalloonHint, JvHint, UFrmModuloControleEstoque;
+  JvComponentBase, JvBalloonHint, JvHint, UFrmModuloControleEstoque, Classe.Comum.ControleEstoque,
+  Data.DB, Classe.Conexao;
 
 type
   TFrmMenuPrincipal = class(TForm)
@@ -79,6 +80,7 @@ type
     JvHint1: TJvHint;
     JvBalloonHint1: TJvBalloonHint;
     JvSpeedButton1: TJvSpeedButton;
+    JvSpeedButton2: TJvSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -100,6 +102,7 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure JvXPBar1Items2Click(Sender: TObject);
     procedure XPBarManejoAgricola1Items3Click(Sender: TObject);
+    procedure JvSpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -161,6 +164,66 @@ begin
         JvScrollText1.Active := True;
         pdelay(2500);
         JvScrollText1.Visible := False;
+
+end;
+
+procedure TFrmMenuPrincipal.JvSpeedButton2Click(Sender: TObject);
+var
+        IDMov : Integer;
+        FDSNF,FDSNFI,FDSENTRADA,FDSENTRADAITEM : Tdatasource;
+
+begin
+        DMPrincipal.TbNotaFiscal.Active := True;
+        DMPrincipal.TbNotaFiscalItem.Active := True;
+        DMPrincipal.TbMovimentacao.Active := True;
+        DMPrincipal.TbMov_Produto.Active := True;
+
+        DMPrincipal.TbNotaFiscal.DisableControls;
+
+        FDSNF           := DMPrincipal.DsTbNotaFiscal;
+        FDSNFI          := DMPrincipal.DsTbNotaFiscalItem;
+        FDSENTRADA      := DMPrincipal.DsTbMovimentacao;
+        FDSENTRADAITEM  := DMPrincipal.DsTbMov_Produto;
+        FDSNF.DataSet.Active := True;
+        FDSNFI.DataSet.Active := True;
+        FDSENTRADA.DataSet.Active := True;
+        FDSENTRADAITEM.DataSet.Active := True;
+
+//        FDSNF.DataSet.Filtered := False;
+//        FDSNF.DataSet.Filter   := 'nf_procEstoque = 0';
+//        FDSNF.DataSet.Filtered := True;
+          FDSNF.DataSet.First;
+          DMPrincipal.TbNotaFiscal.EnableControls;
+
+        while not (FDSNF.DataSet.Eof) and (FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger = 0) do
+        begin
+               FDSENTRADA.DataSet.Insert;
+               FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
+               FDSENTRADA.DataSet.FieldByName('mov_datamov').AsDateTime := Now;
+               FDSENTRADA.DataSet.FieldByName('mov_descricao').AsString := 'MOVIMENTAÇÃO DE ESTOQUE';
+               FDSENTRADA.DataSet.FieldByName('mov_origem').Asstring := 'MÓDULO NF';
+               FDSENTRADA.DataSet.FieldByName('nf_id').AsInteger := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
+               FDSENTRADA.DataSet.Post;
+               FDSENTRADA.DataSet.Last;
+               IDMov := FDSENTRADA.DataSet.FieldByName('mov_id').AsInteger;
+
+                while not FDSNFI.DataSet.Eof do
+                begin
+                       FDSENTRADAITEM.DataSet.Insert;
+                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := IDMov;
+                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := FDSNFI.DataSet.FieldByName('prd_idproduto').AsInteger;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoTotal').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
+                       FDSENTRADAITEM.DataSet.Post;
+                       FDSNFI.DataSet.Next;
+                end;
+                FDSNF.DataSet.Edit;
+                FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger := 1;
+                FDSNF.DataSet.Post;
+                FDSNF.DataSet.Next;
+        end;
+
 
 end;
 

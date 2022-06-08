@@ -4615,7 +4615,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 Width = 1022
                 Height = 610
                 Cursor = crHandPoint
-                ActivePage = TbShtConsultaNF
+                ActivePage = TbShtLancamentos
                 Align = alClient
                 TabOrder = 0
                 OnResize = PgCntrlCtrlEntradaNFResize
@@ -5573,11 +5573,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         Items.Strings = (
                           'ENTRADA'
-                          'SA'#205'DA')
+                          'SA'#205'DA'
+                          'SERVI'#199'O')
                         TabOrder = 0
                         Values.Strings = (
                           'E'
-                          'S')
+                          'S'
+                          'R')
                         ListSettings.OutfilteredValueFont.Charset = DEFAULT_CHARSET
                         ListSettings.OutfilteredValueFont.Color = clRed
                         ListSettings.OutfilteredValueFont.Height = -11
@@ -6926,7 +6928,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     ParentBackground = False
                     TabOrder = 2
                     ExplicitTop = 314
-                    object DbGrid: TJvDBUltimGrid
+                    object DbGridNFItens: TJvDBUltimGrid
                       Left = 0
                       Top = 50
                       Width = 1014
@@ -6936,7 +6938,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       BorderStyle = bsNone
                       Color = clWhite
                       DataSource = DMPrincipal.DsTbNotaFiscalItem
-                      DrawingStyle = gdsGradient
+                      DrawingStyle = gdsClassic
+                      FixedColor = 4671041
                       GradientEndColor = 9323579
                       GradientStartColor = 9323579
                       Font.Charset = ANSI_CHARSET
@@ -6944,7 +6947,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Font.Height = -12
                       Font.Name = 'Segoe UI'
                       Font.Style = []
-                      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleHotTrack]
+                      Options = [dgTitles, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgTitleHotTrack]
                       ParentFont = False
                       TabOrder = 0
                       TitleFont.Charset = ANSI_CHARSET
@@ -7240,7 +7243,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           AutoSelect = False
                           ShowButton = False
                           TabOrder = 0
-                          Value = 15.000000000000000000
                           DecimalPlacesAlwaysShown = False
                           OnExit = EdtDNFIQdteExit
                           DataField = 'nfi_qtde'
@@ -7332,7 +7334,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           DisplayFormat = ',0.###'
                           ShowButton = False
                           TabOrder = 0
-                          Value = 10.000000000000000000
                           DecimalPlacesAlwaysShown = False
                           OnExit = EdtDNFIVlrUnitExit
                           DataField = 'nfi_vlrunit'

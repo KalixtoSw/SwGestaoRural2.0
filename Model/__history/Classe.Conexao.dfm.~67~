@@ -286,6 +286,7 @@ object DMPrincipal: TDMPrincipal
   end
   object QryMovimentacao: TFDQuery
     ActiveStoredUsage = []
+    Active = True
     AutoCalcFields = False
     ObjectView = False
     IndexesActive = False
@@ -344,9 +345,12 @@ object DMPrincipal: TDMPrincipal
   end
   object QryMovProd: TFDQuery
     ActiveStoredUsage = []
-    AutoCalcFields = False
+    Active = True
     ObjectView = False
     IndexesActive = False
+    IndexFieldNames = 'mov_id'
+    MasterSource = DsQryMovimentacao
+    MasterFields = 'mov_id'
     Connection = FDConnection
     FetchOptions.AssignedValues = [evCache]
     FetchOptions.Cache = [fiBlobs, fiMeta]
@@ -595,6 +599,21 @@ object DMPrincipal: TDMPrincipal
       AutoGenerateValue = arDefault
       FieldName = 'nf_dtvencimento'
       Origin = 'nf_dtvencimento'
+    end
+    object TbNotaFiscalFornecedor: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Fornecedor'
+      LookupDataSet = TbFornecedor
+      LookupKeyFields = 'frn_id'
+      LookupResultField = 'frn_NomeFantasia'
+      KeyFields = 'frn_id'
+      Size = 100
+      Lookup = True
+    end
+    object TbNotaFiscalnf_procEstoque: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nf_procEstoque'
+      Origin = 'nf_procEstoque'
     end
   end
   object DsTbNotaFiscal: TDataSource

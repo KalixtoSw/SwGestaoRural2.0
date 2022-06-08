@@ -187,6 +187,7 @@ type
     EdtDtFldDtESNF: TJvDBDatePickerEdit;
     EdtFldDtVencimentoNF: TJvDBDatePickerEdit;
     EdtImpostoNFVlrtNF: TDBEdit;
+    JvSpeedButton1: TJvSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -226,6 +227,8 @@ type
 
   public    { Public declarations }
         CtrlEst_NF : TCrtrlEstoque_NF;
+        CtrlEst_Comum : TCrtlEstoque;
+
 
   end;
 
@@ -394,6 +397,8 @@ begin
         CtrlEstoque     := TCrtlEstoque.CreateObjTCrtlEstoque;
         CtrlEst_NF      := TCrtrlEstoque_NF.CreateObjTCrtrlEstoque_NF;
         ActInsUpd       := EmptyStr;
+
+        CtrlEst_Comum   := CtrlEst_Comum.CreateObjTCrtlEstoque;
 end;
 
 procedure TFrmModuloControleEstoque.FormResize(Sender: TObject);
