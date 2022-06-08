@@ -15,7 +15,7 @@ uses
   JvMaskEdit, Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, JvDateTimePicker,
   JvDBDateTimePicker, JvDBFindEdit, JvEdit, JvDBSearchEdit, Classe.NF.ControleEstoque,
   JvBaseDlg, JvDesktopAlert, JvCheckedMaskEdit, JvDatePickerEdit,
-  JvDBDatePickerEdit, System.Math;
+  JvDBDatePickerEdit, System.Math, JvThread;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -156,7 +156,7 @@ type
     PnlDNFINomeProduto: TJvPanel;
     LbDNFINomeProduto: TLabel;
     CbbDNFICodProduto: TJvDBLookupCombo;
-    DbGrid: TJvDBUltimGrid;
+    DbGridNFItens: TJvDBUltimGrid;
     EdtDNFINomeProduto: TJvDBLookupCombo;
     PnlDNFIEmbalagem: TJvPanel;
     LbDNFIEmbalagem: TLabel;
@@ -187,6 +187,7 @@ type
     EdtDtFldDtESNF: TJvDBDatePickerEdit;
     EdtFldDtVencimentoNF: TJvDBDatePickerEdit;
     EdtImpostoNFVlrtNF: TDBEdit;
+    Thread_NF: TJvThread;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -220,12 +221,15 @@ type
     procedure EdtImpostoNFVlrIPIExit(Sender: TObject);
     procedure EdtImpostoNFIcmsExit(Sender: TObject);
     procedure EdtImpostoNFIcmsSTExit(Sender: TObject);
+    procedure Thread_NFExecute(Sender: TObject; Params: Pointer);
+    procedure Thread_NFFinish(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
 
-
   public    { Public declarations }
         CtrlEst_NF : TCrtrlEstoque_NF;
+        CtrlEst_Comum : TCrtlEstoque;
+
 
   end;
 
@@ -255,6 +259,12 @@ end;
 
 procedure TFrmModuloControleEstoque.BtCloseClick(Sender: TObject);
 begin
+        ActivityIndicator.Visible := True;
+        ActivityIndicator.StartAnimation;
+        Thread_NF.Execute(Sender);
+        ActivityIndicator.StopAnimation;
+        ActivityIndicator.Visible := False;
+
         Close;
 end;
 
@@ -394,6 +404,7 @@ begin
         CtrlEstoque     := TCrtlEstoque.CreateObjTCrtlEstoque;
         CtrlEst_NF      := TCrtrlEstoque_NF.CreateObjTCrtrlEstoque_NF;
         ActInsUpd       := EmptyStr;
+
 end;
 
 procedure TFrmModuloControleEstoque.FormResize(Sender: TObject);
@@ -408,7 +419,19 @@ begin
         CtrlEstoque.pCtrlPosicaopnlBt3(PnlFundoBtsNav1,420);
         CtrlEstoque.pCtrlPosicaopnlBt4(PnlFundoBtsNav1,625);
         CtrlEstoque.pCtrlPosicaopnlBt5(PnlFundoBtsNav1,830);
+        ActivityIndicator.Visible := False;
         CrdPrincipal.Show;
+end;
+
+procedure TFrmModuloControleEstoque.Thread_NFExecute(Sender: TObject;
+  Params: Pointer);
+begin
+        CtrlEst_NF.fProcNFEstoque;
+end;
+
+procedure TFrmModuloControleEstoque.Thread_NFFinish(Sender: TObject);
+begin
+        Exit;
 end;
 
 procedure TFrmModuloControleEstoque.BtDNFIBtSavarClick(Sender: TObject);

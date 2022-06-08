@@ -11,7 +11,7 @@ uses
   JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
   JvScrollPanel, UFrmCadastroSemente, JvaScrollText, Vcl.Imaging.pngimage,
   JvComponentBase, JvBalloonHint, JvHint, UFrmModuloControleEstoque, Classe.Comum.ControleEstoque,
-  Data.DB, Classe.Conexao;
+  Data.DB, Classe.Conexao, System.Math;
 
 type
   TFrmMenuPrincipal = class(TForm)
@@ -170,18 +170,19 @@ end;
 procedure TFrmMenuPrincipal.JvSpeedButton2Click(Sender: TObject);
 var
         IDMov : Integer;
+        TpMov : string;
         FDSNF,FDSNFI,FDSENTRADA,FDSENTRADAITEM : Tdatasource;
 
 begin
-        DMPrincipal.TbNotaFiscal.Active := True;
-        DMPrincipal.TbNotaFiscalItem.Active := True;
+        DMPrincipal.QryProcNotaFiscal.Active := True;
+        DMPrincipal.QryProcNotaFiscalItem.Active := True;
         DMPrincipal.TbMovimentacao.Active := True;
         DMPrincipal.TbMov_Produto.Active := True;
+        TpMov := EmptyStr;
+        IDMov := 0;
 
-        DMPrincipal.TbNotaFiscal.DisableControls;
-
-        FDSNF           := DMPrincipal.DsTbNotaFiscal;
-        FDSNFI          := DMPrincipal.DsTbNotaFiscalItem;
+        FDSNF           := DMPrincipal.DsQryProcNotaFiscal;
+        FDSNFI          := DMPrincipal.DsQryProcNotaFiscalItem;
         FDSENTRADA      := DMPrincipal.DsTbMovimentacao;
         FDSENTRADAITEM  := DMPrincipal.DsTbMov_Produto;
         FDSNF.DataSet.Active := True;
@@ -189,15 +190,11 @@ begin
         FDSENTRADA.DataSet.Active := True;
         FDSENTRADAITEM.DataSet.Active := True;
 
-//        FDSNF.DataSet.Filtered := False;
-//        FDSNF.DataSet.Filter   := 'nf_procEstoque = 0';
-//        FDSNF.DataSet.Filtered := True;
-          FDSNF.DataSet.First;
-
-        while not (FDSNF.DataSet.Eof) and (FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger = 0) do
+        while not (FDSNF.DataSet.Eof) do
         begin
+               TpMov := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
                FDSENTRADA.DataSet.Insert;
-               FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
+               FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := TpMov;
                FDSENTRADA.DataSet.FieldByName('mov_datamov').AsDateTime := Now;
                FDSENTRADA.DataSet.FieldByName('mov_descricao').AsString := 'MOVIMENTAÇÃO DE ESTOQUE';
                FDSENTRADA.DataSet.FieldByName('mov_origem').Asstring := 'MÓDULO NF';
@@ -214,6 +211,9 @@ begin
                        FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
                        FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
                        FDSENTRADAITEM.DataSet.FieldByName('mp_precoTotal').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_tipo').AsString := TpMov;
+                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdContabil').AsFloat := IfThen(TpMov = 'S',(FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat * -1),FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat);
+
                        FDSENTRADAITEM.DataSet.Post;
                        FDSNFI.DataSet.Next;
                 end;
@@ -223,7 +223,7 @@ begin
                 FDSNF.DataSet.Next;
         end;
 
-        DMPrincipal.TbNotaFiscal.EnableControls;
+
 end;
 
 procedure TFrmMenuPrincipal.JvXPBar1Items0Click(Sender: TObject);

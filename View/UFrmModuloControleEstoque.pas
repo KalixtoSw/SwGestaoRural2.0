@@ -15,7 +15,7 @@ uses
   JvMaskEdit, Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, JvDateTimePicker,
   JvDBDateTimePicker, JvDBFindEdit, JvEdit, JvDBSearchEdit, Classe.NF.ControleEstoque,
   JvBaseDlg, JvDesktopAlert, JvCheckedMaskEdit, JvDatePickerEdit,
-  JvDBDatePickerEdit, System.Math;
+  JvDBDatePickerEdit, System.Math, JvThread;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -187,7 +187,7 @@ type
     EdtDtFldDtESNF: TJvDBDatePickerEdit;
     EdtFldDtVencimentoNF: TJvDBDatePickerEdit;
     EdtImpostoNFVlrtNF: TDBEdit;
-    JvSpeedButton1: TJvSpeedButton;
+    Thread_NF: TJvThread;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -221,9 +221,10 @@ type
     procedure EdtImpostoNFVlrIPIExit(Sender: TObject);
     procedure EdtImpostoNFIcmsExit(Sender: TObject);
     procedure EdtImpostoNFIcmsSTExit(Sender: TObject);
+    procedure Thread_NFExecute(Sender: TObject; Params: Pointer);
+    procedure Thread_NFFinish(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
-
 
   public    { Public declarations }
         CtrlEst_NF : TCrtrlEstoque_NF;
@@ -258,6 +259,8 @@ end;
 
 procedure TFrmModuloControleEstoque.BtCloseClick(Sender: TObject);
 begin
+
+        Thread_NF.Execute(Sender);
         Close;
 end;
 
@@ -398,7 +401,6 @@ begin
         CtrlEst_NF      := TCrtrlEstoque_NF.CreateObjTCrtrlEstoque_NF;
         ActInsUpd       := EmptyStr;
 
-        CtrlEst_Comum   := CtrlEst_Comum.CreateObjTCrtlEstoque;
 end;
 
 procedure TFrmModuloControleEstoque.FormResize(Sender: TObject);
@@ -414,6 +416,17 @@ begin
         CtrlEstoque.pCtrlPosicaopnlBt4(PnlFundoBtsNav1,625);
         CtrlEstoque.pCtrlPosicaopnlBt5(PnlFundoBtsNav1,830);
         CrdPrincipal.Show;
+end;
+
+procedure TFrmModuloControleEstoque.Thread_NFExecute(Sender: TObject;
+  Params: Pointer);
+begin
+        CtrlEst_NF.fProcNFEstoque;
+end;
+
+procedure TFrmModuloControleEstoque.Thread_NFFinish(Sender: TObject);
+begin
+        Exit;
 end;
 
 procedure TFrmModuloControleEstoque.BtDNFIBtSavarClick(Sender: TObject);

@@ -4637,18 +4637,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     Color = clWhite
                     ParentBackground = False
                     TabOrder = 0
-                    object JvSpeedButton1: TJvSpeedButton
-                      Left = 15
-                      Top = 95
-                      Width = 176
-                      Height = 25
-                      Caption = 'MOVIMENTA ESTOQUE'
-                      HotTrackFont.Charset = ANSI_CHARSET
-                      HotTrackFont.Color = clWindowText
-                      HotTrackFont.Height = -12
-                      HotTrackFont.Name = 'Segoe UI Semibold'
-                      HotTrackFont.Style = []
-                    end
                     object PnlBtFiltroNFDataEmissao: TJvPanel
                       Left = 0
                       Top = 0
@@ -5371,7 +5359,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 2
-                      ExplicitLeft = 150
                       object FundoBtDeletelNF: TJvGradient
                         Left = 0
                         Top = 0
@@ -5597,7 +5584,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         ListSettings.OutfilteredValueFont.Height = -11
                         ListSettings.OutfilteredValueFont.Name = 'Tahoma'
                         ListSettings.OutfilteredValueFont.Style = []
-                        ExplicitWidth = 149
                       end
                     end
                     object PnlFldFornecNF: TJvPanel
@@ -6662,7 +6648,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           DataSource = DMPrincipal.DsTbNotaFiscal
                           Enabled = False
                           TabOrder = 0
-                          ExplicitTop = 16
                         end
                       end
                       object PnlNFAddItens: TJvPanel
@@ -6940,7 +6925,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     Color = 15329769
                     ParentBackground = False
                     TabOrder = 2
-                    ExplicitTop = 314
                     object DbGridNFItens: TJvDBUltimGrid
                       Left = 0
                       Top = 50
@@ -7073,7 +7057,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Left = 0
                           Top = 15
                           Width = 50
-                          Height = 24
+                          Height = 23
                           Align = alTop
                           DecimalPlaces = 0
                           DisplayFormat = '0'
@@ -7251,7 +7235,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Left = 0
                           Top = 15
                           Width = 50
-                          Height = 24
+                          Height = 23
                           Align = alTop
                           AutoSelect = False
                           ShowButton = False
@@ -7757,5 +7741,16 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
     Buttons = <>
     Left = 1140
     Top = 45
+  end
+  object Thread_NF: TJvThread
+    Exclusive = True
+    MaxCount = 0
+    RunOnCreate = True
+    FreeOnTerminate = True
+    ThreadName = 'NF_Thread'
+    OnExecute = Thread_NFExecute
+    OnFinish = Thread_NFFinish
+    Left = 1140
+    Top = 101
   end
 end

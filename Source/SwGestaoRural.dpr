@@ -22,7 +22,6 @@ uses
   Classe.EnvioEmail in '..\Ctrl\Classe.EnvioEmail.pas',
   Classe.StatusUsuario in '..\Ctrl\Classe.StatusUsuario.pas',
   UFrmConfigServidor in '..\View\UFrmConfigServidor.pas' {FrmConfigServidor},
-  UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin},
   Vcl.Dialogs,
   System.SysUtils {FrmLogin},
   UFrmCadastroPropriedadeRural in '..\View\UFrmCadastroPropriedadeRural.pas' {FrmCadastroPropriedadeRural},
@@ -37,7 +36,8 @@ uses
   UFrmControleEstoquePesqNF in '..\View\UFrmControleEstoquePesqNF.pas' {FrmPesqNF},
   Classe.NF.ControleEstoque in '..\Ctrl\Classe.NF.ControleEstoque.pas',
   UFrmProdutoEmbalagem in '..\View\UFrmProdutoEmbalagem.pas' {FrmProdutoEmbalagem},
-  Classe.Produto.Embalagem in '..\Ctrl\Classe.Produto.Embalagem.pas';
+  Classe.Produto.Embalagem in '..\Ctrl\Classe.Produto.Embalagem.pas',
+  UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin};
 
 {$R *.res}
 

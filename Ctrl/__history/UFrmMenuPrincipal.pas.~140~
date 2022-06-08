@@ -173,13 +173,15 @@ var
         FDSNF,FDSNFI,FDSENTRADA,FDSENTRADAITEM : Tdatasource;
 
 begin
-        DMPrincipal.TbNotaFiscal.Active := True;
-        DMPrincipal.TbNotaFiscalItem.Active := True;
+        DMPrincipal.QryProcNotaFiscal.Active := True;
+        DMPrincipal.QryProcNotaFiscalItem.Active := True;
         DMPrincipal.TbMovimentacao.Active := True;
         DMPrincipal.TbMov_Produto.Active := True;
 
-        FDSNF           := DMPrincipal.DsTbNotaFiscal;
-        FDSNFI          := DMPrincipal.DsTbNotaFiscalItem;
+
+
+        FDSNF           := DMPrincipal.DsQryProcNotaFiscal;
+        FDSNFI          := DMPrincipal.DsQryProcNotaFiscalItem;
         FDSENTRADA      := DMPrincipal.DsTbMovimentacao;
         FDSENTRADAITEM  := DMPrincipal.DsTbMov_Produto;
         FDSNF.DataSet.Active := True;
@@ -187,12 +189,14 @@ begin
         FDSENTRADA.DataSet.Active := True;
         FDSENTRADAITEM.DataSet.Active := True;
 
-//        FDSNF.DataSet.Filtered := False;
-//        FDSNF.DataSet.Filter   := 'nf_procEstoque = 0';
-//        FDSNF.DataSet.Filtered := True;
-//        FDSNF.DataSet.First;
+//          FDSNF.DataSet.Filtered := False;
+//          FDSNF.DataSet.Filter   := 'nf_procEstoque = 0';
+//          FDSNF.DataSet.Filtered := True;
+          //FDSNF.DataSet.First;
 
-        while not (FDSNF.DataSet.Eof) and (FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger = 0) do
+
+//        while not (FDSNF.DataSet.Eof) and (FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger = 0) do
+        while not (FDSNF.DataSet.Eof) do
         begin
                FDSENTRADA.DataSet.Insert;
                FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
@@ -215,11 +219,12 @@ begin
                        FDSENTRADAITEM.DataSet.Post;
                        FDSNFI.DataSet.Next;
                 end;
-                FDSNF.DataSet.Next;
                 FDSNF.DataSet.Edit;
                 FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger := 1;
                 FDSNF.DataSet.Post;
+                FDSNF.DataSet.Next;
         end;
+
 
 end;
 
