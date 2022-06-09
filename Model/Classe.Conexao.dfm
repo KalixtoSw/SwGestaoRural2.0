@@ -218,7 +218,6 @@ object DMPrincipal: TDMPrincipal
   end
   object QryProduto: TFDQuery
     ActiveStoredUsage = []
-    Active = True
     AutoCalcFields = False
     ObjectView = False
     IndexesActive = False
@@ -616,7 +615,6 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbFornecedor: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -785,7 +783,6 @@ object DMPrincipal: TDMPrincipal
     Top = 15
   end
   object TbProdutoEmbalagem: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -920,7 +917,6 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbMov_Produto: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'mov_id'
     MasterSource = DsTbMovimentacao
@@ -944,6 +940,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'mp_id'
       Origin = 'mp_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object TbMov_Produtoprd_idproduto: TIntegerField
       AutoGenerateValue = arDefault
@@ -1001,7 +998,6 @@ object DMPrincipal: TDMPrincipal
     Top = 435
   end
   object TbNotaFiscalP: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     DetailFields = 'nf_id'
@@ -1208,7 +1204,6 @@ object DMPrincipal: TDMPrincipal
     Top = 395
   end
   object TbNotaFiscalItemP: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     MasterSource = DsTbNotaFiscalP
@@ -1498,6 +1493,7 @@ object DMPrincipal: TDMPrincipal
   end
   object QryProcNotaFiscalItem: TFDQuery
     ActiveStoredUsage = []
+    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     MasterSource = DsQryProcNotaFiscal
@@ -1515,9 +1511,9 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.CheckUpdatable = False
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'SELECT * FROM nota_fiscal_item')
+      'SELECT * FROM nota_fiscal_item WHERE prd_idproduto > 0')
     Left = 945
-    Top = 305
+    Top = 315
     object QryProcNotaFiscalItemnfi_id: TFDAutoIncField
       FieldName = 'nfi_id'
       Origin = 'nfi_id'

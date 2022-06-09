@@ -3005,7 +3005,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
         Width = 1024
         Height = 636
         Align = alClient
-        ActiveCard = CrdCtrlEntradas
+        ActiveCard = CrdPrincipal
         Caption = 'CrdPnlCtrlEstoque'
         TabOrder = 0
         object CrdPrincipal: TCard
@@ -3179,7 +3179,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 end>
               Align = alTop
               BevelOuter = bvNone
-              Color = clWhite
+              Color = 4671041
               ParentBackground = False
               TabOrder = 1
               VerticalAlignment = taAlignTop
@@ -3898,7 +3898,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 end>
               Align = alTop
               BevelOuter = bvNone
-              Color = clWhite
+              Color = 4671041
               ParentBackground = False
               TabOrder = 3
               DesignSize = (
