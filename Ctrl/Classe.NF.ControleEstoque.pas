@@ -168,6 +168,7 @@ begin
 
         while not (FDSNF.DataSet.Eof) do
         begin
+
                TpMov := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
                FDSENTRADA.DataSet.Insert;
                FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := TpMov;
@@ -179,18 +180,18 @@ begin
                FDSENTRADA.DataSet.Last;
                IDMov := FDSENTRADA.DataSet.FieldByName('mov_id').AsInteger;
 
-                while not FDSNFI.DataSet.Eof do
+                while not ( FDSNFI.DataSet.Eof)  do
                 begin
-                       FDSENTRADAITEM.DataSet.Insert;
-                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := IDMov;
-                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := FDSNFI.DataSet.FieldByName('prd_idproduto').AsInteger;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoTotal').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_tipo').AsString := TpMov;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdContabil').AsFloat := IfThen(TpMov = 'S',(FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat * -1),FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat);
+                            FDSENTRADAITEM.DataSet.Insert;
+                            FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := IDMov;
+                            FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := FDSNFI.DataSet.FieldByName('prd_idproduto').AsInteger;
+                            FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
+                            FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
+                            FDSENTRADAITEM.DataSet.FieldByName('mp_precoTotal').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
+                            FDSENTRADAITEM.DataSet.FieldByName('mp_tipo').AsString := TpMov;
+                            FDSENTRADAITEM.DataSet.FieldByName('mp_qtdContabil').AsFloat := IfThen(TpMov = 'S',(FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat * -1),FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat);
+                            FDSENTRADAITEM.DataSet.Post;
 
-                       FDSENTRADAITEM.DataSet.Post;
                        FDSNFI.DataSet.Next;
                 end;
                 FDSNF.DataSet.Edit;
