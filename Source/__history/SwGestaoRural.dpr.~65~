@@ -22,7 +22,6 @@ uses
   Classe.EnvioEmail in '..\Ctrl\Classe.EnvioEmail.pas',
   Classe.StatusUsuario in '..\Ctrl\Classe.StatusUsuario.pas',
   UFrmConfigServidor in '..\View\UFrmConfigServidor.pas' {FrmConfigServidor},
-  UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin},
   Vcl.Dialogs,
   System.SysUtils {FrmLogin},
   UFrmCadastroPropriedadeRural in '..\View\UFrmCadastroPropriedadeRural.pas' {FrmCadastroPropriedadeRural},
@@ -36,7 +35,10 @@ uses
   Classe.Comum.ControleEstoque in '..\Ctrl\Classe.Comum.ControleEstoque.pas',
   UFrmControleEstoquePesqNF in '..\View\UFrmControleEstoquePesqNF.pas' {FrmPesqNF},
   Classe.NF.ControleEstoque in '..\Ctrl\Classe.NF.ControleEstoque.pas',
-  UFrmProdutoEmbalagem in '..\View\UFrmProdutoEmbalagem.pas' {FrmModel2};
+  UFrmProdutoEmbalagem in '..\View\UFrmProdutoEmbalagem.pas' {FrmProdutoEmbalagem},
+  Classe.Produto.Embalagem in '..\Ctrl\Classe.Produto.Embalagem.pas',
+  UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin},
+  UFrmPlantio in '..\View\UFrmPlantio.pas' {FrmPlantio};
 
 {$R *.res}
 
@@ -46,7 +48,6 @@ begin
 
   Application.Title := 'Gestão Rural 1.0';
   Application.CreateForm(TDMPrincipal, DMPrincipal);
-  Application.CreateForm(TFrmModel2, FrmModel2);
   if (DmPrincipal.conexao.fConectarBancoDados = True) then
   Begin
 

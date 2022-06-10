@@ -37,7 +37,9 @@ uses
   Classe.NF.ControleEstoque in '..\Ctrl\Classe.NF.ControleEstoque.pas',
   UFrmProdutoEmbalagem in '..\View\UFrmProdutoEmbalagem.pas' {FrmProdutoEmbalagem},
   Classe.Produto.Embalagem in '..\Ctrl\Classe.Produto.Embalagem.pas',
-  UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin};
+  UFrmLogin in '..\View\UFrmLogin.pas' {FrmLogin},
+  UFrmPlantio in '..\View\UFrmPlantio.pas' {FrmPlantio},
+  Classe.Plantio in '..\Ctrl\Classe.Plantio.pas';
 
 {$R *.res}
 
