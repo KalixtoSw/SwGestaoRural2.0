@@ -7,7 +7,7 @@ uses
   Vcl.StdCtrls, JvCombobox, System.SysUtils, FireDAC.Comp.Client,IdHashMessageDigest,
   Winapi.Windows, Vcl.Controls, Winapi.Messages, Vcl.Mask, Vcl.Dialogs,Math,
   Generics.Collections, Classe.Sistema.Mensagens, Data.DB, JvSpeedButton,
-   Winapi.WinInet;
+   Winapi.WinInet, Vcl.DBCtrls, Vcl.Graphics, System.Classes;
 
   Type
         TBGridPadrao = class(TJvDBUltimGrid);
@@ -34,6 +34,7 @@ uses
   procedure pComboMasterDetail(CbbM : TJvComboBox; CbbD : TJvComboBox; SqlM: string; SqlD : string;
   KeyDescM : string;KeyDescD : string; KeyVlrM : string );
   procedure pMontaComboTxt(Cbb : TComboBox; Caminho: string; NomeArq : string);
+  procedure pCentralizaTextoEdit(Edit : TDBEdit; sender : TObject; Self : TComponent);
 
   function fCheckEmptyText(const EditMask: TEditMask ;const Text:String):Boolean;{1}
   function fTrocaVirgPPto(Valor: string): String;{2}
@@ -50,6 +51,7 @@ uses
   function fAjustaDataNull(VrDt    :   TDate)  :   TDate;{12}
   function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;{13}
   function IsConnectedToInternet: Boolean;{14}
+  function fValidaDtMaiorDtMenor(DtA , Dtb : TDate) : Integer;
 
 var
       BtnNew,BtnOld : Integer;
@@ -565,7 +567,7 @@ end;
 
 function fAjustaDataNull(VrDt    :   TDate)  :   TDate;
 begin
-     if FormatDateTime('yyyy/mm/dd',VrDt) = '1899/12/30' then
+     if ( (FormatDateTime('yyyy/mm/dd',VrDt) = '1899/12/30') or (FormatDateTime('yyyy/mm/dd',VrDt) = '0000/00/00')) then
             begin
                 Result    :=  StrtoDate(FormatDateTime('dd/mm/yyyy',Now));
             end else
@@ -733,6 +735,27 @@ begin
    CloseFile(arq);
    end;
 
+end;
+
+procedure pCentralizaTextoEdit(Edit : TDBEdit; sender : TObject; Self : TComponent);
+var
+  vl_label : TLabel; //variável do tipo Label
+begin
+  vl_label := TLabel.Create(self); //criamos um label
+  with vl_label do
+  begin
+    Font.Name := TEdit(sender).Font.Name; //pegamos a fonte usada no edit
+    Caption := TEdit(sender).Text; //pegamos o conteúdo do edit
+    SendMessage(TEdit(sender).Handle, EM_SETMARGINS, EC_LEFTMARGIN,
+    (TEdit(sender).Width-vl_label.Width) div 2); //centraliza no label e retorna para o edit
+  end;
+  vl_label.Free;
+
+end;
+
+function fValidaDtMaiorDtMenor(DtA , Dtb : TDate) : Integer;
+begin
+        Result  :=      IfThen(DtA >= Dtb , 0,1 );
 end;
 
 end.

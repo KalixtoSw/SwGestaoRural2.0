@@ -10,7 +10,7 @@ uses
   Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit,
   JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
   JvScrollPanel, UFrmCadastroSemente, JvaScrollText, Vcl.Imaging.pngimage,
-  JvComponentBase, JvBalloonHint, JvHint, UFrmModuloControleEstoque, Classe.Comum.ControleEstoque,
+  JvComponentBase, JvBalloonHint, JvHint, Classe.Comum.ControleEstoque,
   Data.DB, Classe.Conexao, System.Math;
 
 type
@@ -79,8 +79,7 @@ type
     Timer1: TTimer;
     JvHint1: TJvHint;
     JvBalloonHint1: TJvBalloonHint;
-    JvSpeedButton1: TJvSpeedButton;
-    JvSpeedButton2: TJvSpeedButton;
+    JvXPBar1: TJvXPBar;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -97,27 +96,31 @@ type
     procedure PnlStatusSistema1MouseEnter(Sender: TObject);
     procedure PnlTituloJanelaMouseEnter(Sender: TObject);
     procedure JvXPBar1Items0Click(Sender: TObject);
-    procedure JvXPBar1Items1Click(Sender: TObject);
     procedure JvScrollText1MouseEnter(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
-    procedure JvXPBar1Items2Click(Sender: TObject);
     procedure XPBarManejoAgricola1Items3Click(Sender: TObject);
-    procedure JvSpeedButton2Click(Sender: TObject);
+    procedure JvXPBar1Items1Click(Sender: TObject);
+    procedure XPBarManejoAgricola1Items1Click(Sender: TObject);
+    procedure XPBarManejoAgricola1Items0Click(Sender: TObject);
+    procedure XPBarManejoAgricola1Items2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+
   end;
 
 var
   FrmMenuPrincipal: TFrmMenuPrincipal;
+  Ctr_BtMovEstoque : string;
 
 implementation
 
 uses
      UFrmModel1, UFrmMensagemSistema, UFrmCadastroUsuario, UFrmPesquisaAuxiliar, UFrmCadastroTalhao,
   UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural, U_FachadaWSSGS1, UFrmCadastroProduto, UFrmProdutoEmbalagem,
-  UFrmPlantio;
+  UFrmPlantio, UFrmModuloControleEstoque;
 
 {$R *.dfm}
 
@@ -146,6 +149,11 @@ begin
         pCtrlMenu(Self,nil,False,0,0);
 end;
 
+procedure TFrmMenuPrincipal.FormCreate(Sender: TObject);
+begin
+        Ctr_BtMovEstoque := EmptyStr;
+end;
+
 procedure TFrmMenuPrincipal.FormResize(Sender: TObject);
 begin
       pCentralizaPanel(PnlFundoMenuPrincipal,FrmMenuPrincipal);
@@ -168,7 +176,7 @@ begin
 
 end;
 
-procedure TFrmMenuPrincipal.JvSpeedButton2Click(Sender: TObject);
+procedure TFrmMenuPrincipal.JvXPBar1Items0Click(Sender: TObject);
 begin
      try
            Application.CreateForm(TFrmPlantio,FrmPlantio);
@@ -178,29 +186,9 @@ begin
       end;
 end;
 
-procedure TFrmMenuPrincipal.JvXPBar1Items0Click(Sender: TObject);
-begin
-      try
-           Application.CreateForm(TFrmCadastroSemente,FrmCadastroSemente);
-           FrmCadastroSemente.ShowModal;
-      finally
-            FreeAndNil(FrmCadastroSemente);
-      end;
-end;
-
 procedure TFrmMenuPrincipal.JvXPBar1Items1Click(Sender: TObject);
 begin
-     try
-           Application.CreateForm(TFrmCadastroProduto,FrmCadastroProduto);
-           FrmCadastroProduto.ShowModal;
-      finally
-            FreeAndNil(FrmCadastroProduto);
-      end;
-end;
-
-procedure TFrmMenuPrincipal.JvXPBar1Items2Click(Sender: TObject);
-begin
-       try
+      try
            Application.CreateForm(TFrmModuloControleEstoque,FrmModuloControleEstoque);
            FrmModuloControleEstoque.ShowModal;
       finally
@@ -234,6 +222,38 @@ begin
              ImgConectado.Visible       := False;
              ImgDesconectado.Visible    := True;
         end;
+end;
+
+procedure TFrmMenuPrincipal.XPBarManejoAgricola1Items0Click(Sender: TObject);
+begin
+    try
+           Application.CreateForm(TFrmCadastroSemente,FrmCadastroSemente);
+           FrmCadastroSemente.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroSemente);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.XPBarManejoAgricola1Items1Click(Sender: TObject);
+begin
+     try
+           Application.CreateForm(TFrmCadastroProduto,FrmCadastroProduto);
+           FrmCadastroProduto.ShowModal;
+        finally
+            FreeAndNil(FrmCadastroProduto);
+        end;
+end;
+
+procedure TFrmMenuPrincipal.XPBarManejoAgricola1Items2Click(Sender: TObject);
+begin
+      try
+           Application.CreateForm(TFrmModuloControleEstoque,FrmModuloControleEstoque);
+           Ctr_BtMovEstoque := 'CadNF';
+           FrmModuloControleEstoque.ShowModal;
+
+      finally
+            FreeAndNil(FrmModuloControleEstoque);
+      end;
 end;
 
 procedure TFrmMenuPrincipal.XPBarManejoAgricola1Items3Click(Sender: TObject);

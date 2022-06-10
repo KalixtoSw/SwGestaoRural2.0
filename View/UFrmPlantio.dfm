@@ -9662,9 +9662,6 @@
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 430
-      ExplicitTop = 150
-      ExplicitWidth = 185
       DesignSize = (
         1200
         39)
@@ -11529,10 +11526,6 @@
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitLeft = 170
-      ExplicitTop = 170
-      ExplicitWidth = 185
-      ExplicitHeight = 41
       object FundopnlExterno: TJvGradient
         Left = 0
         Top = 0
@@ -11561,15 +11554,11 @@
           Width = 1189
           Height = 673
           Align = alClient
-          ActiveCard = CrdBtNavFinanças
+          ActiveCard = CrdBtNavPlantio
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 285
-          ExplicitTop = 120
-          ExplicitWidth = 300
-          ExplicitHeight = 200
           object CrdBtNavPlantio: TCard
             Left = 0
             Top = 0
@@ -11578,8 +11567,137 @@
             Caption = 'CrdBtNavPlantio'
             CardIndex = 0
             TabOrder = 0
-            ExplicitWidth = 185
-            ExplicitHeight = 41
+            ExplicitTop = -1
+            object pnlPlantioSuperior: TRelativePanel
+              Left = 0
+              Top = 0
+              Width = 1189
+              Height = 100
+              ControlCollection = <
+                item
+                  Control = LinePnlPlantioSuperior
+                  AlignBottomWithPanel = True
+                  AlignHorizontalCenterWithPanel = True
+                  AlignLeftWithPanel = True
+                  AlignRightWithPanel = True
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWithPanel = False
+                end
+                item
+                  Control = LbSafraVigente
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = True
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWithPanel = True
+                end
+                item
+                  Control = pnlEdtSafraVigente
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = False
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWith = LbSafraVigente
+                  AlignVerticalCenterWithPanel = False
+                  RightOf = LbSafraVigente
+                end>
+              Align = alTop
+              BevelOuter = bvNone
+              Color = clWhite
+              ParentBackground = False
+              TabOrder = 0
+              DesignSize = (
+                1189
+                100)
+              object LinePnlPlantioSuperior: TJvGradient
+                Left = 0
+                Top = 98
+                Width = 1189
+                Height = 2
+                Align = alBottom
+                StartColor = 7677746
+                EndColor = 7677746
+              end
+              object LbSafraVigente: TJvLabel
+                Left = 0
+                Top = 42
+                Width = 100
+                Height = 15
+                Caption = 'SAFRA VIGENTE   '
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                Anchors = []
+                ParentFont = False
+                Transparent = True
+                HotTrackFont.Charset = DEFAULT_CHARSET
+                HotTrackFont.Color = clWindowText
+                HotTrackFont.Height = -12
+                HotTrackFont.Name = 'Segoe UI'
+                HotTrackFont.Style = []
+              end
+              object pnlEdtSafraVigente: TJvPanel
+                Left = 100
+                Top = 33
+                Width = 250
+                Height = 32
+                Anchors = []
+                BevelOuter = bvNone
+                TabOrder = 0
+                object LineEdtSafraVigente: TJvGradient
+                  Left = 0
+                  Top = 30
+                  Width = 250
+                  Height = 2
+                  Align = alBottom
+                  StartColor = 10974208
+                  ExplicitLeft = 120
+                  ExplicitTop = 10
+                  ExplicitWidth = 100
+                end
+                object DBEdit1: TDBEdit
+                  AlignWithMargins = True
+                  Left = 3
+                  Top = 3
+                  Width = 244
+                  Height = 24
+                  Align = alClient
+                  BevelInner = bvNone
+                  BevelOuter = bvNone
+                  BorderStyle = bsNone
+                  CharCase = ecUpperCase
+                  DataField = 'frn_NomeFantasia'
+                  DataSource = DMPrincipal.DsTbFornecedor
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -19
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 0
+                  ExplicitHeight = 33
+                end
+              end
+            end
+            object PnlPlantioGrid: TRelativePanel
+              Left = 0
+              Top = 100
+              Width = 1189
+              Height = 400
+              ControlCollection = <>
+              Align = alTop
+              BevelOuter = bvNone
+              Color = 15382278
+              ParentBackground = False
+              TabOrder = 1
+              ExplicitLeft = 415
+              ExplicitTop = 335
+              ExplicitWidth = 185
+            end
           end
           object CrdBtNavInsumos: TCard
             Left = 0
@@ -11589,8 +11707,6 @@
             Caption = 'CrdBtNavInsumos'
             CardIndex = 1
             TabOrder = 1
-            ExplicitWidth = 185
-            ExplicitHeight = 41
           end
           object CrdBtNavImplementos: TCard
             Left = 0
@@ -11600,8 +11716,6 @@
             Caption = 'CrdBtNavImplementos'
             CardIndex = 2
             TabOrder = 2
-            ExplicitWidth = 185
-            ExplicitHeight = 41
           end
           object CrdBtNavAreasPlantio: TCard
             Left = 0
@@ -11611,8 +11725,6 @@
             Caption = 'CrdBtNavAreasPlantio'
             CardIndex = 3
             TabOrder = 3
-            ExplicitWidth = 185
-            ExplicitHeight = 41
           end
           object CrdBtNavFinanças: TCard
             Left = 0
@@ -11622,8 +11734,6 @@
             Caption = 'CrdBtNavFinan'#231'as'
             CardIndex = 4
             TabOrder = 4
-            ExplicitWidth = 185
-            ExplicitHeight = 41
           end
         end
       end

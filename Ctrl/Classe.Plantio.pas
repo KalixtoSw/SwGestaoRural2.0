@@ -20,6 +20,7 @@ type
                 constructor CreateObjTPlantio;
                 destructor DestroyObjTPlantio;
                 procedure pHabilitaBtsNav(Btn1, Btn2, Btn3, Btn4, Btn5 : Boolean);
+                procedure pBuscaSafraVigente;
 
         published
 
@@ -41,6 +42,11 @@ begin
 end;
 
 destructor TPlantio.DestroyObjTPlantio;
+begin
+
+end;
+
+procedure TPlantio.pBuscaSafraVigente;
 begin
 
 end;

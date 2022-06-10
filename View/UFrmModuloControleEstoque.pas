@@ -15,7 +15,7 @@ uses
   JvMaskEdit, Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, JvDateTimePicker,
   JvDBDateTimePicker, JvDBFindEdit, JvEdit, JvDBSearchEdit, Classe.NF.ControleEstoque,
   JvBaseDlg, JvDesktopAlert, JvCheckedMaskEdit, JvDatePickerEdit,
-  JvDBDatePickerEdit, System.Math, JvThread;
+  JvDBDatePickerEdit, System.Math, JvThread, UFrmMenuPrincipal;
 
 type
   TFrmModuloControleEstoque = class(TForm)
@@ -415,7 +415,14 @@ begin
         CtrlEstoque.pCtrlPosicaopnlBt3(PnlFundoBtsNav1,420);
         CtrlEstoque.pCtrlPosicaopnlBt4(PnlFundoBtsNav1,625);
         CtrlEstoque.pCtrlPosicaopnlBt5(PnlFundoBtsNav1,830);
-        CrdPrincipal.Show;
+
+        if (UFrmMenuPrincipal.Ctr_BtMovEstoque = '') then
+        begin
+                CrdPrincipal.Show;
+        end else if UFrmMenuPrincipal.Ctr_BtMovEstoque = 'CadNF' then
+                begin
+                     BtMenuCtrlEntradaNF.Click;
+                end;
 end;
 
 procedure TFrmModuloControleEstoque.Thread_NFExecute(Sender: TObject;

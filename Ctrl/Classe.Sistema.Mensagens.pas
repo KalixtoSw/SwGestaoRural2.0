@@ -64,6 +64,8 @@ begin
       13 : Result.MsgText:= 'FALHA AO MONTA COMBOBOX, ERRO: '+VMsgExterna;
       14 : Result.MsgText:= 'O VALOR NÃO PODE SER SUPERIOR A: '+VMsgExterna;
       15 : Result.MsgText:= 'DESEJA REMOVER OS TALHÕES? '+VMsgExterna;
+      16 : Result.MsgText:= 'JÁ EXISTEM SAFRAS VIGENTES NO PERÍODO INFORMADO! FAVOR INFORMAR OUTRAS DATAS '+VMsgExterna;
+      17 : Result.MsgText:= 'DATA DE INÍCIO DA SAFRA NÃO PODE SER MAIOR QUE A DATA DE TÉRMINO '+VMsgExterna;
       end;
 
       case VTipo of

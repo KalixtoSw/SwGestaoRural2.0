@@ -11,6 +11,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
       end
     end
     inherited CrdPnlPrincipal: TCardPanel
+      ActiveCard = CrdCampos
       inherited CrdConsulta: TCard
         inherited PnlPesquisa: TJvPanel
           inherited LbPesquisa: TLabel
@@ -67,6 +68,15 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
       inherited CrdCampos: TCard
         inherited PnlFundoCampos: TJvPanel
           inherited PnlFundoCamposInterno: TJvPanel
+            Left = 25
+            ExplicitLeft = 25
+            object JvSpeedButton1: TJvSpeedButton
+              Left = 545
+              Top = 115
+              Width = 121
+              Height = 62
+              OnClick = JvSpeedButton1Click
+            end
             object PnlCampo1: TJvPanel
               Left = 20
               Top = 10
@@ -124,6 +134,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 BevelInner = bvNone
                 BevelOuter = bvNone
                 BorderStyle = bsNone
+                CharCase = ecUpperCase
                 Font.Charset = ANSI_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -15
@@ -194,16 +205,15 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 Font.Height = -12
                 Font.Name = 'Segoe UI'
                 Font.Style = [fsBold]
-                ItemIndex = 0
                 ParentFont = False
                 TabOrder = 0
-                Text = 'ATIVO'
                 Items.Strings = (
                   'ATIVO'
                   'BLOQUEADO'
                   'INATIVO'
                   'CANCELADO'
-                  'FINALIZADO')
+                  'FINALIZADO'
+                  'VIGENTE')
               end
             end
             object PnlCampo3: TJvPanel
@@ -231,7 +241,7 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 ParentFont = False
                 Transparent = False
                 Layout = tlCenter
-                ExplicitWidth = 99
+                ExplicitTop = -1
               end
               object LineCampo3: TJvGradient
                 Left = 0
@@ -252,33 +262,28 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 EndColor = clWhite
                 ExplicitTop = 25
               end
-              object DtCampo3: TCalendarPicker
+              object DtCampo3: TJvDatePickerEdit
                 Tag = 3
                 Left = 0
                 Top = 22
                 Width = 300
                 Height = 23
+                Cursor = crHandPoint
                 Hint = 'sf_dtInicio'
                 Align = alTop
-                CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
-                CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
-                CalendarHeaderInfo.DaysOfWeekFont.Height = -13
-                CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
-                CalendarHeaderInfo.DaysOfWeekFont.Style = []
-                CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
-                CalendarHeaderInfo.Font.Color = clWindowText
-                CalendarHeaderInfo.Font.Height = -20
-                CalendarHeaderInfo.Font.Name = 'Segoe UI'
-                CalendarHeaderInfo.Font.Style = []
-                Color = clWindow
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clGray
-                Font.Height = -16
+                AllowNoDate = True
+                BorderStyle = bsNone
+                CharCase = ecUpperCase
+                Checked = True
+                Flat = True
+                ParentFlat = False
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -15
                 Font.Name = 'Segoe UI'
-                Font.Style = []
+                Font.Style = [fsBold]
                 ParentFont = False
                 TabOrder = 0
-                TextHint = 'Seleciona a Data'
               end
             end
             object PnlCampo4: TJvPanel
@@ -327,33 +332,28 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 EndColor = clWhite
                 ExplicitTop = 25
               end
-              object DtCampo4: TCalendarPicker
+              object DtCampo4: TJvDatePickerEdit
                 Tag = 4
                 Left = 0
                 Top = 22
                 Width = 300
                 Height = 23
+                Cursor = crHandPoint
                 Hint = 'sf_dttermino'
                 Align = alTop
-                CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
-                CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
-                CalendarHeaderInfo.DaysOfWeekFont.Height = -13
-                CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
-                CalendarHeaderInfo.DaysOfWeekFont.Style = []
-                CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
-                CalendarHeaderInfo.Font.Color = clWindowText
-                CalendarHeaderInfo.Font.Height = -20
-                CalendarHeaderInfo.Font.Name = 'Segoe UI'
-                CalendarHeaderInfo.Font.Style = []
-                Color = clWindow
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clGray
-                Font.Height = -16
+                AllowNoDate = True
+                BorderStyle = bsNone
+                ButtonFlat = True
+                Checked = True
+                Flat = True
+                ParentFlat = False
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -15
                 Font.Name = 'Segoe UI'
-                Font.Style = []
+                Font.Style = [fsBold]
                 ParentFont = False
                 TabOrder = 0
-                TextHint = 'Seleciona a Data'
               end
             end
           end
