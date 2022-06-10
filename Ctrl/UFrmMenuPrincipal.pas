@@ -116,7 +116,8 @@ implementation
 
 uses
      UFrmModel1, UFrmMensagemSistema, UFrmCadastroUsuario, UFrmPesquisaAuxiliar, UFrmCadastroTalhao,
-  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural, U_FachadaWSSGS1, UFrmCadastroProduto, UFrmProdutoEmbalagem;
+  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural, U_FachadaWSSGS1, UFrmCadastroProduto, UFrmProdutoEmbalagem,
+  UFrmPlantio;
 
 {$R *.dfm}
 
@@ -168,62 +169,13 @@ begin
 end;
 
 procedure TFrmMenuPrincipal.JvSpeedButton2Click(Sender: TObject);
-var
-        IDMov : Integer;
-        TpMov : string;
-        FDSNF,FDSNFI,FDSENTRADA,FDSENTRADAITEM : Tdatasource;
-
 begin
-        DMPrincipal.QryProcNotaFiscal.Active := True;
-        DMPrincipal.QryProcNotaFiscalItem.Active := True;
-        DMPrincipal.TbMovimentacao.Active := True;
-        DMPrincipal.TbMov_Produto.Active := True;
-        TpMov := EmptyStr;
-        IDMov := 0;
-
-        FDSNF           := DMPrincipal.DsQryProcNotaFiscal;
-        FDSNFI          := DMPrincipal.DsQryProcNotaFiscalItem;
-        FDSENTRADA      := DMPrincipal.DsTbMovimentacao;
-        FDSENTRADAITEM  := DMPrincipal.DsTbMov_Produto;
-        FDSNF.DataSet.Active := True;
-        FDSNFI.DataSet.Active := True;
-        FDSENTRADA.DataSet.Active := True;
-        FDSENTRADAITEM.DataSet.Active := True;
-
-        while not (FDSNF.DataSet.Eof) do
-        begin
-               TpMov := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
-               FDSENTRADA.DataSet.Insert;
-               FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := TpMov;
-               FDSENTRADA.DataSet.FieldByName('mov_datamov').AsDateTime := Now;
-               FDSENTRADA.DataSet.FieldByName('mov_descricao').AsString := 'MOVIMENTAÇÃO ('+TpMov+') NO ESTOQUE';
-               FDSENTRADA.DataSet.FieldByName('mov_origem').Asstring := 'MÓDULO NF';
-               FDSENTRADA.DataSet.FieldByName('nf_id').AsInteger := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
-               FDSENTRADA.DataSet.Post;
-               FDSENTRADA.DataSet.Last;
-               IDMov := FDSENTRADA.DataSet.FieldByName('mov_id').AsInteger;
-
-                while not FDSNFI.DataSet.Eof do
-                begin
-                       FDSENTRADAITEM.DataSet.Insert;
-                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := IDMov;
-                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := FDSNFI.DataSet.FieldByName('prd_idproduto').AsInteger;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoTotal').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_tipo').AsString := TpMov;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdContabil').AsFloat := IfThen(TpMov = 'S',(FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat * -1),FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat);
-
-                       FDSENTRADAITEM.DataSet.Post;
-                       FDSNFI.DataSet.Next;
-                end;
-                FDSNF.DataSet.Edit;
-                FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger := 1;
-                FDSNF.DataSet.Post;
-                FDSNF.DataSet.Next;
-        end;
-
-      Application.Terminate;
+     try
+           Application.CreateForm(TFrmPlantio,FrmPlantio);
+           FrmPlantio.ShowModal;
+      finally
+            FreeAndNil(FrmPlantio);
+      end;
 end;
 
 procedure TFrmMenuPrincipal.JvXPBar1Items0Click(Sender: TObject);
