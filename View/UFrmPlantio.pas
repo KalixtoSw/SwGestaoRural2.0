@@ -7,7 +7,9 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, JvExExtCtrls,
   JvExtComponent, JvPanel, Vcl.Imaging.jpeg, Vcl.Imaging.pngimage, JvExControls,
   JvGradient, Vcl.WinXCtrls, JvSpeedButton, Vcl.WinXPanels, Classe.Plantio,
-  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, JvLabel, JvExStdCtrls, JvEdit;
+  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, JvLabel, JvExStdCtrls, JvEdit, Data.DB,
+  Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
+  JvExMask, JvToolEdit, JvMaskEdit;
 
 type
   TFrmPlantio = class(TForm)
@@ -41,7 +43,15 @@ type
     LbSafraVigente: TJvLabel;
     pnlEdtSafraVigente: TJvPanel;
     LineEdtSafraVigente: TJvGradient;
-    DBEdit1: TDBEdit;
+    EdtSafraVigente: TJvEdit;
+    LinePnlDbgrd: TJvGradient;
+    DbGrid: TJvDBUltimGrid;
+    pnlPlantioFields: TRelativePanel;
+    JvDBNavigator1: TJvDBNavigator;
+    pnlPlantioDescricao: TRelativePanel;
+    LbPlt_Descricao: TLabel;
+    EdtPlt_Descricao: TJvDBMaskEdit;
+    LinePlt_Descricao: TJvGradient;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -53,6 +63,10 @@ type
     { Public declarations }
         Plantio : TPlantio;
   end;
+
+  type
+
+  NewTypeNav = class( TJvDBNavigator );
 
 var
   FrmPlantio: TFrmPlantio;
@@ -77,10 +91,17 @@ end;
 procedure TFrmPlantio.BtNavPlantioClick(Sender: TObject);
 begin
        // Plantio.pHabilitaBtsNav(False,True,False,False,False);
+        EdtSafraVigente.Text :=   Plantio.fBuscaSafraVigente;
 end;
 
 procedure TFrmPlantio.FormCreate(Sender: TObject);
 begin
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbInsert].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavAdd.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbPost].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavSave.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbDelete].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavDelete.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbEdit].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavEditar.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbCancel].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavCancel.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbRefresh].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavRefresh.bmp');
         Plantio := TPlantio.CreateObjTPlantio;
 end;
 

@@ -218,7 +218,6 @@ object DMPrincipal: TDMPrincipal
   end
   object QryProduto: TFDQuery
     ActiveStoredUsage = []
-    Active = True
     AutoCalcFields = False
     ObjectView = False
     IndexesActive = False
@@ -616,7 +615,6 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbFornecedor: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -785,7 +783,6 @@ object DMPrincipal: TDMPrincipal
     Top = 15
   end
   object TbProdutoEmbalagem: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -942,6 +939,7 @@ object DMPrincipal: TDMPrincipal
     object TbMov_Produtomp_id: TFDAutoIncField
       FieldName = 'mp_id'
       Origin = 'mp_id'
+      ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
     object TbMov_Produtoprd_idproduto: TIntegerField
@@ -961,10 +959,10 @@ object DMPrincipal: TDMPrincipal
       Precision = 10
       Size = 3
     end
-    object TbMov_Produtomp_qtdTotal: TBCDField
+    object TbMov_Produtomp_qtdContabil: TBCDField
       AutoGenerateValue = arDefault
-      FieldName = 'mp_qtdTotal'
-      Origin = 'mp_qtdTotal'
+      FieldName = 'mp_qtdContabil'
+      Origin = 'mp_qtdContabil'
       Precision = 10
       Size = 3
     end
@@ -987,13 +985,6 @@ object DMPrincipal: TDMPrincipal
       Precision = 10
       Size = 2
     end
-    object TbMov_Produtomp_qtdContabil: TBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'mp_qtdContabil'
-      Origin = 'mp_qtdContabil'
-      Precision = 10
-      Size = 3
-    end
     object TbMov_Produtomp_tipo: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mp_tipo'
@@ -1007,7 +998,6 @@ object DMPrincipal: TDMPrincipal
     Top = 435
   end
   object TbNotaFiscalP: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     DetailFields = 'nf_id'
@@ -1214,7 +1204,6 @@ object DMPrincipal: TDMPrincipal
     Top = 395
   end
   object TbNotaFiscalItemP: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     MasterSource = DsTbNotaFiscalP
@@ -1521,9 +1510,9 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.CheckUpdatable = False
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'SELECT * FROM nota_fiscal_item')
+      'SELECT * FROM nota_fiscal_item WHERE prd_idproduto > 0')
     Left = 945
-    Top = 305
+    Top = 315
     object QryProcNotaFiscalItemnfi_id: TFDAutoIncField
       FieldName = 'nfi_id'
       Origin = 'nfi_id'
@@ -1576,5 +1565,30 @@ object DMPrincipal: TDMPrincipal
     DataSet = QryProcNotaFiscalItem
     Left = 945
     Top = 355
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 1170
+    Top = 25
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'USE gr_desenv;'
+      ''
+      'SELECT'
+      '  user_idUsuario,'
+      '  user_idPessoa,'
+      '  user_dtcriacao,'
+      '  user_usuario,'
+      '  user_senha,'
+      '  user_dataUltAcesso,'
+      '  user_celular,'
+      '  user_email,'
+      '  user_nomepessoa,'
+      '  user_tipopessoa'
+      'FROM Usuario;')
+    Left = 1015
+    Top = 25
   end
 end

@@ -34,7 +34,6 @@ type
     ComboBox1: TComboBox;
     DtCampo3: TJvDatePickerEdit;
     DtCampo4: TJvDatePickerEdit;
-    JvSpeedButton1: TJvSpeedButton;
     procedure BtSalvarClick(Sender: TObject);
     procedure BtCancelarClick(Sender: TObject);
     procedure BtExcluirClick(Sender: TObject);
@@ -43,7 +42,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure JvSpeedButton1Click(Sender: TObject);
   private    { Private declarations }
     Safra: TSafra;
   public    { Public declarations }
@@ -119,14 +117,6 @@ begin
   inherited;
 
       Safra.setFrmOnShow;
-end;
-
-procedure TFrmCadastroSafra.JvSpeedButton1Click(Sender: TObject);
-begin
-  inherited;
-
-         ShowMessage(IntToStr(fValidaDtMaiorDtMenor(DtCampo3.Date,DtCampo4.Date)));
-
 end;
 
 end.

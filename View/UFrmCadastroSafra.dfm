@@ -70,13 +70,6 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
           inherited PnlFundoCamposInterno: TJvPanel
             Left = 25
             ExplicitLeft = 25
-            object JvSpeedButton1: TJvSpeedButton
-              Left = 545
-              Top = 115
-              Width = 121
-              Height = 62
-              OnClick = JvSpeedButton1Click
-            end
             object PnlCampo1: TJvPanel
               Left = 20
               Top = 10

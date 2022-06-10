@@ -7,7 +7,6 @@
   ClientHeight = 823
   ClientWidth = 1250
   Color = clHotLight
-  TransparentColor = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -15,6 +14,7 @@
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  Scaled = False
   OnCreate = FormCreate
   OnResize = FormResize
   PixelsPerInch = 96
@@ -11606,8 +11606,11 @@
               Align = alTop
               BevelOuter = bvNone
               Color = clWhite
+              UseDockManager = False
+              FullRepaint = False
               ParentBackground = False
               TabOrder = 0
+              ExplicitTop = -1
               DesignSize = (
                 1189
                 100)
@@ -11659,27 +11662,27 @@
                   ExplicitTop = 10
                   ExplicitWidth = 100
                 end
-                object DBEdit1: TDBEdit
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 3
-                  Width = 244
-                  Height = 24
+                object EdtSafraVigente: TJvEdit
+                  Left = 0
+                  Top = 0
+                  Width = 250
+                  Height = 30
+                  Flat = True
+                  ParentFlat = False
+                  UseFixedPopup = False
                   Align = alClient
-                  BevelInner = bvNone
-                  BevelOuter = bvNone
+                  AutoSelect = False
                   BorderStyle = bsNone
-                  CharCase = ecUpperCase
-                  DataField = 'frn_NomeFantasia'
-                  DataSource = DMPrincipal.DsTbFornecedor
+                  Color = clWhite
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -19
+                  Font.Height = -16
                   Font.Name = 'Segoe UI'
-                  Font.Style = []
+                  Font.Style = [fsBold]
                   ParentFont = False
+                  ReadOnly = True
                   TabOrder = 0
-                  ExplicitHeight = 33
+                  Text = ''
                 end
               end
             end
@@ -11687,16 +11690,259 @@
               Left = 0
               Top = 100
               Width = 1189
-              Height = 400
-              ControlCollection = <>
+              Height = 300
+              ControlCollection = <
+                item
+                  Control = LinePnlDbgrd
+                  AlignBottomWithPanel = True
+                  AlignHorizontalCenterWithPanel = True
+                  AlignLeftWithPanel = True
+                  AlignRightWithPanel = True
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWithPanel = False
+                end
+                item
+                  Control = DbGrid
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = True
+                  AlignLeftWithPanel = True
+                  AlignRightWithPanel = True
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWithPanel = False
+                end>
               Align = alTop
               BevelOuter = bvNone
-              Color = 15382278
+              Color = clWhite
               ParentBackground = False
               TabOrder = 1
-              ExplicitLeft = 415
-              ExplicitTop = 335
+              object LinePnlDbgrd: TJvGradient
+                Left = 0
+                Top = 298
+                Width = 1189
+                Height = 2
+                Align = alBottom
+                StartColor = 7677746
+                EndColor = 7677746
+              end
+              object DbGrid: TJvDBUltimGrid
+                Left = 0
+                Top = 0
+                Width = 1189
+                Height = 298
+                Cursor = crHandPoint
+                Align = alClient
+                BorderStyle = bsNone
+                Color = clWhite
+                DataSource = DMPrincipal.DsTbPlantio
+                DrawingStyle = gdsGradient
+                GradientEndColor = 9323579
+                GradientStartColor = 9323579
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = []
+                Options = [dgTitles, dgColumnResize, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                ParentFont = False
+                TabOrder = 0
+                TitleFont.Charset = ANSI_CHARSET
+                TitleFont.Color = clWhite
+                TitleFont.Height = -12
+                TitleFont.Name = 'Segoe UI'
+                TitleFont.Style = [fsBold]
+                AutoAppend = False
+                ClearSelection = False
+                AlternateRowColor = 8279822
+                AlternateRowFontColor = clWhite
+                SelectColumnsDialogStrings.Caption = 'Select columns'
+                SelectColumnsDialogStrings.OK = '&OK'
+                SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
+                CellHintPosition = gchpMouse
+                EditControls = <>
+                RowsHeight = 19
+                TitleRowHeight = 19
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'plt_Descricao'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'DETALHE PLANTIO'
+                    Width = 350
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'plt_dtInicio'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'IN'#205'CIO'
+                    Width = 120
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'plt_dtTermino'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'T'#201'RMINO'
+                    Width = 120
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'plt_areaTotal'
+                    Title.Caption = #193'REA TOTAL'
+                    Width = 120
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'plt_areaPlantada'
+                    Title.Caption = #193'REA PLANTADA'
+                    Width = 120
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'plt_Status'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'STATUS'
+                    Width = 150
+                    Visible = True
+                  end>
+              end
+            end
+            object pnlPlantioFields: TRelativePanel
+              Left = 0
+              Top = 400
+              Width = 1189
+              Height = 273
+              ControlCollection = <
+                item
+                  Control = JvDBNavigator1
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = True
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = True
+                  AlignVerticalCenterWithPanel = False
+                end
+                item
+                  Control = pnlPlantioDescricao
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = True
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWithPanel = False
+                  Below = JvDBNavigator1
+                end>
+              Align = alClient
+              BevelOuter = bvNone
+              TabOrder = 2
+              ExplicitLeft = 435
+              ExplicitTop = 485
               ExplicitWidth = 185
+              ExplicitHeight = 41
+              DesignSize = (
+                1189
+                273)
+              object JvDBNavigator1: TJvDBNavigator
+                Left = 0
+                Top = 0
+                Width = 498
+                Height = 64
+                Cursor = crHandPoint
+                DataSource = DMPrincipal.DsTbPlantio
+                VisibleButtons = [nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
+                Anchors = []
+                Flat = True
+                TabOrder = 0
+              end
+              object pnlPlantioDescricao: TRelativePanel
+                Left = 0
+                Top = 64
+                Width = 300
+                Height = 39
+                ControlCollection = <
+                  item
+                    Control = LbPlt_Descricao
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = True
+                    AlignRightWithPanel = False
+                    AlignTopWithPanel = True
+                    AlignVerticalCenterWithPanel = False
+                  end
+                  item
+                    Control = EdtPlt_Descricao
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = False
+                    AlignRightWithPanel = False
+                    AlignTopWithPanel = False
+                    AlignVerticalCenterWithPanel = False
+                    Below = LbPlt_Descricao
+                  end
+                  item
+                    Control = LinePlt_Descricao
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = True
+                    AlignRightWithPanel = True
+                    AlignTopWithPanel = False
+                    AlignVerticalCenterWithPanel = False
+                    Below = EdtPlt_Descricao
+                  end>
+                Anchors = []
+                BevelOuter = bvNone
+                TabOrder = 1
+                DesignSize = (
+                  300
+                  39)
+                object LbPlt_Descricao: TLabel
+                  Left = 0
+                  Top = 0
+                  Width = 124
+                  Height = 15
+                  Anchors = []
+                  Caption = 'DETALHE DO PLANTIO'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
+                object EdtPlt_Descricao: TJvDBMaskEdit
+                  Left = -1
+                  Top = 15
+                  Width = 300
+                  Height = 23
+                  Anchors = []
+                  BevelWidth = 5
+                  BorderStyle = bsNone
+                  CharCase = ecUpperCase
+                  DataField = 'plt_Descricao'
+                  DataSource = DMPrincipal.DsTbPlantio
+                  Flat = True
+                  ParentFlat = False
+                  MaxLength = 75
+                  TabOrder = 0
+                  EditMask = ''
+                end
+                object LinePlt_Descricao: TJvGradient
+                  Left = 0
+                  Top = 38
+                  Width = 300
+                  Height = 2
+                  Align = alCustom
+                  StartColor = 10974208
+                end
+              end
             end
           end
           object CrdBtNavInsumos: TCard
