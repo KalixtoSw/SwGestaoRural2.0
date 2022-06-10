@@ -6,7 +6,7 @@ uses
      Classe.FunctionsSQL, Classe.Functions, System.SysUtils, Vcl.Forms,
   Vcl.Mask, Vcl.WinXCalendars, JvBaseEdits, Vcl.StdCtrls, Vcl.Graphics,
   System.Variants,JvCombobox, JvDBUltimGrid, Vcl.WinXPanels, JvPanel,
-  Vcl.Dialogs, JvEdit;
+  Vcl.Dialogs, JvEdit, JvDatePickerEdit;
 {-------------BLOCO DE FUNÇÕES-------------------------------------------------}
      function fEventoCancelar(FrmPadrao : TForm;Dbgrd : TJvDBUltimGrid; Tb : String; iDkey : String; Ncampos : Integer): Boolean;{1}
      function fEventoSalvar(TpActSql : string;FrmPadrao : Tform;Dbgrd : TJvDBUltimGrid; Tb : String;IdPan : string; IdKey : String; NCampos : Integer): Boolean;{2}
@@ -171,6 +171,19 @@ Begin
                             end;
                         End;
                 end;
+
+                if form.Components[I] is TJvDatePickerEdit then
+                begin
+                        if (Copy((form.Components[I] as TJvDatePickerEdit).Name,1,3) = 'Obr' ) then
+                        Begin
+                            if ((form.Components[I] as TJvDatePickerEdit).Date) = null then
+                            begin
+                                (form.Components[I] as TJvDatePickerEdit).Color := clRed;
+                                 Result := False;
+                            end;
+                        End;
+                end;
+
                 if form.Components[I] is TJvCalcEdit then
                 begin
                         if (Copy((form.Components[I] as TJvCalcEdit).Name,1,3) = 'Obr' ) then
@@ -254,9 +267,30 @@ Begin
                     begin
 
                         FieldsValues[(form.Components[I] as TCalendarPicker).Tag]  := QuotedStr(FormatDateTime('yyyy-mm-dd',(form.Components[I] as TCalendarPicker).date));
+                        FieldsDB[(form.Components[I] as TCalendarPicker).Tag]      := (form.Components[I] as TCalendarPicker).HelpKeyword;
+                    end else if ((form.Components[I] as TCalendarPicker).HelpKeyword = EmptyStr) then
+                    begin
+
+                        FieldsValues[(form.Components[I] as TCalendarPicker).Tag]  := QuotedStr(FormatDateTime('yyyy-mm-dd',(form.Components[I] as TCalendarPicker).date));
                         FieldsDB[(form.Components[I] as TCalendarPicker).Tag]      := (form.Components[I] as TCalendarPicker).Hint;
                     end;
                 end;
+
+                if form.Components[I] is TJvDatePickerEdit then
+                begin
+                    if not((form.Components[I] as TJvDatePickerEdit).HelpKeyword = EmptyStr) then
+                    begin
+
+                        FieldsValues[(form.Components[I] as TJvDatePickerEdit).Tag]  := QuotedStr(FormatDateTime('yyyy-mm-dd',(form.Components[I] as TJvDatePickerEdit).date));
+                        FieldsDB[(form.Components[I] as TJvDatePickerEdit).Tag]      := (form.Components[I] as TJvDatePickerEdit).HelpKeyword;
+                    end else if ((form.Components[I] as TJvDatePickerEdit).HelpKeyword = EmptyStr) then
+                    begin
+
+                        FieldsValues[(form.Components[I] as TJvDatePickerEdit).Tag]  := QuotedStr(FormatDateTime('yyyy-mm-dd',(form.Components[I] as TJvDatePickerEdit).date));
+                        FieldsDB[(form.Components[I] as TJvDatePickerEdit).Tag]      := (form.Components[I] as TJvDatePickerEdit).Hint;
+                    end;
+                end;
+
                   if form.Components[I] is TJvCalcEdit then
                     begin
                     if ((form.Components[I] as TJvCalcEdit).HelpKeyword = EmptyStr) then
@@ -313,6 +347,12 @@ Begin
                 begin
                      (form.Components[I] as TCalendarPicker).Date := StrToDate((FormatDateTime('dd/mm/yyyy',DMPrincipal.DsCmdSql_1.DataSet.FieldByName(((form.Components[I] as TCalendarPicker).Hint)).AsDateTime)));
                 end;
+
+                if (form.Components[I] is TJvDatePickerEdit) then
+                begin
+                     (form.Components[I] as TJvDatePickerEdit).Date := StrToDate((FormatDateTime('dd/mm/yyyy',DMPrincipal.DsCmdSql_1.DataSet.FieldByName(((form.Components[I] as TJvDatePickerEdit).Hint)).AsDateTime)));
+                end;
+
                 if (form.Components[I] is TJvCalcEdit) then
                 begin
                      (form.Components[I] as TJvCalcEdit).Value := DMPrincipal.DsCmdSql_1.DataSet.FieldByName(((form.Components[I] as TJvCalcEdit).Hint)).AsFloat;
@@ -357,6 +397,14 @@ Begin
                         case TpClear of
                             1: (form.Components[I] as TMemo).Lines.Text    :=  EmptyStr;
                             2: (form.Components[I] as TMemo).color   :=  clWhite;
+                        end;
+                end;
+
+                 if form.Components[I] is TJvDatePickerEdit then
+                begin
+                        case TpClear of
+                            1: (form.Components[I] as TJvDatePickerEdit).Date    :=  0;
+                            2: (form.Components[I] as TJvDatePickerEdit).color   :=  clWhite;
                         end;
                 end;
 

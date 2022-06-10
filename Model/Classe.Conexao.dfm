@@ -1493,7 +1493,6 @@ object DMPrincipal: TDMPrincipal
   end
   object QryProcNotaFiscalItem: TFDQuery
     ActiveStoredUsage = []
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     MasterSource = DsQryProcNotaFiscal
@@ -1566,5 +1565,30 @@ object DMPrincipal: TDMPrincipal
     DataSet = QryProcNotaFiscalItem
     Left = 945
     Top = 355
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 1170
+    Top = 25
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'USE gr_desenv;'
+      ''
+      'SELECT'
+      '  user_idUsuario,'
+      '  user_idPessoa,'
+      '  user_dtcriacao,'
+      '  user_usuario,'
+      '  user_senha,'
+      '  user_dataUltAcesso,'
+      '  user_celular,'
+      '  user_email,'
+      '  user_nomepessoa,'
+      '  user_tipopessoa'
+      'FROM Usuario;')
+    Left = 1015
+    Top = 25
   end
 end

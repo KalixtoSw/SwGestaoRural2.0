@@ -240,6 +240,8 @@ type
     TbMov_Produtomp_precoCompra: TBCDField;
     TbMov_Produtomp_precoTotal: TBCDField;
     TbMov_Produtomp_tipo: TStringField;
+    DataSource1: TDataSource;
+    FDQuery1: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

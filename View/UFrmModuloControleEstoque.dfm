@@ -4908,6 +4908,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           FieldName = 'nf_dtvencimento'
                           Title.Alignment = taCenter
                           Title.Caption = 'VENCIMENTO'
+                          Width = 64
                           Visible = True
                         end
                         item
@@ -4915,6 +4916,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Expanded = False
                           FieldName = 'nf_vlrprodutos'
                           Title.Caption = 'VALOR PRODUTOS'
+                          Width = 64
                           Visible = True
                         end
                         item
@@ -4922,6 +4924,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Expanded = False
                           FieldName = 'nf_vlrtotal'
                           Title.Caption = 'VALOR TOTAL'
+                          Width = 64
                           Visible = True
                         end>
                     end

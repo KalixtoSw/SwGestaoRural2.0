@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, JvExExtCtrls,
   JvExtComponent, JvPanel, Vcl.Imaging.jpeg, Vcl.Imaging.pngimage, JvExControls,
-  JvGradient, Vcl.WinXCtrls, JvSpeedButton, Vcl.WinXPanels, Classe.Plantio;
+  JvGradient, Vcl.WinXCtrls, JvSpeedButton, Vcl.WinXPanels, Classe.Plantio,
+  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, JvLabel, JvExStdCtrls, JvEdit;
 
 type
   TFrmPlantio = class(TForm)
@@ -34,6 +35,13 @@ type
     CrdBtNavImplementos: TCard;
     CrdBtNavAreasPlantio: TCard;
     CrdBtNavFinanças: TCard;
+    pnlPlantioSuperior: TRelativePanel;
+    PnlPlantioGrid: TRelativePanel;
+    LinePnlPlantioSuperior: TJvGradient;
+    LbSafraVigente: TJvLabel;
+    pnlEdtSafraVigente: TJvPanel;
+    LineEdtSafraVigente: TJvGradient;
+    DBEdit1: TDBEdit;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -52,7 +60,7 @@ var
 implementation
 
 uses
-     Classe.Functions;
+     Classe.Functions, Classe.Conexao;
 
 {$R *.dfm}
 
@@ -84,7 +92,6 @@ begin
         pnlFundoInterno.Left    := 5;
         pnlFundoInterno.top     :=  5;
         pMakeRounded(pnlFundoInterno);
-
 end;
 
 end.

@@ -16,6 +16,7 @@
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
@@ -1844,8 +1845,9 @@
             Left = 0
             Top = 48
             Width = 200
-            Height = 120
+            Height = 32
             Caption = 'PRATELEIRA DE INSUMOS'
+            Collapsed = True
             Colors.BorderColor = 10780674
             Colors.CheckedFrameColor = 14934499
             Colors.FocusedFrameColor = 8279822
@@ -1857,15 +1859,15 @@
             Items = <
               item
                 Caption = 'GEN'#201'TICA DE CULTIVARES'
-                OnClick = JvXPBar1Items0Click
+                OnClick = XPBarManejoAgricola1Items0Click
               end
               item
                 Caption = 'CADASTRO DE PRODUTO'
-                OnClick = JvXPBar1Items1Click
+                OnClick = XPBarManejoAgricola1Items1Click
               end
               item
                 Caption = 'COMPRAS DE INSUMOS'
-                OnClick = JvXPBar1Items2Click
+                OnClick = XPBarManejoAgricola1Items2Click
               end
               item
                 Caption = 'CADASTRO DE EMBALAGEM'
@@ -1891,6 +1893,54 @@
             TopSpace = 0
             Align = alTop
             ParentFont = False
+            ExplicitTop = 50
+          end
+          object JvXPBar1: TJvXPBar
+            Left = 0
+            Top = 80
+            Width = 200
+            Height = 32
+            Caption = 'M'#211'DULOS'
+            Collapsed = True
+            Colors.BorderColor = 10780674
+            Colors.CheckedFrameColor = 14934499
+            Colors.FocusedFrameColor = 8279822
+            Colors.BodyColor = -4862336
+            Colors.BodyBorderColor = 8279822
+            Colors.GradientFrom = 10780674
+            Colors.GradientTo = 8279822
+            Colors.SeparatorColor = 8279822
+            Items = <
+              item
+                Caption = 'GEST'#195'O DE CULTIVARES'
+                OnClick = JvXPBar1Items0Click
+              end
+              item
+                Caption = 'CONTROLE ESTOQUE'
+                OnClick = JvXPBar1Items1Click
+              end>
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 15000804
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            HeaderFont.Charset = DEFAULT_CHARSET
+            HeaderFont.Color = 37569
+            HeaderFont.Height = -12
+            HeaderFont.Name = 'Segoe UI'
+            HeaderFont.Style = [fsBold]
+            HeaderHeight = 30
+            HeaderRounded = False
+            HotTrackColor = 15000804
+            OwnerDraw = False
+            RollDelay = 10
+            ShowItemFrame = False
+            RoundedItemFrame = 0
+            TopSpace = 0
+            Align = alTop
+            ParentFont = False
+            ExplicitTop = 168
+            ExplicitHeight = 40
           end
         end
         object CrdBtFerramentas: TCard
@@ -2085,21 +2135,6 @@
         CardIndex = 0
         TabOrder = 0
         OnMouseEnter = CrdDashboardMouseEnter
-        object JvSpeedButton1: TJvSpeedButton
-          Left = 375
-          Top = 195
-          Width = 166
-          Height = 101
-          Caption = 'CONTROLE DE ESTOQUE'
-          OnClick = JvXPBar1Items2Click
-        end
-        object JvSpeedButton2: TJvSpeedButton
-          Left = 650
-          Top = 195
-          Width = 171
-          Height = 25
-          OnClick = JvSpeedButton2Click
-        end
         object PnlIndicadoresAgricolas: TJvPanel
           Left = 0
           Top = 0
