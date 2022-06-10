@@ -10,7 +10,7 @@ uses
   JvExControls, JvSpeedButton, Vcl.ExtCtrls, JvExExtCtrls, JvExtComponent,
   JvPanel, JvGradient, JvExMask, JvToolEdit, JvBaseEdits, JvExStdCtrls,
   JvCombobox, Vcl.WinXCalendars, Classe.Safra, JvMaskEdit, JvCheckedMaskEdit,
-  JvDatePickerEdit;
+  JvDatePickerEdit, Classe.Functions;
 
 type
   TFrmCadastroSafra = class(TFrmModel1)
@@ -34,6 +34,7 @@ type
     ComboBox1: TComboBox;
     DtCampo3: TJvDatePickerEdit;
     DtCampo4: TJvDatePickerEdit;
+    JvSpeedButton1: TJvSpeedButton;
     procedure BtSalvarClick(Sender: TObject);
     procedure BtCancelarClick(Sender: TObject);
     procedure BtExcluirClick(Sender: TObject);
@@ -42,7 +43,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure JvSpeedButton1Click(Sender: TObject);
   private    { Private declarations }
     Safra: TSafra;
   public    { Public declarations }
@@ -118,12 +118,6 @@ begin
   inherited;
 
       Safra.setFrmOnShow;
-end;
-
-procedure TFrmCadastroSafra.JvSpeedButton1Click(Sender: TObject);
-begin
-  inherited;
-        safra.fValidaSafraVigente;
 end;
 
 end.

@@ -240,8 +240,19 @@ type
     TbMov_Produtomp_precoCompra: TBCDField;
     TbMov_Produtomp_precoTotal: TBCDField;
     TbMov_Produtomp_tipo: TStringField;
-    DataSource1: TDataSource;
-    FDQuery1: TFDQuery;
+    DsQryTbSafra: TDataSource;
+    QryTbSafra: TFDQuery;
+    TbPlantio: TFDTable;
+    DsTbPlantio: TDataSource;
+    TbPlantioplt_id: TFDAutoIncField;
+    TbPlantioplt_dtcriacao: TSQLTimeStampField;
+    TbPlantioplt_Descricao: TStringField;
+    TbPlantioplt_dtInicio: TDateField;
+    TbPlantioplt_dtTermino: TDateField;
+    TbPlantioplt_areaTotal: TBCDField;
+    TbPlantioplt_areaPlantada: TBCDField;
+    TbPlantioplt_Status: TStringField;
+    TbPlantiosf_IdSafra: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

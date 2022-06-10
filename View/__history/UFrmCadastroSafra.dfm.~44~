@@ -75,7 +75,6 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
               Top = 115
               Width = 121
               Height = 62
-              OnClick = JvSpeedButton1Click
             end
             object PnlCampo1: TJvPanel
               Left = 20
@@ -205,16 +204,15 @@ inherited FrmCadastroSafra: TFrmCadastroSafra
                 Font.Height = -12
                 Font.Name = 'Segoe UI'
                 Font.Style = [fsBold]
-                ItemIndex = 0
                 ParentFont = False
                 TabOrder = 0
-                Text = 'ATIVO'
                 Items.Strings = (
                   'ATIVO'
                   'BLOQUEADO'
                   'INATIVO'
                   'CANCELADO'
-                  'FINALIZADO')
+                  'FINALIZADO'
+                  'VIGENTE')
               end
             end
             object PnlCampo3: TJvPanel

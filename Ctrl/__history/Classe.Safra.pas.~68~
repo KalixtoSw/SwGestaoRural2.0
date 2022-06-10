@@ -96,14 +96,17 @@ var
         SqlCond,SqlAux : string;
         VlrIdSafra : Integer;
 begin
-        SqlAux:= IfThen(InsUpd = 'INSERT','','AND sf_IdSafra <> '+inttostr(VlrIdSafra));
 
         VlrIdSafra := Dbgrd.DataSource.DataSet.FieldByName('sf_IdSafra').AsInteger;
-        SqlAux := 'AND sf_IdSafra <> '+VlrIdSafra;
+
+        if InsUpd = 'INSERT' then
+        begin
+             SqlAux     :=   '';
+        end else begin
+             SqlAux     :=   ' AND sf_IdSafra <> '+inttostr(VlrIdSafra);
+        end;
 
         ShowMessage(IntToStr(VlrIdSafra));
-
-
 
         if FormatDateTime('yyyy-mm-dd',FDtInicioSafra.Date ) > '2000-12-31'  then
         begin

@@ -106,15 +106,11 @@ begin
              SqlAux     :=   ' AND sf_IdSafra <> '+inttostr(VlrIdSafra);
         end;
 
-        ShowMessage(IntToStr(VlrIdSafra));
-
         if FormatDateTime('yyyy-mm-dd',FDtInicioSafra.Date ) > '2000-12-31'  then
         begin
 
         SqlCond := 'SELECT Count(*) AS Count FROM Safra s WHERE '+QuotedStr(FormatDateTime('yyyy-mm-dd',FDtInicioSafra.date))+''+
         ' BETWEEN s.sf_dtInicio AND s.sf_dttermino AND sf_Status = ''ATIVO'''+SqlAux;
-
-        ShowMessage(SqlCond);
         Result := ifthen(fMontaQryTempExec(SqlCond).FieldByName('Count').AsInteger > 0,1,0);
 
         end;

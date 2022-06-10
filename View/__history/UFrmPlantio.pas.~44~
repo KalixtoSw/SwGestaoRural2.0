@@ -7,7 +7,9 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, JvExExtCtrls,
   JvExtComponent, JvPanel, Vcl.Imaging.jpeg, Vcl.Imaging.pngimage, JvExControls,
   JvGradient, Vcl.WinXCtrls, JvSpeedButton, Vcl.WinXPanels, Classe.Plantio,
-  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, JvLabel, JvExStdCtrls, JvEdit;
+  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, JvLabel, JvExStdCtrls, JvEdit, Data.DB,
+  Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
+  JvExMask, JvToolEdit, JvMaskEdit;
 
 type
   TFrmPlantio = class(TForm)
@@ -41,21 +43,30 @@ type
     LbSafraVigente: TJvLabel;
     pnlEdtSafraVigente: TJvPanel;
     LineEdtSafraVigente: TJvGradient;
-    DBEdit1: TDBEdit;
-    JvEdit1: TJvEdit;
+    EdtSafraVigente: TJvEdit;
+    LinePnlDbgrd: TJvGradient;
+    DbGrid: TJvDBUltimGrid;
+    pnlPlantioFields: TRelativePanel;
+    JvDBNavigator1: TJvDBNavigator;
+    pnlPlantioDescricao: TRelativePanel;
+    Label1: TLabel;
+    EdtPlt_Descricao: TJvDBMaskEdit;
+    JvGradient1: TJvGradient;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtNavPlantioClick(Sender: TObject);
     procedure BtNavCtrlInsumosClick(Sender: TObject);
-    procedure DBEdit1Change(Sender: TObject);
-    procedure JvEdit1Change(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
         Plantio : TPlantio;
   end;
+
+  type
+
+  NewTypeNav = class( TJvDBNavigator );
 
 var
   FrmPlantio: TFrmPlantio;
@@ -80,25 +91,14 @@ end;
 procedure TFrmPlantio.BtNavPlantioClick(Sender: TObject);
 begin
        // Plantio.pHabilitaBtsNav(False,True,False,False,False);
-end;
-
-procedure TFrmPlantio.DBEdit1Change(Sender: TObject);
-var
-  vl_label : TLabel; //variável do tipo Label
-begin
-  vl_label := TLabel.Create(self); //criamos um label
-  with vl_label do
-  begin
-    Font.Name := TEdit(sender).Font.Name; //pegamos a fonte usada no edit
-    Caption := TEdit(sender).Text; //pegamos o conteúdo do edit
-    SendMessage(TEdit(sender).Handle, EM_SETMARGINS, EC_LEFTMARGIN,
-    (TEdit(sender).Width-vl_label.Width) div 2); //centraliza no label e retorna para o edit
-  end;
-  vl_label.Free;
+        EdtSafraVigente.Text :=   Plantio.fBuscaSafraVigente;
 end;
 
 procedure TFrmPlantio.FormCreate(Sender: TObject);
 begin
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbInsert].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavAdd.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbPost].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavSave.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbDelete].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavDelete.bmp');
         Plantio := TPlantio.CreateObjTPlantio;
 end;
 
@@ -110,21 +110,6 @@ begin
         pnlFundoInterno.Left    := 5;
         pnlFundoInterno.top     :=  5;
         pMakeRounded(pnlFundoInterno);
-end;
-
-procedure TFrmPlantio.JvEdit1Change(Sender: TObject);
-var
-  vl_label : TLabel; //variável do tipo Label
-begin
-  vl_label := TLabel.Create(self); //criamos um label
-  with vl_label do
-  begin
-    Font.Name := TEdit(sender).Font.Name; //pegamos a fonte usada no edit
-    Caption := TEdit(sender).Text; //pegamos o conteúdo do edit
-    SendMessage(TEdit(sender).Handle, EM_SETMARGINS, EC_LEFTMARGIN,
-    (TEdit(sender).Width-vl_label.Width) div 2); //centraliza no label e retorna para o edit
-  end;
-  vl_label.Free;
 end;
 
 end.

@@ -1566,29 +1566,91 @@ object DMPrincipal: TDMPrincipal
     Left = 945
     Top = 355
   end
-  object DataSource1: TDataSource
-    DataSet = FDQuery1
+  object DsQryTbSafra: TDataSource
+    DataSet = QryTbSafra
     Left = 1170
     Top = 25
   end
-  object FDQuery1: TFDQuery
+  object QryTbSafra: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'USE gr_desenv;'
-      ''
-      'SELECT'
-      '  user_idUsuario,'
-      '  user_idPessoa,'
-      '  user_dtcriacao,'
-      '  user_usuario,'
-      '  user_senha,'
-      '  user_dataUltAcesso,'
-      '  user_celular,'
-      '  user_email,'
-      '  user_nomepessoa,'
-      '  user_tipopessoa'
-      'FROM Usuario;')
-    Left = 1015
+      'SELECT * FROM Safra ;')
+    Left = 1095
     Top = 25
+  end
+  object TbPlantio: TFDTable
+    Active = True
+    IndexFieldNames = 'plt_id'
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'gr_desenv.Plantio'
+    TableName = 'gr_desenv.Plantio'
+    Left = 1100
+    Top = 85
+    object TbPlantioplt_id: TFDAutoIncField
+      AutoGenerateValue = arNone
+      FieldName = 'plt_id'
+      Origin = 'plt_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object TbPlantioplt_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_dtcriacao'
+      Origin = 'plt_dtcriacao'
+    end
+    object TbPlantioplt_Descricao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_Descricao'
+      Origin = 'plt_Descricao'
+      Size = 255
+    end
+    object TbPlantioplt_dtInicio: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_dtInicio'
+      Origin = 'plt_dtInicio'
+    end
+    object TbPlantioplt_dtTermino: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_dtTermino'
+      Origin = 'plt_dtTermino'
+    end
+    object TbPlantioplt_areaTotal: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_areaTotal'
+      Origin = 'plt_areaTotal'
+      Precision = 10
+      Size = 3
+    end
+    object TbPlantioplt_areaPlantada: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_areaPlantada'
+      Origin = 'plt_areaPlantada'
+      Precision = 10
+      Size = 3
+    end
+    object TbPlantioplt_Status: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_Status'
+      Origin = 'plt_Status'
+      Size = 25
+    end
+    object TbPlantiosf_IdSafra: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'sf_IdSafra'
+      Origin = 'sf_IdSafra'
+    end
+  end
+  object DsTbPlantio: TDataSource
+    DataSet = TbPlantio
+    Left = 1170
+    Top = 85
   end
 end

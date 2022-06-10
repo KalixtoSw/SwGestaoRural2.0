@@ -218,7 +218,6 @@ object DMPrincipal: TDMPrincipal
   end
   object QryProduto: TFDQuery
     ActiveStoredUsage = []
-    Active = True
     AutoCalcFields = False
     ObjectView = False
     IndexesActive = False
@@ -616,7 +615,6 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbFornecedor: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -785,7 +783,6 @@ object DMPrincipal: TDMPrincipal
     Top = 15
   end
   object TbProdutoEmbalagem: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -920,7 +917,6 @@ object DMPrincipal: TDMPrincipal
     Top = 385
   end
   object TbMov_Produto: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'mov_id'
     MasterSource = DsTbMovimentacao
@@ -944,6 +940,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'mp_id'
       Origin = 'mp_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object TbMov_Produtoprd_idproduto: TIntegerField
       AutoGenerateValue = arDefault
@@ -1001,7 +998,6 @@ object DMPrincipal: TDMPrincipal
     Top = 435
   end
   object TbNotaFiscalP: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     DetailFields = 'nf_id'
@@ -1208,7 +1204,6 @@ object DMPrincipal: TDMPrincipal
     Top = 395
   end
   object TbNotaFiscalItemP: TFDTable
-    Active = True
     ObjectView = False
     IndexFieldNames = 'nf_id'
     MasterSource = DsTbNotaFiscalP
@@ -1515,9 +1510,9 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.CheckUpdatable = False
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'SELECT * FROM nota_fiscal_item')
+      'SELECT * FROM nota_fiscal_item WHERE prd_idproduto > 0')
     Left = 945
-    Top = 305
+    Top = 315
     object QryProcNotaFiscalItemnfi_id: TFDAutoIncField
       FieldName = 'nfi_id'
       Origin = 'nfi_id'
@@ -1570,5 +1565,93 @@ object DMPrincipal: TDMPrincipal
     DataSet = QryProcNotaFiscalItem
     Left = 945
     Top = 355
+  end
+  object DsQryTbSafra: TDataSource
+    DataSet = QryTbSafra
+    Left = 1170
+    Top = 25
+  end
+  object QryTbSafra: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT * FROM Safra ;')
+    Left = 1095
+    Top = 25
+  end
+  object TbPlantio: TFDTable
+    Active = True
+    ObjectView = False
+    IndexFieldNames = 'plt_id'
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'gr_desenv.Plantio'
+    TableName = 'gr_desenv.Plantio'
+    Left = 1100
+    Top = 85
+    object TbPlantioplt_id: TFDAutoIncField
+      AutoGenerateValue = arNone
+      FieldName = 'plt_id'
+      Origin = 'plt_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object TbPlantioplt_dtcriacao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_dtcriacao'
+      Origin = 'plt_dtcriacao'
+    end
+    object TbPlantioplt_Descricao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_Descricao'
+      Origin = 'plt_Descricao'
+      Size = 255
+    end
+    object TbPlantioplt_dtInicio: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_dtInicio'
+      Origin = 'plt_dtInicio'
+    end
+    object TbPlantioplt_dtTermino: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_dtTermino'
+      Origin = 'plt_dtTermino'
+    end
+    object TbPlantioplt_areaTotal: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_areaTotal'
+      Origin = 'plt_areaTotal'
+      Precision = 10
+      Size = 3
+    end
+    object TbPlantioplt_areaPlantada: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_areaPlantada'
+      Origin = 'plt_areaPlantada'
+      Precision = 10
+      Size = 3
+    end
+    object TbPlantioplt_Status: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'plt_Status'
+      Origin = 'plt_Status'
+      Size = 25
+    end
+    object TbPlantiosf_IdSafra: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'sf_IdSafra'
+      Origin = 'sf_IdSafra'
+    end
+  end
+  object DsTbPlantio: TDataSource
+    DataSet = TbPlantio
+    Left = 1170
+    Top = 85
   end
 end
