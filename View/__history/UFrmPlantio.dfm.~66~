@@ -11567,7 +11567,6 @@
             Caption = 'CrdBtNavPlantio'
             CardIndex = 0
             TabOrder = 0
-            ExplicitTop = -1
             object pnlPlantioSuperior: TRelativePanel
               Left = 0
               Top = 0
@@ -11610,7 +11609,6 @@
               FullRepaint = False
               ParentBackground = False
               TabOrder = 0
-              ExplicitTop = -1
               DesignSize = (
                 1189
                 100)
@@ -11839,25 +11837,49 @@
                   AlignTopWithPanel = False
                   AlignVerticalCenterWithPanel = False
                   Below = JvDBNavigator1
+                end
+                item
+                  Control = pnlPlt_dtInicio
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = False
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWith = pnlPltFieldsSplit01
+                  AlignVerticalCenterWithPanel = False
+                  RightOf = pnlPltFieldsSplit01
+                end
+                item
+                  Control = pnlPltFieldsSplit01
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = False
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWith = pnlPlantioDescricao
+                  AlignVerticalCenterWithPanel = False
+                  Below = pnlPlantioDescricao
+                  RightOf = pnlPlantioDescricao
                 end>
               Align = alClient
               BevelOuter = bvNone
+              Color = clWhite
+              ParentBackground = False
               TabOrder = 2
-              ExplicitLeft = 435
-              ExplicitTop = 485
-              ExplicitWidth = 185
-              ExplicitHeight = 41
+              ExplicitTop = 404
               DesignSize = (
                 1189
                 273)
               object JvDBNavigator1: TJvDBNavigator
                 Left = 0
                 Top = 0
-                Width = 600
+                Width = 498
                 Height = 64
                 Cursor = crHandPoint
                 DataSource = DMPrincipal.DsTbPlantio
+                VisibleButtons = [nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
                 Anchors = []
+                Flat = True
                 TabOrder = 0
               end
               object pnlPlantioDescricao: TRelativePanel
@@ -11867,7 +11889,7 @@
                 Height = 39
                 ControlCollection = <
                   item
-                    Control = Label1
+                    Control = LbPlt_Descricao
                     AlignBottomWithPanel = False
                     AlignHorizontalCenterWithPanel = False
                     AlignLeftWithPanel = True
@@ -11877,23 +11899,23 @@
                   end
                   item
                     Control = EdtPlt_Descricao
-                    AlignBottomWithPanel = False
+                    Above = LinePlt_Descricao
+                    AlignBottomWith = LinePlt_Descricao
+                    AlignBottomWithPanel = True
                     AlignHorizontalCenterWithPanel = False
-                    AlignLeftWithPanel = True
-                    AlignRightWithPanel = True
+                    AlignLeftWithPanel = False
+                    AlignRightWithPanel = False
                     AlignTopWithPanel = False
                     AlignVerticalCenterWithPanel = False
-                    Below = Label1
                   end
                   item
-                    Control = JvGradient1
+                    Control = LinePlt_Descricao
                     AlignBottomWithPanel = False
                     AlignHorizontalCenterWithPanel = False
                     AlignLeftWithPanel = True
                     AlignRightWithPanel = True
                     AlignTopWithPanel = False
                     AlignVerticalCenterWithPanel = False
-                    Below = EdtPlt_Descricao
                   end>
                 Anchors = []
                 BevelOuter = bvNone
@@ -11901,7 +11923,7 @@
                 DesignSize = (
                   300
                   39)
-                object Label1: TLabel
+                object LbPlt_Descricao: TLabel
                   Left = 0
                   Top = 0
                   Width = 124
@@ -11917,28 +11939,124 @@
                 end
                 object EdtPlt_Descricao: TJvDBMaskEdit
                   Left = 0
-                  Top = 15
+                  Top = 22
                   Width = 300
-                  Height = 23
+                  Height = 16
                   Anchors = []
+                  AutoSize = False
                   BevelWidth = 5
                   BorderStyle = bsNone
                   CharCase = ecUpperCase
                   DataField = 'plt_Descricao'
                   DataSource = DMPrincipal.DsTbPlantio
-                  Flat = True
+                  Flat = False
                   ParentFlat = False
                   MaxLength = 75
                   TabOrder = 0
                   EditMask = ''
                 end
-                object JvGradient1: TJvGradient
+                object LinePlt_Descricao: TJvGradient
                   Left = 0
                   Top = 38
                   Width = 300
                   Height = 2
                   Align = alCustom
+                  StartColor = 10974208
                 end
+              end
+              object pnlPlt_dtInicio: TRelativePanel
+                Left = 350
+                Top = 64
+                Width = 150
+                Height = 39
+                ControlCollection = <
+                  item
+                    Control = LbPlt_dtInicio
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = True
+                    AlignRightWithPanel = False
+                    AlignTopWithPanel = True
+                    AlignVerticalCenterWithPanel = False
+                  end
+                  item
+                    Control = LinePlt_dtInicio
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = True
+                    AlignRightWithPanel = True
+                    AlignTopWithPanel = False
+                    AlignVerticalCenterWithPanel = False
+                  end
+                  item
+                    Control = DtEdtPlt_dtInicio
+                    Above = LinePlt_dtInicio
+                    AlignBottomWith = LinePlt_dtInicio
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWith = LinePlt_dtInicio
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = False
+                    AlignRightWithPanel = False
+                    AlignTopWith = LinePlt_dtInicio
+                    AlignTopWithPanel = False
+                    AlignVerticalCenterWithPanel = False
+                    Below = LbPlt_dtInicio
+                  end>
+                Anchors = []
+                BevelOuter = bvNone
+                TabOrder = 2
+                DesignSize = (
+                  150
+                  39)
+                object LbPlt_dtInicio: TLabel
+                  Left = 0
+                  Top = 0
+                  Width = 111
+                  Height = 15
+                  Anchors = []
+                  Caption = 'IN'#205'CIO DO PLANTIO'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
+                object LinePlt_dtInicio: TJvGradient
+                  Left = 0
+                  Top = 38
+                  Width = 150
+                  Height = 2
+                  Align = alCustom
+                  StartColor = 10974208
+                end
+                object DtEdtPlt_dtInicio: TJvDBDatePickerEdit
+                  Left = 0
+                  Top = 23
+                  Width = 150
+                  Height = 15
+                  AllowNoDate = True
+                  Anchors = []
+                  BorderStyle = bsNone
+                  ButtonFlat = True
+                  DataField = 'plt_dtInicio'
+                  DataSource = DMPrincipal.DsTbPlantio
+                  Flat = True
+                  ParentCtl3D = False
+                  TabOrder = 0
+                end
+              end
+              object pnlPltFieldsSplit01: TJvPanel
+                Left = 300
+                Top = 63
+                Width = 50
+                Height = 41
+                Anchors = []
+                BevelOuter = bvNone
+                Color = 5065032
+                ParentBackground = False
+                TabOrder = 3
+                Visible = False
               end
             end
           end

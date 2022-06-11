@@ -5,12 +5,6 @@ interface
 uses
   JvSpeedButton, Classe.Functions, Classe.FunctionsSQL, Vcl.Dialogs,
   System.SysUtils, FireDAC.Comp.Client, Data.DB, JvDBUltimGrid;
-
-type RetSafra = record
-        RNomeSafra : string;
-        RIDSafra   : Integer;
-end;
-
 type
         TPlantio = class
 
@@ -35,7 +29,7 @@ type
                 constructor CreateObjTPlantio;
                 destructor DestroyObjTPlantio;
                 procedure pHabilitaBtsNav(Btn1, Btn2, Btn3, Btn4, Btn5 : Boolean);
-                function fBuscaSafraVigente : RetSafra;
+                function fBuscaSafraVigente : string;
 
         published
 
@@ -69,14 +63,13 @@ begin
 
 end;
 
-function TPlantio.fBuscaSafraVigente : RetSafra;
+function TPlantio.fBuscaSafraVigente : string;
 var
         sqlCond : string;
 begin
         sqlCond := 'SELECT * FROM Safra WHERE sf_Status = ''VIGENTE''';
-        Result.RNomeSafra := fMontaQryTempExec(sqlCond).FieldByName('sf_descricao').AsString;
+        Result := fMontaQryTempExec(sqlCond).FieldByName('sf_descricao').AsString;
         setKeySafra(fMontaQryTempExec(sqlCond).FieldByName('sf_IdSafra').AsInteger);
-        Result.RIDSafra := FKeySafra;
 end;
 
 procedure TPlantio.pHabilitaBtsNav(Btn1, Btn2, Btn3, Btn4, Btn5: Boolean);

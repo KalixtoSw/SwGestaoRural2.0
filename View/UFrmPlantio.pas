@@ -9,7 +9,8 @@ uses
   JvGradient, Vcl.WinXCtrls, JvSpeedButton, Vcl.WinXPanels, Classe.Plantio,
   Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, JvLabel, JvExStdCtrls, JvEdit, Data.DB,
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
-  JvExMask, JvToolEdit, JvMaskEdit;
+  JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
+  JvDBDatePickerEdit, JvBaseEdits;
 
 type
   TFrmPlantio = class(TForm)
@@ -52,6 +53,17 @@ type
     LbPlt_Descricao: TLabel;
     EdtPlt_Descricao: TJvDBMaskEdit;
     LinePlt_Descricao: TJvGradient;
+    pnlPlt_dtInicio: TRelativePanel;
+    LbPlt_dtInicio: TLabel;
+    LinePlt_dtInicio: TJvGradient;
+    pnlPltFieldsSplit01: TJvPanel;
+    DtEdtPlt_dtInicio: TJvDBDatePickerEdit;
+    pnlPltFieldsSplit02: TJvPanel;
+    pnlPlt_dtTermino: TRelativePanel;
+    LbPlt_dtTermino: TLabel;
+    LinePlt_dtTermino: TJvGradient;
+    DtEdtPlt_dtTermino: TJvDBDatePickerEdit;
+    JvDBCalcEdit1: TJvDBCalcEdit;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -62,6 +74,7 @@ type
   public
     { Public declarations }
         Plantio : TPlantio;
+        KeyVlrIdSafra : Integer;
   end;
 
   type
@@ -70,6 +83,7 @@ type
 
 var
   FrmPlantio: TFrmPlantio;
+
 
 implementation
 
@@ -91,7 +105,8 @@ end;
 procedure TFrmPlantio.BtNavPlantioClick(Sender: TObject);
 begin
        // Plantio.pHabilitaBtsNav(False,True,False,False,False);
-        EdtSafraVigente.Text :=   Plantio.fBuscaSafraVigente;
+        EdtSafraVigente.Text    :=   Plantio.fBuscaSafraVigente.RNomeSafra;
+        KeyVlrIdSafra           :=   Plantio.fBuscaSafraVigente.RIDSafra;
 end;
 
 procedure TFrmPlantio.FormCreate(Sender: TObject);

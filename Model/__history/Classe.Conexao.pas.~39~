@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
-  FireDAC.Comp.DataSet, Classe.conexaoEfetiva, FireDAC.Comp.UI;
+  FireDAC.Comp.DataSet, Classe.conexaoEfetiva, FireDAC.Comp.UI, Classe.Plantio;
 
 type
   TDMPrincipal = class(TDataModule)
@@ -242,12 +242,25 @@ type
     TbMov_Produtomp_tipo: TStringField;
     DsQryTbSafra: TDataSource;
     QryTbSafra: TFDQuery;
+    TbPlantio: TFDTable;
+    DsTbPlantio: TDataSource;
+    TbPlantioplt_id: TFDAutoIncField;
+    TbPlantioplt_dtcriacao: TSQLTimeStampField;
+    TbPlantioplt_Descricao: TStringField;
+    TbPlantioplt_dtInicio: TDateField;
+    TbPlantioplt_dtTermino: TDateField;
+    TbPlantioplt_areaTotal: TBCDField;
+    TbPlantioplt_areaPlantada: TBCDField;
+    TbPlantioplt_Status: TStringField;
+    TbPlantiosf_IdSafra: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
+    procedure TbPlantioBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
     { Public declarations }
+    ClsPlantio : TPlantio;
 
     conexao    : TConexao;
 
@@ -264,12 +277,18 @@ implementation
 
 procedure TDMPrincipal.DataModuleCreate(Sender: TObject);
 begin
+     ClsPlantio := TPlantio.CreateObjTPlantio;
      conexao    := TConexao.Create( FDConnection );
 end;
 
 procedure TDMPrincipal.DataModuleDestroy(Sender: TObject);
 begin
     conexao.Destroy;
+end;
+
+procedure TDMPrincipal.TbPlantioBeforePost(DataSet: TDataSet);
+begin
+        DataSet.FieldByName('sf_IdSafra').AsInteger := ClsPlantio.KeySafra;
 end;
 
 end.

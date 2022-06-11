@@ -9,7 +9,8 @@ uses
   JvGradient, Vcl.WinXCtrls, JvSpeedButton, Vcl.WinXPanels, Classe.Plantio,
   Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, JvLabel, JvExStdCtrls, JvEdit, Data.DB,
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
-  JvExMask, JvToolEdit, JvMaskEdit;
+  JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
+  JvDBDatePickerEdit, JvBaseEdits;
 
 type
   TFrmPlantio = class(TForm)
@@ -49,9 +50,20 @@ type
     pnlPlantioFields: TRelativePanel;
     JvDBNavigator1: TJvDBNavigator;
     pnlPlantioDescricao: TRelativePanel;
-    Label1: TLabel;
+    LbPlt_Descricao: TLabel;
     EdtPlt_Descricao: TJvDBMaskEdit;
-    JvGradient1: TJvGradient;
+    LinePlt_Descricao: TJvGradient;
+    pnlPlt_dtInicio: TRelativePanel;
+    LbPlt_dtInicio: TLabel;
+    LinePlt_dtInicio: TJvGradient;
+    pnlPltFieldsSplit01: TJvPanel;
+    DtEdtPlt_dtInicio: TJvDBDatePickerEdit;
+    pnlPltFieldsSplit02: TJvPanel;
+    pnlPlt_dtTermino: TRelativePanel;
+    LbPlt_dtTermino: TLabel;
+    LinePlt_dtTermino: TJvGradient;
+    DtEdtPlt_dtTermino: TJvDBDatePickerEdit;
+    JvDBCalcEdit1: TJvDBCalcEdit;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -99,6 +111,9 @@ begin
         NewTypeNav( JvDBNavigator1 ).Buttons[nbInsert].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavAdd.bmp');
         NewTypeNav( JvDBNavigator1 ).Buttons[nbPost].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavSave.bmp');
         NewTypeNav( JvDBNavigator1 ).Buttons[nbDelete].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavDelete.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbEdit].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavEditar.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbCancel].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavCancel.bmp');
+        NewTypeNav( JvDBNavigator1 ).Buttons[nbRefresh].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavRefresh.bmp');
         Plantio := TPlantio.CreateObjTPlantio;
 end;
 
