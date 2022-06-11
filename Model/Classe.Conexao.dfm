@@ -1580,6 +1580,7 @@ object DMPrincipal: TDMPrincipal
   end
   object TbPlantio: TFDTable
     Active = True
+    BeforePost = TbPlantioBeforePost
     IndexFieldNames = 'plt_id'
     Connection = FDConnection
     UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
@@ -1600,6 +1601,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'plt_id'
       Origin = 'plt_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object TbPlantioplt_dtcriacao: TSQLTimeStampField
       AutoGenerateValue = arDefault

@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
-  FireDAC.Comp.DataSet, Classe.conexaoEfetiva, FireDAC.Comp.UI;
+  FireDAC.Comp.DataSet, Classe.conexaoEfetiva, FireDAC.Comp.UI, Classe.Plantio, UFrmPlantio;
 
 type
   TDMPrincipal = class(TDataModule)
@@ -255,6 +255,7 @@ type
     TbPlantiosf_IdSafra: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
+    procedure TbPlantioBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -275,12 +276,18 @@ implementation
 
 procedure TDMPrincipal.DataModuleCreate(Sender: TObject);
 begin
+
      conexao    := TConexao.Create( FDConnection );
 end;
 
 procedure TDMPrincipal.DataModuleDestroy(Sender: TObject);
 begin
     conexao.Destroy;
+end;
+
+procedure TDMPrincipal.TbPlantioBeforePost(DataSet: TDataSet);
+begin
+        DataSet.FieldByName('sf_IdSafra').AsInteger := FrmPlantio.KeyVlrIdSafra;
 end;
 
 end.
