@@ -10,7 +10,8 @@ uses
   Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, JvLabel, JvExStdCtrls, JvEdit, Data.DB,
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
   JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
-  JvDBDatePickerEdit, JvBaseEdits;
+  JvDBDatePickerEdit, JvBaseEdits, Vcl.ComCtrls, JvExComCtrls, JvProgressBar,
+  JvDBProgressBar;
 
 type
   TFrmPlantio = class(TForm)
@@ -63,12 +64,22 @@ type
     LbPlt_dtTermino: TLabel;
     LinePlt_dtTermino: TJvGradient;
     DtEdtPlt_dtTermino: TJvDBDatePickerEdit;
-    JvDBCalcEdit1: TJvDBCalcEdit;
+    JvDBProgressBar1: TJvDBProgressBar;
+    pnlAreaPltSuperior: TRelativePanel;
+    pnlDescPlantio: TRelativePanel;
+    LbpnlDescPlantio: TLabel;
+    EdtpnlDescPlantio: TJvMaskEdit;
+    LinepnlDescPlantio: TJvGradient;
+    pnlAreaPltGrd: TRelativePanel;
+    DbGrdAreaPlantio: TJvDBUltimGrid;
+    RelativePanel1: TRelativePanel;
+    JvDBNavigator2: TJvDBNavigator;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtNavPlantioClick(Sender: TObject);
     procedure BtNavCtrlInsumosClick(Sender: TObject);
+    procedure BtNavAreasPlantioClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -97,6 +108,11 @@ begin
         Close;
 end;
 
+procedure TFrmPlantio.BtNavAreasPlantioClick(Sender: TObject);
+begin
+        CrdBtNavAreasPlantio.Show;
+end;
+
 procedure TFrmPlantio.BtNavCtrlInsumosClick(Sender: TObject);
 begin
        // Plantio.pHabilitaBtsNav(True,False,True,False,False);
@@ -105,6 +121,7 @@ end;
 procedure TFrmPlantio.BtNavPlantioClick(Sender: TObject);
 begin
        // Plantio.pHabilitaBtsNav(False,True,False,False,False);
+        CrdBtNavPlantio.Show;
         EdtSafraVigente.Text    :=   Plantio.fBuscaSafraVigente.RNomeSafra;
         KeyVlrIdSafra           :=   Plantio.fBuscaSafraVigente.RIDSafra;
 end;
