@@ -253,6 +253,19 @@ type
     TbPlantioplt_areaPlantada: TBCDField;
     TbPlantioplt_Status: TStringField;
     TbPlantiosf_IdSafra: TIntegerField;
+    TbTalhao: TFDTable;
+    DsTbTalhao: TDataSource;
+    TbTalhaotbl_idTalhao: TFDAutoIncField;
+    TbTalhaotbl_dtcriacao: TSQLTimeStampField;
+    TbTalhaotbl_AreaTalhao: TFMTBCDField;
+    TbTalhaotbl_TipoTalhao: TStringField;
+    TbTalhaotbl_descricao: TStringField;
+    TbTalhaotbl_latitude: TFMTBCDField;
+    TbTalhaotbl_longitude: TFMTBCDField;
+    TbTalhaotbl_linkMapa: TStringField;
+    TbTalhaopr_idPropriedadeRural: TLongWordField;
+    TbTalhaotbl_status: TStringField;
+    TbTalhaotbl_checkbox: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure TbPlantioBeforePost(DataSet: TDataSet);
@@ -260,7 +273,6 @@ type
     { Private declarations }
   public
     { Public declarations }
-    ClsPlantio : TPlantio;
 
     conexao    : TConexao;
 
@@ -288,7 +300,6 @@ end;
 
 procedure TDMPrincipal.TbPlantioBeforePost(DataSet: TDataSet);
 begin
-        ClsPlantio := TPlantio.CreateObjTPlantio;
         DataSet.FieldByName('sf_IdSafra').AsInteger := FrmPlantio.KeyVlrIdSafra;
 end;
 

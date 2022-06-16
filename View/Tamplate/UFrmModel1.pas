@@ -43,8 +43,6 @@ type
     procedure LbPesquisaClick(Sender: TObject);
     procedure EdtPesquisaKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure DbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure BtAdicionarClick(Sender: TObject);
     procedure BtCancelarClick(Sender: TObject);
     procedure DbGridDblClick(Sender: TObject);
@@ -118,12 +116,6 @@ begin
       finally
             CrdConsulta.Hide;
       end;
-end;
-
-procedure TFrmModel1.DbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
-  DataCol: Integer; Column: TColumn; State: TGridDrawState);
-begin
-     // DbGrid.Canvas.TextRect(Rect,Rect.Left + 8,Rect.Top + 8,Column.Field.DisplayText);
 end;
 
 procedure TFrmModel1.EdtPesquisaKeyDown(Sender: TObject; var Key: Word;

@@ -76,7 +76,6 @@ procedure TFrmCadastroSemente.BtAddTecnClick(Sender: TObject);
 begin
   inherited;
         Semente.pAdicionaTecGenetica;
-        //Semente.fMontaGrdTecGenetica(0);
 end;
 
 procedure TFrmCadastroSemente.BtAdicionarClick(Sender: TObject);
@@ -119,8 +118,7 @@ end;
 procedure TFrmCadastroSemente.DbGridDblClick(Sender: TObject);
 begin
   inherited;
-        //Semente.setAcaoAdicionarEditar('UPDATE');
-
+        Semente.setAcaoAdicionarEditar('UPDATE');
 end;
 
 procedure TFrmCadastroSemente.EdtPesquisaKeyPress(Sender: TObject; var Key: Char);

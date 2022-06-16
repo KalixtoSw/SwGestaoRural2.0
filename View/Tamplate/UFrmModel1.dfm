@@ -911,7 +911,6 @@ object FrmModel1: TFrmModel1
             TitleFont.Height = -12
             TitleFont.Name = 'Segoe UI'
             TitleFont.Style = [fsBold]
-            OnDrawColumnCell = DbGridDrawColumnCell
             OnDblClick = DbGridDblClick
             AutoAppend = False
             ClearSelection = False

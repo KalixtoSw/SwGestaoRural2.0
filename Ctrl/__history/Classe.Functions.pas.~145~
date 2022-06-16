@@ -51,7 +51,7 @@ uses
   function fAjustaDataNull(VrDt    :   TDate)  :   TDate;{12}
   function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;{13}
   function IsConnectedToInternet: Boolean;{14}
-  function fValidaDtMaiorDtMenor(DtA , Dtb : TDate) : Boolean;
+  function fValidaDtMaiorDtMenor(DtA , Dtb : TDate) : Integer;
 
 var
       BtnNew,BtnOld : Integer;
@@ -751,6 +751,11 @@ begin
   end;
   vl_label.Free;
 
+end;
+
+function fValidaDtMaiorDtMenor(DtA , Dtb : TDate) : Integer;
+begin
+        Result  :=      IfThen(DtA >= Dtb , 0,1 );
 end;
 
 end.

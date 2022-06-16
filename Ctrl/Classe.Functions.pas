@@ -7,7 +7,7 @@ uses
   Vcl.StdCtrls, JvCombobox, System.SysUtils, FireDAC.Comp.Client,IdHashMessageDigest,
   Winapi.Windows, Vcl.Controls, Winapi.Messages, Vcl.Mask, Vcl.Dialogs,Math,
   Generics.Collections, Classe.Sistema.Mensagens, Data.DB, JvSpeedButton,
-   Winapi.WinInet, Vcl.DBCtrls, Vcl.Graphics, System.Classes;
+   Winapi.WinInet, Vcl.DBCtrls, Vcl.Graphics, System.Classes, JvDBControls;
 
   Type
         TBGridPadrao = class(TJvDBUltimGrid);
@@ -16,6 +16,8 @@ uses
             IdResp      : Integer;
             DescCombo   : string;
     end;
+
+    NewTypeNav = class( TJvDBNavigator );
 
   procedure pCentralizaPanel(Pnl : TJvPanel ; Frm : TForm);{1}
   procedure pMenuRetratil(Card : TCard; Pnl : TJvPanel ; IdBtn : Integer);{2}
@@ -35,6 +37,7 @@ uses
   KeyDescM : string;KeyDescD : string; KeyVlrM : string );
   procedure pMontaComboTxt(Cbb : TComboBox; Caminho: string; NomeArq : string);
   procedure pCentralizaTextoEdit(Edit : TDBEdit; sender : TObject; Self : TComponent);
+  procedure pDBNavigatorNew(Nav : TJvDBNavigator);
 
   function fCheckEmptyText(const EditMask: TEditMask ;const Text:String):Boolean;{1}
   function fTrocaVirgPPto(Valor: string): String;{2}
@@ -756,6 +759,19 @@ end;
 function fValidaDtMaiorDtMenor(DtA , Dtb : TDate) : Integer;
 begin
         Result  :=      IfThen(DtA >= Dtb , 0,1 );
+end;
+
+procedure pDBNavigatorNew(Nav : TJvDBNavigator);
+begin
+        with Nav do
+        begin
+         NewTypeNav( Nav ).Buttons[nbInsert].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavAdd.bmp');
+         NewTypeNav( Nav ).Buttons[nbPost].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavSave.bmp');
+         NewTypeNav( Nav ).Buttons[nbDelete].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavDelete.bmp');
+         NewTypeNav( Nav ).Buttons[nbEdit].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavEditar.bmp');
+         NewTypeNav( Nav ).Buttons[nbCancel].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavCancel.bmp');
+         NewTypeNav( Nav ).Buttons[nbRefresh].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavRefresh.bmp');
+        end;
 end;
 
 end.
