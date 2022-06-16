@@ -11,7 +11,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
   JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
   JvDBDatePickerEdit, JvBaseEdits, Vcl.ComCtrls, JvExComCtrls, JvProgressBar,
-  JvDBProgressBar;
+  JvDBProgressBar, System.Math;
 
 type
   TFrmPlantio = class(TForm)
@@ -73,13 +73,17 @@ type
     pnlAreaPltGrd: TRelativePanel;
     DbGrdAreaPlantio: TJvDBUltimGrid;
     RelativePanel1: TRelativePanel;
-    JvDBNavigator2: TJvDBNavigator;
+    BtAddPlantioTalhao: TJvSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtNavPlantioClick(Sender: TObject);
     procedure BtNavCtrlInsumosClick(Sender: TObject);
     procedure BtNavAreasPlantioClick(Sender: TObject);
+    procedure DbGrdAreaPlantioDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DbGrdAreaPlantioCellClick(Column: TColumn);
+    procedure BtAddPlantioTalhaoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -102,6 +106,11 @@ uses
      Classe.Functions, Classe.Conexao;
 
 {$R *.dfm}
+
+procedure TFrmPlantio.BtAddPlantioTalhaoClick(Sender: TObject);
+begin
+        Plantio.fAddPlantioTalhao;
+end;
 
 procedure TFrmPlantio.BtCloseClick(Sender: TObject);
 begin
@@ -126,14 +135,51 @@ begin
         KeyVlrIdSafra           :=   Plantio.fBuscaSafraVigente.RIDSafra;
 end;
 
+procedure TFrmPlantio.DbGrdAreaPlantioCellClick(Column: TColumn);
+begin
+ if (DbGrdAreaPlantio.DataSource.Dataset.IsEmpty) then
+    Exit;
+
+  DbGrdAreaPlantio.DataSource.Dataset.Edit;
+
+  DbGrdAreaPlantio.DataSource.Dataset.FieldByName('Check').AsInteger :=
+    IfThen(DbGrdAreaPlantio.DataSource.Dataset.FieldByName('Check').AsInteger = 1, 0, 1);
+
+  DbGrdAreaPlantio.DataSource.Dataset.Post;
+end;
+
+procedure TFrmPlantio.DbGrdAreaPlantioDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Check: Integer;
+  R: TRect;
+begin
+  inherited;
+
+  if (DbGrdAreaPlantio.DataSource.Dataset.IsEmpty) then
+    Exit;
+
+  // Desenha um checkbox no dbgrid
+  if Column.FieldName = 'Check' then
+  begin
+    DbGrdAreaPlantio.Canvas.FillRect(Rect);
+
+    if (DbGrdAreaPlantio.DataSource.Dataset.FieldByName('Check').AsInteger = 1) then
+      Check := DFCS_CHECKED
+    else
+      Check := 0;
+
+    R := Rect;
+    InflateRect(R, -2, -2); { Diminue o tamanho do CheckBox }
+    DrawFrameControl(DbGrdAreaPlantio.Canvas.Handle, R, DFC_BUTTON,
+      DFCS_BUTTONCHECK or Check);
+  end;
+
+end;
+
 procedure TFrmPlantio.FormCreate(Sender: TObject);
 begin
-        NewTypeNav( JvDBNavigator1 ).Buttons[nbInsert].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavAdd.bmp');
-        NewTypeNav( JvDBNavigator1 ).Buttons[nbPost].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavSave.bmp');
-        NewTypeNav( JvDBNavigator1 ).Buttons[nbDelete].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavDelete.bmp');
-        NewTypeNav( JvDBNavigator1 ).Buttons[nbEdit].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavEditar.bmp');
-        NewTypeNav( JvDBNavigator1 ).Buttons[nbCancel].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavCancel.bmp');
-        NewTypeNav( JvDBNavigator1 ).Buttons[nbRefresh].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavRefresh.bmp');
+        pDBNavigatorNew(JvDBNavigator1);
         Plantio := TPlantio.CreateObjTPlantio;
 end;
 

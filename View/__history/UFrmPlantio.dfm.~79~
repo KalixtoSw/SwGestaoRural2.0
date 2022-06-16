@@ -11555,7 +11555,7 @@
           Width = 1189
           Height = 673
           Align = alClient
-          ActiveCard = CrdBtNavPlantio
+          ActiveCard = CrdBtNavAreasPlantio
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
@@ -12321,6 +12321,7 @@
                   BorderStyle = bsNone
                   Flat = True
                   ParentFlat = False
+                  ReadOnly = True
                   TabOrder = 0
                   Text = ''
                 end
@@ -12356,14 +12357,15 @@
               ParentBackground = False
               TabOrder = 1
               object DbGrdAreaPlantio: TJvDBUltimGrid
-                Left = 0
-                Top = 2
+                Left = 1
+                Top = -3
                 Width = 1189
                 Height = 298
                 Cursor = crHandPoint
                 Align = alClient
                 BorderStyle = bsNone
                 Color = clWhite
+                DataSource = DMPrincipal.DsTbTalhao
                 DrawingStyle = gdsGradient
                 GradientEndColor = 9323579
                 GradientStartColor = 9323579
@@ -12380,6 +12382,8 @@
                 TitleFont.Height = -12
                 TitleFont.Name = 'Segoe UI'
                 TitleFont.Style = [fsBold]
+                OnCellClick = DbGrdAreaPlantioCellClick
+                OnDrawColumnCell = DbGrdAreaPlantioDrawColumnCell
                 AutoAppend = False
                 ClearSelection = False
                 AlternateRowColor = 8279822
@@ -12391,6 +12395,92 @@
                 EditControls = <>
                 RowsHeight = 19
                 TitleRowHeight = 19
+                Columns = <
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'Check'
+                    Title.Caption = ' '
+                    Width = 35
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'tbl_descricao'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'DETALHE TALH'#195'O'
+                    Width = 200
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'tbl_idTalhao'
+                    Visible = False
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'tbl_dtcriacao'
+                    Visible = False
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'tbl_AreaTalhao'
+                    Title.Alignment = taCenter
+                    Title.Caption = #193'REA DO TALH'#195'O (ha)'
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'tbl_TipoTalhao'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'TIPO DE TALH'#195'O'
+                    Width = 150
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'tbl_latitude'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'LATITUDADE'
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'tbl_longitude'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'LONGITUDE'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'tbl_linkMapa'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'GOOGLE MAPS'
+                    Width = 300
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'pr_idPropriedadeRural'
+                    Visible = False
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'tbl_status'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'STATUS'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'tbl_checkbox'
+                    Visible = False
+                  end>
               end
             end
             object RelativePanel1: TRelativePanel
@@ -12425,7 +12515,7 @@
                 Width = 498
                 Height = 64
                 Cursor = crHandPoint
-                DataSource = DMPrincipal.DsTbPlantio
+                DataSource = DMPrincipal.DsTbTalhao
                 VisibleButtons = [nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
                 Anchors = []
                 Flat = True
