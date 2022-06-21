@@ -108,7 +108,6 @@ begin
         FDbgrdPltTalh.DataSource.DataSet.FieldByName('tbl_status').AsString := 'DISTRIBUIDO';
         FDbgrdPltTalh.DataSource.DataSet.Post;
 
-
       end;
       FDbgrdPltTalh.DataSource.DataSet.Next;
     end;
