@@ -3,7 +3,8 @@ unit Classe.Comum.ControleEstoque;
 interface
 
 uses
-  JvPanel, Classe.Functions, Data.DB, System.SysUtils,Classe.Conexao;
+  JvPanel, Classe.Functions, Data.DB, System.SysUtils,Classe.Conexao,
+  Vcl.Dialogs;
 
 type
       TCrtlEstoque = class
@@ -28,6 +29,7 @@ type
         procedure pCtrlPosicaopnlBt3(PnlFundo : TJvPanel;Pos : Integer);
         procedure pCtrlPosicaopnlBt4(PnlFundo : TJvPanel;Pos : Integer);
         procedure pCtrlPosicaopnlBt5(PnlFundo : TJvPanel;Pos : Integer);
+
 
        published
         property PnlBtEstFisico : TJvPanel read FPnlBtEstFisico         write SetPnlBtEstFisico;
@@ -58,8 +60,6 @@ destructor TCrtlEstoque.DestroyObjTCrtlEstoque;
 begin
 
 end;
-
-
 
 procedure TCrtlEstoque.pCtrlPosicaopnlBt1(PnlFundo : TJvPanel;Pos : Integer);
 begin

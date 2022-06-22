@@ -1,0 +1,332 @@
+unit UFrmMenuPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, JvExExtCtrls,
+  JvExtComponent, JvPanel, Classe.Functions, JvExControls, JvSpeedButton,
+  JvGradientHeaderPanel, Vcl.WinXPanels, JvXPCore, JvXPBar, Classe.Sistema.Mensagens,
+  Vcl.StdCtrls, Vcl.Mask, JvGradient, JvExMask, JvToolEdit, JvMaskEdit,
+  JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
+  JvScrollPanel, UFrmCadastroSemente, JvaScrollText, Vcl.Imaging.pngimage,
+  JvComponentBase, JvBalloonHint, JvHint, Classe.Comum.ControleEstoque,
+  Data.DB, Classe.Conexao, System.Math, Vcl.WinXCtrls, JvThread, JvMTComponents;
+
+type
+  TFrmMenuPrincipal = class(TForm)
+    PnlFundoMenuPrincipal: TJvPanel;
+    PnlTituloJanela: TJvPanel;
+    PnlBtClose: TJvPanel;
+    BtClose: TJvSpeedButton;
+    PnlStatusSistema: TJvPanel;
+    PnlMenuLateral1: TJvPanel;
+    BtFerramentas: TJvSpeedButton;
+    BtManejoAgricola: TJvSpeedButton;
+    BtParametros: TJvSpeedButton;
+    PnlMenuLateral2: TJvPanel;
+    HdrBtParametros: TJvGradientHeaderPanel;
+    CrdPnlMenuLateral2: TCardPanel;
+    CrdBtParametros: TCard;
+    CrdBtManejoAgricola: TCard;
+    CrdBtFerramentas: TCard;
+    HdrBtManejoAgricola: TJvGradientHeaderPanel;
+    HdrBtFerramentas: TJvGradientHeaderPanel;
+    ImgBtFerramentas: TImage;
+    ImgBtManejoAgricola: TImage;
+    ImgBtParametros: TImage;
+    BarParametros1: TJvXPBar;
+    BarParametros2: TJvXPBar;
+    CrdPnlMenuPrincipal: TCardPanel;
+    CrdDashboard: TCard;
+    PnlIndicadoresAgricolas: TJvPanel;
+    PnlDolar: TJvPanel;
+    LbTituloDolar: TLabel;
+    PnlImgDolar: TPanel;
+    ImgDolar: TImage;
+    PnlDolar1: TJvPanel;
+    LbCotacaoDolar: TLabel;
+    PnlSoja: TJvPanel;
+    LbTituloSoja: TLabel;
+    PnlImgSoja: TPanel;
+    ImgSoja: TImage;
+    Pnl2Soja: TJvPanel;
+    LbVlrSoja: TLabel;
+    PnlMilho: TJvPanel;
+    LbTituloMilho: TLabel;
+    PnlImgMilho: TPanel;
+    ImgMilho: TImage;
+    Pnl2Milho: TJvPanel;
+    LbVlrMilho: TLabel;
+    PnlTrigo: TJvPanel;
+    LbTituloTrigo: TLabel;
+    PnlImgTrigo: TPanel;
+    ImgTrigo: TImage;
+    Pnl2Trigo: TJvPanel;
+    LbVlrTrigo: TLabel;
+    BtNotificação: TJvSpeedButton;
+    PnlViewNotificacoes: TJvPanel;
+    PnlTituloNotificacoes: TJvPanel;
+    ImgNotificacao: TImage;
+    LbtituloNotificacao: TLabel;
+    PnlStatusSistema1: TJvPanel;
+    LinePnlNotificacao: TJvGradient;
+    JvScrollText1: TJvScrollText;
+    XPBarManejoAgricola1: TJvXPBar;
+    LbMenuPNoticiasRodaPe: TJvScrollText;
+    ImgConectado: TImage;
+    ImgDesconectado: TImage;
+    Timer1: TTimer;
+    JvHint1: TJvHint;
+    JvBalloonHint1: TJvBalloonHint;
+    JvXPBar1: TJvXPBar;
+    procedure FormResize(Sender: TObject);
+    procedure BtCloseClick(Sender: TObject);
+    procedure BtParametrosClick(Sender: TObject);
+    procedure BtManejoAgricolaClick(Sender: TObject);
+    procedure BtFerramentasClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure BarParametros1Items0Click(Sender: TObject);
+    procedure BarParametros2Items2Click(Sender: TObject);
+    procedure BarParametros2Items3Click(Sender: TObject);
+    procedure BarParametros2Items1Click(Sender: TObject);
+    procedure BtNotificaçãoMouseEnter(Sender: TObject);
+    procedure CrdDashboardMouseEnter(Sender: TObject);
+    procedure PnlIndicadoresAgricolasMouseEnter(Sender: TObject);
+    procedure PnlStatusSistema1MouseEnter(Sender: TObject);
+    procedure PnlTituloJanelaMouseEnter(Sender: TObject);
+    procedure JvXPBar1Items0Click(Sender: TObject);
+    procedure JvScrollText1MouseEnter(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure XPBarManejoAgricola1Items3Click(Sender: TObject);
+    procedure JvXPBar1Items1Click(Sender: TObject);
+    procedure XPBarManejoAgricola1Items1Click(Sender: TObject);
+    procedure XPBarManejoAgricola1Items0Click(Sender: TObject);
+    procedure XPBarManejoAgricola1Items2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ThretryadModuloPlantioExecute(Sender: TJvMTThread;
+      MTThread: TJvMTSingleThread);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+
+  end;
+
+var
+  FrmMenuPrincipal: TFrmMenuPrincipal;
+  Ctr_BtMovEstoque : string;
+
+implementation
+
+uses
+     UFrmModel1, UFrmMensagemSistema, UFrmCadastroUsuario, UFrmPesquisaAuxiliar, UFrmCadastroTalhao,
+  UFrmCadastroSafra, UFrmConfigServidor, UFrmCadastroPropriedadeRural, U_FachadaWSSGS1, UFrmCadastroProduto, UFrmProdutoEmbalagem,
+  UFrmPlantio, UFrmModuloControleEstoque;
+
+{$R *.dfm}
+
+procedure TFrmMenuPrincipal.BtFerramentasClick(Sender: TObject);
+begin
+      pMenuRetratil(CrdBtFerramentas,PnlMenuLateral2,BtFerramentas.Tag);
+end;
+
+procedure TFrmMenuPrincipal.BtManejoAgricolaClick(Sender: TObject);
+begin
+      pMenuRetratil(CrdBtManejoAgricola,PnlMenuLateral2,BtManejoAgricola.Tag);
+end;
+
+procedure TFrmMenuPrincipal.BtNotificaçãoMouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,TComponent(Sender) AS TJvSpeedButton , True,48,72);
+end;
+
+procedure TFrmMenuPrincipal.BtParametrosClick(Sender: TObject);
+begin
+      pMenuRetratil(CrdBtParametros,PnlMenuLateral2,BtParametros.Tag);
+end;
+
+procedure TFrmMenuPrincipal.CrdDashboardMouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,nil,False,0,0);
+end;
+
+procedure TFrmMenuPrincipal.FormCreate(Sender: TObject);
+begin
+        Ctr_BtMovEstoque := EmptyStr;
+end;
+
+procedure TFrmMenuPrincipal.FormResize(Sender: TObject);
+begin
+      pCentralizaPanel(PnlFundoMenuPrincipal,FrmMenuPrincipal);
+end;
+
+procedure TFrmMenuPrincipal.FormShow(Sender: TObject);
+var
+      y: WSSerieVO;
+begin
+      PnlMenuLateral2.Width := 0;
+      y := GetFachadaWSSGS.getUltimosValoresSerieVO(1, 1);
+      LbCotacaoDolar.Caption := ' R$: '+ y.valores[0].valor.DecimalString;
+end;
+
+procedure TFrmMenuPrincipal.JvScrollText1MouseEnter(Sender: TObject);
+begin
+        JvScrollText1.Active := True;
+        pdelay(2500);
+        JvScrollText1.Visible := False;
+
+end;
+
+procedure TFrmMenuPrincipal.JvXPBar1Items0Click(Sender: TObject);
+begin
+     try
+           Application.CreateForm(TFrmPlantio,FrmPlantio);
+           FrmPlantio.ShowModal;
+      finally
+
+            FreeAndNil(FrmPlantio);
+      end;
+
+end;
+
+procedure TFrmMenuPrincipal.JvXPBar1Items1Click(Sender: TObject);
+begin
+      try
+           Application.CreateForm(TFrmModuloControleEstoque,FrmModuloControleEstoque);
+           FrmModuloControleEstoque.ShowModal;
+      finally
+            FreeAndNil(FrmModuloControleEstoque);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.PnlIndicadoresAgricolasMouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,nil,False,0,0);
+end;
+
+procedure TFrmMenuPrincipal.PnlStatusSistema1MouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,nil,False,0,0);
+end;
+
+procedure TFrmMenuPrincipal.PnlTituloJanelaMouseEnter(Sender: TObject);
+begin
+        pCtrlMenu(Self,nil,False,0,0);
+end;
+
+procedure TFrmMenuPrincipal.ThretryadModuloPlantioExecute(Sender: TJvMTThread;
+  MTThread: TJvMTSingleThread);
+begin
+        try
+           ActivityIndicator1.Animate := True;
+           Application.CreateForm(TFrmPlantio,FrmPlantio);
+           FrmPlantio.ShowModal;
+        finally
+            ActivityIndicator1.Animate := False;
+            FreeAndNil(FrmPlantio);
+        end;
+end;
+
+procedure TFrmMenuPrincipal.Timer1Timer(Sender: TObject);
+
+begin
+        if IsConnectedToInternet then
+        begin
+             ImgConectado.Visible       := True;
+             ImgDesconectado.Visible    := False;
+        end else begin
+             ImgConectado.Visible       := False;
+             ImgDesconectado.Visible    := True;
+        end;
+end;
+
+procedure TFrmMenuPrincipal.XPBarManejoAgricola1Items0Click(Sender: TObject);
+begin
+    try
+           Application.CreateForm(TFrmCadastroSemente,FrmCadastroSemente);
+           FrmCadastroSemente.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroSemente);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.XPBarManejoAgricola1Items1Click(Sender: TObject);
+begin
+     try
+           Application.CreateForm(TFrmCadastroProduto,FrmCadastroProduto);
+           FrmCadastroProduto.ShowModal;
+        finally
+            FreeAndNil(FrmCadastroProduto);
+        end;
+end;
+
+procedure TFrmMenuPrincipal.XPBarManejoAgricola1Items2Click(Sender: TObject);
+begin
+      try
+           Application.CreateForm(TFrmModuloControleEstoque,FrmModuloControleEstoque);
+           Ctr_BtMovEstoque := 'CadNF';
+           FrmModuloControleEstoque.ShowModal;
+
+      finally
+            FreeAndNil(FrmModuloControleEstoque);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.XPBarManejoAgricola1Items3Click(Sender: TObject);
+begin
+        try
+           Application.CreateForm(TFrmProdutoEmbalagem,FrmProdutoEmbalagem);
+           FrmProdutoEmbalagem.ShowModal;
+        finally
+            FreeAndNil(FrmProdutoEmbalagem);
+        end;
+end;
+
+procedure TFrmMenuPrincipal.BarParametros1Items0Click(Sender: TObject);
+begin
+      try
+           Application.CreateForm(TFrmCadastroUsuario,FrmCadastroUsuario);
+           FrmCadastroUsuario.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroUsuario);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.BarParametros2Items1Click(Sender: TObject);
+begin
+     try
+           Application.CreateForm(TFrmCadastroPropriedadeRural,FrmCadastroPropriedadeRural);
+           FrmCadastroPropriedadeRural.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroPropriedadeRural);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.BarParametros2Items2Click(Sender: TObject);
+begin
+     try
+           Application.CreateForm(TFrmCadastroTalhao,FrmCadastroTalhao);
+           FrmCadastroTalhao.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroTalhao);
+      end;
+end;
+
+procedure TFrmMenuPrincipal.BarParametros2Items3Click(Sender: TObject);
+begin
+       try
+           Application.CreateForm(TFrmCadastroSafra,FrmCadastroSafra);
+           FrmCadastroSafra.ShowModal;
+      finally
+            FreeAndNil(FrmCadastroSafra);
+      end;
+
+end;
+
+procedure TFrmMenuPrincipal.BtCloseClick(Sender: TObject);
+begin
+      Application.Terminate;
+end;
+
+end.

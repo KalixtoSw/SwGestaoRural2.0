@@ -63,6 +63,8 @@ type
     function fCalcTotalNFItem(FNFIVlrUnit: Double; FNFIQtde: Double): Double;
     function fSomaVlrItensNF: Double;
     function fProcNFEstoque : Boolean;
+    function fCtrlEstSaida : Boolean;
+
 
   published
     property NumNF: Integer read FNumNF write setNumNF;
@@ -84,7 +86,7 @@ var
 implementation
 
 uses
-  UFrmModuloControleEstoque, Classe.Sistema.Mensagens;
+  UFrmModuloControleEstoque, Classe.Sistema.Mensagens, Classe.Plantio;
 
 { TCrtrlEstoque_NF }
 
@@ -109,6 +111,7 @@ begin
   BtSavarItemNF := FrmModuloControleEstoque.BtDNFIBtSavar;
   FDbGridNFItens := FrmModuloControleEstoque.DbGridNFItens;
   PnlDadosNFItens := FrmModuloControleEstoque.PnlDadosNFItens;
+
 end;
 
 destructor TCrtrlEstoque_NF.DestroyObjTCrtrlEstoque_NF;
@@ -122,6 +125,13 @@ begin
   begin
     Result := FNFIQtde * FNFIVlrUnit;
   end;
+end;
+
+
+
+function TCrtrlEstoque_NF.fCtrlEstSaida: Boolean;
+begin
+        ShowMessage(  FloatToStr(fCtrlSaldoEstoqueproduto(TbProduto.FieldByName('prd_idproduto').AsInteger)));
 end;
 
 function TCrtrlEstoque_NF.fpCalcTotalNF: Double;
@@ -183,13 +193,14 @@ begin
                 while not ( FDSNFI.DataSet.Eof)  do
                 begin
                             FDSENTRADAITEM.DataSet.Insert;
-                            FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := IDMov;
+                            FDSENTRADAITEM.DataSet.FieldByName('mov_id').AsInteger := IDMov;
+                            FDSENTRADAITEM.DataSet.FieldByName('prde_Id').AsInteger := FDSNFI.DataSet.FieldByName('prde_Id').AsInteger;
                             FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := FDSNFI.DataSet.FieldByName('prd_idproduto').AsInteger;
                             FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
                             FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
                             FDSENTRADAITEM.DataSet.FieldByName('mp_precoTotal').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
                             FDSENTRADAITEM.DataSet.FieldByName('mp_tipo').AsString := TpMov;
-                            FDSENTRADAITEM.DataSet.FieldByName('mp_qtdContabil').AsFloat := IfThen(TpMov = 'S',(FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat * -1),FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat);
+                            FDSENTRADAITEM.DataSet.FieldByName('mp_qtdContabil').AsFloat := IfThen(TpMov = 'S',(FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat * -1),FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat);
                             FDSENTRADAITEM.DataSet.Post;
 
                        FDSNFI.DataSet.Next;

@@ -89,7 +89,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_BplOutput>H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Source\Output\dcu\</DCC_BplOutput>
-        <Icon_MainIcon>SwGestaoRural_Icon1.ico</Icon_MainIcon>
+        <Icon_MainIcon>SwGestaoRural_Icon2.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>Output\Icons\48x48\rocket_icon_208067.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>Output\Icons\Mensagem\Aviso.png</UWP_DelphiLogo150>
     </PropertyGroup>
@@ -221,6 +221,7 @@
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\F Calixto\Calixto Team SW Dropbox\Projetos\ACBR\Lib\Delphi\LibD26\Win32\DCLACBr_DeSTDA.bpl">ACBr - (design-time) DeSTDA - (http://www.projetoacbr.com.br/)</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\F Calixto\Calixto Team SW Dropbox\Projetos\ACBR\Lib\Delphi\LibD26\Win32\DCLACBr_Ponto.bpl">ACBr - (design-time) Ponto Eletrônico - (http://www.projetoacbr.com.br/)</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\PackageOne.bpl">(untitled)</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">

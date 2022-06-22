@@ -2,7 +2,7 @@ object DMPrincipal: TDMPrincipal
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Height = 645
+  Height = 815
   Width = 1250
   object MySQLDriver: TFDPhysMySQLDriverLink
     VendorLib = 
@@ -991,6 +991,11 @@ object DMPrincipal: TDMPrincipal
       Origin = 'mp_tipo'
       Size = 1
     end
+    object TbMov_Produtoprde_Id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_Id'
+      Origin = 'prde_Id'
+    end
   end
   object DsTbMov_Produto: TDataSource
     DataSet = TbMov_Produto
@@ -1581,6 +1586,7 @@ object DMPrincipal: TDMPrincipal
   object TbPlantio: TFDTable
     Active = True
     BeforePost = TbPlantioBeforePost
+    AfterPost = TbPlantioAfterPost
     IndexFieldNames = 'plt_id'
     Connection = FDConnection
     UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
@@ -1682,6 +1688,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'tbl_idTalhao'
       Origin = 'tbl_idTalhao'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object TbTalhaotbl_dtcriacao: TSQLTimeStampField
       AutoGenerateValue = arDefault
@@ -1754,8 +1761,9 @@ object DMPrincipal: TDMPrincipal
     Top = 210
   end
   object TbPlantio_Talhao: TFDTable
-    Active = True
+    AutoCalcFields = False
     IndexFieldNames = 'pltl_id'
+    AggregatesActive = True
     Connection = FDConnection
     UpdateOptions.AssignedValues = [uvEDelete, uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
     UpdateOptions.UpdateChangedFields = False
@@ -1774,6 +1782,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'pltl_id'
       Origin = 'pltl_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object TbPlantio_TalhaopltlDescricao: TStringField
       AutoGenerateValue = arDefault
@@ -1806,5 +1815,140 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'pltlAndamento'
       Origin = 'pltlAndamento'
     end
+    object TbPlantio_TalhaoPlantio: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Plantio'
+      LookupDataSet = TbPlantio
+      LookupKeyFields = 'plt_id'
+      LookupResultField = 'plt_Descricao'
+      KeyFields = 'plt_id'
+      Size = 100
+      Lookup = True
+    end
+    object TbPlantio_TalhaoNomeTalhao: TStringField
+      FieldKind = fkLookup
+      FieldName = 'NomeTalhao'
+      LookupDataSet = TbTalhaoFull
+      LookupKeyFields = 'tbl_idTalhao'
+      LookupResultField = 'tbl_descricao'
+      KeyFields = 'tbl_idTalhao'
+      Size = 100
+      Lookup = True
+    end
+  end
+  object DsTbTalhaoFull: TDataSource
+    DataSet = TbTalhaoFull
+    Left = 1180
+    Top = 265
+  end
+  object TbTalhaoFull: TFDTable
+    IndexFieldNames = 'tbl_idTalhao'
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'gr_desenv.Talhao'
+    TableName = 'gr_desenv.Talhao'
+    Left = 1110
+    Top = 265
+    object FDAutoIncField3: TFDAutoIncField
+      FieldName = 'tbl_idTalhao'
+      Origin = 'tbl_idTalhao'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object SQLTimeStampField2: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_dtcriacao'
+      Origin = 'tbl_dtcriacao'
+    end
+    object FMTBCDField1: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_AreaTalhao'
+      Origin = 'tbl_AreaTalhao'
+      Precision = 10
+      Size = 6
+    end
+    object StringField11: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_TipoTalhao'
+      Origin = 'tbl_TipoTalhao'
+      Size = 255
+    end
+    object StringField12: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_descricao'
+      Origin = 'tbl_descricao'
+      Size = 50
+    end
+    object FMTBCDField2: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_latitude'
+      Origin = 'tbl_latitude'
+      Precision = 10
+      Size = 6
+    end
+    object FMTBCDField3: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_longitude'
+      Origin = 'tbl_longitude'
+      Precision = 10
+      Size = 6
+    end
+    object StringField13: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_linkMapa'
+      Origin = 'tbl_linkMapa'
+      Size = 255
+    end
+    object LongWordField1: TLongWordField
+      AutoGenerateValue = arDefault
+      FieldName = 'pr_idPropriedadeRural'
+      Origin = 'pr_idPropriedadeRural'
+    end
+    object StringField14: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_status'
+      Origin = 'tbl_status'
+      Size = 25
+    end
+    object IntegerField9: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'tbl_checkbox'
+      Origin = 'tbl_checkbox'
+    end
+    object IntegerField10: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = 'Check'
+    end
+  end
+  object QryCtrlEstProduto: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      
+        'SELECT p.prd_idproduto, p.prd_nome, p.prd_fabricante, p.prd_tipo' +
+        ', p.prd_status,'
+      
+        '      m.mov_tipo, SUM(mp.mp_qtdUnit),SUM( mp.mp_qtdContabil) AS ' +
+        #39'Ctrl Estoque'#39', AVG(mp.mp_precoCompra) AS '#39'Preco Medio'#39', SUM(mp.' +
+        'mp_precoTotal) AS '#39'Valor Geral'#39
+      
+        'FROM movimentacao m INNER JOIN movimentacao_produto mp ON m.mov_' +
+        'id = mp.mov_id INNER JOIN produto p ON mp.prd_idproduto = p.prd_' +
+        'idproduto'
+      '  GROUP BY p.prd_idproduto, p.prd_nome;')
+    Left = 1130
+    Top = 385
+  end
+  object DsQryCtrlEstProduto: TJvDataSource
+    DataSet = QryCtrlEstProduto
+    Left = 1185
+    Top = 385
   end
 end

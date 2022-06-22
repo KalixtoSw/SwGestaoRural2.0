@@ -55,6 +55,7 @@ uses
   function fMasterDetalhe(IdPropR : Integer; SelectTbDetalhe : string;SelectTbMaster : string): TDataSource;{13}
   function IsConnectedToInternet: Boolean;{14}
   function fValidaDtMaiorDtMenor(DtA , Dtb : TDate) : Integer;
+  function fCtrlSaldoEstoqueproduto(IdProduto: Integer): Double;
 
 var
       BtnNew,BtnOld : Integer;
@@ -772,6 +773,33 @@ begin
          NewTypeNav( Nav ).Buttons[nbCancel].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavCancel.bmp');
          NewTypeNav( Nav ).Buttons[nbRefresh].Glyph.LoadFromFile('Icons\32x32\DbNav\BtNavRefresh.bmp');
         end;
+end;
+
+function fCtrlSaldoEstoqueproduto(IdProduto: Integer): Double;
+Var
+        SqlCond : string;
+        SqlAux : string;
+begin
+        //Montar o controle de estoque para o produto por embalagem, pois pode haver o mesmo produto em embalagens diferentes
+
+        if IdProduto = 0 then
+        begin
+            SqlAux := '';
+        end else begin
+                SqlAux := 'WHERE p.prd_idproduto = '+IntToStr(IdProduto);
+        end;
+
+        SqlCond := 'SELECT p.prd_idproduto, p.prd_nome, p.prd_fabricante, p.prd_tipo, p.prd_status, m.mov_tipo, SUM(mp.mp_qtdUnit),SUM( mp.mp_qtdContabil) AS ''Ctrl_Estoque'', AVG(mp.mp_precoCompra) AS ''Preco_Medio'', SUM(mp.mp_precoTotal) AS ''Valor_Geral'' '+
+        'FROM movimentacao m INNER JOIN movimentacao_produto mp ON m.mov_id = mp.mov_id INNER JOIN produto p ON mp.prd_idproduto = p.prd_idproduto '+
+        SqlAux+
+        ' GROUP BY p.prd_idproduto, p.prd_nome;';
+
+        DMPrincipal.QryCtrlEstProduto.Close;
+        DMPrincipal.QryCtrlEstProduto.SQL.Clear;
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(SqlCond);
+        DMPrincipal.QryCtrlEstProduto.Open;
+        Result := DMPrincipal.QryCtrlEstProduto.FieldByName('Ctrl_Estoque').AsFloat;
+
 end;
 
 end.

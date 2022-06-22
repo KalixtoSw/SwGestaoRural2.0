@@ -4,7 +4,7 @@ interface
 
 uses
   JvSpeedButton, Classe.Functions, Classe.FunctionsSQL, Vcl.Dialogs,
-  System.SysUtils, FireDAC.Comp.Client, Data.DB, JvDBUltimGrid;
+  System.SysUtils, FireDAC.Comp.Client, Data.DB, JvDBUltimGrid, JvProgressBar;
 
 type
   RetSafra = record
@@ -28,6 +28,7 @@ type
     FTbTalhao: TFDTable;
     FDbgrdPltTalh: TJvDBUltimGrid;
     FTbPlantioTalhao: TDataSource;
+    FAreaTotalPlantio: Double;
     procedure setKeySafra(const Value: Integer);
     procedure setTbPlantio(const Value: TFDTable);
     procedure setDsTbPlantio(const Value: TDataSource);
@@ -35,6 +36,7 @@ type
     procedure setTbTalhao(const Value: TFDTable);
     procedure setDbgrdPltTalh(const Value: TJvDBUltimGrid);
     procedure setTbPlantioTalhao(const Value: TDataSource);
+    procedure setAreaTotalPlantio(const Value: Double);
 
   public
     constructor CreateObjTPlantio;
@@ -42,6 +44,9 @@ type
     procedure pHabilitaBtsNav(Btn1, Btn2, Btn3, Btn4, Btn5: Boolean);
     function fBuscaSafraVigente: RetSafra;
     function fAddPlantioTalhao: Boolean;
+    function fCalcAreaPlantada: Double;
+    function fValidaAreaTcomAreaP : Boolean;
+
 
   published
 
@@ -52,6 +57,11 @@ type
     property TbTalhao: TFDTable read FTbTalhao write setTbTalhao;
     property DbgrdPltTalh: TJvDBUltimGrid read FDbgrdPltTalh write setDbgrdPltTalh;
     property TbPlantioTalhao: TDataSource read FTbPlantioTalhao write setTbPlantioTalhao;
+    property AreaTotalPlantio : Double read FAreaTotalPlantio  write setAreaTotalPlantio;
+
+//    property  read  write ;
+
+
   end;
 
 implementation
@@ -74,6 +84,9 @@ begin
   setTbTalhao(DMPrincipal.TbTalhao);
   setDbgrdPltTalh(FrmPlantio.DbGrdAreaPlantio);
   setTbPlantioTalhao(DMPrincipal.DsTbPlantio_Talhao);
+  DMPrincipal.TbPlantio_Talhao.Active := True;
+  DMPrincipal.TbTalhaoFull.Active := True;
+  setAreaTotalPlantio(DMPrincipal.TbPlantioplt_areaTotal.AsFloat);
 end;
 
 destructor TPlantio.DestroyObjTPlantio;
@@ -90,7 +103,7 @@ begin
   PltDtinicio := FDbgrdPlantio.DataSource.DataSet.FieldByName('plt_dtInicio').AsDateTime;
   PltDtTermino := FDbgrdPlantio.DataSource.DataSet.FieldByName('plt_dtTermino').AsDateTime;
 
-  FDbgrdPltTalh.Row := 1;
+  FDbgrdPltTalh.Row := 0;
   try
     while not FDbgrdPltTalh.DataSource.DataSet.Eof do
     begin
@@ -130,6 +143,49 @@ begin
   Result.RIDSafra := FKeySafra;
 end;
 
+function TPlantio.fCalcAreaPlantada: Double;
+var
+        AreaPlantada : Double;
+        PercBarra : Double;
+begin
+        try
+                setAreaTotalPlantio(DMPrincipal.TbPlantioplt_areaTotal.AsFloat);
+                AreaPlantada := FrmPlantio.EdtPlt_AreaPlantada.Value;
+                Result := FAreaTotalPlantio;
+                FrmPlantio.PrgrssBr.Max := Round(DMPrincipal.TbPlantioplt_areaTotal.AsFloat);
+                FrmPlantio.PrgrssBr.Position := Round(DMPrincipal.TbPlantioplt_areaPlantada.AsFloat);
+                PercBarra := Round((AreaPlantada / Result)*100);
+                if PercBarra < 30 then
+                begin
+                        FrmPlantio.PrgrssBr.State := pbsError;
+                end else if (PercBarra >= 30) and (PercBarra <= 70) then
+                        begin
+                                FrmPlantio.PrgrssBr.State := pbsPaused;
+                        end else begin
+                                FrmPlantio.PrgrssBr.State := pbsNormal;
+                        end;
+                FrmPlantio.LbPercPrgssBr.Caption := FloatToStr(PercBarra)+'%';
+        except on E: Exception do
+
+        end;
+end;
+
+function TPlantio.fValidaAreaTcomAreaP: Boolean;
+var
+        AreaPlantada : Double;
+begin
+        setAreaTotalPlantio(DMPrincipal.TbPlantioplt_areaTotal.AsFloat);
+        AreaPlantada := FrmPlantio.EdtPlt_AreaPlantada.Value;
+
+        if not(AreaPlantada > FAreaTotalPlantio) then
+        begin
+             Result := True;
+        end else begin
+             Result := False;
+        end;
+
+end;
+
 procedure TPlantio.pHabilitaBtsNav(Btn1, Btn2, Btn3, Btn4, Btn5: Boolean);
 begin
 
@@ -139,6 +195,11 @@ begin
   FBtNavAreasPlantio.Enabled := Btn4;
   FBtNavFinancas.Enabled := Btn5;
 
+end;
+
+procedure TPlantio.setAreaTotalPlantio(const Value: Double);
+begin
+  FAreaTotalPlantio := Round(Value);
 end;
 
 procedure TPlantio.setDbgrdPlantio(const Value: TJvDBUltimGrid);
