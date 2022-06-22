@@ -11,7 +11,7 @@ uses
   JvEmbeddedForms, Vcl.Imaging.jpeg, JvScrollText, Vcl.ToolWin, JvExForms,
   JvScrollPanel, UFrmCadastroSemente, JvaScrollText, Vcl.Imaging.pngimage,
   JvComponentBase, JvBalloonHint, JvHint, Classe.Comum.ControleEstoque,
-  Data.DB, Classe.Conexao, System.Math;
+  Data.DB, Classe.Conexao, System.Math, Vcl.WinXCtrls, JvThread, JvMTComponents;
 
 type
   TFrmMenuPrincipal = class(TForm)
@@ -104,6 +104,8 @@ type
     procedure XPBarManejoAgricola1Items0Click(Sender: TObject);
     procedure XPBarManejoAgricola1Items2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ThretryadModuloPlantioExecute(Sender: TJvMTThread;
+      MTThread: TJvMTSingleThread);
   private
     { Private declarations }
   public
@@ -182,8 +184,10 @@ begin
            Application.CreateForm(TFrmPlantio,FrmPlantio);
            FrmPlantio.ShowModal;
       finally
+
             FreeAndNil(FrmPlantio);
       end;
+
 end;
 
 procedure TFrmMenuPrincipal.JvXPBar1Items1Click(Sender: TObject);
@@ -209,6 +213,19 @@ end;
 procedure TFrmMenuPrincipal.PnlTituloJanelaMouseEnter(Sender: TObject);
 begin
         pCtrlMenu(Self,nil,False,0,0);
+end;
+
+procedure TFrmMenuPrincipal.ThretryadModuloPlantioExecute(Sender: TJvMTThread;
+  MTThread: TJvMTSingleThread);
+begin
+        try
+
+           Application.CreateForm(TFrmPlantio,FrmPlantio);
+           FrmPlantio.ShowModal;
+        finally
+
+            FreeAndNil(FrmPlantio);
+        end;
 end;
 
 procedure TFrmMenuPrincipal.Timer1Timer(Sender: TObject);

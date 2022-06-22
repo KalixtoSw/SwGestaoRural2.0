@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
-  FireDAC.Comp.DataSet, Classe.conexaoEfetiva, FireDAC.Comp.UI, Classe.Plantio, UFrmPlantio;
+  FireDAC.Comp.DataSet, Classe.conexaoEfetiva, FireDAC.Comp.UI, Classe.Plantio,
+  JvDataSource;
 
 type
   TDMPrincipal = class(TDataModule)
@@ -276,15 +277,36 @@ type
     TbPlantio_TalhaopltldtInicio: TDateField;
     TbPlantio_TalhaopltldtTermino: TDateField;
     TbPlantio_TalhaopltlAndamento: TIntegerField;
+    TbPlantio_TalhaoPlantio: TStringField;
+    TbPlantio_TalhaoNomeTalhao: TStringField;
+    DsTbTalhaoFull: TDataSource;
+    TbTalhaoFull: TFDTable;
+    FDAutoIncField3: TFDAutoIncField;
+    SQLTimeStampField2: TSQLTimeStampField;
+    FMTBCDField1: TFMTBCDField;
+    StringField11: TStringField;
+    StringField12: TStringField;
+    FMTBCDField2: TFMTBCDField;
+    FMTBCDField3: TFMTBCDField;
+    StringField13: TStringField;
+    LongWordField1: TLongWordField;
+    StringField14: TStringField;
+    IntegerField9: TIntegerField;
+    IntegerField10: TIntegerField;
+    QryCtrlEstProduto: TFDQuery;
+    DsQryCtrlEstProduto: TJvDataSource;
+    TbMov_Produtoprde_Id: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure TbPlantioBeforePost(DataSet: TDataSet);
+    procedure TbPlantioAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
     { Public declarations }
 
-    conexao    : TConexao;
+    conexao     : TConexao;
+    Plantio     : TPlantio;
 
   end;
 
@@ -294,6 +316,8 @@ var
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses UFrmPlantio;
 
 {$R *.dfm}
 
@@ -306,6 +330,11 @@ end;
 procedure TDMPrincipal.DataModuleDestroy(Sender: TObject);
 begin
     conexao.Destroy;
+end;
+
+procedure TDMPrincipal.TbPlantioAfterPost(DataSet: TDataSet);
+begin
+        Plantio.fCalcAreaPlantada;
 end;
 
 procedure TDMPrincipal.TbPlantioBeforePost(DataSet: TDataSet);

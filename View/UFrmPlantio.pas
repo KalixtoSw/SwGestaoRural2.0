@@ -11,7 +11,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
   JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
   JvDBDatePickerEdit, JvBaseEdits, Vcl.ComCtrls, JvExComCtrls, JvProgressBar,
-  JvDBProgressBar, System.Math;
+  JvDBProgressBar, System.Math, Winapi.CommCtrl,Classe.NF.ControleEstoque;
 
 type
   TFrmPlantio = class(TForm)
@@ -64,7 +64,6 @@ type
     LbPlt_dtTermino: TLabel;
     LinePlt_dtTermino: TJvGradient;
     DtEdtPlt_dtTermino: TJvDBDatePickerEdit;
-    JvDBProgressBar1: TJvDBProgressBar;
     pnlAreaPltSuperior: TRelativePanel;
     pnlDescPlantio: TRelativePanel;
     LbpnlDescPlantio: TLabel;
@@ -72,8 +71,20 @@ type
     LinepnlDescPlantio: TJvGradient;
     pnlAreaPltGrd: TRelativePanel;
     DbGrdAreaPlantio: TJvDBUltimGrid;
-    RelativePanel1: TRelativePanel;
+    pnlPlantioTalhao: TRelativePanel;
     BtAddPlantioTalhao: TJvSpeedButton;
+    DbGrdPlantioTalhao: TJvDBUltimGrid;
+    pnlPlt_AreaPlantada: TRelativePanel;
+    LbPlt_AreaPlantada: TLabel;
+    pnlPltFieldsSplit03: TJvPanel;
+    EdtPlt_AreaPlantada: TJvDBCalcEdit;
+    LinePlt_AreaPlantada: TJvGradient;
+    LbPrgBrAreaTotal: TLabel;
+    TxtAreaTPrgssBr: TDBText;
+    pnlPrgsbr: TRelativePanel;
+    LbPercPrgssBr: TJvLabel;
+    PrgrssBr: TJvProgressBar;
+    JvSpeedButton1: TJvSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -84,10 +95,15 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DbGrdAreaPlantioCellClick(Column: TColumn);
     procedure BtAddPlantioTalhaoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure EdtPlt_AreaPlantadaExit(Sender: TObject);
+    procedure DbGridCellClick(Column: TColumn);
+    procedure JvSpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+
         Plantio : TPlantio;
         KeyVlrIdSafra : Integer;
   end;
@@ -131,8 +147,7 @@ procedure TFrmPlantio.BtNavPlantioClick(Sender: TObject);
 begin
        // Plantio.pHabilitaBtsNav(False,True,False,False,False);
         CrdBtNavPlantio.Show;
-        EdtSafraVigente.Text    :=   Plantio.fBuscaSafraVigente.RNomeSafra;
-        KeyVlrIdSafra           :=   Plantio.fBuscaSafraVigente.RIDSafra;
+        
 end;
 
 procedure TFrmPlantio.DbGrdAreaPlantioCellClick(Column: TColumn);
@@ -177,6 +192,23 @@ begin
 
 end;
 
+procedure TFrmPlantio.DbGridCellClick(Column: TColumn);
+begin
+        Plantio.fCalcAreaPlantada;
+end;
+
+procedure TFrmPlantio.EdtPlt_AreaPlantadaExit(Sender: TObject);
+begin
+        if EdtPlt_AreaPlantada.Value > 0 then
+        begin
+             if not(Plantio.fValidaAreaTcomAreaP) then
+             begin
+                EdtPlt_AreaPlantada.Value := Plantio.fCalcAreaPlantada;
+             end;
+        end;
+        Plantio.fCalcAreaPlantada;
+end;
+
 procedure TFrmPlantio.FormCreate(Sender: TObject);
 begin
         pDBNavigatorNew(JvDBNavigator1);
@@ -191,6 +223,20 @@ begin
         pnlFundoInterno.Left    := 5;
         pnlFundoInterno.top     :=  5;
         pMakeRounded(pnlFundoInterno);
+end;
+
+procedure TFrmPlantio.FormShow(Sender: TObject);
+begin
+        EdtSafraVigente.Text    :=   Plantio.fBuscaSafraVigente.RNomeSafra;
+        KeyVlrIdSafra           :=   Plantio.fBuscaSafraVigente.RIDSafra;
+        CrdPnlPlantio.ActiveCard := CrdBtNavPlantio;
+        pAtivarDBGrid(DbGrdPlantioTalhao);
+        Plantio.fCalcAreaPlantada;
+end;
+
+procedure TFrmPlantio.JvSpeedButton1Click(Sender: TObject);
+begin
+        fCtrlSaldoEstoqueproduto(5);
 end;
 
 end.

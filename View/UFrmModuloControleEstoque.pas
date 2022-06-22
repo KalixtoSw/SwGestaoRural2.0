@@ -223,6 +223,7 @@ type
     procedure EdtImpostoNFIcmsSTExit(Sender: TObject);
     procedure Thread_NFExecute(Sender: TObject; Params: Pointer);
     procedure Thread_NFFinish(Sender: TObject);
+    procedure EdtDNFINomeProdutoExit(Sender: TObject);
   private    { Private declarations }
         CtrlEstoque : TCrtlEstoque;
 
@@ -308,10 +309,31 @@ begin
         CtrlEst_NF.pEventoUpdateNF;
 end;
 
+procedure TFrmModuloControleEstoque.EdtDNFINomeProdutoExit(Sender: TObject);
+var
+        SldEst : double;
+begin
+        SldEst := fCtrlSaldoEstoqueproduto(DMPrincipal.DsQryProduto.DataSet.FieldByName('prd_idproduto').AsInteger);
+
+        if SldEst > 0 then
+        begin
+
+        if not(EdtDNFINomeProduto.Text = EmptyStr) then
+        begin
+                LbDNFINomeProduto.Caption := 'SALDO EM ESTOQUE:  '+FloatToStr(SldEst);
+        end;
+        end else begin
+                LbDNFINomeProduto.Caption := 'PRODUTO ';
+        end;
+
+end;
+
 procedure TFrmModuloControleEstoque.EdtDNFIQdteExit(Sender: TObject);
 begin
-        if EdtDNFIQdte.Value > 0 then
+        if (EdtDNFIQdte.Value > 0) and (EdtDNFIVlrUnit.Value > 0) then
         begin
+                CtrlEst_NF.fCtrlEstSaida;
+
                 EdtDNFIVlrTotal.Text := FloatToStr( CtrlEst_NF.fCalcTotalNFItem(EdtDNFIVlrUnit.Value,EdtDNFIQdte.Value));
         end;
 

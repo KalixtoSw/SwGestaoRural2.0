@@ -3005,7 +3005,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
         Width = 1024
         Height = 636
         Align = alClient
-        ActiveCard = CrdPrincipal
+        ActiveCard = CrdCtrlEntradas
         Caption = 'CrdPnlCtrlEstoque'
         TabOrder = 0
         object CrdPrincipal: TCard
@@ -4615,7 +4615,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 Width = 1022
                 Height = 610
                 Cursor = crHandPoint
-                ActivePage = TbShtConsultaNF
+                ActivePage = TbShtLancamentos
                 Align = alClient
                 TabOrder = 0
                 OnResize = PgCntrlCtrlEntradaNFResize
@@ -4908,7 +4908,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           FieldName = 'nf_dtvencimento'
                           Title.Alignment = taCenter
                           Title.Caption = 'VENCIMENTO'
-                          Width = 64
                           Visible = True
                         end
                         item
@@ -4916,7 +4915,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Expanded = False
                           FieldName = 'nf_vlrprodutos'
                           Title.Caption = 'VALOR PRODUTOS'
-                          Width = 64
                           Visible = True
                         end
                         item
@@ -4924,7 +4922,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Expanded = False
                           FieldName = 'nf_vlrtotal'
                           Title.Caption = 'VALOR TOTAL'
-                          Width = 64
                           Visible = True
                         end>
                     end
@@ -7039,7 +7036,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 0
+                        TabOrder = 3
                         object LbDNFICFOP: TLabel
                           Left = 0
                           Top = 0
@@ -7084,7 +7081,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 1
+                        TabOrder = 0
                         object LbDNFICodProduto: TLabel
                           Left = 0
                           Top = 0
@@ -7113,6 +7110,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           LookupDisplay = 'prd_codInterno'
                           LookupSource = DMPrincipal.DsQryProduto
                           TabOrder = 0
+                          OnChange = EdtDNFINomeProdutoExit
                         end
                       end
                       object PnlDNFIEmbalagem: TJvPanel
@@ -7173,7 +7171,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 3
+                        TabOrder = 1
                         object LbDNFINomeProduto: TLabel
                           Left = 0
                           Top = 0
@@ -7202,6 +7200,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           LookupDisplay = 'prd_nome'
                           LookupSource = DMPrincipal.DsQryProduto
                           TabOrder = 0
+                          OnChange = EdtDNFINomeProdutoExit
+                          OnExit = EdtDNFINomeProdutoExit
                         end
                       end
                       object PnlDNFIQdte: TJvPanel
@@ -7262,7 +7262,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 5
+                        TabOrder = 6
                         object LbDNFIVlrTotal: TLabel
                           Left = 0
                           Top = 0
@@ -7306,7 +7306,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         BevelOuter = bvNone
                         Color = 4671041
                         ParentBackground = False
-                        TabOrder = 6
+                        TabOrder = 5
                         object LbDNFIVlrUnit: TLabel
                           Left = 0
                           Top = 0

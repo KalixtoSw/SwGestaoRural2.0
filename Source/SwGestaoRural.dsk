@@ -1,6 +1,6 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas',0,1,124,1,130,0,0,,
-File_1=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\Tamplate\UFrmModel1.pas',0,1,107,52,119,0,0,,
+File_0=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\Tamplate\UFrmModel1.pas',0,1,107,52,119,0,0,,
+File_1=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas',0,1,124,1,130,0,0,,
 File_2=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroTalhao.pas',0,1,64,1,109,0,0,,
 File_3=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Talhao.pas',0,1,211,1,1,0,0,,
 File_4=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Sistema.Mensagens.pas',0,1,79,14,88,0,0,,
@@ -13,35 +13,39 @@ File_10=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe
 File_11=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsCrud.pas',0,1,31,73,181,0,0,,
 File_12=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas',0,1,271,9,168,0,0,,
 File_13=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas',0,1,402,30,416,0,0,,
-File_14=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Comum.ControleEstoque.pas',0,1,105,40,27,0,0,,
 
 [Modules]
 Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas
-Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
-Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
-Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
-Count=4
+Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
+Module2=default.htm
+Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
+Module4=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
+Count=5
 EditWindowCount=1
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas]
 ModuleType=TSourceModule
+
+[default.htm]
+ModuleType=TURLModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas]
 ModuleType=TSourceModule
 
 [EditWindow0]
-ViewCount=4
+ViewCount=5
 CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas
 View0=0
 View1=1
 View2=2
 View3=3
+View4=4
 PercentageSizes=1
 Create=1
 Visible=1
@@ -63,26 +67,30 @@ LeftPanelClients=PropertyInspector
 LeftPanelData=00000800010000000000FC20000000000000005F0C0000000000000100000000FC2000001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=1672
 RightPanelClients=DockSite3,DockSite4,DockSite2
-RightPanelData=00000800010100000000B2120000000000000188060000000000000100000000FF0A000009000000446F636B53697465330100000000FE15000009000000446F636B536974653401000000003D21000009000000446F636B5369746532FFFFFFFF
-BottomPanelSize=0
+RightPanelData=0000080001010100000009000000446F636B5369746532090F00000000000001880600000000000001000000000A17000009000000446F636B53697465330100000000BB1A000009000000446F636B5369746534FFFFFFFF
+BottomPanelSize=1593
 BottomPanelClients=DockSite1,MessageView
-BottomPanelData=0000080001020200000009000000446F636B53697465310F0000004D65737361676556696577466F726DDE44000000000000023906000000000000FFFFFFFF
+BottomPanelData=0000080001020100000009000000446F636B5369746531DE440000000000000239060000000000000100000000DE4400000F0000004D65737361676556696577466F726DFFFFFFFF
 BottomMiddlePanelSize=0
 BottomMiddlePanelClients=DockSite0,GraphDrawingModel
 BottomMiddelPanelData=0000080001020200000009000000446F636B536974653010000000477261706844726177696E67566965779F1D00000000000002F206000000000000FFFFFFFF
 
 [View0]
+CustomEditViewType=TWelcomePageView
+WelcomePageURL=bds:/default.htm
+
+[View1]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
-CursorX=38
-CursorY=132
-TopLine=110
+CursorX=32
+CursorY=79
+TopLine=49
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
+EditViewName=Borland.FormDesignerView
 
-[View1]
+[View2]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
 CursorX=54
@@ -93,22 +101,22 @@ Elisions=
 Bookmarks=
 EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
 
-[View2]
+[View3]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas
-CursorX=82
-CursorY=110
-TopLine=86
+CursorX=35
+CursorY=155
+TopLine=135
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas
 
-[View3]
+[View4]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
 CursorX=1
-CursorY=288
+CursorY=304
 TopLine=248
 LeftCol=1
 Elisions=
@@ -195,11 +203,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=2490
+Height=8740
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2490
+ClientHeight=8740
 TBDockHeight=5904
 LRDockWidth=2349
 Dockable=1
@@ -208,16 +216,16 @@ StayOnTop=0
 [MessageView]
 PercentageSizes=1
 Create=1
-Visible=0
+Visible=1
 Docked=1
 State=0
 Left=0
-Top=0
-Width=2771
+Top=24
+Width=9917
 Height=1423
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2771
+ClientWidth=9917
 ClientHeight=1423
 TBDockHeight=1423
 LRDockWidth=2771
@@ -233,11 +241,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=2615
+Height=750
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2615
+ClientHeight=750
 TBDockHeight=7154
 LRDockWidth=2000
 Dockable=1
@@ -271,12 +279,12 @@ State=0
 Left=0
 Top=0
 Width=1375
-Height=4933
+Height=4942
 MaxLeft=-5
 MaxTop=-10
 ClientWidth=1292
-ClientHeight=4558
-TBDockHeight=4933
+ClientHeight=4567
+TBDockHeight=4942
 LRDockWidth=1375
 Dockable=1
 StayOnTop=0
@@ -290,16 +298,21 @@ State=0
 Left=0
 Top=24
 Width=1479
-Height=8606
+Height=6875
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1479
-ClientHeight=8606
+ClientHeight=6875
 TBDockHeight=8269
 LRDockWidth=1479
 Dockable=1
 StayOnTop=0
 SplitPos=112
+
+[PropInspDesignerSelection]
+ArrangeBy=Name
+SelectedItem=Max,CustomHint
+ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0,ClipboardCommands=0,DataSource=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -367,11 +380,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=2885
+Height=8740
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2885
+ClientHeight=8740
 TBDockHeight=5962
 LRDockWidth=2510
 Dockable=1
@@ -572,11 +585,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=894
+Height=8740
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=894
+ClientHeight=8740
 TBDockHeight=4894
 LRDockWidth=7151
 Dockable=1
@@ -636,11 +649,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=2615
+Height=5817
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2615
+ClientHeight=5817
 TBDockHeight=3683
 LRDockWidth=1896
 Dockable=1
@@ -676,11 +689,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=894
+Height=8740
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=894
+ClientHeight=8740
 TBDockHeight=4894
 LRDockWidth=5307
 Dockable=1
@@ -761,17 +774,17 @@ HostDockSite=DockRightPanel
 DockSiteType=1
 PercentageSizes=1
 Create=1
-Visible=1
+Visible=0
 Docked=1
 State=0
 Left=0
 Top=632
 Width=1672
-Height=2760
+Height=9010
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2760
+ClientHeight=9010
 TBDockHeight=9010
 LRDockWidth=1672
 Dockable=1
@@ -791,11 +804,11 @@ State=0
 Left=0
 Top=24
 Width=1672
-Height=2615
+Height=5817
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2615
+ClientHeight=5817
 TBDockHeight=9010
 LRDockWidth=1672
 Dockable=1
@@ -813,13 +826,13 @@ Visible=1
 Docked=1
 State=0
 Left=0
-Top=328
+Top=661
 Width=1672
-Height=2615
+Height=750
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2615
+ClientHeight=750
 TBDockHeight=894
 LRDockWidth=1672
 Dockable=1

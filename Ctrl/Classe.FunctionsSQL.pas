@@ -100,9 +100,9 @@ begin
                    Tabela.Close;
                    exit;
              end;
-            if Tp <> 3 then
+          //  if Tp <> 3 then
             begin
-          //      ShowMessage(SQLresult +' -- Operação: '+ IntToStr(Tp));
+         //       ShowMessage(SQLresult +' -- Operação: '+ IntToStr(Tp));
             end;
 
       Try
