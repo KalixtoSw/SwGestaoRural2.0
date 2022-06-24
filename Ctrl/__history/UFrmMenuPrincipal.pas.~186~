@@ -80,8 +80,6 @@ type
     JvHint1: TJvHint;
     JvBalloonHint1: TJvBalloonHint;
     JvXPBar1: TJvXPBar;
-    ActivityIndicator1: TActivityIndicator;
-    ThreadModuloPlantio: TJvMTThread;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);
@@ -182,19 +180,14 @@ end;
 
 procedure TFrmMenuPrincipal.JvXPBar1Items0Click(Sender: TObject);
 begin
-
-        ThreadModuloPlantio.Run;
-{
-
-     ActivityIndicator1.Animate := True;
      try
            Application.CreateForm(TFrmPlantio,FrmPlantio);
            FrmPlantio.ShowModal;
       finally
-            ActivityIndicator1.Animate := False;
+
             FreeAndNil(FrmPlantio);
       end;
-}
+
 end;
 
 procedure TFrmMenuPrincipal.JvXPBar1Items1Click(Sender: TObject);
@@ -226,11 +219,11 @@ procedure TFrmMenuPrincipal.ThretryadModuloPlantioExecute(Sender: TJvMTThread;
   MTThread: TJvMTSingleThread);
 begin
         try
-           ActivityIndicator1.Animate := True;
+
            Application.CreateForm(TFrmPlantio,FrmPlantio);
            FrmPlantio.ShowModal;
         finally
-            ActivityIndicator1.Animate := False;
+
             FreeAndNil(FrmPlantio);
         end;
 end;

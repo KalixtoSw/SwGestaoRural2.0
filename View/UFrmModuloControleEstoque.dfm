@@ -4621,10 +4621,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 object TbShtConsultaNF: TTabSheet
                   Caption = 'CONSULTA NF'
                   OnShow = TbShtConsultaNFShow
-                  ExplicitLeft = 0
-                  ExplicitTop = 0
-                  ExplicitWidth = 0
-                  ExplicitHeight = 0
                   object PnlConsultaNFFiltros: TJvPanel
                     Left = 0
                     Top = 0
@@ -4911,7 +4907,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           FieldName = 'nf_dtvencimento'
                           Title.Alignment = taCenter
                           Title.Caption = 'VENCIMENTO'
-                          Width = 64
                           Visible = True
                         end
                         item
@@ -4919,7 +4914,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Expanded = False
                           FieldName = 'nf_vlrprodutos'
                           Title.Caption = 'VALOR PRODUTOS'
-                          Width = 64
                           Visible = True
                         end
                         item
@@ -4927,7 +4921,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Expanded = False
                           FieldName = 'nf_vlrtotal'
                           Title.Caption = 'VALOR TOTAL'
-                          Width = 64
                           Visible = True
                         end>
                     end
@@ -4963,6 +4956,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     HotTrackFont.Style = []
                     Align = alBottom
                     BevelOuter = bvNone
+                    Color = clWhite
+                    ParentBackground = False
                     TabOrder = 0
                     object PnlBtCancelNF: TJvPanel
                       Left = 150
@@ -4979,13 +4974,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 0
-                      object JvGradient1: TJvGradient
+                      object FundoBtCancelarNF: TJvGradient
                         Left = 0
                         Top = 0
                         Width = 150
                         Height = 48
-                        StartColor = 4671041
-                        EndColor = 4671041
+                        StartColor = 8279822
+                        EndColor = 8279822
                         ExplicitLeft = 70
                         ExplicitTop = 15
                         ExplicitWidth = 100
@@ -5172,13 +5167,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 1
-                      object JvGradient2: TJvGradient
+                      object FundoBtSalvarNF: TJvGradient
                         Left = 0
                         Top = 0
                         Width = 150
                         Height = 48
-                        StartColor = 4671041
-                        EndColor = 5065032
+                        StartColor = 8279822
+                        EndColor = 8279822
                         ExplicitLeft = 55
                         ExplicitTop = 5
                         ExplicitWidth = 100
@@ -5370,8 +5365,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Top = 0
                         Width = 150
                         Height = 48
-                        StartColor = 4671041
-                        EndColor = 4671041
+                        StartColor = 8279822
+                        EndColor = 8279822
                         ExplicitLeft = 70
                         ExplicitTop = 15
                         ExplicitWidth = 100
@@ -7475,9 +7470,11 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         object LbAlertCtrlEstMensagem: TLabel
                           Left = 65
                           Top = 47
-                          Width = 3
+                          Width = 336
                           Height = 13
+                          Alignment = taCenter
                           Anchors = []
+                          AutoSize = False
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -11
