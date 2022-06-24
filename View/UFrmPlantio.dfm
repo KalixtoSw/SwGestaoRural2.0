@@ -12295,6 +12295,7 @@
                   Anchors = []
                   ShowButton = False
                   TabOrder = 0
+                  Value = 2150.000000000000000000
                   DecimalPlacesAlwaysShown = False
                   OnExit = EdtPlt_AreaPlantadaExit
                   DataField = 'plt_areaPlantada'
@@ -12433,7 +12434,6 @@
                 Width = 61
                 Height = 56
                 Anchors = []
-                OnClick = JvSpeedButton1Click
               end
             end
           end
@@ -12684,7 +12684,6 @@
                     FieldName = 'tbl_latitude'
                     Title.Alignment = taCenter
                     Title.Caption = 'LATITUDADE'
-                    Width = 64
                     Visible = True
                   end
                   item
@@ -12693,7 +12692,6 @@
                     FieldName = 'tbl_longitude'
                     Title.Alignment = taCenter
                     Title.Caption = 'LONGITUDE'
-                    Width = 64
                     Visible = True
                   end
                   item
@@ -12715,7 +12713,6 @@
                     FieldName = 'tbl_status'
                     Title.Alignment = taCenter
                     Title.Caption = 'STATUS'
-                    Width = 64
                     Visible = True
                   end
                   item

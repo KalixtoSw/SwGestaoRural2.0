@@ -40,6 +40,8 @@ type
 
       end;
 
+      function fCtrlSaldoEstoqueproduto(IdProduto: Integer; IdEmbalagem : Integer): Double;
+
 implementation
 
 uses
@@ -124,6 +126,40 @@ end;
 procedure TCrtlEstoque.setPnlBtSaidas(const Value: TJvPanel);
 begin
   FPnlBtSaidas := Value;
+end;
+
+function fCtrlSaldoEstoqueproduto(IdProduto: Integer; IdEmbalagem : Integer): Double;
+Var
+        Sql1,Sql2,Sql3,Sql4,SqlAux : string;
+begin
+        //Montar o controle de estoque para o produto por embalagem, pois pode haver o mesmo produto em embalagens diferentes
+
+        if IdProduto = 0 then
+        begin
+            SqlAux := '';
+        end else begin
+                SqlAux := 'WHERE p.prd_idproduto = '+IntToStr(IdProduto);
+        end;
+
+        if (IdProduto > 0) and (IdEmbalagem > 0) then
+        begin
+             SqlAux := SqlAux + ' AND pe.prde_Id = '+IntToStr(IdEmbalagem);
+        end;
+
+        Sql1 := 'SELECT p.prd_idproduto,pe.prde_Id, p.prd_nome,pe.prde_descricao, p.prd_nome, p.prd_fabricante, p.prd_tipo, p.prd_status, m.mov_tipo, SUM(mp.mp_qtdUnit),SUM( mp.mp_qtdContabil) AS ''Ctrl_Estoque'',';
+        Sql2 := ' AVG(mp.mp_precoCompra) AS ''Preco_Medio'', SUM(mp.mp_precoTotal) AS ''Valor_Geral'' ';
+        Sql3 := ' FROM movimentacao m INNER JOIN movimentacao_produto mp ON m.mov_id = mp.mov_id INNER JOIN produto p ON mp.prd_idproduto = p.prd_idproduto INNER JOIN produto_embalagem pe ON pe.prde_Id = mp.prde_Id ';
+        Sql4 := SqlAux+' GROUP BY p.prd_idproduto, p.prd_nome,pe.prde_descricao;';
+
+        DMPrincipal.QryCtrlEstProduto.Close;
+        DMPrincipal.QryCtrlEstProduto.SQL.Clear;
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql1);
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql2);
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql3);
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql4);
+        DMPrincipal.QryCtrlEstProduto.Open;
+        Result := DMPrincipal.QryCtrlEstProduto.FieldByName('Ctrl_Estoque').AsFloat;
+
 end;
 
 end.

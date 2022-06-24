@@ -188,6 +188,10 @@ type
     EdtFldDtVencimentoNF: TJvDBDatePickerEdit;
     EdtImpostoNFVlrtNF: TDBEdit;
     Thread_NF: TJvThread;
+    pnlAlertCtrlEstoque: TRelativePanel;
+    LbAlertCtrlEstTitulo: TLabel;
+    ImgAlertCtrlEst: TImage;
+    LbAlertCtrlEstMensagem: TLabel;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -210,7 +214,6 @@ type
     procedure DbGrdConsultaNFDblClick(Sender: TObject);
     procedure TbShtConsultaNFShow(Sender: TObject);
     procedure BtCancelarNFClick(Sender: TObject);
-    procedure PgCntrlCtrlEntradaNFResize(Sender: TObject);
     procedure BtBtDeletelNFClick(Sender: TObject);
     procedure EdtDNFIQdteExit(Sender: TObject);
     procedure EdtImpostoNFVlrProdutosExit(Sender: TObject);
@@ -312,8 +315,12 @@ end;
 procedure TFrmModuloControleEstoque.EdtDNFINomeProdutoExit(Sender: TObject);
 var
         SldEst : double;
+        IdProduto, IdEmbalagem : Integer;
 begin
-        SldEst := fCtrlSaldoEstoqueproduto(DMPrincipal.DsQryProduto.DataSet.FieldByName('prd_idproduto').AsInteger);
+        IdProduto       := DMPrincipal.DsQryProduto.DataSet.FieldByName('prd_idproduto').AsInteger;
+        IdEmbalagem     := DMPrincipal.DsTbProdutoEmbalagem.DataSet.FieldByName('prde_Id').AsInteger;
+
+        SldEst := fCtrlSaldoEstoqueproduto(IdProduto,IdEmbalagem);
 
         if SldEst > 0 then
         begin
@@ -329,7 +336,39 @@ begin
 end;
 
 procedure TFrmModuloControleEstoque.EdtDNFIQdteExit(Sender: TObject);
+var
+        SldEst : double;
+        IdProduto, IdEmbalagem : Integer;
 begin
+        IdProduto       := DMPrincipal.DsQryProduto.DataSet.FieldByName('prd_idproduto').AsInteger;
+        IdEmbalagem     := DMPrincipal.DsTbProdutoEmbalagem.DataSet.FieldByName('prde_Id').AsInteger;
+
+        SldEst := fCtrlSaldoEstoqueproduto(IdProduto,IdEmbalagem);
+
+        if CbbFldTipoMovNF.Text = 'SAÍDA' then
+        begin
+             if (CbbDNFIEmbalagem.Text = EmptyStr) and (EdtDNFIQdte.Value > 0) then
+             begin
+                     LbAlertCtrlEstMensagem.Caption := 'É OBRIGATÓRIO INFORMAR O TIPO DE EMBALAGEM';
+                     pnlAlertCtrlEstoque.Visible := True;
+                     pdelay(6000);
+                     LbAlertCtrlEstMensagem.Caption :='';
+                     pnlAlertCtrlEstoque.Visible := False;
+             end else begin
+                if SldEst < EdtDNFIQdte.Value  then
+                begin
+                     LbAlertCtrlEstMensagem.Caption := 'NÃO HÁ SALDO EM ESTOQUE PARA ESSE LANÇAMENTO';
+                     pnlAlertCtrlEstoque.Visible := True;
+                     pdelay(6000);
+                     LbAlertCtrlEstMensagem.Caption :='';
+                     pnlAlertCtrlEstoque.Visible := False;
+                     EdtDNFIQdte.Value := 0;
+                     EdtDNFIQdte.SetFocus;
+                end;
+
+             end;
+        end;
+
         if (EdtDNFIQdte.Value > 0) and (EdtDNFIVlrUnit.Value > 0) then
         begin
                 CtrlEst_NF.fCtrlEstSaida;
@@ -428,6 +467,7 @@ end;
 procedure TFrmModuloControleEstoque.FormResize(Sender: TObject);
 begin
         pCentralizaPanel(PnlFrmCtrlEstoque,self);
+        PgCntrlCtrlEntradaNF.ActivePage := TbShtConsultaNF;
 end;
 
 procedure TFrmModuloControleEstoque.FormShow(Sender: TObject);
@@ -463,11 +503,6 @@ begin
                 CtrlEst_NF.pEventoBtSavarNFItem;
 end;
 
-procedure TFrmModuloControleEstoque.PgCntrlCtrlEntradaNFResize(Sender: TObject);
-begin
-        PgCntrlCtrlEntradaNF.ActivePage := TbShtConsultaNF;
-end;
-
 procedure TFrmModuloControleEstoque.PnlFundoBtsNavCadProdutoMouseEnter(
   Sender: TObject);
 begin
@@ -501,6 +536,8 @@ end;
 
 procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
 begin
+
+
         if not(ActInsUpd = 'UPDATE') then
         begin
                 ActInsUpd := 'INSERT';

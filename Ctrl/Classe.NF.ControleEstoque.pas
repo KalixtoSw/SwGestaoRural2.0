@@ -7,7 +7,7 @@ uses
   Classe.Conexao, Vcl.Forms, JvDBUltimGrid, System.Classes, System.Variants,
   FireDAC.Comp.Client, Vcl.ComCtrls, JvDBControls, Vcl.Dialogs, Data.DB,
   JvDBDateTimePicker, JvDesktopAlert, JvDBDatePickerEdit, JvSpeedButton,
-  JvPanel, System.Math;
+  JvPanel, System.Math, Classe.Comum.ControleEstoque;
 
 type
   TCrtrlEstoque_NF = class
@@ -131,7 +131,7 @@ end;
 
 function TCrtrlEstoque_NF.fCtrlEstSaida: Boolean;
 begin
-        ShowMessage(  FloatToStr(fCtrlSaldoEstoqueproduto(TbProduto.FieldByName('prd_idproduto').AsInteger)));
+        //ShowMessage(  FloatToStr(fCtrlSaldoEstoqueproduto(TbProduto.FieldByName('prd_idproduto').AsInteger)));
 end;
 
 function TCrtrlEstoque_NF.fpCalcTotalNF: Double;
@@ -309,6 +309,7 @@ begin
     DtEmissaoNF.Date := fAjustaDataNull(DtEmissaoNF.Date);
     DtVencimentoNF.Date := fAjustaDataNull(DtVencimentoNF.Date);
     DtEntSadNF.Date := fAjustaDataNull(DtEntSadNF.Date);
+    FrmModuloControleEstoque.CbbFldTipoMovNF.ItemIndex := 0;
   
 end;
 

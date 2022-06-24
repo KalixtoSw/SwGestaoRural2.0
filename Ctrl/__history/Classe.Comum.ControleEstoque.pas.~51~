@@ -3,7 +3,8 @@ unit Classe.Comum.ControleEstoque;
 interface
 
 uses
-  JvPanel, Classe.Functions, Data.DB, System.SysUtils,Classe.Conexao;
+  JvPanel, Classe.Functions, Data.DB, System.SysUtils,Classe.Conexao,
+  Vcl.Dialogs;
 
 type
       TCrtlEstoque = class
@@ -13,11 +14,6 @@ type
     FPnlBtCadProduto: TJvPanel;
     FPnlBtCadGerais: TJvPanel;
     FPnlBtSaidas: TJvPanel;
-
-    FDSNF       : TDataSource;
-    FDSNFI      : TDataSource;
-    FDSENTRADA  : TDataSource;
-    FDSENTRADAITEM : TDataSource;
 
     procedure SetPnlBtEstFisico(const Value: TJvPanel);
     procedure setPnlBtEntradas(const Value: TJvPanel);
@@ -34,9 +30,6 @@ type
         procedure pCtrlPosicaopnlBt4(PnlFundo : TJvPanel;Pos : Integer);
         procedure pCtrlPosicaopnlBt5(PnlFundo : TJvPanel;Pos : Integer);
 
-        function fProcessaEntEstporNF : boolean;
-
-
 
        published
         property PnlBtEstFisico : TJvPanel read FPnlBtEstFisico         write SetPnlBtEstFisico;
@@ -46,6 +39,8 @@ type
         property PnlBtRelatorios: TJvPanel read FPnlBtCadGerais        write setPnlBtCadGerais;
 
       end;
+
+      function fCtrlSaldoEstoqueproduto(IdProduto: Integer; IdEmbalagem : Integer): Double;
 
 implementation
 
@@ -61,62 +56,10 @@ begin
         setPnlBtCadProduto(FrmModuloControleEstoque.PnlFundoBtsNavCadProduto);
         setPnlBtSaidas(FrmModuloControleEstoque.PnlFundoBtsNavSaida);
         setPnlBtCadGerais(FrmModuloControleEstoque.PnlFundoBtsNavCadGerais);
-
-
-        {FDSNF           := DMPrincipal.DsTbNotaFiscalP;
-        FDSNFI          := DMPrincipal.DsTbNotaFiscalItemP;
-        FDSENTRADA      := DMPrincipal.DsTbMovimentacao;
-        FDSENTRADAITEM  := DMPrincipal.DsTbMov_Produto;}
-
-
-        {DMPrincipal.TbNotaFiscalP.Active := True;
-        DMPrincipal.TbNotaFiscalItemP.Active := True;
-        DMPrincipal.FDTbMovimentacao.Active := True;
-        DMPrincipal.FDTbMov_Produto.Active := True;}
-
 end;
 
 destructor TCrtlEstoque.DestroyObjTCrtlEstoque;
 begin
-
-end;
-
-function TCrtlEstoque.fProcessaEntEstporNF: boolean;
-var
-        IDMov : Integer;
-begin
-        FDSNF.DataSet.Filtered := False;
-        FDSNF.DataSet.Filter   := 'nf_procEstoque = 0';
-        FDSNF.DataSet.Filtered := True;
-        FDSNF.DataSet.First;
-
-        while not FDSNF.DataSet.Eof do
-        begin
-               FDSENTRADA.DataSet.Insert;
-               FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
-               FDSENTRADA.DataSet.FieldByName('mov_datamov').AsDateTime := Now;
-               FDSENTRADA.DataSet.FieldByName('mov_descricao').AsString := 'MOVIMENTAÇÃO DE ESTOQUE';
-               FDSENTRADA.DataSet.FieldByName('mov_origem').Asstring := 'MÓDULO NF';
-               FDSENTRADA.DataSet.FieldByName('nf_id').AsInteger := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
-               FDSENTRADA.DataSet.Post;
-               FDSENTRADA.DataSet.First;
-               IDMov := FDSENTRADA.DataSet.FieldByName('mov_id').AsInteger;
-
-                while not FDSNFI.DataSet.Eof do
-                begin
-                       FDSENTRADAITEM.DataSet.Insert;
-                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := IDMov;
-                       FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := FDSNFI.DataSet.FieldByName('prd_idproduto').AsInteger;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
-                       FDSENTRADAITEM.DataSet.FieldByName('mp_precoTotal').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrtotal').AsFloat;
-                       FDSENTRADAITEM.DataSet.Post;
-                       FDSNFI.DataSet.Next;
-                end;
-                FDSNF.DataSet.FieldByName('nf_procEstoque').AsInteger := 1;
-                FDSNF.DataSet.Post;
-                FDSNF.DataSet.Next;
-        end;
 
 end;
 
@@ -183,6 +126,46 @@ end;
 procedure TCrtlEstoque.setPnlBtSaidas(const Value: TJvPanel);
 begin
   FPnlBtSaidas := Value;
+end;
+
+function fCtrlSaldoEstoqueproduto(IdProduto: Integer; IdEmbalagem : Integer): Double;
+Var
+        Sql1,Sql2,Sql3,Sql4,SqlAux : string;
+begin
+        //Montar o controle de estoque para o produto por embalagem, pois pode haver o mesmo produto em embalagens diferentes
+
+        if IdProduto = 0 then
+        begin
+            SqlAux := '';
+        end else begin
+                SqlAux := 'WHERE p.prd_idproduto = '+IntToStr(IdProduto);
+        end;
+
+        if (IdProduto > 0) and (IdEmbalagem > 0) then
+        begin
+             SqlAux := SqlAux + ' AND pe.prde_Id = '+IntToStr(IdEmbalagem);
+        end;
+
+        Sql1 := 'SELECT p.prd_idproduto,pe.prde_Id, p.prd_nome,pe.prde_descricao, p.prd_nome, p.prd_fabricante, p.prd_tipo, p.prd_status, m.mov_tipo, SUM(mp.mp_qtdUnit),SUM( mp.mp_qtdContabil) AS ''Ctrl_Estoque'',';
+        Sql2 := ' AVG(mp.mp_precoCompra) AS ''Preco_Medio'', SUM(mp.mp_precoTotal) AS ''Valor_Geral'' ';
+        Sql3 := ' FROM movimentacao m INNER JOIN movimentacao_produto mp ON m.mov_id = mp.mov_id INNER JOIN produto p ON mp.prd_idproduto = p.prd_idproduto INNER JOIN produto_embalagem pe ON pe.prde_Id = mp.prde_Id ';
+        Sql4 := SqlAux+' GROUP BY p.prd_idproduto, p.prd_nome,pe.prde_descricao;';
+        ShowMessage(Sql1+sql2+sql3+sql4);
+
+        FrmModuloControleEstoque.Memo1.Lines.Add(Sql1);
+        FrmModuloControleEstoque.Memo1.Lines.Add(Sql2);
+        FrmModuloControleEstoque.Memo1.Lines.Add(Sql3);
+        FrmModuloControleEstoque.Memo1.Lines.Add(Sql4);
+
+        DMPrincipal.QryCtrlEstProduto.Close;
+        DMPrincipal.QryCtrlEstProduto.SQL.Clear;
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql1);
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql2);
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql3);
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql4);
+        DMPrincipal.QryCtrlEstProduto.Open;
+        Result := DMPrincipal.QryCtrlEstProduto.FieldByName('Ctrl_Estoque').AsFloat;
+
 end;
 
 end.

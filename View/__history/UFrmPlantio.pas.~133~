@@ -11,7 +11,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
   JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
   JvDBDatePickerEdit, JvBaseEdits, Vcl.ComCtrls, JvExComCtrls, JvProgressBar,
-  JvDBProgressBar, System.Math, Winapi.CommCtrl,Classe.Comum.ControleEstoque;
+  JvDBProgressBar, System.Math, Winapi.CommCtrl,Classe.NF.ControleEstoque;
 
 type
   TFrmPlantio = class(TForm)
@@ -103,9 +103,9 @@ type
     { Private declarations }
   public
     { Public declarations }
+
         Plantio : TPlantio;
         KeyVlrIdSafra : Integer;
-        CtrlComumEst : TCrtlEstoque;
   end;
 
   type
@@ -236,7 +236,7 @@ end;
 
 procedure TFrmPlantio.JvSpeedButton1Click(Sender: TObject);
 begin
-        CtrlComumEst.fCtrlSaldoEstoqueproduto(5);
+        fCtrlSaldoEstoqueproduto(5);
 end;
 
 end.

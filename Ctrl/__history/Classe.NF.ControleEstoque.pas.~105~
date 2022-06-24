@@ -131,8 +131,7 @@ end;
 
 function TCrtrlEstoque_NF.fCtrlEstSaida: Boolean;
 begin
-        ShowMessage(
-        fCtrlSaldoEstoqueproduto(TbProduto.FieldByName('prd_idproduto').AsInteger));
+        ShowMessage(  FloatToStr(fCtrlSaldoEstoqueproduto(TbProduto.FieldByName('prd_idproduto').AsInteger)));
 end;
 
 function TCrtrlEstoque_NF.fpCalcTotalNF: Double;
@@ -194,7 +193,8 @@ begin
                 while not ( FDSNFI.DataSet.Eof)  do
                 begin
                             FDSENTRADAITEM.DataSet.Insert;
-                            FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := IDMov;
+                            FDSENTRADAITEM.DataSet.FieldByName('mov_id').AsInteger := IDMov;
+                            FDSENTRADAITEM.DataSet.FieldByName('prde_Id').AsInteger := FDSNFI.DataSet.FieldByName('prde_Id').AsInteger;
                             FDSENTRADAITEM.DataSet.FieldByName('prd_idproduto').AsInteger := FDSNFI.DataSet.FieldByName('prd_idproduto').AsInteger;
                             FDSENTRADAITEM.DataSet.FieldByName('mp_qtdUnit').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_qtde').AsFloat;
                             FDSENTRADAITEM.DataSet.FieldByName('mp_precoCompra').AsFloat :=  FDSNFI.DataSet.FieldByName('nfi_vlrunit').AsFloat;
