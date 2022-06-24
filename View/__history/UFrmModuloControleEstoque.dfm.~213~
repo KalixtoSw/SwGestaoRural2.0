@@ -4622,6 +4622,10 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 object TbShtConsultaNF: TTabSheet
                   Caption = 'CONSULTA NF'
                   OnShow = TbShtConsultaNFShow
+                  ExplicitLeft = 0
+                  ExplicitTop = 0
+                  ExplicitWidth = 0
+                  ExplicitHeight = 0
                   object PnlConsultaNFFiltros: TJvPanel
                     Left = 0
                     Top = 0
@@ -4908,6 +4912,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           FieldName = 'nf_dtvencimento'
                           Title.Alignment = taCenter
                           Title.Caption = 'VENCIMENTO'
+                          Width = 64
                           Visible = True
                         end
                         item
@@ -4915,6 +4920,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Expanded = False
                           FieldName = 'nf_vlrprodutos'
                           Title.Caption = 'VALOR PRODUTOS'
+                          Width = 64
                           Visible = True
                         end
                         item
@@ -4922,6 +4928,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Expanded = False
                           FieldName = 'nf_vlrtotal'
                           Title.Caption = 'VALOR TOTAL'
+                          Width = 64
                           Visible = True
                         end>
                     end
@@ -5537,14 +5544,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 10
                       Top = 5
                       Width = 150
-                      Height = 40
+                      Height = 38
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 0
                       object LbFldTipoMovNF: TLabel
@@ -5554,11 +5561,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Height = 15
                         Align = alTop
                         Caption = 'MOVIMENTA'#199#195'O'
+                        Color = 4433703
                         Font.Charset = ANSI_CHARSET
                         Font.Color = clWhite
                         Font.Height = -12
                         Font.Name = 'Segoe UI Semibold'
                         Font.Style = [fsBold]
+                        ParentColor = False
                         ParentFont = False
                         ExplicitWidth = 96
                       end
@@ -5590,14 +5599,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 180
                       Top = 5
                       Width = 340
-                      Height = 40
+                      Height = 38
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 1
                       object LbFldFornecNF: TLabel
@@ -5621,6 +5630,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 340
                         Height = 23
                         Align = alTop
+                        BevelInner = bvNone
+                        BevelOuter = bvNone
                         DataField = 'frn_id'
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         KeyField = 'frn_id'
@@ -5633,14 +5644,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 540
                       Top = 5
                       Width = 150
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 2
                       object LbFldNumeroNF: TLabel
@@ -5664,6 +5675,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 150
                         Height = 23
                         Align = alTop
+                        BorderStyle = bsNone
                         DecimalPlaces = 0
                         DisplayFormat = '0'
                         ShowButton = False
@@ -5677,14 +5689,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 710
                       Top = 5
                       Width = 150
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 3
                       object LbFldSerieNF: TLabel
@@ -5708,6 +5720,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 150
                         Height = 23
                         Align = alTop
+                        BorderStyle = bsNone
                         DecimalPlaces = 0
                         DisplayFormat = '0'
                         ShowButton = False
@@ -5721,14 +5734,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 870
                       Top = 5
                       Width = 140
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 4
                       object FldCnpjNF: TLabel
@@ -5751,6 +5764,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Top = 15
                         Width = 140
                         Height = 23
+                        BorderStyle = bsNone
                         DataField = 'nf_cnpjForn'
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         TabOrder = 0
@@ -5761,14 +5775,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 10
                       Top = 60
                       Width = 350
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 5
                       object LbFldNatOperNF: TLabel
@@ -5792,6 +5806,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 350
                         Height = 23
                         Align = alTop
+                        BorderStyle = bsNone
+                        CharCase = ecUpperCase
                         DataField = 'nf_nop'
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         TabOrder = 0
@@ -5808,7 +5824,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 6
                       object LbFldDtEmissaoNF: TLabel
@@ -5833,6 +5849,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Height = 24
                         Align = alTop
                         AllowNoDate = True
+                        BorderStyle = bsNone
                         ButtonFlat = True
                         DataField = 'nf_dtemissao'
                         DataSource = DMPrincipal.DsTbNotaFiscal
@@ -5852,7 +5869,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 7
                       object LbFldDtESNF: TLabel
@@ -5877,6 +5894,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Height = 24
                         Align = alTop
                         AllowNoDate = True
+                        BorderStyle = bsNone
                         ButtonFlat = True
                         DataField = 'nf_dtES'
                         DataSource = DMPrincipal.DsTbNotaFiscal
@@ -5889,14 +5907,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 710
                       Top = 60
                       Width = 150
-                      Height = 40
+                      Height = 38
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 8
                       object LbFldHoraESNF: TLabel
@@ -6161,14 +6179,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 10
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 0
                         object LbImpostoNFBaseIcms: TLabel
@@ -6192,6 +6210,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6205,14 +6224,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 10
                         Top = 65
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 5
                         object LbImpostoNFVlrFrete: TLabel
@@ -6236,6 +6255,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6250,14 +6270,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 165
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 1
                         object LbImpostoNFIcms: TLabel
@@ -6281,6 +6301,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6295,14 +6316,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 320
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 2
                         object LbImpostoNFBaseIcmsST: TLabel
@@ -6326,6 +6347,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6339,14 +6361,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 475
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 3
                         object LbImpostoNFIcmsST: TLabel
@@ -6370,6 +6392,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6384,14 +6407,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 630
                         Top = 20
                         Width = 151
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 4
                         object LbImpostoNFVlrProdutos: TLabel
@@ -6415,6 +6438,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 151
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ReadOnly = True
@@ -6430,14 +6454,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 165
                         Top = 65
                         Width = 149
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 6
                         object LbImpostoNFVlrSeguro: TLabel
@@ -6461,6 +6485,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 149
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6475,14 +6500,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 320
                         Top = 65
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 7
                         object LbImpostoNFVlrDesconto: TLabel
@@ -6506,6 +6531,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6520,14 +6546,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 476
                         Top = 65
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 8
                         object LbImpostoNFVlrOutrasDespesas: TLabel
@@ -6551,6 +6577,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6565,14 +6592,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 631
                         Top = 65
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 9
                         object LbImpostoNFVlrIPI: TLabel
@@ -6596,6 +6623,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6610,14 +6638,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 787
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 10
                         object LbImpostoNFVlrtNF: TLabel
@@ -6639,7 +6667,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Left = 0
                           Top = 15
                           Width = 150
-                          Height = 24
+                          Height = 23
                           Align = alTop
                           BevelInner = bvNone
                           BevelOuter = bvNone
@@ -6864,19 +6892,614 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         ParentFont = False
                         ExplicitWidth = 204
                       end
+                      object pnlAlertCtrlEstoque: TRelativePanel
+                        Left = 504
+                        Top = 20
+                        Width = 403
+                        Height = 94
+                        ControlCollection = <
+                          item
+                            Control = LbAlertCtrlEstTitulo
+                            AlignBottomWithPanel = False
+                            AlignHorizontalCenterWithPanel = True
+                            AlignLeftWithPanel = False
+                            AlignRightWithPanel = False
+                            AlignTopWithPanel = True
+                            AlignVerticalCenterWithPanel = False
+                          end
+                          item
+                            Control = ImgAlertCtrlEst
+                            AlignBottomWithPanel = False
+                            AlignHorizontalCenterWithPanel = False
+                            AlignLeftWithPanel = True
+                            AlignRightWithPanel = False
+                            AlignTopWithPanel = False
+                            AlignVerticalCenterWithPanel = False
+                            Below = LbAlertCtrlEstTitulo
+                          end
+                          item
+                            Control = LbAlertCtrlEstMensagem
+                            AlignBottomWithPanel = False
+                            AlignHorizontalCenterWithPanel = False
+                            AlignLeftWithPanel = False
+                            AlignRightWithPanel = False
+                            AlignTopWithPanel = False
+                            AlignVerticalCenterWith = ImgAlertCtrlEst
+                            AlignVerticalCenterWithPanel = False
+                            RightOf = ImgAlertCtrlEst
+                          end>
+                        Color = 4433703
+                        ParentBackground = False
+                        TabOrder = 0
+                        Visible = False
+                        DesignSize = (
+                          403
+                          94)
+                        object LbAlertCtrlEstTitulo: TLabel
+                          Left = 164
+                          Top = 1
+                          Width = 72
+                          Height = 20
+                          Anchors = []
+                          Caption = 'ATEN'#199#195'O!'
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -15
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                        end
+                        object ImgAlertCtrlEst: TImage
+                          Left = 1
+                          Top = 21
+                          Width = 64
+                          Height = 64
+                          Anchors = []
+                          Picture.Data = {
+                            07544269746D617042400000424D424000000000000042000000280000004000
+                            0000400000000100200003000000004000001117000011170000000000000000
+                            00000000FF0000FF0000FF000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000BF804008C88B
+                            482EC7874744C8894654C789465FC789465FC8874753C7874744C88B482EBF80
+                            4008000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            00000000000000000000CA88472BC788466DC78846AEC78947E1C78847FDC788
+                            47FFC78847FFC78847FFC78847FFC78847FFC78847FFC78847FFC78847FFC788
+                            47FDC78948E0C78847ADC689476CC886492A0000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000000000000000000000000000000000000000000000000000CB87
+                            4422C789467FC88848DDC78847FFC78847FFCA8B4BFDD49A5CFFDDA468FFE6AE
+                            75FFEBB57DFFEFBA82FFF0BC86FFF0BC86FFEFBA82FFEBB57DFFE5AE74FFDDA4
+                            68FFD4995CFFCA8B4BFDC78847FFC78847FFC78848DCC688477EC98B46210000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            00000000000000000000000000000000000000000000C9894534C88847AFC788
+                            47FEC78847FFD09354FDE2AA70FFF0BD85FFFCCB97FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFCCB96FFF0BC85FFE2AA70FFD09253FDC78847FFC78847FEC788
+                            46AEC88746330000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000C6874724C68847B4C78847FFC88A48FEDCA2
+                            66FFF1BE87FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF1BD86FFDBA266FFC889
+                            48FEC78847FFC78848B2C58A4923000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000B6924907C8884781C78948F8C88948FEDDA468FFF6C48EFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF6C4
+                            8FFFDDA468FFC88948FEC78948F8C789467FD580550600000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000C58C4A1FC78847C8C78847FFD49859FEF3C08AFFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFF3C08AFFD4995AFEC78847FFC78848CEC58A4923000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000000000000000000000000000000000000000000000000000C789
+                            484EC78848F2C98949FDE6AF75FFFDCC97FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC97FFE5AE74FFC88A48FEC88848F1C68A464C0000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000C8874666C888
+                            47FDCE9051FDF2BE87FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF1BE87FFCE8F50FDC88847FDC787
+                            4764000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            00000000000000000000000000000000000000000000C7874777C78847FFD294
+                            57FDF8C691FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF8C590FFD09455FEC788
+                            47FEC78847760000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000000000000000000000000000C8874666C78847FFD4985AFEFAC8
+                            93FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFAC893FFD498
+                            59FEC78847FEC787476400000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000C888474FC88847FDD29456FDFAC893FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFAC8
+                            93FFD19456FDC88847FDC68A464C000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            00000000000000000000C58A4923C78948F2CE9051FDF8C691FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFF8C590FFCE8F50FDC88848F1CB8744220000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000B6924907C78948CDC88948FEF1BD87FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFF1BE87FFC88A48FEC78849CCB692490700000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000C8884781C78847FFE6AF75FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFE5AE74FFC78847FFC789467F00000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000C6874724C78948F8D39859FEFDCC97FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCE9CFFFEE9D2FFFFFAF4FFFFFAF4FFFEE9D2FFFDCE9CFFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC97FFD5995AFEC88848F9C9864A26000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000C68847B4C88948FEF3C08AFFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFEEDDAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEEDDAFFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFF3BF89FFC88948FEC78848B2000000000000
+                            000000000000000000000000000000000000000000000000000000000000C587
+                            4835C78847FFDEA469FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCF
+                            9EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCF9EFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFDDA468FFC78847FFC88746330000
+                            000000000000000000000000000000000000000000000000000000000000C688
+                            47B0C88948FEF6C48FFFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD3
+                            A6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD3A5FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF6C48EFFC88A48FEC78847AD0000
+                            0000000000000000000000000000000000000000000000000000C58A4923C788
+                            47FEDCA266FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFFF8F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8F0FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFDBA266FFC78847FECB87
+                            4422000000000000000000000000000000000000000000000000C7874880C788
+                            47FFF2BE87FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDD7AFFFFFFAF5FFFFFFFFFFFFFFFFFFFFFAF5FFFDD7AEFFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF1BD87FFC78847FFC889
+                            477D0000000000000000000000000000000000000000FFFF0001C88847DED092
+                            54FDFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCF9EFFFEDBB7FFFEDBB7FFFDCF9EFFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFD09354FDC888
+                            48DDFFFF000100000000000000000000000000000000C6884A2DC78847FFE3AB
+                            70FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFE2AA70FFC788
+                            47FFC886492A00000000000000000000000000000000C888476FC78847FFF1BD
+                            87FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF0BC85FFC788
+                            47FFC689476C00000000000000000000000000000000C88847AFCA8C4BFDFCCB
+                            97FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFCCB96FFCA8B
+                            4BFDC78847AD00000000000000000000000000000000C88947E2D59A5CFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFD499
+                            5CFFC78948E0000000000000000000000000C68E5509C78847FDDDA569FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFDDA4
+                            68FFC78847FDBF8040080000000000000000C988472FC78847FFE6AF75FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCE
+                            9CFFFDD6ADFFFDD6ADFFFDD6ADFFFDD6ADFFFDD6ADFFFDD6ADFFFDCE9CFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFE5AE
+                            74FFC78847FFC6884A2D0000000000000000C8874546C78847FFECB67EFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFECB6
+                            7DFFC78847FFC88946450000000000000000C8874753C78847FFEFBA82FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFEEB9
+                            82FFC78847FFC68748510000000000000000C7874860C78847FFF0BC86FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF0BD
+                            85FFC78847FFC789465F0000000000000000C7874860C78847FFF0BC86FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF0BD
+                            85FFC78847FFC789465F0000000000000000C8874753C78847FFEFBA82FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFEEB9
+                            82FFC78847FFC68748510000000000000000C6884847C78847FFECB67EFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFECB6
+                            7DFFC78847FFC88946450000000000000000C988472FC78847FFE6AF75FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFE6AE
+                            75FFC78847FFC6884A2D0000000000000000CC804D0AC78847FDDDA569FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFDDA4
+                            68FFC78847FDC68E5509000000000000000000000000C88948E3D59A5CFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFD499
+                            5CFFC78947E100000000000000000000000000000000C68847B0CA8C4BFDFCCB
+                            97FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFCCB96FFCA8B
+                            4BFDC78846AE00000000000000000000000000000000C6894770C78847FFF1BD
+                            86FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF0BD85FFC788
+                            47FFC689476C00000000000000000000000000000000C88B482EC78847FFE3AC
+                            71FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFE2AA70FFC788
+                            47FFCA88472B00000000000000000000000000000000FFFF0001C78848DFD093
+                            54FDFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFD09354FDC888
+                            48DDFFFF00010000000000000000000000000000000000000000C8884781C788
+                            47FFF2BE88FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF1BE87FFC78847FFC688
+                            477E000000000000000000000000000000000000000000000000C58A4923C788
+                            47FEDCA367FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFDCA266FFC78847FECB87
+                            442200000000000000000000000000000000000000000000000000000000C787
+                            47B1C88948FEF6C48EFFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF7C48FFFC88A48FEC88847AF0000
+                            000000000000000000000000000000000000000000000000000000000000C689
+                            4736C78847FFDEA56AFFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFDDA468FFC78847FFC98945340000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000C88947B8C88948FEF4C08BFFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFF3C08AFFC88948FEC68847B4000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000C88A4525C78948F8D4985AFEFDCC97FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDD6
+                            ADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDD6ADFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC97FFD59A5BFEC88848F9C4894827000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000C7884683C78847FFE6AF76FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFE6AF75FFC78847FFC888478100000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000B6924907C78848CEC98948FEF2BF88FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFF2BE87FFC98948FEC78848D2C68E550900000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            00000000000000000000C88A4525C78947F3CE9152FDF8C690FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFF8C691FFCE9051FDC78948F2C58A49230000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000C6874851C88847FDD29557FDFAC894FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFAC8
+                            93FFD19456FEC88847FDC789484E000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000000000000000000000000000C6884867C78847FFD5995AFEFAC8
+                            94FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFAC893FFD498
+                            5AFEC78847FFC788476500000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            00000000000000000000000000000000000000000000C8884678C78847FFD295
+                            57FDF8C690FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF8C691FFD19456FEC788
+                            47FFC78747770000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000C6884867C888
+                            47FDCE9152FDF2BF88FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF2BE87FFCE9051FDC88847FDC887
+                            4666000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000000000000000000000000000000000000000000000000000C687
+                            4851C78847F3C98949FDE6AF76FFFDCC97FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC97FFE6AF75FFC98948FEC78948F2C888474F0000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000C7874820C78848CAC78847FFD5995AFEF3C08AFFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFF5C28CFFD59B5CFEC78847FFC78848CEC6874724000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000BF804008C7884683C88848F9C88948FEDEA56AFFF7C58FFFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF7C4
+                            8FFFDEA469FFC88948FEC88848F9C8884781B692490700000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000C9864A26C78947B7C78847FFC88A48FEDCA3
+                            67FFF2BE87FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFF1BE87FFDCA266FFC88A
+                            48FEC78847FFC78948B5C88A4525000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            00000000000000000000000000000000000000000000C6894736C78747B1C788
+                            47FEC78847FFCF9353FEE3AC71FFF1BD86FFFCCB97FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC98FFFDCC
+                            98FFFDCC98FFFCCB97FFF1BD87FFE3AB70FFD09354FDC78847FFC78847FEC688
+                            47B0C58748350000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000000000000000000000000000000000000000000000000000C58A
+                            4923C7874880C78848DFC78847FFC78847FFCA8C4BFDD59A5DFFDDA468FFE6AF
+                            75FFECB67DFFEFBA82FFF1BD87FFF1BD87FFEFBA82FFECB67DFFE6AF75FFDDA4
+                            68FFD59A5CFFCA8B4BFDC78847FFC78847FFC88847DEC789467FC58A49230000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            000000000000FFFF0001C6884A2DC888476FC68847B0C88947E2C78847FEC788
+                            47FFC78847FFC78847FFC78847FFC78847FFC78847FFC78847FFC78847FFC788
+                            47FEC88947E2C68847B0C789486EC585462CFFFF000100000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000CC804D0AC58A
+                            4530C7874744C6874855C7874860C7874860C6874855C7874744C58A4530C68E
+                            5509000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000000000000000000000000000000000000000
+                            0000000000000000000000000000}
+                          Transparent = True
+                        end
+                        object LbAlertCtrlEstMensagem: TLabel
+                          Left = 65
+                          Top = 47
+                          Width = 3
+                          Height = 13
+                          Anchors = []
+                          Font.Charset = ANSI_CHARSET
+                          Font.Color = clWhite
+                          Font.Height = -11
+                          Font.Name = 'Segoe UI Semibold'
+                          Font.Style = [fsBold]
+                          ParentFont = False
+                        end
+                      end
                     end
                     object pnlFldDtVencimentoNF: TJvPanel
                       Left = 870
                       Top = 60
                       Width = 141
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 11
                       object LbFldDtVencimentoNF: TLabel
@@ -6901,6 +7524,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Height = 23
                         Align = alTop
                         AllowNoDate = True
+                        BorderStyle = bsNone
                         ButtonFlat = True
                         DataField = 'nf_dtvencimento'
                         DataSource = DMPrincipal.DsTbNotaFiscal
@@ -6936,7 +7560,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       DataSource = DMPrincipal.DsTbNotaFiscalItem
                       DrawingStyle = gdsClassic
-                      FixedColor = 4671041
+                      FixedColor = 8279822
                       GradientEndColor = 9323579
                       GradientStartColor = 9323579
                       Font.Charset = ANSI_CHARSET
@@ -7027,16 +7651,16 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 448
                         Top = 5
                         Width = 50
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
-                        TabOrder = 0
+                        TabOrder = 3
                         object LbDNFICFOP: TLabel
                           Left = 0
                           Top = 0
@@ -7045,11 +7669,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Align = alTop
                           Alignment = taCenter
                           Caption = 'C.F.O.P'
+                          Color = 8279822
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
+                          ParentColor = False
                           ParentFont = False
                           ExplicitWidth = 36
                         end
@@ -7059,6 +7685,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 50
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -7079,9 +7706,9 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
-                        TabOrder = 1
+                        TabOrder = 0
                         object LbDNFICodProduto: TLabel
                           Left = 0
                           Top = 0
@@ -7110,6 +7737,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           LookupDisplay = 'prd_codInterno'
                           LookupSource = DMPrincipal.DsQryProduto
                           TabOrder = 0
+                          OnChange = EdtDNFINomeProdutoExit
                         end
                       end
                       object PnlDNFIEmbalagem: TJvPanel
@@ -7123,7 +7751,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
                         TabOrder = 2
                         object LbDNFIEmbalagem: TLabel
@@ -7155,6 +7783,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           LookupDisplay = 'prde_descricao'
                           LookupSource = DMPrincipal.DsTbProdutoEmbalagem
                           TabOrder = 0
+                          OnChange = EdtDNFINomeProdutoExit
+                          OnExit = EdtDNFINomeProdutoExit
                         end
                       end
                       object PnlDNFINomeProduto: TJvPanel
@@ -7168,9 +7798,9 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
-                        TabOrder = 3
+                        TabOrder = 1
                         object LbDNFINomeProduto: TLabel
                           Left = 0
                           Top = 0
@@ -7207,14 +7837,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 505
                         Top = 5
                         Width = 50
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
                         TabOrder = 4
                         object LbDNFIQdte: TLabel
@@ -7240,6 +7870,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Height = 23
                           Align = alTop
                           AutoSelect = False
+                          BorderStyle = bsNone
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
@@ -7259,9 +7890,9 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
-                        TabOrder = 5
+                        TabOrder = 6
                         object LbDNFIVlrTotal: TLabel
                           Left = 0
                           Top = 0
@@ -7303,9 +7934,9 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
-                        TabOrder = 6
+                        TabOrder = 5
                         object LbDNFIVlrUnit: TLabel
                           Left = 0
                           Top = 0

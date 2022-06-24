@@ -11921,15 +11921,6 @@
                   Below = pnlPlantioDescricao
                 end
                 item
-                  Control = ProgressBar1
-                  AlignBottomWithPanel = False
-                  AlignHorizontalCenterWithPanel = False
-                  AlignLeftWithPanel = False
-                  AlignRightWithPanel = False
-                  AlignTopWithPanel = False
-                  AlignVerticalCenterWithPanel = False
-                end
-                item
                   Control = JvSpeedButton1
                   AlignBottomWithPanel = False
                   AlignHorizontalCenterWithPanel = False
@@ -12431,26 +12422,18 @@
                   Width = 866
                   Height = 24
                   Align = alBottom
+                  MarqueeInterval = 100
                   TabOrder = 0
+                  MarqueeDelay = 50
                 end
               end
-              object ProgressBar1: TProgressBar
-                Left = 325
-                Top = 190
-                Width = 221
-                Height = 17
-                Anchors = []
-                Position = 25
-                Smooth = True
-                State = pbsPaused
-                TabOrder = 9
-              end
               object JvSpeedButton1: TJvSpeedButton
-                Left = 760
-                Top = 195
-                Width = 126
-                Height = 46
+                Left = 975
+                Top = 85
+                Width = 61
+                Height = 56
                 Anchors = []
+                OnClick = JvSpeedButton1Click
               end
             end
           end

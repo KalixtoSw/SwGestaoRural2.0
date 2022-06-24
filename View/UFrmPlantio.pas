@@ -11,7 +11,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
   JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
   JvDBDatePickerEdit, JvBaseEdits, Vcl.ComCtrls, JvExComCtrls, JvProgressBar,
-  JvDBProgressBar, System.Math, Winapi.CommCtrl,Classe.NF.ControleEstoque;
+  JvDBProgressBar, System.Math, Winapi.CommCtrl,Classe.NF.ControleEstoque, Classe.Comum.ControleEstoque;
 
 type
   TFrmPlantio = class(TForm)
@@ -98,7 +98,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure EdtPlt_AreaPlantadaExit(Sender: TObject);
     procedure DbGridCellClick(Column: TColumn);
-    procedure JvSpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -232,11 +231,6 @@ begin
         CrdPnlPlantio.ActiveCard := CrdBtNavPlantio;
         pAtivarDBGrid(DbGrdPlantioTalhao);
         Plantio.fCalcAreaPlantada;
-end;
-
-procedure TFrmPlantio.JvSpeedButton1Click(Sender: TObject);
-begin
-        fCtrlSaldoEstoqueproduto(5);
 end;
 
 end.

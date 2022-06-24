@@ -3,7 +3,8 @@ unit Classe.Comum.ControleEstoque;
 interface
 
 uses
-  JvPanel, Classe.Functions, Data.DB, System.SysUtils,Classe.Conexao;
+  JvPanel, Classe.Functions, Data.DB, System.SysUtils,Classe.Conexao,
+  Vcl.Dialogs;
 
 type
       TCrtlEstoque = class
@@ -29,6 +30,7 @@ type
         procedure pCtrlPosicaopnlBt4(PnlFundo : TJvPanel;Pos : Integer);
         procedure pCtrlPosicaopnlBt5(PnlFundo : TJvPanel;Pos : Integer);
 
+
        published
         property PnlBtEstFisico : TJvPanel read FPnlBtEstFisico         write SetPnlBtEstFisico;
         property PnlBtEntradas  : TJvPanel read FPnlBtEntradas          write setPnlBtEntradas;
@@ -37,6 +39,8 @@ type
         property PnlBtRelatorios: TJvPanel read FPnlBtCadGerais        write setPnlBtCadGerais;
 
       end;
+
+      function fCtrlSaldoEstoqueproduto(IdProduto: Integer; IdEmbalagem : Integer): Double;
 
 implementation
 
@@ -58,8 +62,6 @@ destructor TCrtlEstoque.DestroyObjTCrtlEstoque;
 begin
 
 end;
-
-
 
 procedure TCrtlEstoque.pCtrlPosicaopnlBt1(PnlFundo : TJvPanel;Pos : Integer);
 begin
@@ -124,6 +126,35 @@ end;
 procedure TCrtlEstoque.setPnlBtSaidas(const Value: TJvPanel);
 begin
   FPnlBtSaidas := Value;
+end;
+
+function fCtrlSaldoEstoqueproduto(IdProduto: Integer; IdEmbalagem : Integer): Double;
+Var
+        SqlAux : string;
+begin
+        //Montar o controle de estoque para o produto por embalagem, pois pode haver o mesmo produto em embalagens diferentes
+
+        if IdProduto = 0 then
+        begin
+            SqlAux := '';
+        end else begin
+                SqlAux := 'WHERE p.prd_idproduto = '+IntToStr(IdProduto);
+        end;
+
+        if (IdProduto > 0) and (IdEmbalagem > 0) then
+        begin
+             SqlAux := SqlAux + ' AND pe.prde_Id = '+IntToStr(IdEmbalagem);
+        end;
+
+        DMPrincipal.QryCtrlEstProduto.Close;
+        DMPrincipal.QryCtrlEstProduto.SQL.Clear;
+        DMPrincipal.QryCtrlEstProduto.SQL.Add('SELECT p.prd_idproduto,pe.prde_Id, p.prd_nome,pe.prde_descricao, p.prd_nome, p.prd_fabricante, p.prd_tipo, p.prd_status, m.mov_tipo, SUM(mp.mp_qtdUnit),SUM( mp.mp_qtdContabil) AS ''Ctrl_Estoque'',');
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(' AVG(mp.mp_precoCompra) AS ''Preco_Medio'', SUM(mp.mp_precoTotal) AS ''Valor_Geral'' ');
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(' INNER JOIN produto_embalagem pe ON pe.prde_Id = mp.prde_Id ');
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(SqlAux+' GROUP BY p.prd_idproduto, p.prd_nome,pe.prde_descricao;');
+        DMPrincipal.QryCtrlEstProduto.Open;
+        Result := DMPrincipal.QryCtrlEstProduto.FieldByName('Ctrl_Estoque').AsFloat;
+
 end;
 
 end.
