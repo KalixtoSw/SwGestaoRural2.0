@@ -214,7 +214,6 @@ type
     procedure DbGrdConsultaNFDblClick(Sender: TObject);
     procedure TbShtConsultaNFShow(Sender: TObject);
     procedure BtCancelarNFClick(Sender: TObject);
-    procedure PgCntrlCtrlEntradaNFResize(Sender: TObject);
     procedure BtBtDeletelNFClick(Sender: TObject);
     procedure EdtDNFIQdteExit(Sender: TObject);
     procedure EdtImpostoNFVlrProdutosExit(Sender: TObject);
@@ -468,6 +467,7 @@ end;
 procedure TFrmModuloControleEstoque.FormResize(Sender: TObject);
 begin
         pCentralizaPanel(PnlFrmCtrlEstoque,self);
+        PgCntrlCtrlEntradaNF.ActivePage := TbShtConsultaNF;
 end;
 
 procedure TFrmModuloControleEstoque.FormShow(Sender: TObject);
@@ -477,7 +477,7 @@ begin
         CtrlEstoque.pCtrlPosicaopnlBt3(PnlFundoBtsNav1,420);
         CtrlEstoque.pCtrlPosicaopnlBt4(PnlFundoBtsNav1,625);
         CtrlEstoque.pCtrlPosicaopnlBt5(PnlFundoBtsNav1,830);
-        PgCntrlCtrlEntradaNF.ActivePage := TbShtConsultaNF;
+
         if (UFrmMenuPrincipal.Ctr_BtMovEstoque = '') then
         begin
                 CrdPrincipal.Show;
@@ -501,11 +501,6 @@ end;
 procedure TFrmModuloControleEstoque.BtDNFIBtSavarClick(Sender: TObject);
 begin
                 CtrlEst_NF.pEventoBtSavarNFItem;
-end;
-
-procedure TFrmModuloControleEstoque.PgCntrlCtrlEntradaNFResize(Sender: TObject);
-begin
-        PgCntrlCtrlEntradaNF.ActivePage := TbShtConsultaNF;
 end;
 
 procedure TFrmModuloControleEstoque.PnlFundoBtsNavCadProdutoMouseEnter(
@@ -541,10 +536,7 @@ end;
 
 procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
 begin
-        if CbbFldTipoMovNF.Text = EmptyStr then
-        begin
-             CbbFldTipoMovNF.Text := 'ENTRADA';
-        end;
+
 
         if not(ActInsUpd = 'UPDATE') then
         begin

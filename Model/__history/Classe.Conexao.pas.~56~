@@ -295,6 +295,7 @@ type
     IntegerField10: TIntegerField;
     QryCtrlEstProduto: TFDQuery;
     DsQryCtrlEstProduto: TJvDataSource;
+    TbMov_Produtoprde_Id: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure TbPlantioBeforePost(DataSet: TDataSet);
@@ -315,6 +316,8 @@ var
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses UFrmPlantio;
 
 {$R *.dfm}
 

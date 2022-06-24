@@ -81,8 +81,8 @@ type
     PnlBtsSaveCancelNF: TJvPanel;
     PnlBtCancelNF: TJvPanel;
     PnlBtSaveNF: TJvPanel;
-    JvGradient1: TJvGradient;
-    JvGradient2: TJvGradient;
+    FundoBtCancelarNF: TJvGradient;
+    FundoBtSalvarNF: TJvGradient;
     BtSalvarNF: TJvSpeedButton;
     BtCancelarNF: TJvSpeedButton;
     PnlDadosNF: TJvPanel;
@@ -288,6 +288,7 @@ procedure TFrmModuloControleEstoque.BtMenuCtrlEntradaNFClick(Sender: TObject);
 begin
         DMPrincipal.TbNotaFiscal.Open;
         pAtivarDBGrid(DbGrdConsultaNF);
+        PgCntrlCtrlEntradaNF.ActivePage := TbShtConsultaNF;
         CrdNotaFiscal.Show;
 end;
 
@@ -467,7 +468,7 @@ end;
 procedure TFrmModuloControleEstoque.FormResize(Sender: TObject);
 begin
         pCentralizaPanel(PnlFrmCtrlEstoque,self);
-        PgCntrlCtrlEntradaNF.ActivePage := TbShtConsultaNF;
+
 end;
 
 procedure TFrmModuloControleEstoque.FormShow(Sender: TObject);

@@ -80,6 +80,7 @@ type
     JvHint1: TJvHint;
     JvBalloonHint1: TJvBalloonHint;
     JvXPBar1: TJvXPBar;
+    JvSpeedButton1: TJvSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure BtParametrosClick(Sender: TObject);

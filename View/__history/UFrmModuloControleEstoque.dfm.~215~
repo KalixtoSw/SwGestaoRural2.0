@@ -4618,14 +4618,9 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 ActivePage = TbShtLancamentos
                 Align = alClient
                 TabOrder = 0
-                OnResize = PgCntrlCtrlEntradaNFResize
                 object TbShtConsultaNF: TTabSheet
                   Caption = 'CONSULTA NF'
                   OnShow = TbShtConsultaNFShow
-                  ExplicitLeft = 0
-                  ExplicitTop = 0
-                  ExplicitWidth = 0
-                  ExplicitHeight = 0
                   object PnlConsultaNFFiltros: TJvPanel
                     Left = 0
                     Top = 0
@@ -7476,9 +7471,11 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         object LbAlertCtrlEstMensagem: TLabel
                           Left = 65
                           Top = 47
-                          Width = 3
+                          Width = 336
                           Height = 13
+                          Alignment = taCenter
                           Anchors = []
+                          AutoSize = False
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -11

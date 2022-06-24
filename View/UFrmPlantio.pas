@@ -11,7 +11,8 @@ uses
   Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, JvDBUltimGrid, JvDBControls,
   JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
   JvDBDatePickerEdit, JvBaseEdits, Vcl.ComCtrls, JvExComCtrls, JvProgressBar,
-  JvDBProgressBar, System.Math, Winapi.CommCtrl,Classe.NF.ControleEstoque, Classe.Comum.ControleEstoque;
+  JvDBProgressBar, System.Math, Winapi.CommCtrl,Classe.NF.ControleEstoque, Classe.Comum.ControleEstoque,
+  JvDBLookup;
 
 type
   TFrmPlantio = class(TForm)
@@ -84,7 +85,20 @@ type
     pnlPrgsbr: TRelativePanel;
     LbPercPrgssBr: TJvLabel;
     PrgrssBr: TJvProgressBar;
-    JvSpeedButton1: TJvSpeedButton;
+    pnlBtInumoDescPlantio: TRelativePanel;
+    pnlBtInsumoEdtDescPlantio: TRelativePanel;
+    LbBtInsumoEdtDescPlantio: TLabel;
+    EdtBtInsumoEdtDescPlantio: TJvMaskEdit;
+    LineBtInsumoEdtDescPlantio: TJvGradient;
+    pnlBtInsumoFields: TRelativePanel;
+    LineTopBtInsumoFields: TJvGradient;
+    DbNavPlantio_Insumo: TJvDBNavigator;
+    PnlDNFINomeProduto: TJvPanel;
+    LbDNFINomeProduto: TLabel;
+    EdtDNFINomeProduto: TJvDBLookupCombo;
+    PnlDNFIVlrTotal: TJvPanel;
+    LbDNFIVlrTotal: TLabel;
+    EdtDNFIVlrTotal: TDBEdit;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -139,14 +153,19 @@ end;
 
 procedure TFrmPlantio.BtNavCtrlInsumosClick(Sender: TObject);
 begin
-       // Plantio.pHabilitaBtsNav(True,False,True,False,False);
+       Plantio.pHabilitaBtsNav(True,False,False,False,False);
+       DMPrincipal.TbPlantio_Insumo.Active := True;
+       DMPrincipal.QryCtrlEstProduto.Active := True;
+       pDBNavigatorNew(DbNavPlantio_Insumo);
+       CrdBtNavInsumos.Show;
+       EdtBtInsumoEdtDescPlantio.Text := '( '+IntToStr(Plantio.fNomePlantio.RIDPlantio)+' )  '+ Plantio.fNomePlantio.RNomePlantio;
 end;
 
 procedure TFrmPlantio.BtNavPlantioClick(Sender: TObject);
 begin
-       // Plantio.pHabilitaBtsNav(False,True,False,False,False);
+        Plantio.pHabilitaBtsNav(False,True,True,True,True);
         CrdBtNavPlantio.Show;
-        
+
 end;
 
 procedure TFrmPlantio.DbGrdAreaPlantioCellClick(Column: TColumn);

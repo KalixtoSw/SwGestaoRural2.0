@@ -2132,6 +2132,14 @@
         CardIndex = 0
         TabOrder = 0
         OnMouseEnter = CrdDashboardMouseEnter
+        object JvSpeedButton1: TJvSpeedButton
+          Left = 455
+          Top = 355
+          Width = 166
+          Height = 106
+          Caption = 'MODULO PLANTIO'
+          OnClick = JvXPBar1Items0Click
+        end
         object PnlIndicadoresAgricolas: TJvPanel
           Left = 0
           Top = 0
@@ -2156,7 +2164,7 @@
             object LbTituloDolar: TLabel
               Left = 0
               Top = 0
-              Width = 132
+              Width = 200
               Height = 17
               Align = alTop
               Caption = 'COTA'#199#195'O DO DOLAR'
@@ -2166,6 +2174,7 @@
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
+              ExplicitWidth = 132
             end
             object PnlImgDolar: TPanel
               Left = 0
@@ -2604,7 +2613,7 @@
             object LbTituloSoja: TLabel
               Left = 0
               Top = 0
-              Width = 123
+              Width = 200
               Height = 17
               Align = alTop
               Caption = 'MERCADO DA SOJA'
@@ -2614,6 +2623,7 @@
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
+              ExplicitWidth = 123
             end
             object PnlImgSoja: TPanel
               Left = 0
@@ -4632,7 +4642,7 @@
             object LbTituloMilho: TLabel
               Left = 0
               Top = 0
-              Width = 135
+              Width = 200
               Height = 17
               Align = alTop
               Caption = 'MERCADO DO MILHO'
@@ -4642,6 +4652,7 @@
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
+              ExplicitWidth = 135
             end
             object PnlImgMilho: TPanel
               Left = 0
@@ -4834,7 +4845,7 @@
             object LbTituloTrigo: TLabel
               Left = 0
               Top = 0
-              Width = 131
+              Width = 200
               Height = 17
               Align = alTop
               Caption = 'MERCADO DO TRIGO'
@@ -4844,6 +4855,7 @@
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
+              ExplicitWidth = 131
             end
             object PnlImgTrigo: TPanel
               Left = 0
@@ -5417,8 +5429,8 @@
         object LbtituloNotificacao: TLabel
           Left = 48
           Top = 0
-          Width = 135
-          Height = 22
+          Width = 202
+          Height = 48
           Align = alClient
           Alignment = taCenter
           Caption = 'NOTIFICA'#199#213'ES'
@@ -5429,6 +5441,8 @@
           Font.Style = [fsBold, fsItalic]
           ParentFont = False
           Layout = tlCenter
+          ExplicitWidth = 135
+          ExplicitHeight = 22
         end
       end
       object JvScrollText1: TJvScrollText

@@ -46,6 +46,7 @@ type
     function fAddPlantioTalhao: Boolean;
     function fCalcAreaPlantada: Double;
     function fValidaAreaTcomAreaP : Boolean;
+    function fNomePlantio : string;
 
 
   published
@@ -60,7 +61,6 @@ type
     property AreaTotalPlantio : Double read FAreaTotalPlantio  write setAreaTotalPlantio;
 
 //    property  read  write ;
-
 
   end;
 
@@ -155,10 +155,10 @@ begin
                 FrmPlantio.PrgrssBr.Max := Round(DMPrincipal.TbPlantioplt_areaTotal.AsFloat);
                 FrmPlantio.PrgrssBr.Position := Round(DMPrincipal.TbPlantioplt_areaPlantada.AsFloat);
                 PercBarra := Round((AreaPlantada / Result)*100);
-                if PercBarra < 20 then
+                if PercBarra < 30 then
                 begin
                         FrmPlantio.PrgrssBr.State := pbsError;
-                end else if (PercBarra >= 20) and (PercBarra <= 70) then
+                end else if (PercBarra >= 30) and (PercBarra <= 70) then
                         begin
                                 FrmPlantio.PrgrssBr.State := pbsPaused;
                         end else begin
@@ -168,6 +168,11 @@ begin
         except on E: Exception do
 
         end;
+end;
+
+function TPlantio.fNomePlantio: string;
+begin
+        Result := FTbPlantio.FieldByName('plt_Descricao').AsString;
 end;
 
 function TPlantio.fValidaAreaTcomAreaP: Boolean;

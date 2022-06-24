@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
-  FireDAC.Comp.DataSet, Classe.conexaoEfetiva, FireDAC.Comp.UI, Classe.Plantio, UFrmPlantio,
+  FireDAC.Comp.DataSet, Classe.conexaoEfetiva, FireDAC.Comp.UI, Classe.Plantio,
   JvDataSource;
 
 type
@@ -295,6 +295,26 @@ type
     IntegerField10: TIntegerField;
     QryCtrlEstProduto: TFDQuery;
     DsQryCtrlEstProduto: TJvDataSource;
+    TbMov_Produtoprde_Id: TIntegerField;
+    DsTbPlantio_Insumo: TDataSource;
+    TbPlantio_Insumo: TFDTable;
+    TbPlantio_Insumoplis_id: TFDAutoIncField;
+    TbPlantio_Insumoplis_dtcriacao: TSQLTimeStampField;
+    TbPlantio_Insumoplt_id: TIntegerField;
+    TbPlantio_Insumoprd_idproduto: TIntegerField;
+    TbPlantio_Insumoplt_qtde: TBCDField;
+    QryCtrlEstProdutoprd_idproduto: TIntegerField;
+    QryCtrlEstProdutoprde_Id: TIntegerField;
+    QryCtrlEstProdutoprd_nome: TStringField;
+    QryCtrlEstProdutoEmbalagem: TStringField;
+    QryCtrlEstProdutoprd_fabricante: TStringField;
+    QryCtrlEstProdutoprd_tipo: TStringField;
+    QryCtrlEstProdutoprd_status: TStringField;
+    QryCtrlEstProdutomov_tipo: TStringField;
+    QryCtrlEstProdutoQTD_UNIT: TFMTBCDField;
+    QryCtrlEstProdutoCtrlEstoque: TFMTBCDField;
+    QryCtrlEstProdutoPrecoMedio: TFMTBCDField;
+    QryCtrlEstProdutoValorGeral: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure TbPlantioBeforePost(DataSet: TDataSet);
@@ -315,6 +335,8 @@ var
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses UFrmPlantio;
 
 {$R *.dfm}
 

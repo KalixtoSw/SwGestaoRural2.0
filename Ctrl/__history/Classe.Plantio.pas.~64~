@@ -4,7 +4,7 @@ interface
 
 uses
   JvSpeedButton, Classe.Functions, Classe.FunctionsSQL, Vcl.Dialogs,
-  System.SysUtils, FireDAC.Comp.Client, Data.DB, JvDBUltimGrid;
+  System.SysUtils, FireDAC.Comp.Client, Data.DB, JvDBUltimGrid, JvProgressBar;
 
 type
   RetSafra = record
@@ -46,6 +46,7 @@ type
     function fAddPlantioTalhao: Boolean;
     function fCalcAreaPlantada: Double;
     function fValidaAreaTcomAreaP : Boolean;
+    function fNomePlantio : string;
 
 
   published
@@ -60,7 +61,6 @@ type
     property AreaTotalPlantio : Double read FAreaTotalPlantio  write setAreaTotalPlantio;
 
 //    property  read  write ;
-
 
   end;
 
@@ -146,6 +146,7 @@ end;
 function TPlantio.fCalcAreaPlantada: Double;
 var
         AreaPlantada : Double;
+        PercBarra : Double;
 begin
         try
                 setAreaTotalPlantio(DMPrincipal.TbPlantioplt_areaTotal.AsFloat);
@@ -153,10 +154,25 @@ begin
                 Result := FAreaTotalPlantio;
                 FrmPlantio.PrgrssBr.Max := Round(DMPrincipal.TbPlantioplt_areaTotal.AsFloat);
                 FrmPlantio.PrgrssBr.Position := Round(DMPrincipal.TbPlantioplt_areaPlantada.AsFloat);
-                FrmPlantio.LbPercPrgssBr.Caption := FloatToStr(Round((AreaPlantada / Result)*100))+'%';
+                PercBarra := Round((AreaPlantada / Result)*100);
+                if PercBarra < 30 then
+                begin
+                        FrmPlantio.PrgrssBr.State := pbsError;
+                end else if (PercBarra >= 30) and (PercBarra <= 70) then
+                        begin
+                                FrmPlantio.PrgrssBr.State := pbsPaused;
+                        end else begin
+                                FrmPlantio.PrgrssBr.State := pbsNormal;
+                        end;
+                FrmPlantio.LbPercPrgssBr.Caption := FloatToStr(PercBarra)+'%';
         except on E: Exception do
 
         end;
+end;
+
+function TPlantio.fNomePlantio: string;
+begin
+        Result := FTbPlantio.DataSource.DataSet.FieldByName('plt_Descricao').AsString;
 end;
 
 function TPlantio.fValidaAreaTcomAreaP: Boolean;

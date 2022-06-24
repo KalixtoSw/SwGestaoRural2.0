@@ -13,6 +13,12 @@ type
   end;
 
 type
+  RetPlantio = record
+    RNomePlantio: string;
+    RIDPlantio: Integer;
+  end;
+
+type
   TPlantio = class
   private
 
@@ -46,6 +52,7 @@ type
     function fAddPlantioTalhao: Boolean;
     function fCalcAreaPlantada: Double;
     function fValidaAreaTcomAreaP : Boolean;
+    function fNomePlantio : RetPlantio;
 
 
   published
@@ -60,7 +67,6 @@ type
     property AreaTotalPlantio : Double read FAreaTotalPlantio  write setAreaTotalPlantio;
 
 //    property  read  write ;
-
 
   end;
 
@@ -168,6 +174,12 @@ begin
         except on E: Exception do
 
         end;
+end;
+
+function TPlantio.fNomePlantio: RetPlantio;
+begin
+        Result.RNomePlantio     := FTbPlantio.FieldByName('plt_Descricao').AsString;
+        Result.RIDPlantio       := FTbPlantio.FieldByName('plt_id').AsInteger;
 end;
 
 function TPlantio.fValidaAreaTcomAreaP: Boolean;

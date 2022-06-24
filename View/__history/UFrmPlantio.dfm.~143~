@@ -11556,7 +11556,7 @@
           Width = 1189
           Height = 673
           Align = alClient
-          ActiveCard = CrdBtNavPlantio
+          ActiveCard = CrdBtNavInsumos
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
@@ -12286,6 +12286,7 @@
                   Anchors = []
                   ShowButton = False
                   TabOrder = 0
+                  Value = 219.000000000000000000
                   DecimalPlacesAlwaysShown = False
                   OnExit = EdtPlt_AreaPlantadaExit
                   DataField = 'plt_areaPlantada'
@@ -12428,6 +12429,274 @@
             Caption = 'CrdBtNavInsumos'
             CardIndex = 1
             TabOrder = 1
+            object pnlBtInumoDescPlantio: TRelativePanel
+              Left = 0
+              Top = 0
+              Width = 1189
+              Height = 100
+              ControlCollection = <
+                item
+                  Control = pnlBtInsumoEdtDescPlantio
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = True
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWithPanel = True
+                end>
+              Align = alTop
+              BevelOuter = bvNone
+              Color = clWhite
+              ParentBackground = False
+              TabOrder = 0
+              ExplicitTop = -1
+              DesignSize = (
+                1189
+                100)
+              object pnlBtInsumoEdtDescPlantio: TRelativePanel
+                Left = 0
+                Top = 22
+                Width = 300
+                Height = 55
+                ControlCollection = <
+                  item
+                    Control = LbBtInsumoEdtDescPlantio
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = True
+                    AlignRightWithPanel = False
+                    AlignTopWithPanel = True
+                    AlignVerticalCenterWithPanel = False
+                  end
+                  item
+                    Control = EdtBtInsumoEdtDescPlantio
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = True
+                    AlignRightWithPanel = True
+                    AlignTopWithPanel = False
+                    AlignVerticalCenterWithPanel = False
+                    Below = LbBtInsumoEdtDescPlantio
+                  end
+                  item
+                    Control = LineBtInsumoEdtDescPlantio
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWith = EdtBtInsumoEdtDescPlantio
+                    AlignLeftWithPanel = False
+                    AlignRightWith = EdtBtInsumoEdtDescPlantio
+                    AlignRightWithPanel = False
+                    AlignTopWithPanel = False
+                    AlignVerticalCenterWithPanel = False
+                    Below = EdtBtInsumoEdtDescPlantio
+                  end>
+                Anchors = []
+                BevelOuter = bvNone
+                Color = clWhite
+                ParentBackground = False
+                TabOrder = 0
+                DesignSize = (
+                  300
+                  55)
+                object LbBtInsumoEdtDescPlantio: TLabel
+                  Left = 0
+                  Top = 0
+                  Width = 68
+                  Height = 21
+                  Anchors = []
+                  Caption = 'PLANTIO'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 7677746
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
+                object EdtBtInsumoEdtDescPlantio: TJvMaskEdit
+                  Left = 0
+                  Top = 21
+                  Width = 300
+                  Height = 29
+                  Anchors = []
+                  BorderStyle = bsNone
+                  Flat = True
+                  ParentFlat = False
+                  ReadOnly = True
+                  TabOrder = 0
+                  Text = ''
+                end
+                object LineBtInsumoEdtDescPlantio: TJvGradient
+                  Left = 0
+                  Top = 50
+                  Width = 300
+                  Height = 2
+                  Align = alNone
+                  StartColor = 7677746
+                  EndColor = 7677746
+                end
+              end
+            end
+            object pnlBtInsumoFields: TRelativePanel
+              Left = 0
+              Top = 100
+              Width = 1189
+              Height = 150
+              ControlCollection = <
+                item
+                  Control = LineTopBtInsumoFields
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = True
+                  AlignRightWithPanel = True
+                  AlignTopWithPanel = True
+                  AlignVerticalCenterWithPanel = False
+                end
+                item
+                  Control = DbNavPlantio_Insumo
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWith = LineTopBtInsumoFields
+                  AlignLeftWithPanel = False
+                  AlignRightWithPanel = False
+                  AlignTopWith = LineTopBtInsumoFields
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWithPanel = False
+                  Below = LineTopBtInsumoFields
+                end
+                item
+                  Control = PnlDNFINomeProduto
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWith = LineTopBtInsumoFields
+                  AlignLeftWithPanel = False
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWithPanel = False
+                  Below = DbNavPlantio_Insumo
+                end
+                item
+                  Control = PnlDNFIVlrTotal
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = False
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWith = PnlDNFINomeProduto
+                  AlignVerticalCenterWithPanel = False
+                  RightOf = PnlDNFINomeProduto
+                end>
+              Align = alTop
+              BevelOuter = bvNone
+              Color = clWhite
+              ParentBackground = False
+              TabOrder = 1
+              DesignSize = (
+                1189
+                150)
+              object LineTopBtInsumoFields: TJvGradient
+                Left = 0
+                Top = 0
+                Width = 1189
+                Height = 2
+                Anchors = []
+                Style = grVertical
+                StartColor = 10974208
+                EndColor = 10974208
+              end
+              object DbNavPlantio_Insumo: TJvDBNavigator
+                Left = 0
+                Top = 2
+                Width = 392
+                Height = 64
+                Cursor = crHandPoint
+                DataSource = DMPrincipal.DsTbPlantio_Insumo
+                VisibleButtons = [nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh, nbApplyUpdates, nbCancelUpdates]
+                Anchors = []
+                Flat = True
+                TabOrder = 0
+              end
+              object PnlDNFINomeProduto: TJvPanel
+                Left = 0
+                Top = 66
+                Width = 300
+                Height = 40
+                Anchors = []
+                BevelOuter = bvNone
+                Color = 8279822
+                ParentBackground = False
+                TabOrder = 1
+                object LbDNFINomeProduto: TLabel
+                  Left = 0
+                  Top = 0
+                  Width = 300
+                  Height = 15
+                  Align = alTop
+                  Caption = 'PRODUTO'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI Semibold'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  ExplicitWidth = 56
+                end
+                object EdtDNFINomeProduto: TJvDBLookupCombo
+                  Left = 0
+                  Top = 15
+                  Width = 300
+                  Height = 24
+                  Cursor = crHelp
+                  Align = alTop
+                  DataField = 'prd_idproduto'
+                  DataSource = DMPrincipal.DsTbPlantio_Insumo
+                  LookupField = 'prd_idproduto'
+                  LookupDisplay = 'Produto_Embalagem'
+                  LookupSource = DMPrincipal.DsQryCtrlEstProduto
+                  TabOrder = 0
+                  ExplicitWidth = 200
+                end
+              end
+              object PnlDNFIVlrTotal: TJvPanel
+                Left = 300
+                Top = 66
+                Width = 100
+                Height = 40
+                Anchors = []
+                BevelOuter = bvNone
+                Color = 8279822
+                ParentBackground = False
+                TabOrder = 2
+                object LbDNFIVlrTotal: TLabel
+                  Left = 0
+                  Top = 0
+                  Width = 100
+                  Height = 15
+                  Align = alTop
+                  Caption = 'QUANTIDADE'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI Semibold'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  ExplicitWidth = 77
+                end
+                object EdtDNFIVlrTotal: TDBEdit
+                  Left = 0
+                  Top = 15
+                  Width = 100
+                  Height = 24
+                  Align = alTop
+                  BevelInner = bvNone
+                  BevelOuter = bvNone
+                  BorderStyle = bsNone
+                  DataField = 'plt_qtde'
+                  DataSource = DMPrincipal.DsTbPlantio_Insumo
+                  Enabled = False
+                  TabOrder = 0
+                end
+              end
+            end
           end
           object CrdBtNavImplementos: TCard
             Left = 0
@@ -12523,10 +12792,10 @@
                 object LbpnlDescPlantio: TLabel
                   Left = 0
                   Top = 0
-                  Width = 178
+                  Width = 68
                   Height = 21
                   Anchors = []
-                  Caption = 'DETALHES DO PLANTIO'
+                  Caption = 'PLANTIO'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 7677746
                   Font.Height = -16
@@ -12667,7 +12936,6 @@
                     FieldName = 'tbl_latitude'
                     Title.Alignment = taCenter
                     Title.Caption = 'LATITUDADE'
-                    Width = 64
                     Visible = True
                   end
                   item
@@ -12676,7 +12944,6 @@
                     FieldName = 'tbl_longitude'
                     Title.Alignment = taCenter
                     Title.Caption = 'LONGITUDE'
-                    Width = 64
                     Visible = True
                   end
                   item
@@ -12698,7 +12965,6 @@
                     FieldName = 'tbl_status'
                     Title.Alignment = taCenter
                     Title.Caption = 'STATUS'
-                    Width = 64
                     Visible = True
                   end
                   item

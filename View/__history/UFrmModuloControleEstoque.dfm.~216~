@@ -4618,7 +4618,6 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                 ActivePage = TbShtLancamentos
                 Align = alClient
                 TabOrder = 0
-                OnResize = PgCntrlCtrlEntradaNFResize
                 object TbShtConsultaNF: TTabSheet
                   Caption = 'CONSULTA NF'
                   OnShow = TbShtConsultaNFShow
@@ -4960,6 +4959,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                     HotTrackFont.Style = []
                     Align = alBottom
                     BevelOuter = bvNone
+                    Color = clWhite
+                    ParentBackground = False
                     TabOrder = 0
                     object PnlBtCancelNF: TJvPanel
                       Left = 150
@@ -4976,13 +4977,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 0
-                      object JvGradient1: TJvGradient
+                      object FundoBtCancelarNF: TJvGradient
                         Left = 0
                         Top = 0
                         Width = 150
                         Height = 48
-                        StartColor = 4671041
-                        EndColor = 4671041
+                        StartColor = 8279822
+                        EndColor = 8279822
                         ExplicitLeft = 70
                         ExplicitTop = 15
                         ExplicitWidth = 100
@@ -5169,13 +5170,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       ParentBackground = False
                       TabOrder = 1
-                      object JvGradient2: TJvGradient
+                      object FundoBtSalvarNF: TJvGradient
                         Left = 0
                         Top = 0
                         Width = 150
                         Height = 48
-                        StartColor = 4671041
-                        EndColor = 5065032
+                        StartColor = 8279822
+                        EndColor = 8279822
                         ExplicitLeft = 55
                         ExplicitTop = 5
                         ExplicitWidth = 100
@@ -5367,8 +5368,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Top = 0
                         Width = 150
                         Height = 48
-                        StartColor = 4671041
-                        EndColor = 4671041
+                        StartColor = 8279822
+                        EndColor = 8279822
                         ExplicitLeft = 70
                         ExplicitTop = 15
                         ExplicitWidth = 100
@@ -5540,14 +5541,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 10
                       Top = 5
                       Width = 150
-                      Height = 40
+                      Height = 38
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 0
                       object LbFldTipoMovNF: TLabel
@@ -5557,11 +5558,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Height = 15
                         Align = alTop
                         Caption = 'MOVIMENTA'#199#195'O'
+                        Color = 4433703
                         Font.Charset = ANSI_CHARSET
                         Font.Color = clWhite
                         Font.Height = -12
                         Font.Name = 'Segoe UI Semibold'
                         Font.Style = [fsBold]
+                        ParentColor = False
                         ParentFont = False
                         ExplicitWidth = 96
                       end
@@ -5593,14 +5596,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 180
                       Top = 5
                       Width = 340
-                      Height = 40
+                      Height = 38
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 1
                       object LbFldFornecNF: TLabel
@@ -5624,6 +5627,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 340
                         Height = 23
                         Align = alTop
+                        BevelInner = bvNone
+                        BevelOuter = bvNone
                         DataField = 'frn_id'
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         KeyField = 'frn_id'
@@ -5636,14 +5641,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 540
                       Top = 5
                       Width = 150
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 2
                       object LbFldNumeroNF: TLabel
@@ -5667,6 +5672,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 150
                         Height = 23
                         Align = alTop
+                        BorderStyle = bsNone
                         DecimalPlaces = 0
                         DisplayFormat = '0'
                         ShowButton = False
@@ -5680,14 +5686,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 710
                       Top = 5
                       Width = 150
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 3
                       object LbFldSerieNF: TLabel
@@ -5711,6 +5717,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 150
                         Height = 23
                         Align = alTop
+                        BorderStyle = bsNone
                         DecimalPlaces = 0
                         DisplayFormat = '0'
                         ShowButton = False
@@ -5724,14 +5731,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 870
                       Top = 5
                       Width = 140
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 4
                       object FldCnpjNF: TLabel
@@ -5754,6 +5761,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Top = 15
                         Width = 140
                         Height = 23
+                        BorderStyle = bsNone
                         DataField = 'nf_cnpjForn'
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         TabOrder = 0
@@ -5764,14 +5772,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 10
                       Top = 60
                       Width = 350
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 5
                       object LbFldNatOperNF: TLabel
@@ -5795,6 +5803,8 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Width = 350
                         Height = 23
                         Align = alTop
+                        BorderStyle = bsNone
+                        CharCase = ecUpperCase
                         DataField = 'nf_nop'
                         DataSource = DMPrincipal.DsTbNotaFiscal
                         TabOrder = 0
@@ -5811,7 +5821,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 6
                       object LbFldDtEmissaoNF: TLabel
@@ -5836,6 +5846,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Height = 24
                         Align = alTop
                         AllowNoDate = True
+                        BorderStyle = bsNone
                         ButtonFlat = True
                         DataField = 'nf_dtemissao'
                         DataSource = DMPrincipal.DsTbNotaFiscal
@@ -5855,7 +5866,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 7
                       object LbFldDtESNF: TLabel
@@ -5880,6 +5891,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Height = 24
                         Align = alTop
                         AllowNoDate = True
+                        BorderStyle = bsNone
                         ButtonFlat = True
                         DataField = 'nf_dtES'
                         DataSource = DMPrincipal.DsTbNotaFiscal
@@ -5892,14 +5904,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 710
                       Top = 60
                       Width = 150
-                      Height = 40
+                      Height = 38
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 8
                       object LbFldHoraESNF: TLabel
@@ -6164,14 +6176,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 10
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 0
                         object LbImpostoNFBaseIcms: TLabel
@@ -6195,6 +6207,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6208,14 +6221,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 10
                         Top = 65
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 5
                         object LbImpostoNFVlrFrete: TLabel
@@ -6239,6 +6252,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6253,14 +6267,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 165
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 1
                         object LbImpostoNFIcms: TLabel
@@ -6284,6 +6298,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6298,14 +6313,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 320
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 2
                         object LbImpostoNFBaseIcmsST: TLabel
@@ -6329,6 +6344,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6342,14 +6358,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 475
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 3
                         object LbImpostoNFIcmsST: TLabel
@@ -6373,6 +6389,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6387,14 +6404,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 630
                         Top = 20
                         Width = 151
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 4
                         object LbImpostoNFVlrProdutos: TLabel
@@ -6418,6 +6435,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 151
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ReadOnly = True
@@ -6433,14 +6451,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 165
                         Top = 65
                         Width = 149
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 6
                         object LbImpostoNFVlrSeguro: TLabel
@@ -6464,6 +6482,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 149
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6478,14 +6497,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 320
                         Top = 65
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 7
                         object LbImpostoNFVlrDesconto: TLabel
@@ -6509,6 +6528,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6523,14 +6543,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 476
                         Top = 65
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 8
                         object LbImpostoNFVlrOutrasDespesas: TLabel
@@ -6554,6 +6574,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6568,14 +6589,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 631
                         Top = 65
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 9
                         object LbImpostoNFVlrIPI: TLabel
@@ -6599,6 +6620,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 150
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -6613,14 +6635,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 787
                         Top = 20
                         Width = 150
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 10
                         object LbImpostoNFVlrtNF: TLabel
@@ -6642,7 +6664,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Left = 0
                           Top = 15
                           Width = 150
-                          Height = 24
+                          Height = 23
                           Align = alTop
                           BevelInner = bvNone
                           BevelOuter = bvNone
@@ -6870,14 +6892,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       object pnlAlertCtrlEstoque: TRelativePanel
                         Left = 504
                         Top = 20
-                        Width = 263
+                        Width = 403
                         Height = 94
                         ControlCollection = <
                           item
                             Control = LbAlertCtrlEstTitulo
                             AlignBottomWithPanel = False
-                            AlignHorizontalCenterWithPanel = False
-                            AlignLeftWithPanel = True
+                            AlignHorizontalCenterWithPanel = True
+                            AlignLeftWithPanel = False
                             AlignRightWithPanel = False
                             AlignTopWithPanel = True
                             AlignVerticalCenterWithPanel = False
@@ -6903,15 +6925,15 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                             AlignVerticalCenterWithPanel = False
                             RightOf = ImgAlertCtrlEst
                           end>
-                        Color = 5390112
+                        Color = 4433703
                         ParentBackground = False
                         TabOrder = 0
                         Visible = False
                         DesignSize = (
-                          263
+                          403
                           94)
                         object LbAlertCtrlEstTitulo: TLabel
-                          Left = 1
+                          Left = 164
                           Top = 1
                           Width = 72
                           Height = 20
@@ -7451,9 +7473,11 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         object LbAlertCtrlEstMensagem: TLabel
                           Left = 65
                           Top = 47
-                          Width = 3
+                          Width = 336
                           Height = 13
+                          Alignment = taCenter
                           Anchors = []
+                          AutoSize = False
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -11
@@ -7467,14 +7491,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Left = 870
                       Top = 60
                       Width = 141
-                      Height = 40
+                      Height = 39
                       HotTrackFont.Charset = DEFAULT_CHARSET
                       HotTrackFont.Color = clWindowText
                       HotTrackFont.Height = -11
                       HotTrackFont.Name = 'Tahoma'
                       HotTrackFont.Style = []
                       BevelOuter = bvNone
-                      Color = 4671041
+                      Color = 4433703
                       ParentBackground = False
                       TabOrder = 11
                       object LbFldDtVencimentoNF: TLabel
@@ -7499,6 +7523,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Height = 23
                         Align = alTop
                         AllowNoDate = True
+                        BorderStyle = bsNone
                         ButtonFlat = True
                         DataField = 'nf_dtvencimento'
                         DataSource = DMPrincipal.DsTbNotaFiscal
@@ -7534,7 +7559,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                       Color = clWhite
                       DataSource = DMPrincipal.DsTbNotaFiscalItem
                       DrawingStyle = gdsClassic
-                      FixedColor = 4671041
+                      FixedColor = 8279822
                       GradientEndColor = 9323579
                       GradientStartColor = 9323579
                       Font.Charset = ANSI_CHARSET
@@ -7625,14 +7650,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 448
                         Top = 5
                         Width = 50
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
                         TabOrder = 3
                         object LbDNFICFOP: TLabel
@@ -7643,11 +7668,13 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Align = alTop
                           Alignment = taCenter
                           Caption = 'C.F.O.P'
+                          Color = 8279822
                           Font.Charset = ANSI_CHARSET
                           Font.Color = clWhite
                           Font.Height = -12
                           Font.Name = 'Segoe UI Semibold'
                           Font.Style = [fsBold]
+                          ParentColor = False
                           ParentFont = False
                           ExplicitWidth = 36
                         end
@@ -7657,6 +7684,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Width = 50
                           Height = 23
                           Align = alTop
+                          BorderStyle = bsNone
                           DecimalPlaces = 0
                           DisplayFormat = '0'
                           ShowButton = False
@@ -7677,7 +7705,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
                         TabOrder = 0
                         object LbDNFICodProduto: TLabel
@@ -7722,7 +7750,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
                         TabOrder = 2
                         object LbDNFIEmbalagem: TLabel
@@ -7769,7 +7797,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
                         TabOrder = 1
                         object LbDNFINomeProduto: TLabel
@@ -7808,14 +7836,14 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         Left = 505
                         Top = 5
                         Width = 50
-                        Height = 40
+                        Height = 39
                         HotTrackFont.Charset = DEFAULT_CHARSET
                         HotTrackFont.Color = clWindowText
                         HotTrackFont.Height = -11
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
                         TabOrder = 4
                         object LbDNFIQdte: TLabel
@@ -7841,6 +7869,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                           Height = 23
                           Align = alTop
                           AutoSelect = False
+                          BorderStyle = bsNone
                           ShowButton = False
                           TabOrder = 0
                           DecimalPlacesAlwaysShown = False
@@ -7860,7 +7889,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
                         TabOrder = 6
                         object LbDNFIVlrTotal: TLabel
@@ -7904,7 +7933,7 @@ object FrmModuloControleEstoque: TFrmModuloControleEstoque
                         HotTrackFont.Name = 'Tahoma'
                         HotTrackFont.Style = []
                         BevelOuter = bvNone
-                        Color = 4671041
+                        Color = 8279822
                         ParentBackground = False
                         TabOrder = 5
                         object LbDNFIVlrUnit: TLabel
