@@ -317,6 +317,8 @@ type
     TbPlantio_Insumoprd_idproduto: TIntegerField;
     TbPlantio_Insumoplt_qtde: TBCDField;
     QryCtrlEstProdutoProduto_Embalagem: TStringField;
+    TbPlantio_InsumoEmbalagem: TStringField;
+    TbPlantio_InsumoProduto: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure TbPlantioBeforePost(DataSet: TDataSet);

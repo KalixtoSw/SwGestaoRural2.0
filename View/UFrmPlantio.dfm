@@ -12286,7 +12286,6 @@
                   Anchors = []
                   ShowButton = False
                   TabOrder = 0
-                  Value = 219.000000000000000000
                   DecimalPlacesAlwaysShown = False
                   OnExit = EdtPlt_AreaPlantadaExit
                   DataField = 'plt_areaPlantada'
@@ -12449,7 +12448,6 @@
               Color = clWhite
               ParentBackground = False
               TabOrder = 0
-              ExplicitTop = -1
               DesignSize = (
                 1189
                 100)
@@ -12652,7 +12650,6 @@
                   LookupDisplay = 'Produto_Embalagem'
                   LookupSource = DMPrincipal.DsQryCtrlEstProduto
                   TabOrder = 0
-                  ExplicitWidth = 200
                 end
               end
               object PnlDNFIVlrTotal: TJvPanel
@@ -12691,10 +12688,65 @@
                   BorderStyle = bsNone
                   DataField = 'plt_qtde'
                   DataSource = DMPrincipal.DsTbPlantio_Insumo
-                  Enabled = False
                   TabOrder = 0
                 end
               end
+            end
+            object DbGrdPlantioInsumo: TJvDBUltimGrid
+              Left = 0
+              Top = 221
+              Width = 1189
+              Height = 452
+              Cursor = crHandPoint
+              Align = alClient
+              BorderStyle = bsNone
+              Color = clWhite
+              DataSource = DMPrincipal.DsTbPlantio_Insumo
+              DrawingStyle = gdsGradient
+              GradientEndColor = 9323579
+              GradientStartColor = 9323579
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Options = [dgTitles, dgColumnResize, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+              ParentFont = False
+              TabOrder = 2
+              TitleFont.Charset = ANSI_CHARSET
+              TitleFont.Color = clWhite
+              TitleFont.Height = -12
+              TitleFont.Name = 'Segoe UI'
+              TitleFont.Style = [fsBold]
+              AutoAppend = False
+              ClearSelection = False
+              AlternateRowColor = 8279822
+              AlternateRowFontColor = clWhite
+              SelectColumnsDialogStrings.Caption = 'Select columns'
+              SelectColumnsDialogStrings.OK = '&OK'
+              SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
+              CellHintPosition = gchpMouse
+              EditControls = <>
+              RowsHeight = 19
+              TitleRowHeight = 19
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'Produto'
+                  Width = 350
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Embalagem'
+                  Width = 200
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'plt_qtde'
+                  Visible = True
+                end>
             end
           end
           object CrdBtNavImplementos: TCard
@@ -12935,6 +12987,7 @@
                     FieldName = 'tbl_latitude'
                     Title.Alignment = taCenter
                     Title.Caption = 'LATITUDADE'
+                    Width = 64
                     Visible = True
                   end
                   item
@@ -12943,6 +12996,7 @@
                     FieldName = 'tbl_longitude'
                     Title.Alignment = taCenter
                     Title.Caption = 'LONGITUDE'
+                    Width = 64
                     Visible = True
                   end
                   item
@@ -12964,6 +13018,7 @@
                     FieldName = 'tbl_status'
                     Title.Alignment = taCenter
                     Title.Caption = 'STATUS'
+                    Width = 64
                     Visible = True
                   end
                   item

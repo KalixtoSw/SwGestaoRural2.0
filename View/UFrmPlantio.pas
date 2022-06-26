@@ -99,6 +99,7 @@ type
     PnlDNFIVlrTotal: TJvPanel;
     LbDNFIVlrTotal: TLabel;
     EdtDNFIVlrTotal: TDBEdit;
+    DbGrdPlantioInsumo: TJvDBUltimGrid;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
