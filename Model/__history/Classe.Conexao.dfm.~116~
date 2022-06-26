@@ -1933,7 +1933,9 @@ object DMPrincipal: TDMPrincipal
     SQL.Strings = (
       
         'SELECT p.prd_idproduto,pe.prde_Id, p.prd_nome,pe.prde_descricao ' +
-        'AS '#39'Embalagem'#39', p.prd_fabricante, p.prd_tipo, p.prd_status,'
+        'AS '#39'Embalagem'#39', p.prd_fabricante, p.prd_tipo, p.prd_status,CONCA' +
+        'T(p.prd_nome , '#39' - '#39' , pe.prde_descricao) AS '#39'Produto_Embalagem'#39 +
+        ','
       
         '      m.mov_tipo, SUM(mp.mp_qtdUnit) AS '#39'QTD_UNIT'#39',SUM( mp.mp_qt' +
         'dContabil) AS '#39'Ctrl Estoque'#39', AVG(mp.mp_precoCompra) AS '#39'Preco M' +
@@ -2020,6 +2022,12 @@ object DMPrincipal: TDMPrincipal
       Precision = 32
       Size = 2
     end
+    object QryCtrlEstProdutoProduto_Embalagem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Produto_Embalagem'
+      Origin = 'Produto_Embalagem'
+      Size = 103
+    end
   end
   object DsQryCtrlEstProduto: TJvDataSource
     DataSet = QryCtrlEstProduto
@@ -2063,6 +2071,11 @@ object DMPrincipal: TDMPrincipal
       AutoGenerateValue = arDefault
       FieldName = 'plt_id'
       Origin = 'plt_id'
+    end
+    object TbPlantio_Insumoprde_Id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_Id'
+      Origin = 'prde_Id'
     end
     object TbPlantio_Insumoprd_idproduto: TIntegerField
       AutoGenerateValue = arDefault

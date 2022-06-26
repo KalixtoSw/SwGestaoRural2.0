@@ -13,7 +13,14 @@ SET nf_procEstoque = 0 ;
 
 
 USE gr_desenv;
-DELETE FROM nota_fiscal_item WHERE prd_idproduto IS NULL;
+DELETE FROM nota_fiscal_item ;
+
+USE gr_desenv;
+DELETE FROM nota_fiscal;
+
+
+
+
 
 USE gr_desenv;
 DELETE FROM Plantio_Talhao WHERE pltl_id > 0 ;

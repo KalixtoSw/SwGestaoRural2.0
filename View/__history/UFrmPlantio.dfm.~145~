@@ -12286,7 +12286,7 @@
                   Anchors = []
                   ShowButton = False
                   TabOrder = 0
-                  Value = 219.000000000000000000
+                  Value = 2150.000000000000000000
                   DecimalPlacesAlwaysShown = False
                   OnExit = EdtPlt_AreaPlantadaExit
                   DataField = 'plt_areaPlantada'
@@ -12449,7 +12449,6 @@
               Color = clWhite
               ParentBackground = False
               TabOrder = 0
-              ExplicitTop = -1
               DesignSize = (
                 1189
                 100)
@@ -12540,7 +12539,7 @@
               Left = 0
               Top = 100
               Width = 1189
-              Height = 150
+              Height = 121
               ControlCollection = <
                 item
                   Control = LineTopBtInsumoFields
@@ -12565,17 +12564,16 @@
                 end
                 item
                   Control = PnlDNFINomeProduto
-                  AlignBottomWithPanel = False
+                  AlignBottomWithPanel = True
                   AlignHorizontalCenterWithPanel = False
                   AlignLeftWith = LineTopBtInsumoFields
                   AlignLeftWithPanel = False
                   AlignRightWithPanel = False
                   AlignTopWithPanel = False
                   AlignVerticalCenterWithPanel = False
-                  Below = DbNavPlantio_Insumo
                 end
                 item
-                  Control = PnlDNFIEmbalagem
+                  Control = PnlDNFIVlrTotal
                   AlignBottomWithPanel = False
                   AlignHorizontalCenterWithPanel = False
                   AlignLeftWithPanel = False
@@ -12592,7 +12590,7 @@
               TabOrder = 1
               DesignSize = (
                 1189
-                150)
+                121)
               object LineTopBtInsumoFields: TJvGradient
                 Left = 0
                 Top = 0
@@ -12617,7 +12615,7 @@
               end
               object PnlDNFINomeProduto: TJvPanel
                 Left = 0
-                Top = 66
+                Top = 81
                 Width = 300
                 Height = 40
                 Anchors = []
@@ -12650,50 +12648,47 @@
                   DataField = 'prd_idproduto'
                   DataSource = DMPrincipal.DsTbPlantio_Insumo
                   LookupField = 'prd_idproduto'
-                  LookupDisplay = 'prd_nome'
+                  LookupDisplay = 'Produto_Embalagem'
                   LookupSource = DMPrincipal.DsQryCtrlEstProduto
                   TabOrder = 0
-                  ExplicitWidth = 200
                 end
               end
-              object PnlDNFIEmbalagem: TJvPanel
+              object PnlDNFIVlrTotal: TJvPanel
                 Left = 300
-                Top = 66
-                Width = 150
+                Top = 81
+                Width = 100
                 Height = 40
                 Anchors = []
                 BevelOuter = bvNone
                 Color = 8279822
                 ParentBackground = False
                 TabOrder = 2
-                object LbDNFIEmbalagem: TLabel
+                object LbDNFIVlrTotal: TLabel
                   Left = 0
                   Top = 0
-                  Width = 150
+                  Width = 100
                   Height = 15
                   Align = alTop
-                  Caption = 'EMBALAGEM'
+                  Caption = 'QUANTIDADE'
                   Font.Charset = ANSI_CHARSET
                   Font.Color = clWhite
                   Font.Height = -12
                   Font.Name = 'Segoe UI Semibold'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  ExplicitWidth = 71
+                  ExplicitWidth = 77
                 end
-                object CbbDNFIEmbalagem: TJvDBLookupCombo
+                object EdtDNFIVlrTotal: TDBEdit
                   Left = 0
                   Top = 15
-                  Width = 150
+                  Width = 100
                   Height = 24
-                  Cursor = crHelp
                   Align = alTop
-                  DeleteKeyClear = False
-                  DataField = 'prde_Id'
+                  BevelInner = bvNone
+                  BevelOuter = bvNone
+                  BorderStyle = bsNone
+                  DataField = 'plt_qtde'
                   DataSource = DMPrincipal.DsTbPlantio_Insumo
-                  LookupField = 'prde_Id'
-                  LookupDisplay = 'Embalagem'
-                  LookupSource = DMPrincipal.DsQryCtrlEstProduto
                   TabOrder = 0
                 end
               end
@@ -12937,6 +12932,7 @@
                     FieldName = 'tbl_latitude'
                     Title.Alignment = taCenter
                     Title.Caption = 'LATITUDADE'
+                    Width = 64
                     Visible = True
                   end
                   item
@@ -12945,6 +12941,7 @@
                     FieldName = 'tbl_longitude'
                     Title.Alignment = taCenter
                     Title.Caption = 'LONGITUDE'
+                    Width = 64
                     Visible = True
                   end
                   item
@@ -12966,6 +12963,7 @@
                     FieldName = 'tbl_status'
                     Title.Alignment = taCenter
                     Title.Caption = 'STATUS'
+                    Width = 64
                     Visible = True
                   end
                   item

@@ -218,6 +218,7 @@ object DMPrincipal: TDMPrincipal
   end
   object QryProduto: TFDQuery
     ActiveStoredUsage = []
+    Active = True
     AutoCalcFields = False
     ObjectView = False
     IndexesActive = False
@@ -783,6 +784,7 @@ object DMPrincipal: TDMPrincipal
     Top = 15
   end
   object TbProdutoEmbalagem: TFDTable
+    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -1584,7 +1586,6 @@ object DMPrincipal: TDMPrincipal
     Top = 25
   end
   object TbPlantio: TFDTable
-    Active = True
     BeforePost = TbPlantioBeforePost
     AfterPost = TbPlantioAfterPost
     IndexFieldNames = 'plt_id'
@@ -2040,6 +2041,7 @@ object DMPrincipal: TDMPrincipal
     Top = 325
   end
   object TbPlantio_Insumo: TFDTable
+    Active = True
     AutoCalcFields = False
     IndexFieldNames = 'plis_id'
     AggregatesActive = True
@@ -2061,6 +2063,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'plis_id'
       Origin = 'plis_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object TbPlantio_Insumoplis_dtcriacao: TSQLTimeStampField
       AutoGenerateValue = arDefault
@@ -2088,6 +2091,26 @@ object DMPrincipal: TDMPrincipal
       Origin = 'plt_qtde'
       Precision = 10
       Size = 3
+    end
+    object TbPlantio_InsumoEmbalagem: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Embalagem'
+      LookupDataSet = TbProdutoEmbalagem
+      LookupKeyFields = 'prde_Id'
+      LookupResultField = 'prde_descricao'
+      KeyFields = 'prde_Id'
+      Size = 100
+      Lookup = True
+    end
+    object TbPlantio_InsumoProduto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Produto'
+      LookupDataSet = QryProduto
+      LookupKeyFields = 'prd_idproduto'
+      LookupResultField = 'prd_nome'
+      KeyFields = 'prd_idproduto'
+      Size = 100
+      Lookup = True
     end
   end
 end
