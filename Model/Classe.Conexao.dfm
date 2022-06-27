@@ -218,7 +218,6 @@ object DMPrincipal: TDMPrincipal
   end
   object QryProduto: TFDQuery
     ActiveStoredUsage = []
-    Active = True
     AutoCalcFields = False
     ObjectView = False
     IndexesActive = False
@@ -784,7 +783,6 @@ object DMPrincipal: TDMPrincipal
     Top = 15
   end
   object TbProdutoEmbalagem: TFDTable
-    Active = True
     ObjectView = False
     CachedUpdates = True
     IndexName = 'PRIMARY'
@@ -1939,8 +1937,8 @@ object DMPrincipal: TDMPrincipal
         ','
       
         '      m.mov_tipo, SUM(mp.mp_qtdUnit) AS '#39'QTD_UNIT'#39',SUM( mp.mp_qt' +
-        'dContabil) AS '#39'Ctrl Estoque'#39', AVG(mp.mp_precoCompra) AS '#39'Preco M' +
-        'edio'#39', SUM(mp.mp_precoTotal) AS '#39'Valor Geral'#39
+        'dContabil) AS '#39'CtrlEstoque'#39', AVG(mp.mp_precoCompra) AS '#39'Preco_Me' +
+        'dio'#39', SUM(mp.mp_precoTotal) AS '#39'Valor_Geral'#39
       
         'FROM movimentacao m INNER JOIN movimentacao_produto mp ON m.mov_' +
         'id = mp.mov_id INNER JOIN produto p ON mp.prd_idproduto = p.prd_' +
@@ -1989,6 +1987,12 @@ object DMPrincipal: TDMPrincipal
       Origin = 'prd_status'
       Size = 1
     end
+    object QryCtrlEstProdutoProduto_Embalagem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Produto_Embalagem'
+      Origin = 'Produto_Embalagem'
+      Size = 103
+    end
     object QryCtrlEstProdutomov_tipo: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mov_tipo'
@@ -2004,30 +2008,24 @@ object DMPrincipal: TDMPrincipal
     end
     object QryCtrlEstProdutoCtrlEstoque: TFMTBCDField
       AutoGenerateValue = arDefault
-      FieldName = 'Ctrl Estoque'
-      Origin = '`Ctrl Estoque`'
+      FieldName = 'CtrlEstoque'
+      Origin = 'CtrlEstoque'
       Precision = 32
       Size = 3
     end
-    object QryCtrlEstProdutoPrecoMedio: TFMTBCDField
+    object QryCtrlEstProdutoPreco_Medio: TFMTBCDField
       AutoGenerateValue = arDefault
-      FieldName = 'Preco Medio'
-      Origin = '`Preco Medio`'
+      FieldName = 'Preco_Medio'
+      Origin = 'Preco_Medio'
       Precision = 14
       Size = 6
     end
-    object QryCtrlEstProdutoValorGeral: TFMTBCDField
+    object QryCtrlEstProdutoValor_Geral: TFMTBCDField
       AutoGenerateValue = arDefault
-      FieldName = 'Valor Geral'
-      Origin = '`Valor Geral`'
+      FieldName = 'Valor_Geral'
+      Origin = 'Valor_Geral'
       Precision = 32
       Size = 2
-    end
-    object QryCtrlEstProdutoProduto_Embalagem: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'Produto_Embalagem'
-      Origin = 'Produto_Embalagem'
-      Size = 103
     end
   end
   object DsQryCtrlEstProduto: TJvDataSource
@@ -2041,7 +2039,6 @@ object DMPrincipal: TDMPrincipal
     Top = 325
   end
   object TbPlantio_Insumo: TFDTable
-    Active = True
     AutoCalcFields = False
     IndexFieldNames = 'plis_id'
     AggregatesActive = True

@@ -130,7 +130,7 @@ end;
 
 function fCtrlSaldoEstoqueproduto(IdProduto: Integer; IdEmbalagem : Integer): Double;
 Var
-        Sql1,Sql2,Sql3,Sql4,SqlAux : string;
+        Sql1,Sql2,Sql3,Sql4,Sql5,SqlAux : string;
 begin
         //Montar o controle de estoque para o produto por embalagem, pois pode haver o mesmo produto em embalagens diferentes
 
@@ -146,10 +146,11 @@ begin
              SqlAux := SqlAux + ' AND pe.prde_Id = '+IntToStr(IdEmbalagem);
         end;
 
-        Sql1 := 'SELECT p.prd_idproduto,pe.prde_Id, p.prd_nome,pe.prde_descricao, p.prd_nome, p.prd_fabricante, p.prd_tipo, p.prd_status, m.mov_tipo, SUM(mp.mp_qtdUnit),SUM( mp.mp_qtdContabil) AS ''Ctrl_Estoque'',';
-        Sql2 := ' AVG(mp.mp_precoCompra) AS ''Preco_Medio'', SUM(mp.mp_precoTotal) AS ''Valor_Geral'' ';
-        Sql3 := ' FROM movimentacao m INNER JOIN movimentacao_produto mp ON m.mov_id = mp.mov_id INNER JOIN produto p ON mp.prd_idproduto = p.prd_idproduto INNER JOIN produto_embalagem pe ON pe.prde_Id = mp.prde_Id ';
-        Sql4 := SqlAux+' GROUP BY p.prd_idproduto, p.prd_nome,pe.prde_descricao;';
+        Sql1 := 'SELECT p.prd_idproduto,pe.prde_Id, p.prd_nome,pe.prde_descricao, p.prd_nome, p.prd_fabricante, p.prd_tipo, p.prd_status,m.mov_tipo,';
+        Sql2 := ' AVG(mp.mp_precoCompra) AS ''Preco_Medio'', SUM(mp.mp_precoTotal) AS ''Valor_Geral'', pe.prde_descricao AS ''Embalagem'',SUM(mp.mp_qtdUnit) AS ''QTD_UNIT'',SUM( mp.mp_qtdContabil) AS ''CtrlEstoque'', ';
+        Sql3 := 'CONCAT(p.prd_nome , '' - '' , pe.prde_descricao) AS ''Produto_Embalagem''';
+        Sql4 := ' FROM movimentacao m INNER JOIN movimentacao_produto mp ON m.mov_id = mp.mov_id INNER JOIN produto p ON mp.prd_idproduto = p.prd_idproduto INNER JOIN produto_embalagem pe ON pe.prde_Id = mp.prde_Id ';
+        Sql5 := SqlAux+' GROUP BY p.prd_idproduto, p.prd_nome,pe.prde_descricao;';
 
         DMPrincipal.QryCtrlEstProduto.Close;
         DMPrincipal.QryCtrlEstProduto.SQL.Clear;
@@ -157,8 +158,9 @@ begin
         DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql2);
         DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql3);
         DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql4);
+        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql5);
         DMPrincipal.QryCtrlEstProduto.Open;
-        Result := DMPrincipal.QryCtrlEstProduto.FieldByName('Ctrl_Estoque').AsFloat;
+        Result := DMPrincipal.QryCtrlEstProduto.FieldByName('CtrlEstoque').AsFloat;
 
 end;
 
