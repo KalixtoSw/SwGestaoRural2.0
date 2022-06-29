@@ -1,44 +1,46 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas',0,1,281,37,298,0,0,,
-File_1=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas',0,1,206,5,217,0,0,,
-File_2=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas',0,1,292,31,308,0,0,,
-File_3=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas',0,1,100,27,117,0,0,,
-File_4=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas',0,1,124,1,130,0,0,,
-File_5=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroTalhao.pas',0,1,64,1,109,0,0,,
-File_6=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Talhao.pas',0,1,211,1,1,0,0,,
-File_7=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Sistema.Mensagens.pas',0,1,79,14,88,0,0,,
-File_8=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmMensagemSistema.pas',0,1,73,12,96,0,0,,
-File_9=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas',0,1,67,1,1,0,0,,{1
-File_10=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSafra.pas',0,1,122,1,123,0,0,,
-File_11=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Safra.pas',0,1,1,35,20,0,0,,
+File_0=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\source\rtl\common\System.Classes.pas',0,1,15056,1,15066,0,0,,
+File_1=TSourceModule,'C:\Program Files (x86)\Embarcadero\Studio\jvcl-master\jvcl\run\JvThread.pas',0,1,1286,1,1302,0,0,,
+File_2=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Comum.ControleEstoque.pas',0,1,133,55,149,0,0,,
+File_3=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\Tamplate\UFrmModel1.pas',0,1,107,52,119,0,0,,
+File_4=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\UFrmMenuPrincipal.pas',0,1,206,5,217,0,0,,
+File_5=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.FunctionsSQL.pas',0,1,100,27,117,0,0,,
+File_6=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSemente.pas',0,1,124,1,130,0,0,,
+File_7=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroTalhao.pas',0,1,64,1,109,0,0,,
+File_8=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Talhao.pas',0,1,211,1,1,0,0,,
+File_9=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Sistema.Mensagens.pas',0,1,79,14,88,0,0,,
+File_10=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmMensagemSistema.pas',0,1,73,12,96,0,0,,
+File_11=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.PropriedadeRural.pas',0,1,67,1,1,0,0,,{1
+File_12=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCadastroSafra.pas',0,1,122,1,123,0,0,,
+File_13=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Safra.pas',0,1,1,35,20,0,0,,
 
 [Modules]
-Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
+Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
 Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
-Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\Tamplate\UFrmModel1.pas
-Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
+Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas
+Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
 Module4=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas
-Module5=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Comum.ControleEstoque.pas
+Module5=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
 Module6=default.htm
 Count=7
 EditWindowCount=1
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\Tamplate\UFrmModel1.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Comum.ControleEstoque.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas]
 ModuleType=TSourceModule
 
 [default.htm]
@@ -46,7 +48,7 @@ ModuleType=TURLModule
 
 [EditWindow0]
 ViewCount=7
-CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
+CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
 View0=0
 View1=1
 View2=2
@@ -62,11 +64,11 @@ State=0
 Left=0
 Top=0
 Width=9917
-Height=8837
+Height=8567
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=9917
-ClientHeight=8837
+ClientHeight=8567
 DockedToMainForm=1
 BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
@@ -75,7 +77,7 @@ LeftPanelClients=PropertyInspector
 LeftPanelData=00000800010000000000FC20000000000000005F0C0000000000000100000000FC2000001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=1672
 RightPanelClients=DockSite3,DockSite4,DockSite2
-RightPanelData=00000800010100000000B2120000000000000188060000000000000100000000FF0A000009000000446F636B53697465330100000000FE15000009000000446F636B536974653401000000003D21000009000000446F636B5369746532FFFFFFFF
+RightPanelData=0000080001010000000021120000000000000188060000000000000100000000FF0A000009000000446F636B53697465330100000000FE15000009000000446F636B536974653401000000003A20000009000000446F636B5369746532FFFFFFFF
 BottomPanelSize=0
 BottomPanelClients=DockSite1,MessageView
 BottomPanelData=0000080001020200000009000000446F636B53697465310F0000004D65737361676556696577466F726DDE44000000000000023906000000000000FFFFFFFF
@@ -90,9 +92,9 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
-CursorX=6
-CursorY=173
-TopLine=155
+CursorX=50
+CursorY=178
+TopLine=161
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -100,16 +102,27 @@ EditViewName=Borland.FormDesignerView
 
 [View2]
 CustomEditViewType=TEditView
-Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\Tamplate\UFrmModel1.pas
-CursorX=52
-CursorY=119
-TopLine=107
+Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas
+CursorX=35
+CursorY=265
+TopLine=248
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
 
 [View3]
+CustomEditViewType=TEditView
+Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
+CursorX=26
+CursorY=162
+TopLine=154
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
+
+[View4]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
 CursorX=26
@@ -120,34 +133,23 @@ Elisions=
 Bookmarks=
 EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
 
-[View4]
+[View5]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas
-CursorX=33
-CursorY=11
-TopLine=1
+CursorX=1
+CursorY=267
+TopLine=238
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas
 
-[View5]
-CustomEditViewType=TEditView
-Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Comum.ControleEstoque.pas
-CursorX=54
-CursorY=152
-TopLine=134
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Comum.ControleEstoque.pas
-
 [View6]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
 CursorX=21
-CursorY=355
-TopLine=348
+CursorY=353
+TopLine=346
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -220,7 +222,7 @@ MaxWidth=8932
 MaxHeight=8519
 ClientWidth=10021
 ClientHeight=9788
-BottomPanelSize=8509
+BottomPanelSize=8250
 BottomPanelClients=EditWindow0
 BottomPanelData=0000080000000000000000000000000000000000000000000000000100000000000000000C0000004564697457696E646F775F30FFFFFFFF
 
@@ -233,11 +235,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=2490
+Height=2221
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2490
+ClientHeight=2221
 TBDockHeight=5904
 LRDockWidth=2349
 Dockable=1
@@ -328,21 +330,16 @@ State=0
 Left=0
 Top=24
 Width=1479
-Height=8606
+Height=8337
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1479
-ClientHeight=8606
+ClientHeight=8337
 TBDockHeight=8269
 LRDockWidth=1479
 Dockable=1
 StayOnTop=0
 SplitPos=112
-
-[PropInspDesignerSelection]
-ArrangeBy=Name
-SelectedItem=Action,CustomHint
-ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -810,11 +807,11 @@ State=0
 Left=0
 Top=632
 Width=1672
-Height=2760
+Height=2490
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2760
+ClientHeight=2490
 TBDockHeight=9010
 LRDockWidth=1672
 Dockable=1

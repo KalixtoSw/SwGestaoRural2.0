@@ -187,11 +187,10 @@ type
     EdtDtFldDtESNF: TJvDBDatePickerEdit;
     EdtFldDtVencimentoNF: TJvDBDatePickerEdit;
     EdtImpostoNFVlrtNF: TDBEdit;
-    Thread_NF: TJvThread;
     pnlAlertCtrlEstoque: TRelativePanel;
     LbAlertCtrlEstTitulo: TLabel;
-    ImgAlertCtrlEst: TImage;
     LbAlertCtrlEstMensagem: TLabel;
+    ActivityInd: TActivityIndicator;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -224,7 +223,6 @@ type
     procedure EdtImpostoNFVlrIPIExit(Sender: TObject);
     procedure EdtImpostoNFIcmsExit(Sender: TObject);
     procedure EdtImpostoNFIcmsSTExit(Sender: TObject);
-    procedure Thread_NFExecute(Sender: TObject; Params: Pointer);
     procedure Thread_NFFinish(Sender: TObject);
     procedure EdtDNFINomeProdutoExit(Sender: TObject);
   private    { Private declarations }
@@ -264,7 +262,7 @@ end;
 procedure TFrmModuloControleEstoque.BtCloseClick(Sender: TObject);
 begin
 
-        Thread_NF.Execute(Sender);
+        CtrlEst_NF.fProcNFEstoque;
         Close;
 end;
 
@@ -305,6 +303,7 @@ end;
 procedure TFrmModuloControleEstoque.BtSalvarNFClick(Sender: TObject);
 begin
         CtrlEst_NF.pEventoBtSavarNF;
+        ActInsUpd := EmptyStr;
 end;
 
 procedure TFrmModuloControleEstoque.DbGrdConsultaNFDblClick(Sender: TObject);
@@ -360,7 +359,9 @@ begin
                 begin
                      LbAlertCtrlEstMensagem.Caption := 'NÃO HÁ SALDO EM ESTOQUE PARA ESSE LANÇAMENTO';
                      pnlAlertCtrlEstoque.Visible := True;
+                     ActivityInd.Animate := True;
                      pdelay(6000);
+                     ActivityInd.Animate := False;
                      LbAlertCtrlEstMensagem.Caption :='';
                      pnlAlertCtrlEstoque.Visible := False;
                      EdtDNFIQdte.Value := 0;
@@ -461,7 +462,7 @@ procedure TFrmModuloControleEstoque.FormCreate(Sender: TObject);
 begin
         CtrlEstoque     := TCrtlEstoque.CreateObjTCrtlEstoque;
         CtrlEst_NF      := TCrtrlEstoque_NF.CreateObjTCrtrlEstoque_NF;
-        ActInsUpd       := EmptyStr;
+        ActInsUpd       := 'UPDATE';
 
 end;
 
@@ -478,7 +479,7 @@ begin
         CtrlEstoque.pCtrlPosicaopnlBt3(PnlFundoBtsNav1,420);
         CtrlEstoque.pCtrlPosicaopnlBt4(PnlFundoBtsNav1,625);
         CtrlEstoque.pCtrlPosicaopnlBt5(PnlFundoBtsNav1,830);
-
+        ActInsUpd := EmptyStr;
         if (UFrmMenuPrincipal.Ctr_BtMovEstoque = '') then
         begin
                 CrdPrincipal.Show;
@@ -486,12 +487,6 @@ begin
                 begin
                      BtMenuCtrlEntradaNF.Click;
                 end;
-end;
-
-procedure TFrmModuloControleEstoque.Thread_NFExecute(Sender: TObject;
-  Params: Pointer);
-begin
-        CtrlEst_NF.fProcNFEstoque;
 end;
 
 procedure TFrmModuloControleEstoque.Thread_NFFinish(Sender: TObject);
@@ -537,9 +532,7 @@ end;
 
 procedure TFrmModuloControleEstoque.TbShtLancamentosShow(Sender: TObject);
 begin
-
-
-        if not(ActInsUpd = 'UPDATE') then
+        if not((ActInsUpd = 'UPDATE')) then
         begin
                 ActInsUpd := 'INSERT';
                 CtrlEst_NF.pEventoNewNF;

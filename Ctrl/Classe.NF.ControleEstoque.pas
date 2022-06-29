@@ -157,6 +157,7 @@ function TCrtrlEstoque_NF.fProcNFEstoque: Boolean;
 var
         IDMov : Integer;
         TpMov : string;
+        IDNF  : Integer;
         FDSNF,FDSNFI,FDSENTRADA,FDSENTRADAITEM : Tdatasource;
 begin
         try
@@ -166,6 +167,7 @@ begin
         DMPrincipal.TbMov_Produto.Active := True;
         TpMov := EmptyStr;
         IDMov := 0;
+        IDNF  := 0;
 
         FDSNF           := DMPrincipal.DsQryProcNotaFiscal;
         FDSNFI          := DMPrincipal.DsQryProcNotaFiscalItem;
@@ -175,17 +177,17 @@ begin
         FDSNFI.DataSet.Active := True;
         FDSENTRADA.DataSet.Active := True;
         FDSENTRADAITEM.DataSet.Active := True;
-
+        FDSNF.DataSet.DisableControls;
         while not (FDSNF.DataSet.Eof) do
         begin
-
                TpMov := FDSNF.DataSet.FieldByName('nf_tipoES').AsString;
+               IDNF  := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
                FDSENTRADA.DataSet.Insert;
                FDSENTRADA.DataSet.FieldByName('mov_tipo').AsString := TpMov;
                FDSENTRADA.DataSet.FieldByName('mov_datamov').AsDateTime := Now;
                FDSENTRADA.DataSet.FieldByName('mov_descricao').AsString := 'MOVIMENTAÇÃO ('+TpMov+') NO ESTOQUE';
                FDSENTRADA.DataSet.FieldByName('mov_origem').Asstring := 'MÓDULO NF';
-               FDSENTRADA.DataSet.FieldByName('nf_id').AsInteger := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
+               FDSENTRADA.DataSet.FieldByName('nf_id').AsInteger := IDNF;
                FDSENTRADA.DataSet.Post;
                FDSENTRADA.DataSet.Last;
                IDMov := FDSENTRADA.DataSet.FieldByName('mov_id').AsInteger;
@@ -211,6 +213,7 @@ begin
                 FDSNF.DataSet.Next;
         end;
         Result := True;
+        FDSNF.DataSet.EnableControls;
         except on E: Exception do
                 Result := False;
         end;
@@ -301,16 +304,15 @@ begin
     PnlDadosNFItens.Enabled := False;
 
     FDSNF.DataSet.Insert;
+    FDSNF.DataSet.FieldByName('nf_tipoES').AsString := 'E';
     FDSNF.DataSet.Post;
     FDSNF.DataSet.Last;
     FDSNF.DataSet.Edit;
     ID_NF := FDSNF.DataSet.FieldByName('nf_id').AsInteger;
-
     DtEmissaoNF.Date := fAjustaDataNull(DtEmissaoNF.Date);
     DtVencimentoNF.Date := fAjustaDataNull(DtVencimentoNF.Date);
     DtEntSadNF.Date := fAjustaDataNull(DtEntSadNF.Date);
-    FrmModuloControleEstoque.CbbFldTipoMovNF.ItemIndex := 0;
-  
+
 end;
 
 procedure TCrtrlEstoque_NF.pEventoUpdateNF;

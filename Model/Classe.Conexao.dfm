@@ -859,16 +859,13 @@ object DMPrincipal: TDMPrincipal
     UpdateOptions.CheckUpdatable = False
     UpdateOptions.AutoCommitUpdates = True
     UpdateOptions.UpdateTableName = 'movimentacao'
-    UpdateOptions.AutoIncFields = 'nf_id'
     TableName = 'movimentacao'
     Left = 490
     Top = 385
     object TbMovimentacaomov_id: TFDAutoIncField
-      AutoGenerateValue = arNone
       FieldName = 'mov_id'
       Origin = 'mov_id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object TbMovimentacaomov_tipo: TStringField
       AutoGenerateValue = arDefault
@@ -905,10 +902,10 @@ object DMPrincipal: TDMPrincipal
       Origin = 'mov_origem'
       Size = 25
     end
-    object TbMovimentacaonf_id: TFDAutoIncField
+    object TbMovimentacaonf_id: TIntegerField
+      AutoGenerateValue = arDefault
       FieldName = 'nf_id'
       Origin = 'nf_id'
-      ReadOnly = True
     end
   end
   object DsTbMovimentacao: TDataSource
@@ -1931,22 +1928,21 @@ object DMPrincipal: TDMPrincipal
     Connection = FDConnection
     SQL.Strings = (
       
-        'SELECT p.prd_idproduto,pe.prde_Id, p.prd_nome,pe.prde_descricao ' +
-        'AS '#39'Embalagem'#39', p.prd_fabricante, p.prd_tipo, p.prd_status,CONCA' +
-        'T(p.prd_nome , '#39' - '#39' , pe.prde_descricao) AS '#39'Produto_Embalagem'#39 +
-        ','
+        'SELECT pe.prxid, pe.prd_idproduto,pe.prde_Id,pe.prx_NomeComercia' +
+        'l, SUM(mp.mp_qtdContabil) AS '#39'SaldoEstoque'#39
       
-        '      m.mov_tipo, SUM(mp.mp_qtdUnit) AS '#39'QTD_UNIT'#39',SUM( mp.mp_qt' +
-        'dContabil) AS '#39'CtrlEstoque'#39', AVG(mp.mp_precoCompra) AS '#39'Preco_Me' +
-        'dio'#39', SUM(mp.mp_precoTotal) AS '#39'Valor_Geral'#39
-      
-        'FROM movimentacao m INNER JOIN movimentacao_produto mp ON m.mov_' +
-        'id = mp.mov_id INNER JOIN produto p ON mp.prd_idproduto = p.prd_' +
-        'idproduto INNER JOIN produto_embalagem pe ON pe.prde_Id = mp.prd' +
-        'e_Id'
-      '  GROUP BY p.prd_idproduto, p.prd_nome,pe.prde_descricao;')
+        'FROM movimentacao_produto mp INNER JOIN ProdutoExt pe ON (mp.prd' +
+        '_idproduto = pe.prd_idproduto AND mp.prde_Id = pe.prde_Id)'
+      'WHERE mp.mp_tipo IN ('#39'E'#39','#39'S'#39')'
+      'GROUP BY pe.prx_NomeComercial'
+      'ORDER BY pe.prx_NomeComercial;')
     Left = 1110
     Top = 385
+    object QryCtrlEstProdutoprxid: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prxid'
+      Origin = 'prxid'
+    end
     object QryCtrlEstProdutoprd_idproduto: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'prd_idproduto'
@@ -1957,75 +1953,18 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'prde_Id'
       Origin = 'prde_Id'
     end
-    object QryCtrlEstProdutoprd_nome: TStringField
+    object QryCtrlEstProdutoprx_NomeComercial: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'prd_nome'
-      Origin = 'prd_nome'
-      Size = 50
-    end
-    object QryCtrlEstProdutoEmbalagem: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'Embalagem'
-      Origin = 'Embalagem'
-      Size = 50
-    end
-    object QryCtrlEstProdutoprd_fabricante: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'prd_fabricante'
-      Origin = 'prd_fabricante'
-      Size = 50
-    end
-    object QryCtrlEstProdutoprd_tipo: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'prd_tipo'
-      Origin = 'prd_tipo'
-      Size = 50
-    end
-    object QryCtrlEstProdutoprd_status: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'prd_status'
-      Origin = 'prd_status'
-      Size = 1
-    end
-    object QryCtrlEstProdutoProduto_Embalagem: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'Produto_Embalagem'
-      Origin = 'Produto_Embalagem'
+      FieldName = 'prx_NomeComercial'
+      Origin = 'prx_NomeComercial'
       Size = 103
     end
-    object QryCtrlEstProdutomov_tipo: TStringField
+    object QryCtrlEstProdutoSaldoEstoque: TFMTBCDField
       AutoGenerateValue = arDefault
-      FieldName = 'mov_tipo'
-      Origin = 'mov_tipo'
-      Size = 1
-    end
-    object QryCtrlEstProdutoQTD_UNIT: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'QTD_UNIT'
-      Origin = 'QTD_UNIT'
+      FieldName = 'SaldoEstoque'
+      Origin = 'SaldoEstoque'
       Precision = 32
       Size = 3
-    end
-    object QryCtrlEstProdutoCtrlEstoque: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'CtrlEstoque'
-      Origin = 'CtrlEstoque'
-      Precision = 32
-      Size = 3
-    end
-    object QryCtrlEstProdutoPreco_Medio: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'Preco_Medio'
-      Origin = 'Preco_Medio'
-      Precision = 14
-      Size = 6
-    end
-    object QryCtrlEstProdutoValor_Geral: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'Valor_Geral'
-      Origin = 'Valor_Geral'
-      Precision = 32
-      Size = 2
     end
   end
   object DsQryCtrlEstProduto: TJvDataSource
@@ -2072,16 +2011,6 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'plt_id'
       Origin = 'plt_id'
     end
-    object TbPlantio_Insumoprde_Id: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'prde_Id'
-      Origin = 'prde_Id'
-    end
-    object TbPlantio_Insumoprd_idproduto: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'prd_idproduto'
-      Origin = 'prd_idproduto'
-    end
     object TbPlantio_Insumoplt_qtde: TBCDField
       AutoGenerateValue = arDefault
       FieldName = 'plt_qtde'
@@ -2089,25 +2018,78 @@ object DMPrincipal: TDMPrincipal
       Precision = 10
       Size = 3
     end
-    object TbPlantio_InsumoEmbalagem: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Embalagem'
-      LookupDataSet = TbProdutoEmbalagem
-      LookupKeyFields = 'prde_Id'
-      LookupResultField = 'prde_descricao'
-      KeyFields = 'prde_Id'
-      Size = 100
-      Lookup = True
+    object TbPlantio_Insumoprxid: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prxid'
+      Origin = 'prxid'
     end
     object TbPlantio_InsumoProduto: TStringField
       FieldKind = fkLookup
       FieldName = 'Produto'
-      LookupDataSet = QryProduto
-      LookupKeyFields = 'prd_idproduto'
-      LookupResultField = 'prd_nome'
-      KeyFields = 'prd_idproduto'
+      LookupDataSet = TbProdutoExt
+      LookupKeyFields = 'prxid'
+      LookupResultField = 'prx_NomeComercial'
+      KeyFields = 'prxid'
       Size = 100
       Lookup = True
+    end
+  end
+  object DsTbProdutoExt: TDataSource
+    DataSet = TbProdutoExt
+    Left = 1190
+    Top = 440
+  end
+  object TbProdutoExt: TFDTable
+    AutoCalcFields = False
+    IndexFieldNames = 'prxid'
+    AggregatesActive = True
+    Connection = FDConnection
+    UpdateOptions.AssignedValues = [uvEDelete, uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'gr_desenv.ProdutoExt'
+    TableName = 'gr_desenv.ProdutoExt'
+    Left = 1115
+    Top = 440
+    object TbProdutoExtprxid: TFDAutoIncField
+      FieldName = 'prxid'
+      Origin = 'prxid'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object TbProdutoExtprd_idproduto: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prd_idproduto'
+      Origin = 'prd_idproduto'
+    end
+    object TbProdutoExtprd_nome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'prd_nome'
+      Origin = 'prd_nome'
+      Size = 50
+    end
+    object TbProdutoExtprde_Id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_Id'
+      Origin = 'prde_Id'
+    end
+    object TbProdutoExtprde_descricao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'prde_descricao'
+      Origin = 'prde_descricao'
+      Size = 50
+    end
+    object TbProdutoExtprx_NomeComercial: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'prx_NomeComercial'
+      Origin = 'prx_NomeComercial'
+      Size = 103
     end
   end
 end

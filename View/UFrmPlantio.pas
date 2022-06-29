@@ -92,14 +92,20 @@ type
     LineBtInsumoEdtDescPlantio: TJvGradient;
     pnlBtInsumoFields: TRelativePanel;
     LineTopBtInsumoFields: TJvGradient;
-    DbNavPlantio_Insumo: TJvDBNavigator;
     PnlDNFINomeProduto: TJvPanel;
     LbDNFINomeProduto: TLabel;
     EdtDNFINomeProduto: TJvDBLookupCombo;
-    PnlDNFIVlrTotal: TJvPanel;
-    LbDNFIVlrTotal: TLabel;
-    EdtDNFIVlrTotal: TDBEdit;
+    PnlQtdInsumo: TJvPanel;
+    LbQtdInsumo: TLabel;
     DbGrdPlantioInsumo: TJvDBUltimGrid;
+    BtAddInsumo: TJvSpeedButton;
+    BtSaveInsumo: TJvSpeedButton;
+    BtCancelInsumo: TJvSpeedButton;
+    EdtQtdInsumo: TJvDBCalcEdit;
+    pnlAlertCtrlEstoque: TRelativePanel;
+    LbAlertCtrlEstTitulo: TLabel;
+    LbAlertCtrlEstMensagem: TLabel;
+    ActivityInd: TActivityIndicator;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -113,6 +119,11 @@ type
     procedure FormShow(Sender: TObject);
     procedure EdtPlt_AreaPlantadaExit(Sender: TObject);
     procedure DbGridCellClick(Column: TColumn);
+    procedure BtCancelInsumoClick(Sender: TObject);
+    procedure BtAddInsumoClick(Sender: TObject);
+    procedure BtSaveInsumoClick(Sender: TObject);
+    procedure EdtDNFINomeProdutoChange(Sender: TObject);
+    procedure EdtQtdInsumoExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -137,9 +148,19 @@ uses
 
 {$R *.dfm}
 
+procedure TFrmPlantio.BtAddInsumoClick(Sender: TObject);
+begin
+        Plantio.pAdicionarInsumo;
+end;
+
 procedure TFrmPlantio.BtAddPlantioTalhaoClick(Sender: TObject);
 begin
         Plantio.fAddPlantioTalhao;
+end;
+
+procedure TFrmPlantio.BtCancelInsumoClick(Sender: TObject);
+begin
+        Plantio.pCancelarInsumo;
 end;
 
 procedure TFrmPlantio.BtCloseClick(Sender: TObject);
@@ -157,7 +178,6 @@ begin
        Plantio.pHabilitaBtsNav(True,False,False,False,False);
        DMPrincipal.TbPlantio_Insumo.Active := True;
        DMPrincipal.QryCtrlEstProduto.Active := True;
-       pDBNavigatorNew(DbNavPlantio_Insumo);
        CrdBtNavInsumos.Show;
        EdtBtInsumoEdtDescPlantio.Text := '( '+IntToStr(Plantio.fNomePlantio.RIDPlantio)+' )  '+ Plantio.fNomePlantio.RNomePlantio;
 end;
@@ -167,6 +187,11 @@ begin
         Plantio.pHabilitaBtsNav(False,True,True,True,True);
         CrdBtNavPlantio.Show;
 
+end;
+
+procedure TFrmPlantio.BtSaveInsumoClick(Sender: TObject);
+begin
+        Plantio.pSalvarInsumo;
 end;
 
 procedure TFrmPlantio.DbGrdAreaPlantioCellClick(Column: TColumn);
@@ -216,6 +241,11 @@ begin
         Plantio.fCalcAreaPlantada;
 end;
 
+procedure TFrmPlantio.EdtDNFINomeProdutoChange(Sender: TObject);
+begin
+        Plantio.fCtrlEstoqueInsumo;
+end;
+
 procedure TFrmPlantio.EdtPlt_AreaPlantadaExit(Sender: TObject);
 begin
         if EdtPlt_AreaPlantada.Value > 0 then
@@ -226,6 +256,22 @@ begin
              end;
         end;
         Plantio.fCalcAreaPlantada;
+end;
+
+procedure TFrmPlantio.EdtQtdInsumoExit(Sender: TObject);
+begin
+        if not(Plantio.fCtrlEstoqueInsumo) then
+        begin
+                LbAlertCtrlEstMensagem.Caption := 'NÃO HÁ SALDO EM ESTOQUE PARA ESSE LANÇAMENTO';
+                pnlAlertCtrlEstoque.Visible := True;
+                ActivityInd.Animate := True;
+                pdelay(6000);
+                ActivityInd.Animate := False;
+                LbAlertCtrlEstMensagem.Caption :='';
+                pnlAlertCtrlEstoque.Visible := False;
+                EdtQtdInsumo.Value := 0;
+                EdtQtdInsumo.SetFocus;
+        end;
 end;
 
 procedure TFrmPlantio.FormCreate(Sender: TObject);
