@@ -45,7 +45,7 @@ type
 implementation
 
 uses
-     UFrmModuloControleEstoque ;
+     UFrmModuloControleEstoque,UFrmPlantio ;
 
 { TCrrlEstoque }
 
@@ -130,7 +130,7 @@ end;
 
 function fCtrlSaldoEstoqueproduto(IdProduto: Integer; IdEmbalagem : Integer): Double;
 Var
-        Sql1,Sql2,Sql3,Sql4,Sql5,SqlAux : string;
+        Sql1,SqlAux : string;
 begin
         //Montar o controle de estoque para o produto por embalagem, pois pode haver o mesmo produto em embalagens diferentes
 
@@ -138,30 +138,23 @@ begin
         begin
             SqlAux := '';
         end else begin
-                SqlAux := 'WHERE p.prd_idproduto = '+IntToStr(IdProduto);
+                SqlAux := 'WHERE mp.mp_tipo IN (''E'',''S'') AND pe.prd_idproduto = '+IntToStr(IdProduto);
         end;
 
         if (IdProduto > 0) and (IdEmbalagem > 0) then
         begin
              SqlAux := SqlAux + ' AND pe.prde_Id = '+IntToStr(IdEmbalagem);
         end;
-
-        Sql1 := 'SELECT p.prd_idproduto,pe.prde_Id, p.prd_nome,pe.prde_descricao, p.prd_nome, p.prd_fabricante, p.prd_tipo, p.prd_status,m.mov_tipo,';
-        Sql2 := ' AVG(mp.mp_precoCompra) AS ''Preco_Medio'', SUM(mp.mp_precoTotal) AS ''Valor_Geral'', pe.prde_descricao AS ''Embalagem'',SUM(mp.mp_qtdUnit) AS ''QTD_UNIT'',SUM( mp.mp_qtdContabil) AS ''CtrlEstoque'', ';
-        Sql3 := 'CONCAT(p.prd_nome , '' - '' , pe.prde_descricao) AS ''Produto_Embalagem''';
-        Sql4 := ' FROM movimentacao m INNER JOIN movimentacao_produto mp ON m.mov_id = mp.mov_id INNER JOIN produto p ON mp.prd_idproduto = p.prd_idproduto INNER JOIN produto_embalagem pe ON pe.prde_Id = mp.prde_Id ';
-        Sql5 := SqlAux+' GROUP BY p.prd_idproduto, p.prd_nome,pe.prde_descricao;';
-
+        Sql1 := 'SELECT pe.prxid,pe.prd_idproduto,pe.prde_Id,pe.prx_NomeComercial, SUM(mp.mp_qtdContabil) AS ''SaldoEstoque'' '+
+                'FROM movimentacao_produto mp INNER JOIN ProdutoExt pe ON (mp.prd_idproduto = pe.prd_idproduto AND mp.prde_Id = pe.prde_Id) '+
+                SqlAux+
+                ' GROUP BY pe.prx_NomeComercial '+
+                'ORDER BY pe.prx_NomeComercial';
         DMPrincipal.QryCtrlEstProduto.Close;
         DMPrincipal.QryCtrlEstProduto.SQL.Clear;
         DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql1);
-        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql2);
-        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql3);
-        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql4);
-        DMPrincipal.QryCtrlEstProduto.SQL.Add(Sql5);
         DMPrincipal.QryCtrlEstProduto.Open;
-        Result := DMPrincipal.QryCtrlEstProduto.FieldByName('CtrlEstoque').AsFloat;
-
+        Result := DMPrincipal.QryCtrlEstProduto.FieldByName('SaldoEstoque').AsFloat;
 end;
 
 end.

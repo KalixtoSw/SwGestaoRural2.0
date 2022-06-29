@@ -53,7 +53,10 @@ type
     function fCalcAreaPlantada: Double;
     function fValidaAreaTcomAreaP : Boolean;
     function fNomePlantio : RetPlantio;
-
+    procedure pAdicionarInsumo;
+    procedure pSalvarInsumo;
+    procedure pCancelarInsumo;
+    function  fCtrlEstoqueInsumo : Boolean;
 
   published
 
@@ -73,7 +76,7 @@ type
 implementation
 
 uses
-  UFrmPlantio, Classe.Conexao;
+  UFrmPlantio, Classe.Conexao, Classe.Comum.ControleEstoque;
 
 { TPlantio }
 
@@ -176,6 +179,24 @@ begin
         end;
 end;
 
+function TPlantio.fCtrlEstoqueInsumo: Boolean;
+var
+        IdPrd, IdEmb : Integer;
+begin
+        IdPrd := DMPrincipal.QryCtrlEstProdutoprd_idproduto.AsInteger;
+        IdEmb := DMPrincipal.QryCtrlEstProdutoprde_Id.AsInteger;
+        Result := True;
+
+        if fCtrlSaldoEstoqueproduto(IdPrd,IdEmb) < FrmPlantio.EdtQtdInsumo.Value then
+        begin
+             Result := False;
+        end;
+
+        FrmPlantio.LbDNFINomeProduto.Caption := 'SALDO: '+floattostr(fCtrlSaldoEstoqueproduto(IdPrd,IdEmb));
+
+        fCtrlSaldoEstoqueproduto(0,0);
+end;
+
 function TPlantio.fNomePlantio: RetPlantio;
 begin
         Result.RNomePlantio     := FTbPlantio.FieldByName('plt_Descricao').AsString;
@@ -198,6 +219,31 @@ begin
 
 end;
 
+procedure TPlantio.pAdicionarInsumo;
+begin
+        DMPrincipal.DsTbPlantio_Insumo.DataSet.Insert;
+        FrmPlantio.BtAddInsumo.Enabled          := False;
+        FrmPlantio.BtSaveInsumo.Enabled         := True;
+        FrmPlantio.BtCancelInsumo.Enabled       := True;
+        FrmPlantio.PnlQtdInsumo.Enabled         := True;
+        FrmPlantio.PnlDNFINomeProduto.Enabled   := True;
+end;
+
+procedure TPlantio.pCancelarInsumo;
+begin
+        try
+                FrmPlantio.BtAddInsumo.Enabled  := True;
+                FrmPlantio.BtSaveInsumo.Enabled := False;
+                FrmPlantio.BtCancelInsumo.Enabled := False;
+                FrmPlantio.PnlQtdInsumo.Enabled         := False;
+                FrmPlantio.PnlDNFINomeProduto.Enabled   := False;
+
+               DMPrincipal.DsTbPlantio_Insumo.DataSet.Cancel;
+        finally
+                DMPrincipal.DsTbPlantio_Insumo.DataSet.Refresh;
+        end;
+end;
+
 procedure TPlantio.pHabilitaBtsNav(Btn1, Btn2, Btn3, Btn4, Btn5: Boolean);
 begin
 
@@ -207,6 +253,22 @@ begin
   FBtNavAreasPlantio.Enabled := Btn4;
   FBtNavFinancas.Enabled := Btn5;
 
+end;
+
+procedure TPlantio.pSalvarInsumo;
+begin
+        try
+                DMPrincipal.DsTbPlantio_Insumo.DataSet.FieldByName('plt_id').AsInteger := FDbgrdPlantio.DataSource.DataSet.FieldByName('plt_id').AsInteger;
+                DMPrincipal.DsTbPlantio_Insumo.DataSet.FieldByName('plis_dtcriacao').AsDateTime := Now;
+                DMPrincipal.DsTbPlantio_Insumo.DataSet.Post;
+                FrmPlantio.BtAddInsumo.Enabled  := True;
+                FrmPlantio.BtSaveInsumo.Enabled := False;
+                FrmPlantio.BtCancelInsumo.Enabled := False;
+                FrmPlantio.PnlQtdInsumo.Enabled         := False;
+                FrmPlantio.PnlDNFINomeProduto.Enabled   := False;
+        finally
+                DMPrincipal.DsTbPlantio_Insumo.DataSet.Refresh;
+        end;
 end;
 
 procedure TPlantio.setAreaTotalPlantio(const Value: Double);

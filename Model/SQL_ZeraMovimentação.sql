@@ -27,3 +27,10 @@ DELETE FROM Plantio_Talhao WHERE pltl_id > 0 ;
 
 USE gr_desenv;
 UPDATE Talhao SET tbl_status = 'DISPONIVEL' WHERE tbl_idTalhao > 0; 
+
+
+
+
+SELECT * FROM nota_fiscal nf WHERE nf.nf_id NOT IN (SELECT nfi.nf_id FROM nota_fiscal_item nfi);
+
+DELETE FROM nota_fiscal WHERE nf_id NOT IN (SELECT nf_id FROM nota_fiscal_item);
