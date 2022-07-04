@@ -15,26 +15,26 @@ File_12=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCa
 File_13=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Safra.pas',0,1,1,35,20,0,0,,
 
 [Modules]
-Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
+Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
 Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
-Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas
-Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
+Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
+Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas
 Module4=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas
 Module5=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
 Module6=default.htm
 Count=7
 EditWindowCount=1
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas]
@@ -48,7 +48,7 @@ ModuleType=TURLModule
 
 [EditWindow0]
 ViewCount=7
-CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
+CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
 View0=0
 View1=1
 View2=2
@@ -114,8 +114,8 @@ EditViewName=Borland.FormDesignerView
 [View3]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
-CursorX=26
-CursorY=162
+CursorX=42
+CursorY=176
 TopLine=154
 LeftCol=1
 Elisions=
@@ -340,6 +340,11 @@ LRDockWidth=1479
 Dockable=1
 StayOnTop=0
 SplitPos=112
+
+[PropInspDesignerSelection]
+ArrangeBy=Name
+SelectedItem=Action,CustomHint
+ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0
 
 [ClassBrowserTool]
 PercentageSizes=1

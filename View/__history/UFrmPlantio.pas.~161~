@@ -12,7 +12,7 @@ uses
   JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
   JvDBDatePickerEdit, JvBaseEdits, Vcl.ComCtrls, JvExComCtrls, JvProgressBar,
   JvDBProgressBar, System.Math, Winapi.CommCtrl,Classe.NF.ControleEstoque, Classe.Comum.ControleEstoque,
-  JvDBLookup;
+  JvDBLookup, EDBCkBox;
 
 type
   TFrmPlantio = class(TForm)
@@ -95,13 +95,18 @@ type
     PnlDNFINomeProduto: TJvPanel;
     LbDNFINomeProduto: TLabel;
     EdtDNFINomeProduto: TJvDBLookupCombo;
-    PnlDNFIVlrTotal: TJvPanel;
-    LbDNFIVlrTotal: TLabel;
+    PnlQtdInsumo: TJvPanel;
+    LbQtdInsumo: TLabel;
     DbGrdPlantioInsumo: TJvDBUltimGrid;
     BtAddInsumo: TJvSpeedButton;
     BtSaveInsumo: TJvSpeedButton;
     BtCancelInsumo: TJvSpeedButton;
     EdtQtdInsumo: TJvDBCalcEdit;
+    pnlAlertCtrlEstoque: TRelativePanel;
+    LbAlertCtrlEstTitulo: TLabel;
+    LbAlertCtrlEstMensagem: TLabel;
+    ActivityInd: TActivityIndicator;
+    EvDBCheckBox2: TEvDBCheckBox;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -119,6 +124,7 @@ type
     procedure BtAddInsumoClick(Sender: TObject);
     procedure BtSaveInsumoClick(Sender: TObject);
     procedure EdtDNFINomeProdutoChange(Sender: TObject);
+    procedure EdtQtdInsumoExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -155,7 +161,7 @@ end;
 
 procedure TFrmPlantio.BtCancelInsumoClick(Sender: TObject);
 begin
-        Plantio.pAdicionarInsumo;
+        Plantio.pCancelarInsumo;
 end;
 
 procedure TFrmPlantio.BtCloseClick(Sender: TObject);
@@ -251,6 +257,22 @@ begin
              end;
         end;
         Plantio.fCalcAreaPlantada;
+end;
+
+procedure TFrmPlantio.EdtQtdInsumoExit(Sender: TObject);
+begin
+        if not(Plantio.fCtrlEstoqueInsumo) then
+        begin
+                LbAlertCtrlEstMensagem.Caption := 'NÃO HÁ SALDO EM ESTOQUE PARA ESSE LANÇAMENTO';
+                pnlAlertCtrlEstoque.Visible := True;
+                ActivityInd.Animate := True;
+                pdelay(6000);
+                ActivityInd.Animate := False;
+                LbAlertCtrlEstMensagem.Caption :='';
+                pnlAlertCtrlEstoque.Visible := False;
+                EdtQtdInsumo.Value := 0;
+                EdtQtdInsumo.SetFocus;
+        end;
 end;
 
 procedure TFrmPlantio.FormCreate(Sender: TObject);

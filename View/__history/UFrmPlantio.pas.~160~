@@ -95,13 +95,17 @@ type
     PnlDNFINomeProduto: TJvPanel;
     LbDNFINomeProduto: TLabel;
     EdtDNFINomeProduto: TJvDBLookupCombo;
-    PnlDNFIVlrTotal: TJvPanel;
-    LbDNFIVlrTotal: TLabel;
+    PnlQtdInsumo: TJvPanel;
+    LbQtdInsumo: TLabel;
     DbGrdPlantioInsumo: TJvDBUltimGrid;
     BtAddInsumo: TJvSpeedButton;
     BtSaveInsumo: TJvSpeedButton;
     BtCancelInsumo: TJvSpeedButton;
     EdtQtdInsumo: TJvDBCalcEdit;
+    pnlAlertCtrlEstoque: TRelativePanel;
+    LbAlertCtrlEstTitulo: TLabel;
+    LbAlertCtrlEstMensagem: TLabel;
+    ActivityInd: TActivityIndicator;
     procedure FormResize(Sender: TObject);
     procedure BtCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -156,7 +160,7 @@ end;
 
 procedure TFrmPlantio.BtCancelInsumoClick(Sender: TObject);
 begin
-        Plantio.pAdicionarInsumo;
+        Plantio.pCancelarInsumo;
 end;
 
 procedure TFrmPlantio.BtCloseClick(Sender: TObject);
@@ -258,7 +262,15 @@ procedure TFrmPlantio.EdtQtdInsumoExit(Sender: TObject);
 begin
         if not(Plantio.fCtrlEstoqueInsumo) then
         begin
-             ShowMessage('NÃO HÁ SALDO EM ESTOQUE PARA ESSE LANÇAMENTO');
+                LbAlertCtrlEstMensagem.Caption := 'NÃO HÁ SALDO EM ESTOQUE PARA ESSE LANÇAMENTO';
+                pnlAlertCtrlEstoque.Visible := True;
+                ActivityInd.Animate := True;
+                pdelay(6000);
+                ActivityInd.Animate := False;
+                LbAlertCtrlEstMensagem.Caption :='';
+                pnlAlertCtrlEstoque.Visible := False;
+                EdtQtdInsumo.Value := 0;
+                EdtQtdInsumo.SetFocus;
         end;
 end;
 

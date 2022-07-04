@@ -15,26 +15,26 @@ File_12=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmCa
 File_13=TSourceModule,'H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Safra.pas',0,1,1,35,20,0,0,,
 
 [Modules]
-Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
+Module0=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
 Module1=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas
-Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas
-Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
+Module2=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
+Module3=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas
 Module4=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas
 Module5=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Functions.pas
 Module6=default.htm
 Count=7
 EditWindowCount=1
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Model\Classe.Conexao.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas]
 ModuleType=TSourceModule
 
-[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas]
+[H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmModuloControleEstoque.pas]
 ModuleType=TSourceModule
 
 [H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.Plantio.pas]
@@ -48,7 +48,7 @@ ModuleType=TURLModule
 
 [EditWindow0]
 ViewCount=7
-CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
+CurrentEditView=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\View\UFrmPlantio.pas
 View0=0
 View1=1
 View2=2
@@ -63,12 +63,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=9917
-Height=8567
+Width=7917
+Height=6490
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=9917
-ClientHeight=8567
+ClientWidth=7917
+ClientHeight=6490
 DockedToMainForm=1
 BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
@@ -77,7 +77,7 @@ LeftPanelClients=PropertyInspector
 LeftPanelData=00000800010000000000FC20000000000000005F0C0000000000000100000000FC2000001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=1672
 RightPanelClients=DockSite3,DockSite4,DockSite2
-RightPanelData=0000080001010000000021120000000000000188060000000000000100000000FF0A000009000000446F636B53697465330100000000FE15000009000000446F636B536974653401000000003A20000009000000446F636B5369746532FFFFFFFF
+RightPanelData=00000800010100000000BC0D0000000000000188060000000000000100000000FF0A000009000000446F636B53697465330100000000FE15000009000000446F636B536974653401000000006A18000009000000446F636B5369746532FFFFFFFF
 BottomPanelSize=0
 BottomPanelClients=DockSite1,MessageView
 BottomPanelData=0000080001020200000009000000446F636B53697465310F0000004D65737361676556696577466F726DDE44000000000000023906000000000000FFFFFFFF
@@ -114,8 +114,8 @@ EditViewName=Borland.FormDesignerView
 [View3]
 CustomEditViewType=TEditView
 Module=H:\Desenvolvimento SW\Github\SwGestaoRural2.0\Ctrl\Classe.NF.ControleEstoque.pas
-CursorX=48
-CursorY=229
+CursorX=42
+CursorY=176
 TopLine=154
 LeftCol=1
 Elisions=
@@ -222,7 +222,7 @@ MaxWidth=8932
 MaxHeight=8519
 ClientWidth=10021
 ClientHeight=9788
-BottomPanelSize=8250
+BottomPanelSize=6250
 BottomPanelClients=EditWindow0
 BottomPanelData=0000080000000000000000000000000000000000000000000000000100000000000000000C0000004564697457696E646F775F30FFFFFFFF
 
@@ -235,11 +235,11 @@ State=0
 Left=0
 Top=0
 Width=1672
-Height=2221
+Height=144
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2221
+ClientHeight=144
 TBDockHeight=5904
 LRDockWidth=2349
 Dockable=1
@@ -330,16 +330,21 @@ State=0
 Left=0
 Top=24
 Width=1479
-Height=8337
+Height=6260
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1479
-ClientHeight=8337
+ClientHeight=6260
 TBDockHeight=8269
 LRDockWidth=1479
 Dockable=1
 StayOnTop=0
 SplitPos=112
+
+[PropInspDesignerSelection]
+ArrangeBy=Name
+SelectedItem=Action,CustomHint
+ExpandedItems=Anchors=0,ArrangeSettings=0,BevelEdges=0,Constraints=0,Font=0,HotTrackFont=0,HotTrackFontOptions=0,HotTrackOptions=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Touch=0,MaxPixel=0,Provider=0,BorderIcons=0,GlassFrame=0,HorzScrollBar=0,StyleElements=0,VertScrollBar=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -807,11 +812,11 @@ State=0
 Left=0
 Top=632
 Width=1672
-Height=2490
+Height=413
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1672
-ClientHeight=2490
+ClientHeight=413
 TBDockHeight=9010
 LRDockWidth=1672
 Dockable=1
