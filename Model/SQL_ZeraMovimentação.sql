@@ -18,7 +18,8 @@ DELETE FROM nota_fiscal_item ;
 USE gr_desenv;
 DELETE FROM nota_fiscal;
 
-
+USE gr_desenv;
+DELETE FROM Plantio_Insumos;
 
 
 

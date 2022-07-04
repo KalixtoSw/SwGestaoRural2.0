@@ -12560,7 +12560,7 @@
                   AlignVerticalCenterWithPanel = False
                 end
                 item
-                  Control = PnlDNFIVlrTotal
+                  Control = PnlQtdInsumo
                   AlignBottomWithPanel = False
                   AlignHorizontalCenterWithPanel = False
                   AlignLeftWithPanel = False
@@ -12601,6 +12601,15 @@
                   AlignVerticalCenterWithPanel = False
                   Below = LineTopBtInsumoFields
                   RightOf = BtSaveInsumo
+                end
+                item
+                  Control = pnlAlertCtrlEstoque
+                  AlignBottomWithPanel = False
+                  AlignHorizontalCenterWithPanel = False
+                  AlignLeftWithPanel = False
+                  AlignRightWithPanel = False
+                  AlignTopWithPanel = False
+                  AlignVerticalCenterWithPanel = False
                 end>
               Align = alTop
               BevelOuter = bvNone
@@ -12628,6 +12637,7 @@
                 Anchors = []
                 BevelOuter = bvNone
                 Color = 8279822
+                Enabled = False
                 ParentBackground = False
                 TabOrder = 0
                 object LbDNFINomeProduto: TLabel
@@ -12661,7 +12671,7 @@
                   OnChange = EdtDNFINomeProdutoChange
                 end
               end
-              object PnlDNFIVlrTotal: TJvPanel
+              object PnlQtdInsumo: TJvPanel
                 Left = 300
                 Top = 81
                 Width = 100
@@ -12669,9 +12679,10 @@
                 Anchors = []
                 BevelOuter = bvNone
                 Color = 8279822
+                Enabled = False
                 ParentBackground = False
                 TabOrder = 1
-                object LbDNFIVlrTotal: TLabel
+                object LbQtdInsumo: TLabel
                   Left = 0
                   Top = 0
                   Width = 100
@@ -13173,6 +13184,84 @@
                 ParentFont = False
                 Spacing = 20
                 OnClick = BtCancelInsumoClick
+              end
+              object pnlAlertCtrlEstoque: TRelativePanel
+                Left = 504
+                Top = 20
+                Width = 403
+                Height = 94
+                ControlCollection = <
+                  item
+                    Control = LbAlertCtrlEstTitulo
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = True
+                    AlignLeftWithPanel = False
+                    AlignRightWithPanel = False
+                    AlignTopWithPanel = True
+                    AlignVerticalCenterWithPanel = False
+                  end
+                  item
+                    Control = LbAlertCtrlEstMensagem
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = False
+                    AlignRightWithPanel = False
+                    AlignTopWithPanel = False
+                    AlignVerticalCenterWithPanel = False
+                  end
+                  item
+                    Control = ActivityInd
+                    AlignBottomWithPanel = False
+                    AlignHorizontalCenterWithPanel = False
+                    AlignLeftWithPanel = True
+                    AlignRightWithPanel = False
+                    AlignTopWithPanel = False
+                    AlignVerticalCenterWithPanel = True
+                  end>
+                Anchors = []
+                Color = 4433703
+                ParentBackground = False
+                TabOrder = 2
+                Visible = False
+                DesignSize = (
+                  403
+                  94)
+                object LbAlertCtrlEstTitulo: TLabel
+                  Left = 164
+                  Top = 1
+                  Width = 72
+                  Height = 20
+                  Anchors = []
+                  Caption = 'ATEN'#199#195'O!'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI Semibold'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
+                object LbAlertCtrlEstMensagem: TLabel
+                  Left = 65
+                  Top = 47
+                  Width = 336
+                  Height = 13
+                  Alignment = taCenter
+                  Anchors = []
+                  AutoSize = False
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -11
+                  Font.Name = 'Segoe UI Semibold'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
+                object ActivityInd: TActivityIndicator
+                  Left = 1
+                  Top = 14
+                  Anchors = []
+                  IndicatorSize = aisXLarge
+                  IndicatorType = aitRotatingSector
+                end
               end
             end
             object DbGrdPlantioInsumo: TJvDBUltimGrid

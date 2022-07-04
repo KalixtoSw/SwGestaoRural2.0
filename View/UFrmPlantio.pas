@@ -12,7 +12,7 @@ uses
   JvExMask, JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit,
   JvDBDatePickerEdit, JvBaseEdits, Vcl.ComCtrls, JvExComCtrls, JvProgressBar,
   JvDBProgressBar, System.Math, Winapi.CommCtrl,Classe.NF.ControleEstoque, Classe.Comum.ControleEstoque,
-  JvDBLookup;
+  JvDBLookup, EDBCkBox;
 
 type
   TFrmPlantio = class(TForm)
